@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace ATBM_NHOM12
 {
-    public partial class Form1 : Form
+    public partial class User_and_Role : Form
     {
-        public Form1()
+        public User_and_Role()
         {
             InitializeComponent();
         }
+
     }
 }
