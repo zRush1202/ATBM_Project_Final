@@ -5,6 +5,7 @@ namespace ATBM_NHOM12
 {
     public class LoginProvider
     {
+        public static OracleConnection conn = new OracleConnection();
         public bool CheckLogin(string username, string password, string role)
         {
             try
@@ -14,17 +15,14 @@ namespace ATBM_NHOM12
                     connectionString = @"DATA SOURCE = localhost:1521/XE;DBA Privilege=SYSDBA; USER ID=" + username + ";PASSWORD=" + password;
                 else
                     connectionString = @"DATA SOURCE = localhost:1521/XE; USER ID=" + username + ";PASSWORD=" + password;
-
-                using (OracleConnection con = new OracleConnection(connectionString))
+                conn.ConnectionString = connectionString;
+                conn.Open();
+                
+                if (role == "SYSDBA" || role == "ADMIN")
                 {
-                    con.Open();
-
-                    if (role == "SYSDBA" || role == "ADMIN")
-                    {
-                        OracleCommand command = new OracleCommand("alter session set \"_ORACLE_SCRIPT\"=true", con);
-                        command.ExecuteNonQuery();
-                        Console.WriteLine("Connect với Oracle thành công");
-                    }
+                    OracleCommand command = new OracleCommand("alter session set \"_ORACLE_SCRIPT\"=true", conn);
+                    command.ExecuteNonQuery();
+                    Console.WriteLine("Connect với Oracle thành công");
                 }
                 return true;
             }

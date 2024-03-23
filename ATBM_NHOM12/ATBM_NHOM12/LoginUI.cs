@@ -10,7 +10,6 @@ namespace ATBM_NHOM12
         {
             InitializeComponent();
         }
-        public static OracleConnection con;
 
         private void LoginUI_Load(object sender, EventArgs e)
         {
@@ -39,10 +38,11 @@ namespace ATBM_NHOM12
             bool isValidLogin = loginProvider.CheckLogin(username.Text, password.Text, role.Text);
             if (isValidLogin)
             {
-                MessageBox.Show("Đăng nhập thành công!");
-                this.Hide();
                 FormMainMenu fmm = new FormMainMenu();
-                fmm.Show();
+                this.Hide();
+                fmm.ShowDialog();
+                this.Close();
+                
             }
             else
             {
