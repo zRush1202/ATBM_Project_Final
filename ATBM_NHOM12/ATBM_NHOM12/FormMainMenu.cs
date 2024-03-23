@@ -56,7 +56,7 @@ namespace ATBM_NHOM12
                     currentButton.BackColor = color;
                     currentButton.ForeColor = Color.White;
                     currentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                    panelTitleBar.BackColor = color;
+                    //panelTitleBar.BackColor = color;
                     //panelLogo.BackColor = ThemeColor.ChangeColorBrightness(color, -0.3);
                     ThemeColor.PrimaryColor = color;
                     ThemeColor.SecondaryColor = ThemeColor.ChangeColorBrightness(color, -0.3);
@@ -70,7 +70,7 @@ namespace ATBM_NHOM12
             {
                 if (previousBtn.GetType() == typeof(Button))
                 {
-                    previousBtn.BackColor = Color.Navy;
+                    previousBtn.BackColor = Color.FromArgb(82, 109, 130);
                     previousBtn.ForeColor = Color.Gainsboro;
                     previousBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 }
@@ -102,8 +102,8 @@ namespace ATBM_NHOM12
         {
             DisableButton();
             lblTitle.Text = "HOME";
-            panelTitleBar.BackColor = Color.Navy;
-            panelLogo.BackColor = Color.FromArgb(0, 0, 90);
+            panelTitleBar.BackColor = Color.FromArgb(82, 109, 130);
+            panelLogo.BackColor = Color.FromArgb(39, 55, 77);
             currentButton = null;
             CenterLabelInPanel(lblTitle, panelTitleBar);
             //btnCloseChildForm.Visible = false;
