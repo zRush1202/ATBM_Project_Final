@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ATBM_NHOM12.Forms;
+using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +16,7 @@ namespace ATBM_NHOM12
 {
     public partial class FormMainMenu : Form
     {
+        public static OracleConnection con = LoginProvider.conn;
         private Button currentButton;
         private Random random;
         private int tempIndex;
@@ -131,7 +134,41 @@ namespace ATBM_NHOM12
 
         private void FormMainMenu_Load(object sender, EventArgs e)
         {
+            button1.Visible = false; 
+            button2.Visible = false;
+            btnLogout.Visible = false;
             CenterLabelInPanel(lblTitle, panelTitleBar);
+            lblTitle.Text = "";
+            LoginUI loginUI = new LoginUI();
+            loginUI.ButtonClicked += ChildForm_ButtonClicked;
+            loginUI.TopLevel = false;
+            loginUI.FormBorderStyle= FormBorderStyle.None;
+            loginUI.Dock = DockStyle.Fill;
+            panelDesktopPane.Controls.Add(loginUI);
+            loginUI.Show();
+        }
+
+        private void ChildForm_ButtonClicked(object sender, EventArgs e)
+        {
+            panelDesktopPane.Controls.Clear();
+            // Hiển thị lại MainForm
+            lblTitle.Text = "HOME";
+            button1.Visible = true;
+            button2.Visible = true;
+            btnLogout.Visible = true;
+            btnClose.Visible = false;
+            btnLogin.Visible = false;
+            label2.Enabled = true;
+            panelLogo.Enabled = true;
+            Home home = new Home();
+            home.TopLevel = false;
+            home.FormBorderStyle = FormBorderStyle.None;
+            home.Dock = DockStyle.Fill;
+            panelDesktopPane.Controls.Add(home);
+            home.Show();
+
+            // Hiển thị panel
+            //panelDesktopPane.Visible = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -152,13 +189,33 @@ namespace ATBM_NHOM12
         }
 
         private void button4_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender);
+        {          
+            this.Close();
+            Application.Exit();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
+            con.Close();
+            panelDesktopPane.Controls.Clear();
+            button1.Visible = false;
+            button2.Visible = false;
+            btnLogout.Visible = false;
+            btnLogin.Visible = true;
+            btnClose.Visible = true;
+            label2.Enabled = false;
+            panelLogo.Enabled = false;
+            CenterLabelInPanel(lblTitle, panelTitleBar);
+            lblTitle.Text = "";
+            LoginUI loginUI = new LoginUI();
+            loginUI.ButtonClicked += ChildForm_ButtonClicked;
+            loginUI.TopLevel = false;
+            loginUI.FormBorderStyle = FormBorderStyle.None;
+            loginUI.Dock = DockStyle.Fill;
+            panelDesktopPane.Controls.Add(loginUI);
+            loginUI.Show();
+
         }
 
         private void panelLogo_Click(object sender, EventArgs e)

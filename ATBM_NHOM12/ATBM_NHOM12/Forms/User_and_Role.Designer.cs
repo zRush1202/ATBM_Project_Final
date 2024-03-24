@@ -40,7 +40,7 @@
             this.btnAddUser = new System.Windows.Forms.Button();
             this.btnAddRole = new System.Windows.Forms.Button();
             this.tbxSearchUser = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbxSearchRole = new System.Windows.Forms.TextBox();
             this.btnRefreshUser = new System.Windows.Forms.Button();
             this.btnRefreshRole = new System.Windows.Forms.Button();
             this.btnSearchRole = new System.Windows.Forms.PictureBox();
@@ -88,6 +88,7 @@
             this.dgvUser.RowTemplate.Height = 24;
             this.dgvUser.Size = new System.Drawing.Size(500, 450);
             this.dgvUser.TabIndex = 1;
+            this.dgvUser.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUser_CellClick);
             // 
             // panel5
             // 
@@ -107,6 +108,7 @@
             this.dgvRole.RowTemplate.Height = 24;
             this.dgvRole.Size = new System.Drawing.Size(500, 450);
             this.dgvRole.TabIndex = 1;
+            this.dgvRole.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRole_CellClick);
             // 
             // label4
             // 
@@ -174,13 +176,13 @@
             this.tbxSearchUser.Size = new System.Drawing.Size(257, 28);
             this.tbxSearchUser.TabIndex = 9;
             // 
-            // textBox1
+            // tbxSearchRole
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(523, 508);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(257, 28);
-            this.textBox1.TabIndex = 17;
+            this.tbxSearchRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxSearchRole.Location = new System.Drawing.Point(523, 508);
+            this.tbxSearchRole.Name = "tbxSearchRole";
+            this.tbxSearchRole.Size = new System.Drawing.Size(257, 28);
+            this.tbxSearchRole.TabIndex = 17;
             // 
             // btnRefreshUser
             // 
@@ -221,6 +223,7 @@
             this.btnSearchRole.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnSearchRole.TabIndex = 18;
             this.btnSearchRole.TabStop = false;
+            this.btnSearchRole.Click += new System.EventHandler(this.btnSearchRole_Click);
             // 
             // btnSearchUser
             // 
@@ -233,6 +236,7 @@
             this.btnSearchUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnSearchUser.TabIndex = 15;
             this.btnSearchUser.TabStop = false;
+            this.btnSearchUser.Click += new System.EventHandler(this.btnSearchUser_Click);
             // 
             // btnDeleteRole
             // 
@@ -244,6 +248,7 @@
             this.btnDeleteRole.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnDeleteRole.TabIndex = 14;
             this.btnDeleteRole.TabStop = false;
+            this.btnDeleteRole.Click += new System.EventHandler(this.btnDeleteRole_Click);
             // 
             // btnEditRole
             // 
@@ -256,6 +261,7 @@
             this.btnEditRole.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnEditRole.TabIndex = 13;
             this.btnEditRole.TabStop = false;
+            this.btnEditRole.Click += new System.EventHandler(this.btnEditRole_Click);
             // 
             // btnDeleteUser
             // 
@@ -267,6 +273,7 @@
             this.btnDeleteUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnDeleteUser.TabIndex = 12;
             this.btnDeleteUser.TabStop = false;
+            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
             // 
             // btnEditUser
             // 
@@ -290,7 +297,7 @@
             this.Controls.Add(this.btnRefreshRole);
             this.Controls.Add(this.btnRefreshUser);
             this.Controls.Add(this.btnSearchRole);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbxSearchRole);
             this.Controls.Add(this.btnSearchUser);
             this.Controls.Add(this.btnDeleteRole);
             this.Controls.Add(this.btnEditRole);
@@ -343,7 +350,7 @@
         private System.Windows.Forms.PictureBox btnDeleteRole;
         private System.Windows.Forms.PictureBox btnSearchUser;
         private System.Windows.Forms.PictureBox btnSearchRole;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbxSearchRole;
         private System.Windows.Forms.Button btnRefreshUser;
         private System.Windows.Forms.Button btnRefreshRole;
     }

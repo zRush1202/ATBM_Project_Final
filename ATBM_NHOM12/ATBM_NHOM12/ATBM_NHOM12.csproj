@@ -100,11 +100,35 @@
     <Compile Include="Forms\Add_User.Designer.cs">
       <DependentUpon>Add_User.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DeleteRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DeleteRole.Designer.cs">
+      <DependentUpon>DeleteRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DeleteUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DeleteUser.Designer.cs">
+      <DependentUpon>DeleteUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditRole.Designer.cs">
+      <DependentUpon>EditRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EditUser.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\EditUser.Designer.cs">
       <DependentUpon>EditUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Privilege.cs">
       <SubType>Form</SubType>
@@ -137,8 +161,20 @@
     <EmbeddedResource Include="Forms\Add_User.resx">
       <DependentUpon>Add_User.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DeleteRole.resx">
+      <DependentUpon>DeleteRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DeleteUser.resx">
+      <DependentUpon>DeleteUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditRole.resx">
+      <DependentUpon>EditRole.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditUser.resx">
       <DependentUpon>EditUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Privilege.resx">
       <DependentUpon>Privilege.cs</DependentUpon>

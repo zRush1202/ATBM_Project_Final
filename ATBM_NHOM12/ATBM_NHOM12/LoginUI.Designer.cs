@@ -44,11 +44,11 @@ namespace ATBM_NHOM12
             this.title.AutoSize = true;
             this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.title.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.title.Location = new System.Drawing.Point(209, 108);
+            this.title.Location = new System.Drawing.Point(271, 107);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(664, 54);
+            this.title.Size = new System.Drawing.Size(504, 54);
             this.title.TabIndex = 0;
-            this.title.Text = "HỆ THỐNG QUẢN LÝ ĐỀ ÁN";
+            this.title.Text = "HỆ THỐNG QUẢN LÝ";
             this.title.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label_user
@@ -92,14 +92,16 @@ namespace ATBM_NHOM12
             // 
             // login
             // 
+            this.login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.login.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.login.ForeColor = System.Drawing.Color.White;
             this.login.Location = new System.Drawing.Point(449, 414);
             this.login.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.login.Name = "login";
             this.login.Size = new System.Drawing.Size(205, 54);
             this.login.TabIndex = 8;
             this.login.Text = "ĐĂNG NHẬP";
-            this.login.UseVisualStyleBackColor = true;
+            this.login.UseVisualStyleBackColor = false;
             this.login.Click += new System.EventHandler(this.login_Click);
             // 
             // role
@@ -137,6 +139,7 @@ namespace ATBM_NHOM12
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.ClientSize = new System.Drawing.Size(1096, 622);
             this.Controls.Add(this.role);
             this.Controls.Add(this.login);

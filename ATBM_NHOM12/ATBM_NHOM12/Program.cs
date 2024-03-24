@@ -16,7 +16,7 @@ namespace ATBM_NHOM12
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginUI());
+            Application.Run(new FormMainMenu());
         }
     }
 }

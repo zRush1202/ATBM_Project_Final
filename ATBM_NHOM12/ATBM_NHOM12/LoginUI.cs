@@ -6,6 +6,7 @@ namespace ATBM_NHOM12
 {
     public partial class LoginUI : Form
     {
+        public event EventHandler ButtonClicked;
         public LoginUI()
         {
             InitializeComponent();
@@ -38,11 +39,11 @@ namespace ATBM_NHOM12
             bool isValidLogin = loginProvider.CheckLogin(username.Text, password.Text, role.Text);
             if (isValidLogin)
             {
-                FormMainMenu fmm = new FormMainMenu();
-                this.Hide();
-                fmm.ShowDialog();
-                this.Close();
-                
+                //FormMainMenu fmm = new FormMainMenu();
+                //this.Hide();
+                //fmm.ShowDialog();
+                //this.Close();
+                ButtonClicked?.Invoke(this, EventArgs.Empty);
             }
             else
             {
