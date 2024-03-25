@@ -85,40 +85,48 @@
             // 
             // btt_grant
             // 
-            this.btt_grant.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btt_grant.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.btt_grant.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btt_grant.ForeColor = System.Drawing.Color.White;
             this.btt_grant.Location = new System.Drawing.Point(18, 38);
             this.btt_grant.Name = "btt_grant";
             this.btt_grant.Size = new System.Drawing.Size(234, 35);
             this.btt_grant.TabIndex = 2;
             this.btt_grant.Text = "CẤP QUYỀN";
-            this.btt_grant.UseVisualStyleBackColor = true;
+            this.btt_grant.UseVisualStyleBackColor = false;
             this.btt_grant.Click += new System.EventHandler(this.btt_grant_Click);
             // 
             // btt_revoke
             // 
-            this.btt_revoke.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btt_revoke.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.btt_revoke.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btt_revoke.ForeColor = System.Drawing.Color.White;
             this.btt_revoke.Location = new System.Drawing.Point(282, 38);
             this.btt_revoke.Name = "btt_revoke";
             this.btt_revoke.Size = new System.Drawing.Size(236, 35);
             this.btt_revoke.TabIndex = 3;
             this.btt_revoke.Text = "THU HỒI QUYỀN ";
-            this.btt_revoke.UseVisualStyleBackColor = true;
+            this.btt_revoke.UseVisualStyleBackColor = false;
             this.btt_revoke.Click += new System.EventHandler(this.btt_revoke_Click);
             // 
             // btt_Refresh
             // 
-            this.btt_Refresh.Location = new System.Drawing.Point(938, 64);
+            this.btt_Refresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.btt_Refresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btt_Refresh.ForeColor = System.Drawing.Color.White;
+            this.btt_Refresh.Location = new System.Drawing.Point(908, 38);
             this.btt_Refresh.Name = "btt_Refresh";
-            this.btt_Refresh.Size = new System.Drawing.Size(75, 23);
+            this.btt_Refresh.Size = new System.Drawing.Size(110, 34);
             this.btt_Refresh.TabIndex = 4;
             this.btt_Refresh.Text = "Refresh";
-            this.btt_Refresh.UseVisualStyleBackColor = true;
+            this.btt_Refresh.UseVisualStyleBackColor = false;
             this.btt_Refresh.Click += new System.EventHandler(this.btt_Refresh_Click);
             // 
             // Grant_Revoke_Privilege
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.ClientSize = new System.Drawing.Size(1025, 585);
             this.Controls.Add(this.btt_Refresh);
             this.Controls.Add(this.btt_revoke);

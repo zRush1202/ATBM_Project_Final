@@ -155,6 +155,7 @@ namespace ATBM_NHOM12
             panelDesktopPane.Controls.Clear();
             // Hiển thị lại MainForm
             lblTitle.Text = "HOME";
+            CenterLabelInPanel(lblTitle, panelTitleBar);
             button1.Visible = true;
             button2.Visible = true;
             btnLogout.Visible = true;

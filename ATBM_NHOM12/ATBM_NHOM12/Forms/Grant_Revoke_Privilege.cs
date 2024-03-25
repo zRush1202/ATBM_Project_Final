@@ -49,23 +49,24 @@ namespace ATBM_NHOM12.Forms
         {
             //"select * from all_views where view_name = 'UV_BH_CUAHANG_C##ADMIN1'"
             //select* from DBA_TAB_PRIVS where TABLE_NAME LIKE 'BH_%' OR TABLE_NAME LIKE 'UV_BH_%'
-            string query = "select* from DBA_TAB_PRIVS where TABLE_NAME LIKE 'BH_%' OR TABLE_NAME LIKE 'UV_BH_%'";
-            string query2 = "select * from DBA_COL_PRIVS where TABLE_NAME LIKE 'BH_%' OR TABLE_NAME LIKE 'UV_BH_%' ";
-            OracleDataAdapter adapter = new OracleDataAdapter(query, con);
-            OracleDataAdapter adapter2 = new OracleDataAdapter(query2, con);
-            DataTable dataTable = new DataTable();
-            DataTable dataTable2 = new DataTable();
-            try
-            {
-                adapter.Fill(dataTable);
-                dgv_table.DataSource = dataTable;
-                adapter2.Fill(dataTable2);
-                dgv_col.DataSource = dataTable2;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
+            //string query = "select* from DBA_TAB_PRIVS where TABLE_NAME LIKE 'BH_%' OR TABLE_NAME LIKE 'UV_BH_%'";
+            //string query2 = "select * from DBA_COL_PRIVS where TABLE_NAME LIKE 'BH_%' OR TABLE_NAME LIKE 'UV_BH_%' ";
+            //OracleDataAdapter adapter = new OracleDataAdapter(query, con);
+            //OracleDataAdapter adapter2 = new OracleDataAdapter(query2, con);
+            //DataTable dataTable = new DataTable();
+            //DataTable dataTable2 = new DataTable();
+            //try
+            //{
+            //    adapter.Fill(dataTable);
+            //    dgv_table.DataSource = dataTable;
+            //    adapter2.Fill(dataTable2);
+            //    dgv_col.DataSource = dataTable2;
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error: " + ex.Message);
+            //}
+            Grant_Revoke_Privilege_Load(sender, e);
         }
 
         private void btt_revoke_Click(object sender, EventArgs e)

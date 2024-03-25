@@ -38,9 +38,9 @@
             this.lb_tb = new System.Windows.Forms.Label();
             this.cb_table = new System.Windows.Forms.ComboBox();
             this.clb_col = new System.Windows.Forms.CheckedListBox();
-            this.rd_option = new System.Windows.Forms.RadioButton();
             this.btt_grant = new System.Windows.Forms.Button();
             this.btt_cancel = new System.Windows.Forms.Button();
+            this.rd_option = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lb_ur
@@ -143,18 +143,6 @@
             this.clb_col.TabIndex = 9;
             this.clb_col.SelectedIndexChanged += new System.EventHandler(this.clb_col_SelectedIndexChanged);
             // 
-            // rd_option
-            // 
-            this.rd_option.AutoSize = true;
-            this.rd_option.Enabled = false;
-            this.rd_option.Location = new System.Drawing.Point(278, 233);
-            this.rd_option.Name = "rd_option";
-            this.rd_option.Size = new System.Drawing.Size(168, 20);
-            this.rd_option.TabIndex = 10;
-            this.rd_option.TabStop = true;
-            this.rd_option.Text = "WITH GRANT OPTION";
-            this.rd_option.UseVisualStyleBackColor = true;
-            // 
             // btt_grant
             // 
             this.btt_grant.Location = new System.Drawing.Point(215, 292);
@@ -175,14 +163,24 @@
             this.btt_cancel.UseVisualStyleBackColor = true;
             this.btt_cancel.Click += new System.EventHandler(this.btt_cancel_Click);
             // 
+            // rd_option
+            // 
+            this.rd_option.AutoSize = true;
+            this.rd_option.Location = new System.Drawing.Point(277, 219);
+            this.rd_option.Name = "rd_option";
+            this.rd_option.Size = new System.Drawing.Size(169, 20);
+            this.rd_option.TabIndex = 13;
+            this.rd_option.Text = "WITH GRANT OPTION";
+            this.rd_option.UseVisualStyleBackColor = true;
+            // 
             // Grant_Privilege
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(705, 341);
+            this.Controls.Add(this.rd_option);
             this.Controls.Add(this.btt_cancel);
             this.Controls.Add(this.btt_grant);
-            this.Controls.Add(this.rd_option);
             this.Controls.Add(this.clb_col);
             this.Controls.Add(this.cb_table);
             this.Controls.Add(this.lb_tb);
@@ -214,8 +212,8 @@
         private System.Windows.Forms.Label lb_tb;
         private System.Windows.Forms.ComboBox cb_table;
         private System.Windows.Forms.CheckedListBox clb_col;
-        private System.Windows.Forms.RadioButton rd_option;
         private System.Windows.Forms.Button btt_grant;
         private System.Windows.Forms.Button btt_cancel;
+        private System.Windows.Forms.CheckBox rd_option;
     }
 }

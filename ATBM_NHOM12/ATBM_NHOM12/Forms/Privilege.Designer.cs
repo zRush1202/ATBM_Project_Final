@@ -98,6 +98,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.ClientSize = new System.Drawing.Size(1025, 585);
             this.Controls.Add(this.btnRefreshUser);
             this.Controls.Add(this.btnSearchUser);

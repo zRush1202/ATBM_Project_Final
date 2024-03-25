@@ -182,14 +182,15 @@ namespace ATBM_NHOM12.Forms
                 {
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = $"GRANT INSERT ON {tableName} TO {userOrRoleName} {option}";
-
                     cmd.ExecuteNonQuery();
+                    MessageBox.Show("Cấp quyền thành công!");
                 }
                 else if (privilege == "DELETE")
                 {
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = $"GRANT DELETE ON {tableName} TO {userOrRoleName} {option}";
                     cmd.ExecuteNonQuery();
+                    MessageBox.Show("Cấp quyền thành công!");
                 }
                 else if (privilege == "UPDATE")
                 {
@@ -198,12 +199,14 @@ namespace ATBM_NHOM12.Forms
                         cmd.CommandType = CommandType.Text;
                         cmd.CommandText = $"GRANT UPDATE ON {tableName} TO {userOrRoleName} {option}";
                         cmd.ExecuteNonQuery();
+                        MessageBox.Show("Cấp quyền thành công!");
                     }
                     else
                     {
                         cmd.CommandType = CommandType.Text;
                         cmd.CommandText = $"GRANT UPDATE({col_list}) ON {tableName} TO {userOrRoleName} {option}";
                         cmd.ExecuteNonQuery();
+                        MessageBox.Show("Cấp quyền thành công!");
                     }
                 }
                 else if (privilege == "SELECT")
@@ -216,6 +219,7 @@ namespace ATBM_NHOM12.Forms
                     {
                         cmd.CommandText = $"GRANT SELECT ON {schema_name}.{tableName} TO {userOrRoleName} {option}";
                         cmd.ExecuteNonQuery();
+                        MessageBox.Show("Cấp quyền thành công!");
                     }
                     else
                     {
@@ -228,6 +232,7 @@ namespace ATBM_NHOM12.Forms
                             cmd.ExecuteNonQuery();
                             cmd.CommandText = $"GRANT SELECT ON {schema_name}.{v_name} TO {userOrRoleName} {option}";
                             cmd.ExecuteNonQuery();
+                            MessageBox.Show("Cấp quyền thành công!");
                         }
                         else
                         {
@@ -236,7 +241,7 @@ namespace ATBM_NHOM12.Forms
                             cmd.ExecuteNonQuery();
                             cmd.CommandText = $"GRANT SELECT ON {schema_name}.{v_name} TO {userOrRoleName} {option}";
                             cmd.ExecuteNonQuery();
-
+                            MessageBox.Show("Cấp quyền thành công!");
                         }
                     }
 
@@ -302,6 +307,7 @@ namespace ATBM_NHOM12.Forms
                 //            MessageBox.Show("Error: " + ex.Message);
                 //        }
                 //    }
+                this.Close();
             }
             catch (Exception ex)
             {
@@ -327,6 +333,10 @@ namespace ATBM_NHOM12.Forms
             }
             else
                 clb_col.Enabled = true;
+            for (int i = 0; i < clb_col.Items.Count; i++)
+            {
+                clb_col.SetItemChecked(i, false);
+            }
         }
 
         private void btt_cancel_Click(object sender, EventArgs e)
