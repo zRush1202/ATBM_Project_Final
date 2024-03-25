@@ -73,7 +73,12 @@ namespace ATBM_NHOM12.Forms
 
         private void btnAddRoleMem_Click(object sender, EventArgs e)
         {
-            string query = $"GRANT {roleName} TO {userName}";
+            string query = "";
+            if (cbAdOption.Checked)
+                query = $"GRANT {roleName} TO {userName} WITH ADMIN OPTION";
+
+            else
+                query = $"GRANT {roleName} TO {userName}";
             try
             {
                 OracleCommand command = new OracleCommand();
@@ -119,7 +124,6 @@ namespace ATBM_NHOM12.Forms
         private void btnRevokeRole_Click(object sender, EventArgs e)
         {
             string query = $"REVOKE {roleName} FROM {userName}";
-            MessageBox.Show(query);
             try
             {
                 OracleCommand command = new OracleCommand(query, con);

@@ -38,6 +38,7 @@ namespace ATBM_NHOM12.Forms
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnRevokeRole = new System.Windows.Forms.PictureBox();
             this.dgvUserNotInRole = new System.Windows.Forms.DataGridView();
+            this.cbAdOption = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoleDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRevokeRole)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUserNotInRole)).BeginInit();
@@ -105,12 +106,23 @@ namespace ATBM_NHOM12.Forms
             this.dgvUserNotInRole.TabIndex = 20;
             this.dgvUserNotInRole.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUserNotInRole_CellClick);
             // 
+            // cbAdOption
+            // 
+            this.cbAdOption.AutoSize = true;
+            this.cbAdOption.Location = new System.Drawing.Point(731, 91);
+            this.cbAdOption.Name = "cbAdOption";
+            this.cbAdOption.Size = new System.Drawing.Size(226, 20);
+            this.cbAdOption.TabIndex = 22;
+            this.cbAdOption.Text = "Được phân quyền cho người khác";
+            this.cbAdOption.UseVisualStyleBackColor = true;
+            // 
             // RoleDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.ClientSize = new System.Drawing.Size(1032, 541);
+            this.Controls.Add(this.cbAdOption);
             this.Controls.Add(this.btnRevokeRole);
             this.Controls.Add(this.dgvUserNotInRole);
             this.Controls.Add(this.btnAddRoleMem);
@@ -134,5 +146,6 @@ namespace ATBM_NHOM12.Forms
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.DataGridView dgvUserNotInRole;
         private System.Windows.Forms.PictureBox btnRevokeRole;
+        private System.Windows.Forms.CheckBox cbAdOption;
     }
 }
