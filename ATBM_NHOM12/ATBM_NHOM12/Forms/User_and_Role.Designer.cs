@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User_and_Role));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -43,6 +44,8 @@
             this.tbxSearchRole = new System.Windows.Forms.TextBox();
             this.btnRefreshUser = new System.Windows.Forms.Button();
             this.btnRefreshRole = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnRoleDetail = new System.Windows.Forms.PictureBox();
             this.btnSearchRole = new System.Windows.Forms.PictureBox();
             this.btnSearchUser = new System.Windows.Forms.PictureBox();
             this.btnDeleteRole = new System.Windows.Forms.PictureBox();
@@ -53,6 +56,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvUser)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRole)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRoleDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearchRole)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearchUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDeleteRole)).BeginInit();
@@ -150,6 +154,7 @@
             this.btnAddUser.Size = new System.Drawing.Size(30, 30);
             this.btnAddUser.TabIndex = 7;
             this.btnAddUser.Text = "+";
+            this.toolTip1.SetToolTip(this.btnAddUser, "Thêm người dùng");
             this.btnAddUser.UseVisualStyleBackColor = false;
             this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
@@ -165,6 +170,7 @@
             this.btnAddRole.Size = new System.Drawing.Size(30, 30);
             this.btnAddRole.TabIndex = 8;
             this.btnAddRole.Text = "+";
+            this.toolTip1.SetToolTip(this.btnAddRole, "Thêm vai trò");
             this.btnAddRole.UseVisualStyleBackColor = false;
             this.btnAddRole.Click += new System.EventHandler(this.btnAddRole_Click);
             // 
@@ -212,6 +218,20 @@
             this.btnRefreshRole.UseVisualStyleBackColor = false;
             this.btnRefreshRole.Click += new System.EventHandler(this.btnRefreshRole_Click);
             // 
+            // btnRoleDetail
+            // 
+            this.btnRoleDetail.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRoleDetail.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnRoleDetail.ErrorImage")));
+            this.btnRoleDetail.Image = global::ATBM_NHOM12.Properties.Resources.info;
+            this.btnRoleDetail.Location = new System.Drawing.Point(873, 13);
+            this.btnRoleDetail.Name = "btnRoleDetail";
+            this.btnRoleDetail.Size = new System.Drawing.Size(35, 33);
+            this.btnRoleDetail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnRoleDetail.TabIndex = 22;
+            this.btnRoleDetail.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnRoleDetail, "Chi tiết vai trò");
+            this.btnRoleDetail.Click += new System.EventHandler(this.btnRoleDetail_Click);
+            // 
             // btnSearchRole
             // 
             this.btnSearchRole.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -223,6 +243,7 @@
             this.btnSearchRole.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnSearchRole.TabIndex = 18;
             this.btnSearchRole.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnSearchRole, "Tìm kiếm");
             this.btnSearchRole.Click += new System.EventHandler(this.btnSearchRole_Click);
             // 
             // btnSearchUser
@@ -236,6 +257,7 @@
             this.btnSearchUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnSearchUser.TabIndex = 15;
             this.btnSearchUser.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnSearchUser, "Tìm kiếm");
             this.btnSearchUser.Click += new System.EventHandler(this.btnSearchUser_Click);
             // 
             // btnDeleteRole
@@ -248,10 +270,12 @@
             this.btnDeleteRole.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnDeleteRole.TabIndex = 14;
             this.btnDeleteRole.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnDeleteRole, "Xoá vai trò");
             this.btnDeleteRole.Click += new System.EventHandler(this.btnDeleteRole_Click);
             // 
             // btnEditRole
             // 
+            this.btnEditRole.AccessibleDescription = "";
             this.btnEditRole.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditRole.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnEditRole.ErrorImage")));
             this.btnEditRole.Image = global::ATBM_NHOM12.Properties.Resources.editButton;
@@ -261,6 +285,7 @@
             this.btnEditRole.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnEditRole.TabIndex = 13;
             this.btnEditRole.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnEditRole, "Chỉnh sửa vai trò");
             this.btnEditRole.Click += new System.EventHandler(this.btnEditRole_Click);
             // 
             // btnDeleteUser
@@ -273,6 +298,7 @@
             this.btnDeleteUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnDeleteUser.TabIndex = 12;
             this.btnDeleteUser.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnDeleteUser, "Xoá người dùng");
             this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
             // 
             // btnEditUser
@@ -286,6 +312,7 @@
             this.btnEditUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnEditUser.TabIndex = 11;
             this.btnEditUser.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnEditUser, "Chỉnh sửa người dùng");
             this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
             // 
             // User_and_Role
@@ -294,6 +321,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1025, 585);
+            this.Controls.Add(this.btnRoleDetail);
             this.Controls.Add(this.btnRefreshRole);
             this.Controls.Add(this.btnRefreshUser);
             this.Controls.Add(this.btnSearchRole);
@@ -320,6 +348,7 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRole)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRoleDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearchRole)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearchUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDeleteRole)).EndInit();
@@ -353,5 +382,7 @@
         private System.Windows.Forms.TextBox tbxSearchRole;
         private System.Windows.Forms.Button btnRefreshUser;
         private System.Windows.Forms.Button btnRefreshRole;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.PictureBox btnRoleDetail;
     }
 }

@@ -190,5 +190,37 @@ namespace ATBM_NHOM12
                 }
             }
         }
+
+        private void btnRoleDetail_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbxSearchRole.Text))
+            {
+                return;
+            }
+            else
+            {
+                string query = $"SELECT * FROM dba_roles WHERE role LIKE '%{tbxSearchRole.Text.ToUpper()}%'";
+                OracleDataAdapter adapter = new OracleDataAdapter(query, con);
+                DataTable dataTable = new DataTable();
+                try
+                {
+                    adapter.Fill(dataTable);
+                    if (dataTable.Rows.Count > 0)
+                    {
+                        dgvRole.DataSource = dataTable;
+                        RoleDetail roleDetail = new RoleDetail(tbxSearchRole.Text);
+                        roleDetail.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy thông tin vai trò");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi tìm kiếm vai trò: " + ex.Message);
+                }
+            }
+        }
     }
 }
