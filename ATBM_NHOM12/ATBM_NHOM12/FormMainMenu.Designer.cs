@@ -109,7 +109,7 @@
             this.btnLogin.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnLogin.Size = new System.Drawing.Size(222, 78);
             this.btnLogin.TabIndex = 3;
-            this.btnLogin.Text = "Login";
+            this.btnLogin.Text = "Grant/Revoke Privilege";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.button3_Click);
             // 

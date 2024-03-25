@@ -157,7 +157,7 @@ namespace ATBM_NHOM12
             button2.Visible = true;
             btnLogout.Visible = true;
             btnClose.Visible = false;
-            btnLogin.Visible = false;
+            btnLogin.Visible = true;
             label2.Enabled = true;
             panelLogo.Enabled = true;
             Home home = new Home();
@@ -185,7 +185,8 @@ namespace ATBM_NHOM12
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender);
+            OpenChildForm(new Grant_Revoke_Privilege(), sender);
+            CenterLabelInPanel(lblTitle, panelTitleBar);
         }
 
         private void button4_Click(object sender, EventArgs e)
