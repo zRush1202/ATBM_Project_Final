@@ -193,7 +193,7 @@ namespace ATBM_NHOM12
 
         private void button5_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender);
+            ActivateButton(btnLogin);
             con.Close();
             panelDesktopPane.Controls.Clear();
             button1.Visible = false;
@@ -203,8 +203,8 @@ namespace ATBM_NHOM12
             btnLogin.Visible = true;
             label2.Enabled = false;
             panelLogo.Enabled = false;
-            CenterLabelInPanel(lblTitle, panelTitleBar);
             lblTitle.Text = "ĐĂNG NHẬP HỆ THỐNG";
+            CenterLabelInPanel(lblTitle, panelTitleBar);
             LoginUI loginUI = new LoginUI();
             loginUI.ButtonClicked += ChildForm_ButtonClicked;
             loginUI.TopLevel = false;

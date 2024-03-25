@@ -28,10 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Privilege));
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvPriv = new System.Windows.Forms.DataGridView();
+            this.btnSearchUser = new System.Windows.Forms.PictureBox();
+            this.tbxSearchUser = new System.Windows.Forms.TextBox();
+            this.btnRefreshUser = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPriv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearchUser)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -52,24 +57,68 @@
             this.dgvPriv.RowTemplate.Height = 24;
             this.dgvPriv.Size = new System.Drawing.Size(1021, 531);
             this.dgvPriv.TabIndex = 0;
+            this.dgvPriv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPriv_CellClick);
+            // 
+            // btnSearchUser
+            // 
+            this.btnSearchUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearchUser.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnSearchUser.ErrorImage")));
+            this.btnSearchUser.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchUser.Image")));
+            this.btnSearchUser.Location = new System.Drawing.Point(996, 20);
+            this.btnSearchUser.Name = "btnSearchUser";
+            this.btnSearchUser.Size = new System.Drawing.Size(27, 27);
+            this.btnSearchUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnSearchUser.TabIndex = 17;
+            this.btnSearchUser.TabStop = false;
+            this.btnSearchUser.Click += new System.EventHandler(this.btnSearchUser_Click);
+            // 
+            // tbxSearchUser
+            // 
+            this.tbxSearchUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxSearchUser.Location = new System.Drawing.Point(733, 19);
+            this.tbxSearchUser.Name = "tbxSearchUser";
+            this.tbxSearchUser.Size = new System.Drawing.Size(257, 28);
+            this.tbxSearchUser.TabIndex = 16;
+            // 
+            // btnRefreshUser
+            // 
+            this.btnRefreshUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.btnRefreshUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefreshUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefreshUser.ForeColor = System.Drawing.Color.White;
+            this.btnRefreshUser.Location = new System.Drawing.Point(3, 15);
+            this.btnRefreshUser.Name = "btnRefreshUser";
+            this.btnRefreshUser.Size = new System.Drawing.Size(99, 32);
+            this.btnRefreshUser.TabIndex = 21;
+            this.btnRefreshUser.Text = "Refresh";
+            this.btnRefreshUser.UseVisualStyleBackColor = false;
+            this.btnRefreshUser.Click += new System.EventHandler(this.btnRefreshUser_Click);
             // 
             // Privilege
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1025, 585);
+            this.Controls.Add(this.btnRefreshUser);
+            this.Controls.Add(this.btnSearchUser);
+            this.Controls.Add(this.tbxSearchUser);
             this.Controls.Add(this.panel1);
             this.Name = "Privilege";
             this.Text = "Privilege";
             this.Load += new System.EventHandler(this.Privilege_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPriv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearchUser)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvPriv;
+        private System.Windows.Forms.PictureBox btnSearchUser;
+        private System.Windows.Forms.TextBox tbxSearchUser;
+        private System.Windows.Forms.Button btnRefreshUser;
     }
 }
