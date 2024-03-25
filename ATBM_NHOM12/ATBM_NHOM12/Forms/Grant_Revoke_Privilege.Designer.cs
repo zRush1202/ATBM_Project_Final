@@ -126,6 +126,7 @@
             this.Controls.Add(this.gb_col);
             this.Controls.Add(this.gb_table);
             this.Name = "Grant_Revoke_Privilege";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Grant_Revoke_Privilege";
             this.Load += new System.EventHandler(this.Grant_Revoke_Privilege_Load);
             this.gb_table.ResumeLayout(false);

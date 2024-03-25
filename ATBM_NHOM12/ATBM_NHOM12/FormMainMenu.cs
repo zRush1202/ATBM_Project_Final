@@ -137,8 +137,10 @@ namespace ATBM_NHOM12
             button1.Visible = false; 
             button2.Visible = false;
             btnLogout.Visible = false;
+            btnGrantPriv.Visible = false;
+            ActivateButton(btnLogin);
+            lblTitle.Text = "ĐĂNG NHẬP HỆ THỐNG";
             CenterLabelInPanel(lblTitle, panelTitleBar);
-            lblTitle.Text = "";
             LoginUI loginUI = new LoginUI();
             loginUI.ButtonClicked += ChildForm_ButtonClicked;
             loginUI.TopLevel = false;
@@ -156,8 +158,8 @@ namespace ATBM_NHOM12
             button1.Visible = true;
             button2.Visible = true;
             btnLogout.Visible = true;
-            btnClose.Visible = false;
-            btnLogin.Visible = true;
+            btnLogin.Visible = false;
+            btnGrantPriv.Visible = true;
             label2.Enabled = true;
             panelLogo.Enabled = true;
             Home home = new Home();
@@ -189,12 +191,6 @@ namespace ATBM_NHOM12
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {          
-            this.Close();
-            Application.Exit();
-        }
-
         private void button5_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
@@ -203,12 +199,12 @@ namespace ATBM_NHOM12
             button1.Visible = false;
             button2.Visible = false;
             btnLogout.Visible = false;
+            btnGrantPriv.Visible = false;
             btnLogin.Visible = true;
-            btnClose.Visible = true;
             label2.Enabled = false;
             panelLogo.Enabled = false;
             CenterLabelInPanel(lblTitle, panelTitleBar);
-            lblTitle.Text = "";
+            lblTitle.Text = "ĐĂNG NHẬP HỆ THỐNG";
             LoginUI loginUI = new LoginUI();
             loginUI.ButtonClicked += ChildForm_ButtonClicked;
             loginUI.TopLevel = false;
@@ -240,5 +236,16 @@ namespace ATBM_NHOM12
             lblTitle.Location = new Point(centerX, centerY);
         }
 
+        private void btnClose_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+            Application.Exit();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new LoginUI(), sender);
+            CenterLabelInPanel(lblTitle, panelTitleBar);
+        }
     }
 }

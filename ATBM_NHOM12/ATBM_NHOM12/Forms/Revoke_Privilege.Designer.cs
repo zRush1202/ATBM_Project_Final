@@ -133,6 +133,7 @@
             this.Controls.Add(this.txt_ur);
             this.Controls.Add(this.lb_ur);
             this.Name = "Revoke_Privilege";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Revoke_Privilege";
             this.Load += new System.EventHandler(this.cb_table_Load);
             this.ResumeLayout(false);

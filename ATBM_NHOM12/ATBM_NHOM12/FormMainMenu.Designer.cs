@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.btnLogout = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
+            this.btnGrantPriv = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
@@ -47,9 +48,10 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
-            this.panelMenu.Controls.Add(this.btnLogout);
             this.panelMenu.Controls.Add(this.btnClose);
+            this.panelMenu.Controls.Add(this.btnLogout);
             this.panelMenu.Controls.Add(this.btnLogin);
+            this.panelMenu.Controls.Add(this.btnGrantPriv);
             this.panelMenu.Controls.Add(this.button2);
             this.panelMenu.Controls.Add(this.button1);
             this.panelMenu.Controls.Add(this.panelLogo);
@@ -58,6 +60,24 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(222, 754);
             this.panelMenu.TabIndex = 0;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(0, 512);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnClose.Size = new System.Drawing.Size(222, 78);
+            this.btnClose.TabIndex = 6;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click_1);
             // 
             // btnLogout
             // 
@@ -77,24 +97,6 @@
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.button5_Click);
             // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
-            this.btnClose.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(0, 356);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(0);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnClose.Size = new System.Drawing.Size(222, 78);
-            this.btnClose.TabIndex = 4;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.button4_Click);
-            // 
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
@@ -103,15 +105,33 @@
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(0, 278);
+            this.btnLogin.Location = new System.Drawing.Point(0, 356);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(0);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnLogin.Size = new System.Drawing.Size(222, 78);
-            this.btnLogin.TabIndex = 3;
-            this.btnLogin.Text = "Grant/Revoke Privilege";
+            this.btnLogin.TabIndex = 4;
+            this.btnLogin.Text = "Log in";
             this.btnLogin.UseVisualStyleBackColor = false;
-            this.btnLogin.Click += new System.EventHandler(this.button3_Click);
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // btnGrantPriv
+            // 
+            this.btnGrantPriv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.btnGrantPriv.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGrantPriv.FlatAppearance.BorderSize = 0;
+            this.btnGrantPriv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGrantPriv.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrantPriv.ForeColor = System.Drawing.Color.White;
+            this.btnGrantPriv.Location = new System.Drawing.Point(0, 278);
+            this.btnGrantPriv.Margin = new System.Windows.Forms.Padding(0);
+            this.btnGrantPriv.Name = "btnGrantPriv";
+            this.btnGrantPriv.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnGrantPriv.Size = new System.Drawing.Size(222, 78);
+            this.btnGrantPriv.TabIndex = 3;
+            this.btnGrantPriv.Text = "Grant/Revoke Privilege";
+            this.btnGrantPriv.UseVisualStyleBackColor = false;
+            this.btnGrantPriv.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -236,10 +256,11 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Button btnGrantPriv;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panelDesktopPane;
+        private System.Windows.Forms.Button btnClose;
     }
 }
 

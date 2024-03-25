@@ -28,7 +28,9 @@ namespace ATBM_NHOM12
             {
                 //con.Open();
                 adapter.Fill(dataTable);
+                dgvPriv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgvPriv.DataSource = dataTable;
+                
 
             }
             catch (Exception ex)
