@@ -61,12 +61,17 @@ namespace ATBM_NHOM12.Forms
             using (OracleCommand cmd = new OracleCommand())
             {
                 cmd.Connection = con; // Assuming conNow is your OracleConnection object
-                cmd.CommandText = "REVOKE " + cb_priv.Text.ToString() + " ON "+ schema_name + "." + cb_table.Text.ToString() + " FROM " + txt_ur.Text.ToString();
+                cmd.CommandText = "REVOKE " + cb_priv.Text.ToString() + " ON " + schema_name + "." + cb_table.Text.ToString() + " FROM " + txt_ur.Text.ToString();
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
             }
 
             MessageBox.Show("Đã thu hồi quyền");
+        }
+
+        private void btt_cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

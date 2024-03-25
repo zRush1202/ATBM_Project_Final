@@ -127,11 +127,15 @@
     <Compile Include="Forms\Grant_Privilege.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Grant_Privilege.Designer.cs" />
+    <Compile Include="Forms\Grant_Privilege.Designer.cs">
+      <DependentUpon>Grant_Privilege.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Grant_Revoke_Privilege.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Grant_Revoke_Privilege.Designer.cs" />
+    <Compile Include="Forms\Grant_Revoke_Privilege.Designer.cs">
+      <DependentUpon>Grant_Revoke_Privilege.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,7 +151,9 @@
     <Compile Include="Forms\Revoke_Privilege.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Revoke_Privilege.Designer.cs" />
+    <Compile Include="Forms\Revoke_Privilege.Designer.cs">
+      <DependentUpon>Revoke_Privilege.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\RoleDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,15 +197,18 @@
     <EmbeddedResource Include="Forms\EditUser.resx">
       <DependentUpon>EditUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Grant_Privilege.resx" />
-    <EmbeddedResource Include="Forms\Grant_Revoke_Privilege.resx" />
+    <EmbeddedResource Include="Forms\Grant_Privilege.resx">
+      <DependentUpon>Grant_Privilege.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Privilege.resx">
       <DependentUpon>Privilege.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Revoke_Privilege.resx" />
+    <EmbeddedResource Include="Forms\Revoke_Privilege.resx">
+      <DependentUpon>Revoke_Privilege.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\RoleDetail.resx">
       <DependentUpon>RoleDetail.cs</DependentUpon>
     </EmbeddedResource>

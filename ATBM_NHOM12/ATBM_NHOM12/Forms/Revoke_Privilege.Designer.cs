@@ -117,6 +117,7 @@
             this.btt_cancel.TabIndex = 7;
             this.btt_cancel.Text = "HỦY";
             this.btt_cancel.UseVisualStyleBackColor = true;
+            this.btt_cancel.Click += new System.EventHandler(this.btt_cancel_Click);
             // 
             // Revoke_Privilege
             // 

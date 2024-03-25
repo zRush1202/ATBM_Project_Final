@@ -40,7 +40,7 @@ namespace ATBM_NHOM12.Forms
                 {
                     check_lbur = true;
                     btt_check.Enabled = true;
-                } 
+                }
             }
         }
 
@@ -65,7 +65,7 @@ namespace ATBM_NHOM12.Forms
                     if (txt_check.Text == "User")
                     {
                         rd_option.Enabled = true;
-                    }    
+                    }
                     else { rd_option.Enabled = false; }
 
                 }
@@ -101,7 +101,7 @@ namespace ATBM_NHOM12.Forms
                 MessageBox.Show(ex.Message);
             }
         }
-        private void cb_table_Load (object sender, EventArgs e)
+        private void cb_table_Load(object sender, EventArgs e)
         {
             using (OracleCommand cmd = new OracleCommand("SELECT table_name FROM user_tables where TABLE_NAME LIKE 'BH_%' OR TABLE_NAME LIKE 'UV_BH_%'", con))
             {
@@ -126,17 +126,17 @@ namespace ATBM_NHOM12.Forms
             {
                 MessageBox.Show("Nhấn vào nút phân loại để phân loại đối tượng");
                 return;
-            }    
+            }
             if (cb_priv.Text.Length == 0)
             {
                 MessageBox.Show("Chọn quyền muốn cấp");
                 return;
-            }    
+            }
             if (cb_table.Text.Length == 0)
             {
                 MessageBox.Show("Chọn bảng muốn phân quyền");
-                 return;
-            }   
+                return;
+            }
             try
             {
                 // Lấy tên người dùng hoặc vai trò từ txt_ur
@@ -185,13 +185,13 @@ namespace ATBM_NHOM12.Forms
 
                     cmd.ExecuteNonQuery();
                 }
-                else if(privilege == "DELETE")
+                else if (privilege == "DELETE")
                 {
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = $"GRANT DELETE ON {tableName} TO {userOrRoleName} {option}";
                     cmd.ExecuteNonQuery();
-                }    
-                else if(privilege == "UPDATE")
+                }
+                else if (privilege == "UPDATE")
                 {
                     if (col_list == "")
                     {
@@ -204,9 +204,9 @@ namespace ATBM_NHOM12.Forms
                         cmd.CommandType = CommandType.Text;
                         cmd.CommandText = $"GRANT UPDATE({col_list}) ON {tableName} TO {userOrRoleName} {option}";
                         cmd.ExecuteNonQuery();
-                    } 
-                }   
-                else if(privilege == "SELECT")
+                    }
+                }
+                else if (privilege == "SELECT")
                 {
                     string v_name = "UV_" + tableName + "_" + userOrRoleName;
                     cmd.CommandType = CommandType.Text;
@@ -302,7 +302,7 @@ namespace ATBM_NHOM12.Forms
                 //            MessageBox.Show("Error: " + ex.Message);
                 //        }
                 //    }
-                }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
@@ -327,6 +327,11 @@ namespace ATBM_NHOM12.Forms
             }
             else
                 clb_col.Enabled = true;
+        }
+
+        private void btt_cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

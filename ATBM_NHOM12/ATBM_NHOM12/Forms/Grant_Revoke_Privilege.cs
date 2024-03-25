@@ -49,7 +49,7 @@ namespace ATBM_NHOM12.Forms
         {
             //"select * from all_views where view_name = 'UV_BH_CUAHANG_C##ADMIN1'"
             //select* from DBA_TAB_PRIVS where TABLE_NAME LIKE 'BH_%' OR TABLE_NAME LIKE 'UV_BH_%'
-            string query = "select* from DBA_TAB_PRIVS where TABLE_NAME LIKE 'BH_%' OR TABLE_NAME LIKE 'UV_BH_%'";
+            string query = "select * from all_views where view_name = 'UV_BH_CUAHANG_C##ADMIN1'";
             string query2 = "select * from DBA_COL_PRIVS where TABLE_NAME LIKE 'BH_%' OR TABLE_NAME LIKE 'UV_BH_%' ";
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
             OracleDataAdapter adapter2 = new OracleDataAdapter(query2, con);
