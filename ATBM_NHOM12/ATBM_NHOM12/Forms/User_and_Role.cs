@@ -165,6 +165,7 @@ namespace ATBM_NHOM12
         {
             if (string.IsNullOrEmpty(tbxSearchRole.Text))
             {
+                MessageBox.Show("Chưa chọn Role để tìm kiếm!");
                 return;
             }
             else
@@ -195,6 +196,7 @@ namespace ATBM_NHOM12
         {
             if (string.IsNullOrEmpty(tbxSearchRole.Text))
             {
+                MessageBox.Show("Vui lòng nhấn chọn Role muốn xem chi tiết!");
                 return;
             }
             else
