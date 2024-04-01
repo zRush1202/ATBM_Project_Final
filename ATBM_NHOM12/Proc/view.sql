@@ -68,4 +68,70 @@ as
 --grant insert, update, delete on nhansu 
 
 -- grant select on sinhvien, donvi, hocphan, kmon, dangky
+
+-- CS6: sinh viên
+-- sv select chinh mình , update trên cột ĐCHI, ĐT
+-- grant update(ĐCHI,ĐT) on sinhvien
+create or replace function SVControl_XEMTTCN (P_SCHEMA VARCHAR2, P_OBJ VARCHAR2) 
+return varchar2
+as 
+    strsql varchar(2000); 
+begin
+    strsql:= 'MASV = SYS_CONTEXT(''USERENV'',''SESSION_USER'')';
+    return strsql;
+end;
+/
+BEGIN
+    DBMS_RLS.ADD_POLICY(
+        object_schema => 'SYS', 
+        object_name => 'SINHVIEN',
+        policy_name => 'SVControl_XEMTTCN',
+        policy_function => 'SVControl_XEMTTCN',
+        statement_types => 'SELECT, UPDATE',
+        update_check => TRUE
+    );
+END;
+/
+-- Xem danh sách tất cả học phần (HOCPHAN), kế hoạch mở môn (KHMO) của chương
+-- trình đào tạo mà sinh viên đang theo học.
+create or replace function SVControl_XEMHP (P_SCHEMA VARCHAR2, P_OBJ VARCHAR2) 
+return varchar2
+as 
+    strsql varchar(2000); 
+begin
+    strsql:= 'HP.MACT = SV.MACT AND SV.MASV = SYS_CONTEXT(''USERENV'',''SESSION_USER'')';
+    return strsql;
+end;
+BEGIN
+    DBMS_RLS.ADD_POLICY(
+        object_schema => 'SYS', 
+        object_name => 'HOCPHAN',
+        policy_name => 'SVControl_XEMHP',
+        policy_function => 'SVControl_XEMHP',
+        update_check => TRUE
+    );
+END;
+
+create or replace function SVControl_XEMKHMO (P_SCHEMA VARCHAR2, P_OBJ VARCHAR2) 
+return varchar2
+as 
+    strsql varchar(2000); 
+begin
+    strsql:= 'KH.MACT = SV.MACT AND SV.MASV = SYS_CONTEXT(''USERENV'',''SESSION_USER'')';
+    return strsql;
+end;
+BEGIN
+    DBMS_RLS.ADD_POLICY(
+        object_schema => 'SYS', 
+        object_name => 'KHMO',
+        policy_name => 'SVControl_XEMKHMO',
+        policy_function => 'SVControl_XEMKHMO',
+        update_check => TRUE
+    );
+END;
+
+-- Thêm, Xóa các dòng dữ liệu đăng ký học phần (ĐANGKY) liên quan đến chính sinh
+--viên đó trong học kỳ của năm học hiện tại (nếu thời điểm hiệu chỉnh đăng ký còn hợp
+--lệ).
+
     
