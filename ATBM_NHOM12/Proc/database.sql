@@ -28,7 +28,7 @@ create table SINHVIEN
     PHAI varchar(3),
     NGSINH date,
     DCHI varchar(50),
-    DT char(5),
+    DT char(10),
     MACT varchar(6),
     MANGANH varchar(6),
     SOTCTL int,
