@@ -105,6 +105,7 @@ BEGIN
     );
 END;
 /
+grant insert, delete on dangky to RL_GIAOVU;
 CREATE OR REPLACE TRIGGER CheckRegistrationDate
 INSTEAD OF INSERT OR DELETE ON DANGKY
 FOR EACH ROW
@@ -173,7 +174,16 @@ as
 -- grant select on QLHS_PHANCONG_GD
 -- grant select on QLHS_DANGKY_HPGD
 -- grant update on dangky(diemth,diemqt, diemck,diemtk)
-
+grant select, update(DT) on QLHS_TTCANHAN to RL_TRUONGKHOA;
+-- Grant select on sinh vien, don vi, hoc phan, khmo
+grant select on SINHVIEN to RL_TRUONGKHOA;
+grant select on DONVI to RL_TRUONGKHOA;
+grant select on HOCPHAN to RL_TRUONGKHOA;
+grant select on KHMO to RL_TRUONGKHOA;
+grant select on QLHS_PHANCONG_GD to RL_TRUONGKHOA;
+grant select on QLHS_DANGKY_HPGD to RL_TRUONGKHOA;
+-- grant update on dangky(diemth,diemqt, diemck,diemtk)
+GRANT SELECT, UPDATE(DIEMTH, DIEMQT, DIEMCK, DIEMTK) ON QLHS_DANGKY_DIEM_GV TO RL_TRUONGKHOA;
 -- grant insert, update , delete on QLHS_PHANCONG_HOCPHAN_VPK
 
 --grant insert, update, delete on nhansu 
@@ -202,6 +212,8 @@ BEGIN
         update_check => TRUE
     );
 END;
+/
+grant select, update(DT) on sinhvien to RL_SINHVIEN; 
 /
 -- Xem danh sách tất cả học phần (HOCPHAN), kế hoạch mở môn (KHMO) của chương
 -- trình Dào tạo mà sinh viên Dang theo học.
@@ -244,7 +256,9 @@ BEGIN
         update_check => TRUE
     );
 END;
-
+/
+grant select on HOCPHAN to RL_SINHVIEN;
+/
 create or replace function SVControl_XEMKHMO (P_SCHEMA VARCHAR2, P_OBJ VARCHAR2) 
 RETURN VARCHAR2 AS
     CURSOR HP IS(select KH.MAHP from KHMO KH, SINHVIEN SV where KH.MACT = SV.MACT AND SV.MASV = SYS_CONTEXT('USERENV','SESSION_USER') );
@@ -284,9 +298,11 @@ BEGIN
         update_check => TRUE
     );
 END;
+grant select on KHMO to RL_SINHVIEN;
 -- Thêm, Xóa các dòng dữ liệu Dăng ký học phần (DANGKY) liên quan Dến chính sinh
 --viên Dó trong học kỳ của năm học hiện tại (nếu thời Diểm hiệu chỉnh Dăng ký còn hợp
 --lệ).
+grant select, insert, update, delete on DANGKY to RL_SINHVIEN;
 create or replace function SVControl_INSERT_DELETE_DANGKY (P_SCHEMA VARCHAR2, P_OBJ VARCHAR2) 
 RETURN VARCHAR2 AS
     v_start_date DATE;
@@ -359,10 +375,10 @@ END;
 BEGIN
     DBMS_RLS.ADD_POLICY(
         object_schema => 'ADPRO', 
-        object_name => 'SINHVIEN',
+        object_name => 'DANGKY',
         policy_name => 'SVControl_SELECT_DANGKY',
         policy_function => 'SVControl_XEMTTCN',
-        statement_types => 'SELECT, UPDATE',
+        statement_types => 'SELECT',
         update_check => TRUE
     );
 END;
