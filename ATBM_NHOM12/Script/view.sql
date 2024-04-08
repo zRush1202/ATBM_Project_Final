@@ -48,6 +48,8 @@ GRANT SELECT, UPDATE(DIEMTH, DIEMQT, DIEMCK, DIEMTK) ON QLHS_DANGKY_DIEM_GV TO R
 --CS3 : giao vu
 -- Như CS1
 grant select, update(DT) on QLHS_TTCANHAN to RL_GIAOVU;
+--Xem, Thêm mới hoặc Cập nhật dữ liệu trên các quan hệ SINHVIEN, ĐONVI,
+--HOCPHAN, KHMO, theo yêu cầu của trưởng khoa.
 -- grant update select insert on sinh vien, donvi, hocphan, khmo
 grant select, insert, update on SINHVIEN to RL_GIAOVU;
 grant select, insert, update on HOCPHAN to RL_GIAOVU;
@@ -57,6 +59,9 @@ grant select, insert, update on KHMO to RL_GIAOVU;
 grant select,update on PHANCONG to RL_GIAOVU;
 -- grant select phan cong, grnat update on QLHS_PHANCONG_HOCPHAN_VPK
 /
+--Xem dữ liệu trên toàn bộ quan hệ PHANCONG. Tuy nhiên, chỉ được sửa trên các dòng
+--dữ liệu phân công liên quan các học phần do “Văn phòng khoa” phụ trách phân công
+--giảng dạy, thừa hành người trưởng đơn vị tương ứng là trưởng khoa.
 CREATE OR REPLACE FUNCTION QL_XEM_HP_VPK(
   P_SCHEMA IN VARCHAR2 DEFAULT NULL,
   P_OBJECT IN VARCHAR2 DEFAULT NULL
@@ -100,7 +105,7 @@ BEGIN
         object_name => 'PHANCONG',
         policy_name => 'GIAOVU_PHANCONG_CS3',
         policy_function => 'QL_XEM_HP_VPK',
-        statement_types => 'UPDATE',
+        statement_types => 'INSERT, DELETE, UPDATE',
         update_check => TRUE
     );
 END;
@@ -185,11 +190,11 @@ grant select on QLHS_DANGKY_HPGD to RL_TRUONGKHOA;
 -- grant update on dangky(diemth,diemqt, diemck,diemtk)
 GRANT SELECT, UPDATE(DIEMTH, DIEMQT, DIEMCK, DIEMTK) ON QLHS_DANGKY_DIEM_GV TO RL_TRUONGKHOA;
 -- grant insert, update , delete on QLHS_PHANCONG_HOCPHAN_VPK
-
+grant insert, delete on PHANCONG to RL_TRUONGKHOA; 
 --grant insert, update, delete on nhansu 
-
--- grant select on sinhvien, donvi, hocphan, kmon, dangky
-
+grant select, insert, delete, update on NHANSU to RL_TRUONGKHOA; 
+-- Được quyền Xem (không giới hạn) dữ liệu trên toàn bộ lược đồ CSDL.
+grant select any table to RL_TRUONGKHOA;
 -- CS6: sinh viên
 -- sv select chinh mình , update trên cột DCHI, DT
 -- grant update(DCHI,DT) on sinhvien
