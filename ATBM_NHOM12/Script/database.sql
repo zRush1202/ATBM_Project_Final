@@ -1,14 +1,14 @@
 
-DROP TABLE ADPRO.ĐANGKY CASCADE CONSTRAINTS;
+DROP TABLE ADPRO.DANGKY CASCADE CONSTRAINTS;
 DROP TABLE ADPRO.PHANCONG CASCADE CONSTRAINTS;
 DROP TABLE ADPRO.KHMO CASCADE CONSTRAINTS;
 DROP TABLE ADPRO.HOCPHAN CASCADE CONSTRAINTS;
-DROP TABLE ADPRO.ĐONVI CASCADE CONSTRAINTS;
+DROP TABLE ADPRO.DONVI CASCADE CONSTRAINTS;
 DROP TABLE ADPRO.NHANSU CASCADE CONSTRAINTS;
 DROP TABLE ADPRO.SINHVIEN CASCADE CONSTRAINTS;
 
 
-create table NHANSU 
+create table ADPRO.NHANSU 
 (
     MANV varchar(6),
     HOTEN varchar(30),
@@ -21,7 +21,7 @@ create table NHANSU
     primary key(MANV)
 )
 /
-create table SINHVIEN
+create table ADPRO.SINHVIEN
 (
     MASV varchar(6),
     HOTEN varchar(30),
@@ -36,7 +36,7 @@ create table SINHVIEN
     primary key(MASV)
 )
 /
-create table DONVI 
+create table ADPRO.DONVI 
 (
     MADV varchar(6), 
     TENDV varchar(50),
@@ -44,7 +44,7 @@ create table DONVI
     primary key(MADV) 
 )
 /
-create table HOCPHAN
+create table ADPRO.HOCPHAN
 (
     MAHP varchar(6),
     TENHP varchar(50),
@@ -56,7 +56,7 @@ create table HOCPHAN
     primary key(MAHP)
 )
 /
-create table KHMO 
+create table ADPRO.KHMO 
 (
     MAHP varchar(6),
     HK int,
@@ -65,7 +65,7 @@ create table KHMO
     primary key(MAHP, HK, NAM, MACT)
 )
 /
-create table PHANCONG
+create table ADPRO.PHANCONG
 (
     MAGV varchar(6),
     MAHP varchar(6),
@@ -75,7 +75,7 @@ create table PHANCONG
     primary key (MAGV, MAHP, HK, NAM, MACT)
 )
 /
-create table DANGKY
+create table ADPRO.DANGKY
 (
     MASV varchar(6),
     MAGV varchar(6),
@@ -91,18 +91,18 @@ create table DANGKY
 )
 /
 -- NhanVien
-alter table NHANSU add constraint FK_NHANSU_DONVI foreign key (MADV) references DONVI(MADV);
+alter table ADPRO.NHANSU add constraint FK_NHANSU_DONVI foreign key (MADV) references ADPRO.DONVI(MADV);
 -- SINHVIEN
 -- ĐƠN VỊ
-alter table DONVI add constraint FK_DONVI_NHANSU foreign key (TRGDV) references NHANSU(MANV);
+alter table ADPRO.DONVI add constraint FK_DONVI_NHANSU foreign key (TRGDV) references ADPRO.NHANSU(MANV);
 -- HỌC PHẦN
-alter table HOCPHAN add constraint FK_HOCPHAN_DONVI foreign key (MADV) references DONVI(MADV);
+alter table ADPRO.HOCPHAN add constraint FK_HOCPHAN_DONVI foreign key (MADV) references ADPRO.DONVI(MADV);
 -- KHMO
-alter table KHMO add constraint FK_KHMO_HOCPHAN foreign key (MAHP) references HOCPHAN(MAHP);
+alter table ADPRO.KHMO add constraint FK_KHMO_HOCPHAN foreign key (MAHP) references ADPRO.HOCPHAN(MAHP);
 -- PHANCONG
-alter table PHANCONG add constraint FK_PHANCONG_NHANSU foreign key (MAGV) references NHANSU(MANV);
-alter table PHANCONG add constraint FK_PHANCONG_HOCPHAN foreign key (MAHP) references HOCPHAN(MAHP);
+alter table ADPRO.PHANCONG add constraint FK_PHANCONG_NHANSU foreign key (MAGV) references ADPRO.NHANSU(MANV);
+alter table ADPRO.PHANCONG add constraint FK_PHANCONG_HOCPHAN foreign key (MAHP) references ADPRO.HOCPHAN(MAHP);
 -- DANGKY
-alter table DANGKY add constraint FK_DANGKY_SINHVIEN foreign key (MASV) references SINHVIEN(MASV);
-alter table DANGKY add constraint FK_DANGKY_NHANSU foreign key (MAGV) references NHANSU(MANV);
-alter table DANGKY add constraint FK_DANGKY_HOCPHAN foreign key (MAHP) references HOCPHAN(MAHP);
+alter table ADPRO.DANGKY add constraint FK_DANGKY_SINHVIEN foreign key (MASV) references ADPRO.SINHVIEN(MASV);
+alter table ADPRO.DANGKY add constraint FK_DANGKY_NHANSU foreign key (MAGV) references ADPRO.NHANSU(MANV);
+alter table ADPRO.DANGKY add constraint FK_DANGKY_HOCPHAN foreign key (MAHP) references ADPRO.HOCPHAN(MAHP);
