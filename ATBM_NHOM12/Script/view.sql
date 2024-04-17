@@ -14,9 +14,8 @@ create role RL_GIAOVU;
 create role RL_TRUONGDV;
 create role RL_TRUONGKHOA;
 create role RL_SINHVIEN;
-SELECT * FROM ALL_USERS;
-grant create session to RL_NVCOBAN;
 
+grant create session to RL_NVCOBAN;
 grant create session to RL_GIANGVIEN;
 grant create session to RL_GIAOVU;
 grant create session to RL_TRUONGDV;
@@ -54,7 +53,7 @@ as
 grant select on ADPRO.QLHS_PHANCONG_GD to RL_GIANGVIEN;
 grant select on ADPRO.QLHS_DANGKY_HPGD to RL_GIANGVIEN;
 -- grant update on dangky(diemth,diemqt, diemck,diemtk)
-GRANT SELECT, UPDATE(DIEMTH, DIEMQT, DIEMCK, DIEMTK) ON ADPRO.QLHS_DANGKY_DIEM_GV TO RL_GIANGVIEN;
+GRANT SELECT, UPDATE(DIEMTH, DIEMQT, DIEMCK, DIEMTK) ON  ADPRO.QLHS_DANGKY_HPGD TO RL_GIANGVIEN;
 
 /
 --CS3 : giao vu
@@ -94,7 +93,7 @@ BEGIN
   FROM DBA_ROLE_PRIVS
   WHERE GRANTEE = USERNAME;
   IF 'RL_GIAOVU' IN (USERROLE) THEN 
-      OPEN CUR;  
+      OPEN HP;  
         LOOP 
             FETCH HP INTO TEMP; 
             EXIT WHEN HP%NOTFOUND;
@@ -124,13 +123,14 @@ END;
 /
 grant insert, delete on ADPRO.dangky to RL_GIAOVU;
 CREATE OR REPLACE TRIGGER ADPRO.CheckRegistrationDate
-INSTEAD OF INSERT OR DELETE ON ADPRO.DANGKY
+BEFORE INSERT OR DELETE ON ADPRO.DANGKY
 FOR EACH ROW
 DECLARE
     v_StartDate DATE;
     v_CurrentDate DATE := SYSDATE;
     v_HK INT;
     v_NAM INT;
+    USERROLE varchar2(30);
 BEGIN
     SELECT GRANTED_ROLE INTO USERROLE
     FROM DBA_ROLE_PRIVS
@@ -158,8 +158,8 @@ BEGIN
         ELSE
             -- If the current date is within the limit, proceed with the insert or delete operation
             IF INSERTING THEN
-                INSERT INTO ADPRO.DANGKY (MASV, MAGV, MAHP, HK, NAM, MACT, DIEMTHI, DIEMQT, DIEMCK, DIEMTK)
-                VALUES (:NEW.MASV, :NEW.MAGV, :NEW.MAHP, :NEW.HK, :NEW.NAM, :NEW.MACT, :NEW.DIEMTHI, :NEW.DIEMQT, :NEW.DIEMCK, :NEW.DIEMTK);
+                INSERT INTO ADPRO.DANGKY (MASV, MAGV, MAHP, HK, NAM, MACT, DIEMTH, DIEMQT, DIEMCK, DIEMTK)
+                VALUES (:NEW.MASV, :NEW.MAGV, :NEW.MAHP, :NEW.HK, :NEW.NAM, :NEW.MACT, :NEW.DIEMTH, :NEW.DIEMQT, :NEW.DIEMCK, :NEW.DIEMTK);
             ELSIF DELETING THEN
                 DELETE FROM ADPRO.DANGKY
                 WHERE MASV = :OLD.MASV AND MAGV = :OLD.MAGV AND MAHP = :OLD.MAHP AND HK = :OLD.HK AND NAM = :OLD.NAM AND MACT = :OLD.MACT;

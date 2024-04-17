@@ -83,7 +83,7 @@ create table ADPRO.DANGKY
     HK int,
     NAM int,
     MACT varchar(6),
-    DIEMTHI float,
+    DIEMTH float,
     DIEMQT float,
     DIEMCK float,
     DIEMTK float,
