@@ -111,16 +111,71 @@ END;
 -- grant select on QLHS_DANGKY_HPGD
 -- grant update on dangky(diemth,diemqt, diemck,diemtk)
 
--- grant insert , delete, update on QLHS_PHANCONG_TRGDV
-create or replace view QLHS_PHANCONG_HP_TRGDV
-as
-    select pc.* from PHANCONG pc, HOCPHAN hp, DONVI dv 
-    where  pc.mahp = hp.mahp and hp.maDv = dv.maDv and dv.trgDv = SYS_CONTEXT('USERENV','SESSION_USER');
--- grant select on QLHS_PHANCONG_GV_DV
-create or replace view QLHS_PHANCONG_GV_DV
-as
-    select pk.* from PHANCONG pc, Donvi dv
-    where pc.maDv = dv.maDv and dv.trgDv = SYS_CONTEXT('USERENV','SESSION_USER');
+--Thêm, Xóa, Cập nhật dữ liệu trên quan hệ PHANCONG, đối với các học phần được
+--phụ trách chuyên môn bởi đơn vị mà mình làm trưởng
+CREATE OR REPLACE FUNCTION truongdv_policy_function (
+    schema_var IN VARCHAR2,
+    table_name_var IN VARCHAR2
+) RETURN VARCHAR2
+AS
+    vaitro VARCHAR2(50);
+BEGIN
+    SELECT NVL(MAX(VAITRO), 'OTHER') INTO vaitro
+    FROM NHANSU
+    WHERE MANV = SYS_CONTEXT('USERENV', 'SESSION_USER');
+
+    IF vaitro = 'RL_TRUONGDV' THEN
+        RETURN 'MADV = (SELECT MADV FROM NHANSU WHERE MANS = SYS_CONTEXT(''USERENV'', ''SESSION_USER''))';
+    ELSE
+        RETURN '1=1';
+    END IF;
+END;
+/
+
+BEGIN
+    DBMS_RLS.ADD_POLICY(
+        object_schema   => 'ADPRO',
+        object_name     => 'PHANCONG',
+        policy_name     => 'TruongDV_Policy',
+        policy_function => 'truongdv_policy_function',
+        statement_types => 'INSERT, UPDATE, DELETE',
+        update_check    => TRUE,
+        enable          => TRUE
+    );
+END;
+/
+
+--Được xem dữ liệu phân công giảng dạy của các giảng viên thuộc các đơn vị mà mình
+--làm trưởng.
+CREATE OR REPLACE FUNCTION truongdv_xem_pc (p_schema VARCHAR2, p_table VARCHAR2)
+  RETURN VARCHAR2
+AS
+  v_condition VARCHAR2(4000);
+BEGIN
+  v_condition := '1=1';
+  IF SYS_CONTEXT('USERENV', 'SESSION_USER') = 'RL_TRUONGDV' THEN
+    v_condition := 'EXISTS (
+      SELECT 1
+      FROM PHANCONG pc
+      JOIN NHANSU ns ON pc.MAGV = ns.MANV
+      WHERE ns.MADV = (SELECT MADV FROM NHANSU WHERE MANV = SYS_CONTEXT(''USERENV'', ''SESSION_USER''))
+        AND pc.MAGV = ns.MANV)';
+  END IF;
+  RETURN v_condition;
+END;
+/
+
+BEGIN
+  DBMS_RLS.ADD_POLICY(
+    object_schema   => 'ADPRO',
+    object_name     => 'PHANCONG',
+    policy_name     => 'truongdv_xem_pc_policy',
+    function_schema => 'ADPRO',
+    policy_function => 'truongdv_xem_pc',
+    statement_types => 'SELECT'
+  );
+END;
+/
 -- CS5: Trưởng khoa
 -- view QLHS_TTCANHAN
 -- grant select on QLHS_PHANCONG_GD
