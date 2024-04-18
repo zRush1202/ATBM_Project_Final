@@ -86,12 +86,16 @@ CREATE OR REPLACE FUNCTION ADPRO.QL_XEM_HP_VPK(
 BEGIN
   -- Lấy username của user hiện tại
   USERNAME := SYS_CONTEXT('USERENV', 'SESSION_USER');
---  IF USERNAME = 'QLDA' THEN
---    RETURN '';
---  END IF;
+  
+  IF USERNAME = 'ADPRO' THEN
+    RETURN ''; -- Không áp dụng chính sách nếu người dùng là 'ADPRO'
+  END IF;
+  
+  -- Lấy vai trò của người dùng
   SELECT GRANTED_ROLE INTO USERROLE
   FROM DBA_ROLE_PRIVS
   WHERE GRANTEE = USERNAME;
+  
   IF 'RL_GIAOVU' IN (USERROLE) THEN 
       OPEN HP;  
         LOOP 
@@ -105,113 +109,150 @@ BEGIN
         END LOOP;
         CLOSE HP;
         RETURN 'MAHP IN ('''||MAHP||''')';
-  ELSE
-    RETURN '1=0';
+--  ELSE
+--    RETURN '1=0';
   END IF;
 END;
-/
 BEGIN
     DBMS_RLS.ADD_POLICY(
         object_schema => 'ADPRO', 
         object_name => 'PHANCONG',
         policy_name => 'GIAOVU_PHANCONG_CS3',
-        policy_function => 'ADPRO.QL_XEM_HP_VPK',
-        statement_types => 'INSERT, DELETE, UPDATE',
+        function_schema => 'ADPRO', 
+        policy_function => 'QL_XEM_HP_VPK',
+        statement_types => 'UPDATE',
         update_check => TRUE
     );
 END;
 /
-grant insert, delete on ADPRO.dangky to RL_GIAOVU;
+grant insert, delete, select on ADPRO.dangky to RL_GIAOVU;
+/
 CREATE OR REPLACE TRIGGER ADPRO.CheckRegistrationDate
 BEFORE INSERT OR DELETE ON ADPRO.DANGKY
 FOR EACH ROW
 DECLARE
-    v_StartDate DATE;
     v_CurrentDate DATE := SYSDATE;
-    v_HK INT;
-    v_NAM INT;
-    USERROLE varchar2(30);
+    v_Semester INT;
+    v_SemesterStartDate DATE;
+    USERROLE VARCHAR2(30);
+    v_Username VARCHAR2(128);
 BEGIN
+    -- Lấy username của user hiện tại
+    v_Username := SYS_CONTEXT('USERENV', 'SESSION_USER');
+
+    -- Kiểm tra xem người dùng có phải là 'ADPRO' không
+    IF v_Username = 'ADPRO' THEN
+        RETURN; -- Nếu là 'ADPRO', không áp dụng trigger
+    END IF;
+    -- Kiểm tra xem người thực hiện có role 'RL_GIAOVU' không
     SELECT GRANTED_ROLE INTO USERROLE
     FROM DBA_ROLE_PRIVS
-    WHERE GRANTEE = SYS_CONTEXT('USERENV', 'SESSION_USER');
+    WHERE GRANTEE = v_Username;
+
+    -- Kiểm tra xem người thực hiện có role 'RL_GIAOVU' không
     IF 'RL_GIAOVU' IN (USERROLE) THEN 
-        -- Get the semester start date based on the academic year and semester
-        SELECT TO_DATE(
-            CASE HK
-                WHEN 1 THEN TO_CHAR(NAM) || '-01-01'
-                WHEN 2 THEN TO_CHAR(NAM) || '-05-01'
-                WHEN 3 THEN TO_CHAR(NAM) || '-09-01'
-            END,
-            'YYYY-MM-DD'
-        )
-        INTO v_StartDate
-        FROM ADPRO.KHMO
-        WHERE MAHP = :NEW.MAHP;
-    
-        -- Check if the current date is within 14 days of the semester start date
-        IF (v_CurrentDate - v_StartDate) > 14 THEN
-            -- If the current date exceeds the 14-day limit, raise an error for INSERT operations
-            IF INSERTING THEN
-                RAISE_APPLICATION_ERROR(-20001, 'You cannot add new registration after 14 days from the start of the semester.');
-            END IF;
+        -- Lấy tháng hiện tại
+        SELECT EXTRACT(MONTH FROM SYSDATE) INTO v_Semester FROM DUAL;
+        
+        -- Xác định ngày bắt đầu học kỳ dựa trên tháng hiện tại
+        IF v_Semester <= 4 THEN
+            v_SemesterStartDate := TO_DATE(TO_CHAR(SYSDATE, 'YYYY') || '/01/01', 'YYYY/MM/DD');
+        ELSIF v_Semester <= 8 THEN
+            v_SemesterStartDate := TO_DATE(TO_CHAR(SYSDATE, 'YYYY') || '/05/01', 'YYYY/MM/DD');
         ELSE
-            -- If the current date is within the limit, proceed with the insert or delete operation
-            IF INSERTING THEN
-                INSERT INTO ADPRO.DANGKY (MASV, MAGV, MAHP, HK, NAM, MACT, DIEMTH, DIEMQT, DIEMCK, DIEMTK)
-                VALUES (:NEW.MASV, :NEW.MAGV, :NEW.MAHP, :NEW.HK, :NEW.NAM, :NEW.MACT, :NEW.DIEMTH, :NEW.DIEMQT, :NEW.DIEMCK, :NEW.DIEMTK);
-            ELSIF DELETING THEN
-                DELETE FROM ADPRO.DANGKY
-                WHERE MASV = :OLD.MASV AND MAGV = :OLD.MAGV AND MAHP = :OLD.MAHP AND HK = :OLD.HK AND NAM = :OLD.NAM AND MACT = :OLD.MACT;
-            END IF;
+            v_SemesterStartDate := TO_DATE(TO_CHAR(SYSDATE, 'YYYY') || '/09/01', 'YYYY/MM/DD');
+        END IF;
+
+        -- Kiểm tra nếu ngày hiện tại cách ngày bắt đầu học kỳ 14 ngày trở lên
+        IF (v_CurrentDate - v_SemesterStartDate) > 14 THEN
+            RAISE_APPLICATION_ERROR(-20001, 'Ban khong the xoa hoac them du lieu sau 14 ngay ke tu ngay bat dau ki moi!');
+        ELSE
+            RETURN;
         END IF;
     END IF;
 END;
-/
 
-
--- CS4 : TRưởng Dơn vị
+-- CS4 : TRưởng Dơn vị 
 -- view QLHS_TTCANHAN
 -- grant select on QLHS_PHANCONG_GD
 -- grant select on QLHS_DANGKY_HPGD
 -- grant update on dangky(diemth,diemqt, diemck,diemtk)
 
 -- grant insert , delete, update on QLHS_PHANCONG_TRGDV
-
+-- Nhu cs2
+grant select, update(DT) on ADPRO.QLHS_TTCANHAN to RL_TRUONGDV;
+grant select on ADPRO.SINHVIEN to RL_TRUONGDV;
+grant select on ADPRO.DONVI to RL_TRUONGDV;
+grant select on ADPRO.HOCPHAN to RL_TRUONGDV;
+grant select on ADPRO.KHMO to RL_TRUONGDV;
+grant select on ADPRO.QLHS_PHANCONG_GD to RL_TRUONGDV;
+grant select on ADPRO.QLHS_DANGKY_HPGD to RL_TRUONGDV;
+GRANT SELECT, UPDATE(DIEMTH, DIEMQT, DIEMCK, DIEMTK) ON  ADPRO.QLHS_DANGKY_HPGD TO RL_TRUONGDV;
 --Thêm, Xóa, Cập nhật dữ liệu trên quan hệ PHANCONG, đối với các học phần được
 --phụ trách chuyên môn bởi đơn vị mà mình làm trưởng
-CREATE OR REPLACE FUNCTION truongdv_policy_function (
-    schema_var IN VARCHAR2,
-    table_name_var IN VARCHAR2
-) RETURN VARCHAR2
-AS
-    vaitro VARCHAR2(50);
+grant select ,insert, delete, update on ADPRO.PHANCONG to RL_TRUONGDV;
+CREATE OR REPLACE FUNCTION ADPRO.TDVControl_PhanCong_HocPhan (
+  P_SCHEMA IN VARCHAR2 DEFAULT NULL,
+  P_OBJECT IN VARCHAR2 DEFAULT NULL
+) 
+RETURN VARCHAR2 AS
+    CURSOR HP IS(select hp.MAHP from ADPRO.HOCPHAN hp, ADPRO.DONVI dv 
+    where hp.madv = dv.madv and dv.trgdv = SYS_CONTEXT('USERENV', 'SESSION_USER') );
+    USERNAME VARCHAR2(128);
+    USERROLE VARCHAR2(128);
+    TEMP varchar2(5);
+    MAHP varchar2(2000);
+  
 BEGIN
-    SELECT NVL(MAX(VAITRO), 'OTHER') INTO vaitro
-    FROM NHANSU
-    WHERE MANV = SYS_CONTEXT('USERENV', 'SESSION_USER');
-
-    IF vaitro = 'RL_TRUONGDV' THEN
-        RETURN 'MADV = (SELECT MADV FROM NHANSU WHERE MANS = SYS_CONTEXT(''USERENV'', ''SESSION_USER''))';
-    ELSE
-        RETURN '1=1';
-    END IF;
+  -- Lấy username của user hiện tại
+  USERNAME := SYS_CONTEXT('USERENV', 'SESSION_USER');
+  
+  IF USERNAME = 'ADPRO' THEN
+    RETURN ''; -- Không áp dụng chính sách nếu người dùng là 'ADPRO'
+  END IF;
+  
+  -- Lấy vai trò của người dùng
+  SELECT GRANTED_ROLE INTO USERROLE
+  FROM DBA_ROLE_PRIVS
+  WHERE GRANTEE = USERNAME;
+  
+  IF 'RL_TRUONGDV' IN (USERROLE) THEN 
+      OPEN HP;  
+        LOOP 
+            FETCH HP INTO TEMP; 
+            EXIT WHEN HP%NOTFOUND;
+            IF (MAHP IS NOT NULL) THEN
+                MAHP :=  MAHP ||''',''';
+            ELSE 
+                MAHP := MAHP || TEMP;
+            END IF;
+        END LOOP;
+        CLOSE HP;
+        RETURN 'MAHP IN ('''||MAHP||''')';
+--  ELSE
+--    RETURN '1=0';
+  END IF;
 END;
 /
-
 BEGIN
     DBMS_RLS.ADD_POLICY(
         object_schema   => 'ADPRO',
         object_name     => 'PHANCONG',
         policy_name     => 'TruongDV_Policy',
-        policy_function => 'truongdv_policy_function',
+        function_schema => 'ADPRO',
+        policy_function => 'TDVControl_PhanCong_HocPhan',
         statement_types => 'INSERT, UPDATE, DELETE',
-        update_check    => TRUE,
-        enable          => TRUE
+        update_check    => TRUE
     );
 END;
 /
-
+BEGIN
+    DBMS_RLS.DROP_POLICY(
+        object_schema => 'ADPRO',
+        object_name => 'PHANCONG',
+        policy_name => 'TruongDV_Policy'
+    );
+END;
 --Được xem dữ liệu phân công giảng dạy của các giảng viên thuộc các đơn vị mà mình
 --làm trưởng.
 CREATE OR REPLACE FUNCTION truongdv_xem_pc (p_schema VARCHAR2, p_table VARCHAR2)
