@@ -80,7 +80,7 @@ CREATE OR REPLACE FUNCTION ADPRO.QL_XEM_HP_VPK(
     CURSOR HP IS(select MAHP from ADPRO.HOCPHAN where MADV = 'VPK');
     USERNAME VARCHAR2(128);
     USERROLE VARCHAR2(128);
-    TEMP varchar2(5);
+    TEMP varchar2(6);
     MAHP varchar2(2000);
   
 BEGIN
@@ -102,17 +102,18 @@ BEGIN
             FETCH HP INTO TEMP; 
             EXIT WHEN HP%NOTFOUND;
             IF (MAHP IS NOT NULL) THEN
-                MAHP :=  MAHP ||''',''';
-            ELSE 
-                MAHP := MAHP || TEMP;
+                MAHP := MAHP || ',' || '''' || TEMP || '''';
+            ELSE
+                MAHP :=  '''' || TEMP || '''';
             END IF;
         END LOOP;
         CLOSE HP;
-        RETURN 'MAHP IN ('''||MAHP||''')';
---  ELSE
---    RETURN '1=0';
+        RETURN 'MAHP IN ('||MAHP||')';
+    ELSE
+        RETURN '';
   END IF;
 END;
+/
 BEGIN
     DBMS_RLS.ADD_POLICY(
         object_schema => 'ADPRO', 
@@ -122,6 +123,14 @@ BEGIN
         policy_function => 'QL_XEM_HP_VPK',
         statement_types => 'UPDATE',
         update_check => TRUE
+    );
+END;
+/
+BEGIN
+    DBMS_RLS.DROP_POLICY(
+        object_schema => 'ADPRO', 
+        object_name => 'PHANCONG',
+        policy_name => 'GIAOVU_PHANCONG_CS3'
     );
 END;
 /
@@ -200,7 +209,7 @@ RETURN VARCHAR2 AS
     where hp.madv = dv.madv and dv.trgdv = SYS_CONTEXT('USERENV', 'SESSION_USER') );
     USERNAME VARCHAR2(128);
     USERROLE VARCHAR2(128);
-    TEMP varchar2(5);
+    TEMP varchar2(6);
     MAHP varchar2(2000);
   
 BEGIN
@@ -216,21 +225,21 @@ BEGIN
   FROM DBA_ROLE_PRIVS
   WHERE GRANTEE = USERNAME;
   
-  IF 'RL_TRUONGDV' IN (USERROLE) THEN 
-      OPEN HP;  
+   IF 'RL_TRUONGDV' IN (USERROLE) THEN 
+        OPEN HP;  
         LOOP 
             FETCH HP INTO TEMP; 
             EXIT WHEN HP%NOTFOUND;
             IF (MAHP IS NOT NULL) THEN
-                MAHP :=  MAHP ||''',''';
-            ELSE 
-                MAHP := MAHP || TEMP;
+                MAHP := MAHP || ',' || '''' || TEMP || '''';
+            ELSE
+                MAHP :=  '''' || TEMP || '''';
             END IF;
         END LOOP;
         CLOSE HP;
-        RETURN 'MAHP IN ('''||MAHP||''')';
---  ELSE
---    RETURN '1=0';
+        RETURN 'MAHP IN ('||MAHP||')';
+    ELSE
+        RETURN '';
   END IF;
 END;
 /
@@ -238,7 +247,7 @@ BEGIN
     DBMS_RLS.ADD_POLICY(
         object_schema   => 'ADPRO',
         object_name     => 'PHANCONG',
-        policy_name     => 'TruongDV_Policy',
+        policy_name     => 'TruongDV_PhanCong_HocPhan',
         function_schema => 'ADPRO',
         policy_function => 'TDVControl_PhanCong_HocPhan',
         statement_types => 'INSERT, UPDATE, DELETE',
@@ -255,36 +264,70 @@ BEGIN
 END;
 --Được xem dữ liệu phân công giảng dạy của các giảng viên thuộc các đơn vị mà mình
 --làm trưởng.
-CREATE OR REPLACE FUNCTION truongdv_xem_pc (p_schema VARCHAR2, p_table VARCHAR2)
-  RETURN VARCHAR2
-AS
-  v_condition VARCHAR2(4000);
+grant select on ADPRO.NHANSU to RL_TRUONGDV;
+
+CREATE OR REPLACE FUNCTION ADPRO.TDVControl_PhanCong_NhanSu (
+  P_SCHEMA IN VARCHAR2 DEFAULT NULL,
+  P_OBJECT IN VARCHAR2 DEFAULT NULL
+) 
+RETURN VARCHAR2 AS
+    CURSOR GV IS(select ns.MANV from ADPRO.NHANSU ns, ADPRO.DONVI dv 
+    where ns.vaitro = 'GIANGVIEN' and ns.madv = dv.madv and dv.trgdv = SYS_CONTEXT('USERENV', 'SESSION_USER') );
+    USERNAME VARCHAR2(128);
+    USERROLE VARCHAR2(128);
+    TEMP varchar2(6);
+    MAGV varchar2(2000);
+  
 BEGIN
-  v_condition := '1=1';
-  IF SYS_CONTEXT('USERENV', 'SESSION_USER') = 'RL_TRUONGDV' THEN
-    v_condition := 'EXISTS (
-      SELECT 1
-      FROM PHANCONG pc
-      JOIN NHANSU ns ON pc.MAGV = ns.MANV
-      WHERE ns.MADV = (SELECT MADV FROM NHANSU WHERE MANV = SYS_CONTEXT(''USERENV'', ''SESSION_USER''))
-        AND pc.MAGV = ns.MANV)';
+  -- Lấy username của user hiện tại
+  USERNAME := SYS_CONTEXT('USERENV', 'SESSION_USER');
+  
+  IF USERNAME = 'ADPRO' THEN
+    RETURN ''; -- Không áp dụng chính sách nếu người dùng là 'ADPRO'
   END IF;
-  RETURN v_condition;
+  
+  -- Lấy vai trò của người dùng
+  SELECT GRANTED_ROLE INTO USERROLE
+  FROM DBA_ROLE_PRIVS
+  WHERE GRANTEE = USERNAME;
+  
+   IF 'RL_TRUONGDV' IN (USERROLE) THEN 
+        OPEN GV;  
+        LOOP 
+            FETCH GV INTO TEMP; 
+            EXIT WHEN GV%NOTFOUND;
+            IF (MAGV IS NOT NULL) THEN
+                MAGV := MAGV || ',' || '''' || TEMP || '''';
+            ELSE
+                MAGV :=  '''' || TEMP || '''';
+            END IF;
+        END LOOP;
+        CLOSE GV;
+        RETURN 'MAGV IN ('||MAGV||')';
+    ELSE
+        RETURN '';
+  END IF;
 END;
 /
-
 BEGIN
-  DBMS_RLS.ADD_POLICY(
-    object_schema   => 'ADPRO',
-    object_name     => 'PHANCONG',
-    policy_name     => 'truongdv_xem_pc_policy',
-    function_schema => 'ADPRO',
-    policy_function => 'truongdv_xem_pc',
-    statement_types => 'SELECT'
-  );
+    DBMS_RLS.ADD_POLICY(
+        object_schema   => 'ADPRO',
+        object_name     => 'PHANCONG',
+        policy_name     => 'TruongDV_PhanCong_NhanSu',
+        function_schema => 'ADPRO',
+        policy_function => 'TDVControl_PhanCong_NhanSu',
+        statement_types => 'SELECT',
+        update_check    => TRUE
+    );
 END;
 /
-
+BEGIN
+    DBMS_RLS.DROP_POLICY(
+        object_schema => 'ADPRO',
+        object_name => 'PHANCONG',
+        policy_name => 'TruongDV_PhanCong_NhanSu'
+    );
+END;
 -- CS5: Trưởng khoa
 -- view QLHS_TTCANHAN
 -- grant select on QLHS_PHANCONG_GD
@@ -299,151 +342,308 @@ grant select on ADPRO.KHMO to RL_TRUONGKHOA;
 grant select on ADPRO.QLHS_PHANCONG_GD to RL_TRUONGKHOA;
 grant select on ADPRO.QLHS_DANGKY_HPGD to RL_TRUONGKHOA;
 -- grant update on dangky(diemth,diemqt, diemck,diemtk)
-GRANT SELECT, UPDATE(DIEMTH, DIEMQT, DIEMCK, DIEMTK) ON ADPRO.QLHS_DANGKY_DIEM_GV TO RL_TRUONGKHOA;
+GRANT SELECT, UPDATE(DIEMTH, DIEMQT, DIEMCK, DIEMTK) ON  ADPRO.QLHS_DANGKY_HPGD TO RL_TRUONGKHOA;
+
+grant select, insert, delete, update on ADPRO.PHANCONG to RL_TRUONGKHOA;
 -- grant insert, update , delete on QLHS_PHANCONG_HOCPHAN_VPK
-grant insert, delete on ADPRO.PHANCONG to RL_TRUONGKHOA; 
+CREATE OR REPLACE FUNCTION ADPRO.TKControl_HP_VPK(
+  P_SCHEMA IN VARCHAR2 DEFAULT NULL,
+  P_OBJECT IN VARCHAR2 DEFAULT NULL
+) RETURN VARCHAR2 AS
+    CURSOR HP IS(select MAHP from ADPRO.HOCPHAN where MADV = 'VPK');
+    USERNAME VARCHAR2(128);
+    USERROLE VARCHAR2(128);
+    TEMP varchar2(6);
+    MAHP varchar2(2000);
+  
+BEGIN
+  -- Lấy username của user hiện tại
+  USERNAME := SYS_CONTEXT('USERENV', 'SESSION_USER');
+  
+  IF USERNAME = 'ADPRO' THEN
+    RETURN ''; -- Không áp dụng chính sách nếu người dùng là 'ADPRO'
+  END IF;
+  
+  -- Lấy vai trò của người dùng
+  SELECT GRANTED_ROLE INTO USERROLE
+  FROM DBA_ROLE_PRIVS
+  WHERE GRANTEE = USERNAME;
+  
+  IF 'RL_TRUONGKHOA' IN (USERROLE) THEN 
+      OPEN HP;  
+        LOOP 
+            FETCH HP INTO TEMP; 
+            EXIT WHEN HP%NOTFOUND;
+            IF (MAHP IS NOT NULL) THEN
+                MAHP := MAHP || ',' || '''' || TEMP || '''';
+            ELSE
+                MAHP :=  '''' || TEMP || '''';
+            END IF;
+        END LOOP;
+        CLOSE HP;
+        RETURN 'MAHP IN ('||MAHP||')';
+    ELSE
+        RETURN '';
+  END IF;
+END;
+/
+BEGIN
+    DBMS_RLS.ADD_POLICY(
+        object_schema => 'ADPRO', 
+        object_name => 'PHANCONG',
+        policy_name => 'TRUONGKHOA_HP_VPK',
+        function_schema => 'ADPRO', 
+        policy_function => 'TKControl_HP_VPK',
+        statement_types => 'INSERT,UPDATE,DELETE',
+        update_check => TRUE
+    );
+END;
+/
 --grant insert, update, delete on nhansu 
 grant select, insert, delete, update on ADPRO.NHANSU to RL_TRUONGKHOA; 
 -- Được quyền Xem (không giới hạn) dữ liệu trên toàn bộ lược đồ CSDL.
 grant select any table to RL_TRUONGKHOA;
+
 -- CS6: sinh viên
 -- sv select chinh mình , update trên cột DCHI, DT
 -- grant update(DCHI,DT) on sinhvien
+grant select, update(DCHI,DT) on ADPRO.sinhvien to RL_SINHVIEN; 
+/
 create or replace function ADPRO.SVControl_XEMTTCN (P_SCHEMA VARCHAR2, P_OBJ VARCHAR2) 
 return varchar2
 as 
     strsql varchar(2000); 
+    USERNAME varchar(128);
+    USERROLE varchar(128);
 begin
-    strsql:= 'MASV = SYS_CONTEXT(''USERENV'',''SESSION_USER'')';
+    USERNAME := SYS_CONTEXT('USERENV', 'SESSION_USER');
+    IF USERNAME = 'ADPRO' THEN
+    RETURN ''; -- Không áp dụng chính sách nếu người dùng là 'ADPRO'
+    END IF;
+    SELECT GRANTED_ROLE INTO USERROLE
+    FROM DBA_ROLE_PRIVS
+    WHERE GRANTEE = USERNAME;
+    IF 'RL_SINHVIEN' IN (USERROLE) THEN 
+        strsql:= 'MASV = SYS_CONTEXT(''USERENV'',''SESSION_USER'')';
+    END IF;
     return strsql;
 end;
 /
 BEGIN
     DBMS_RLS.ADD_POLICY(
         object_schema => 'ADPRO', 
-        object_name => 'ADPRO.SINHVIEN',
-        policy_name => 'SVControl_XEMTTCN',
-        policy_function => 'ADPRO.SVControl_XEMTTCN',
+        object_name => 'SINHVIEN',
+        policy_name => 'SINHVIEN_XEMTTCN',
+        function_schema => 'ADPRO', 
+        policy_function => 'SVControl_XEMTTCN',
         statement_types => 'SELECT, UPDATE',
         update_check => TRUE
     );
 END;
 /
-grant select, update(DT) on ADPRO.sinhvien to RL_SINHVIEN; 
-/
+
 -- Xem danh sách tất cả học phần (HOCPHAN), kế hoạch mở môn (KHMO) của chương
 -- trình Dào tạo mà sinh viên Dang theo học.
-create or replace function ADPRO.SVControl_XEMHP (P_SCHEMA VARCHAR2, P_OBJ VARCHAR2) 
+grant select on ADPRO.HOCPHAN to RL_SINHVIEN;
+grant select on ADPRO.KHMO to RL_SINHVIEN;
+
+create or replace function ADPRO.SVControl_XEM_HP (P_SCHEMA VARCHAR2, P_OBJ VARCHAR2) 
 RETURN VARCHAR2 AS
-    CURSOR HP IS(select DK.MAHP from ADPRO.DANGKY DK, ADPRO.SINHVIEN SV where DK.MACT = SV.MACT AND SV.MASV = SYS_CONTEXT('USERENV','SESSION_USER') );
+    CURSOR HP IS(select KH.MAHP from ADPRO.KHMO KH, ADPRO.SINHVIEN SV 
+    where KH.MACT = SV.MACT AND SV.MASV = SYS_CONTEXT('USERENV','SESSION_USER'));
     USERNAME VARCHAR2(128);
     USERROLE VARCHAR2(128);
-    TEMP varchar2(5);
+    TEMP varchar2(6);
     MAHP_DK varchar2(2000);
 BEGIN
 -- Lấy username của user hiện tại
+  -- Lấy username của user hiện tại
   USERNAME := SYS_CONTEXT('USERENV', 'SESSION_USER');
+  
+  IF USERNAME = 'ADPRO' THEN
+    RETURN ''; -- Không áp dụng chính sách nếu người dùng là 'ADPRO'
+  END IF;
+  
+  -- Lấy vai trò của người dùng
   SELECT GRANTED_ROLE INTO USERROLE
   FROM DBA_ROLE_PRIVS
   WHERE GRANTEE = USERNAME;
   IF 'RL_SINHVIEN' IN (USERROLE) THEN 
-      OPEN CUR;  
+      OPEN HP;  
         LOOP 
             FETCH HP INTO TEMP; 
             EXIT WHEN HP%NOTFOUND;
             IF (MAHP_DK IS NOT NULL) THEN
-                MAHP_DK :=  MAHP_DK ||''',''';
-            ELSE 
-                MAHP_DK := MAHP_DK || TEMP;
+                MAHP_DK := MAHP_DK || ',' || '''' || TEMP || '''';
+            ELSE
+                MAHP_DK :=  '''' || TEMP || '''';
             END IF;
         END LOOP;
         CLOSE HP;
-        RETURN 'MAHP IN ('''||MAHP_DK||''')';
+        RETURN 'MAHP IN ('||MAHP_DK||')';
   ELSE
-    RETURN '1=0';
+    RETURN '';
   END IF;
 END;
 BEGIN
     DBMS_RLS.ADD_POLICY(
         object_schema => 'ADPRO', 
-        object_name => 'ADPRO.HOCPHAN',
-        policy_name => 'SVControl_HOCPHAN_CS6',
-        policy_function => 'ADPRO.SVControl_XEMHP',
+        object_name => 'HOCPHAN',
+        policy_name => 'SINHVIEN_HOCPHAN_CS6',
+        function_schema => 'ADPRO', 
+        policy_function => 'SVControl_XEM_HP',
         update_check => TRUE
     );
 END;
 /
-grant select on ADPRO.HOCPHAN to RL_SINHVIEN;
+BEGIN
+    DBMS_RLS.DROP_POLICY(
+        object_schema   => 'ADPRO',
+        object_name     => 'HOCPHAN',
+        policy_name     => 'SINHVIEN_HOCPHAN_CS6'
+    );
+END;
 /
-create or replace function ADPRO.SVControl_XEMKHMO (P_SCHEMA VARCHAR2, P_OBJ VARCHAR2) 
+CREATE OR REPLACE FUNCTION ADPRO.SVControl_XEM_KHMO (P_SCHEMA VARCHAR2, P_OBJ VARCHAR2) 
 RETURN VARCHAR2 AS
-    CURSOR HP IS(select KH.MAHP from ADPRO.KHMO KH, ADPRO.SINHVIEN SV where KH.MACT = SV.MACT AND SV.MASV = SYS_CONTEXT('USERENV','SESSION_USER') );
+    CURSOR HP IS (SELECT KH.MAHP FROM ADPRO.KHMO KH, ADPRO.SINHVIEN SV 
+                   WHERE KH.MACT = SV.MACT AND SV.MASV = SYS_CONTEXT('USERENV','SESSION_USER'));
     USERNAME VARCHAR2(128);
     USERROLE VARCHAR2(128);
-    TEMP varchar2(5);
-    MAHP_KH varchar2(2000);
+    TEMP VARCHAR2(6);
+    MAHP_DK VARCHAR2(2000);
 BEGIN
--- Lấy username của user hiện tại
+  -- Lấy username của user hiện tại
   USERNAME := SYS_CONTEXT('USERENV', 'SESSION_USER');
+  
+  IF USERNAME = 'ADPRO' THEN
+    RETURN ''; -- Không áp dụng chính sách nếu người dùng là 'ADPRO'
+  END IF;
+  
+  -- Lấy vai trò của người dùng
   SELECT GRANTED_ROLE INTO USERROLE
   FROM DBA_ROLE_PRIVS
   WHERE GRANTEE = USERNAME;
-  IF 'RL_SINHVIEN' IN (USERROLE) THEN 
-      OPEN CUR;  
+  
+  IF 'RL_SINHVIEN' = USERROLE THEN 
+      OPEN HP;  
         LOOP 
             FETCH HP INTO TEMP; 
             EXIT WHEN HP%NOTFOUND;
-            IF (MAHP_KH IS NOT NULL) THEN
-                MAHP_KH :=  MAHP_KHMAHP_KH ||''',''';
-            ELSE 
-                MAHP_KH := MAHP_KHMAHP_KH || TEMP;
+            IF (MAHP_DK IS NOT NULL) THEN
+                MAHP_DK := MAHP_DK || ',' || '''' || TEMP || '''';
+            ELSE
+                MAHP_DK :=  '''' || TEMP || '''';
             END IF;
+            DBMS_OUTPUT.PUT_LINE(MAHP_DK);
         END LOOP;
         CLOSE HP;
-        RETURN 'MAHP IN ('''||MAHP_KH||''')';
+        DBMS_OUTPUT.PUT_LINE(MAHP_DK);
+        RETURN 'MAHP IN ('||MAHP_DK||')';
   ELSE
-    RETURN '1=0';
+    RETURN '';
   END IF;
 END;
+/
+--create or replace function ADPRO.SVControl_XEM_KHMO (P_SCHEMA VARCHAR2, P_OBJ VARCHAR2) 
+--RETURN VARCHAR2 AS
+--    CURSOR HP IS(select distinct PC.MAHP from ADPRO.PHANCONG PC, ADPRO.SINHVIEN SV 
+--    where PC.MACT = SV.MACT AND SV.MASV = SYS_CONTEXT('USERENV','SESSION_USER'));
+--    USERNAME VARCHAR2(128);
+--    USERROLE VARCHAR2(128);
+--    TEMP varchar2(6);
+--    MAHP_DK varchar2(2000);
+--BEGIN
+--  -- Lấy username của user hiện tại
+--  USERNAME := SYS_CONTEXT('USERENV', 'SESSION_USER');
+--  
+--  IF USERNAME = 'ADPRO' THEN
+--    RETURN ''; -- Không áp dụng chính sách nếu người dùng là 'ADPRO'
+--  END IF;
+--  
+--  -- Lấy vai trò của người dùng
+--  SELECT GRANTED_ROLE INTO USERROLE
+--  FROM DBA_ROLE_PRIVS
+--  WHERE GRANTEE = USERNAME;
+--  IF 'RL_SINHVIEN' IN (USERROLE) THEN 
+--      OPEN HP;  
+--        LOOP 
+--            FETCH HP INTO TEMP; 
+--            EXIT WHEN HP%NOTFOUND;
+--            IF (MAHP_DK IS NOT NULL) THEN
+--                MAHP_DK := MAHP_DK || ',' || '''' || TEMP || '''';
+--            ELSE
+--                MAHP_DK :=  '''' || TEMP || '''';
+--            END IF;
+--        END LOOP;
+--        CLOSE HP;
+--        RETURN 'MAHP IN ('||MAHP_DK||')';
+--  ELSE
+--    RETURN '';
+--  END IF;
+--END;
+/
 BEGIN
     DBMS_RLS.ADD_POLICY(
         object_schema => 'ADPRO', 
-        object_name => 'ADPRO.KHMO',
-        policy_name => 'ADPRO.SVControl_KHMO_CS6',
-        policy_function => 'SVControl_XEMKHMO',
-        update_check => TRUE
+        object_name => 'KHMO', 
+        policy_name => 'SINHVIEN_KHMO_CS6',
+        function_schema => 'ADPRO',
+        policy_function => 'SVControl_XEM_KHMO'
     );
 END;
-grant select on ADPRO.KHMO to RL_SINHVIEN;
+/
+BEGIN
+    DBMS_RLS.DROP_POLICY(
+        object_schema   => 'ADPRO',
+        object_name     => 'KHMO',
+        policy_name     => 'SINHVIEN_KHMO_CS6'
+    );
+END;
 -- Thêm, Xóa các dòng dữ liệu Dăng ký học phần (DANGKY) liên quan Dến chính sinh
 --viên Dó trong học kỳ của năm học hiện tại (nếu thời Diểm hiệu chỉnh Dăng ký còn hợp
 --lệ).
 grant select, insert, update, delete on ADPRO.DANGKY to RL_SINHVIEN;
 create or replace function ADPRO.SVControl_INSERT_DELETE_DANGKY (P_SCHEMA VARCHAR2, P_OBJ VARCHAR2) 
 RETURN VARCHAR2 AS
-    v_start_date DATE;
-    v_current_date DATE := SYSDATE;
+    v_Semester NUMBER;
+    v_Year NUMBER;
+    v_SemesterStartDate DATE;
+    v_CurrentDate DATE := SYSDATE;
+    USERNAME varchar(128);
+    USERROLE varchar(128);
 BEGIN
-    SELECT GRANTED_ROLE INTO USERROLE
-    FROM DBA_ROLE_PRIVS
-    WHERE GRANTEE = SYS_CONTEXT('USERENV', 'SESSION_USER');
+      -- Lấy username của user hiện tại
+      USERNAME := SYS_CONTEXT('USERENV', 'SESSION_USER');
+      
+      IF USERNAME = 'ADPRO' THEN
+        RETURN ''; -- Không áp dụng chính sách nếu người dùng là 'ADPRO'
+      END IF;
+      
+      -- Lấy vai trò của người dùng
+      SELECT GRANTED_ROLE INTO USERROLE
+      FROM DBA_ROLE_PRIVS
+      WHERE GRANTEE = USERNAME;
     IF 'RL_SINHVIEN' IN (USERROLE) THEN 
-        -- Get the start date of the semester for the current academic year
-        SELECT TO_DATE(
-                CASE 
-                    WHEN TO_CHAR(SYSDATE, 'MM') BETWEEN 1 AND 4 THEN TO_CHAR(SYSDATE, 'YYYY') || '-01-01'
-                    WHEN TO_CHAR(SYSDATE, 'MM') BETWEEN 5 AND 8 THEN TO_CHAR(SYSDATE, 'YYYY') || '-05-01'
-                    ELSE TO_CHAR(SYSDATE, 'YYYY') || '-09-01'
-                END,
-                'YYYY-MM-DD'
-            )
-        INTO v_start_date
-        FROM dual;
-    
-        -- Check if the current date is within the valid modification period (within the semester start date + 14 days)
-        IF (v_current_date - v_start_date) <= 14 THEN
-            RETURN '1=1'; -- Modification time is valid
-        ELSE RETURN '1=0';
+        SELECT EXTRACT(MONTH FROM SYSDATE) INTO v_Semester FROM DUAL;
+        SELECT EXTRACT(YEAR FROM SYSDATE) INTO v_Year FROM DUAL;
+        -- Xác định ngày bắt đầu học kỳ dựa trên tháng hiện tại
+        IF v_Semester <= 4 THEN
+            v_Semester := 1;
+            v_SemesterStartDate := TO_DATE(TO_CHAR(SYSDATE, 'YYYY') || '/01/01', 'YYYY/MM/DD');
+        ELSIF v_Semester <= 8 THEN
+            v_Semester := 2;
+            v_SemesterStartDate := TO_DATE(TO_CHAR(SYSDATE, 'YYYY') || '/05/01', 'YYYY/MM/DD');
+        ELSE
+            v_Semester := 3;
+            v_SemesterStartDate := TO_DATE(TO_CHAR(SYSDATE, 'YYYY') || '/09/01', 'YYYY/MM/DD');
+        END IF;
+
+        -- Kiểm tra nếu ngày hiện tại cách ngày bắt đầu học kỳ 14 ngày trở lên
+        IF (v_CurrentDate - v_SemesterStartDate) < 14 then
+            RETURN 'MASV = ''' || USERNAME || ''' AND HK = '||v_Semester||' AND NAM = ' ||v_Year;
+        ELSE 
+              RETURN '1=0';
         END IF;
     END IF;
 END;
@@ -451,11 +651,20 @@ END;
 BEGIN
     DBMS_RLS.ADD_POLICY(
         object_schema => 'ADPRO', 
-        object_name => 'ADPRO.KHMO',
-        policy_name => 'SVControl_DANGKY_INSERT_DELETE_CS6',
-        policy_function => 'ADPRO.SVControl_INSERT_DELETE_DANGKY',
+        object_name => 'DANGKY',
+        policy_name => 'SINHVIEN_DANGKY_INSERT_DELETE_CS6',
+        function_schema => 'ADPRO',
+        policy_function => 'SVControl_INSERT_DELETE_DANGKY',
         STATEMENT_TYPES=>'DELETE, INSERT', 
         update_check => TRUE
+    );
+END;
+/
+BEGIN
+    DBMS_RLS.DROP_POLICY(
+        object_schema => 'ADPRO',
+        object_name => 'DANGKY',
+        policy_name => 'SINHVIEN_DANGKY_INSERT_DELETE_CS6'
     );
 END;
 --Sinh viên không được chỉnh sửa trên các trường liên quan đến điểm.
@@ -466,23 +675,36 @@ RETURN VARCHAR2 AS
 BEGIN
 -- Lấy username của user hiện tại
   USERNAME := SYS_CONTEXT('USERENV', 'SESSION_USER');
+    IF USERNAME = 'ADPRO' THEN
+        RETURN ''; -- Không áp dụng chính sách nếu người dùng là 'ADPRO'
+    END IF;
   SELECT GRANTED_ROLE INTO USERROLE
   FROM DBA_ROLE_PRIVS
   WHERE GRANTEE = USERNAME;
   IF 'RL_SINHVIEN' IN (USERROLE) THEN 
     RETURN '1=0';
+  ELSE 
+    RETURN '1=1';
   END IF;
 END;
 BEGIN
     DBMS_RLS.ADD_POLICY(
         object_schema => 'ADPRO', 
-        object_name => 'ADPRO.KHMO',
-        policy_name => 'SVControl_KHMO_CS6',
-        policy_function => 'ADPRO.SVControl_XEMKHMO',
+        object_name => 'DANGKY',
+        policy_name => 'SINHVIEN_DANGKY_UPDATE_CS6',
+        function_schema => 'ADPRO', 
+        policy_function => 'SVControl_UPDATE_DANGKY',
         statement_types=>'UPDATE', 
-        sec_relevant_cols => 'DIEMTHI,DIEMQT,DIEMCK,DIEMTK',
-        sec_relevant_cols_opt => dbms_rls.ALL_ROWS,
+        sec_relevant_cols => 'DIEMTH,DIEMQT,DIEMCK,DIEMTK',
         update_check => TRUE
+    );
+END;
+/
+BEGIN
+    DBMS_RLS.DROP_POLICY(
+        object_schema => 'ADPRO',
+        object_name => 'DANGKY',
+        policy_name => 'SINHVIEN_DANGKY_UPDATE_CS6'
     );
 END;
 -- Sinh viên được Xem tất cả thông tin trên quan hệ ĐANGKY tại các dòng dữ liệu liên
@@ -491,14 +713,22 @@ END;
 BEGIN
     DBMS_RLS.ADD_POLICY(
         object_schema => 'ADPRO', 
-        object_name => 'ADPRO.DANGKY',
+        object_name => 'DANGKY',
         policy_name => 'SVControl_SELECT_DANGKY',
-        policy_function => 'ADPRO.SVControl_XEMTTCN',
+        function_schema => 'ADPRO', 
+        policy_function => 'SVControl_XEMTTCN',
         statement_types => 'SELECT',
         update_check => TRUE
     );
 END;
 /
-ALTER SESSION SET "_ORACLE_SCRIPT" = FALSE;
+BEGIN
+    DBMS_RLS.DROP_POLICY(
+        object_schema => 'ADPRO',
+        object_name => 'DANGKY',
+        policy_name => 'SVControl_SELECT_DANGKY'
+    );
+END;
+/
 
     
