@@ -226,6 +226,10 @@ update ADPRO.DANGKY set diemth = 9 where masv = 'SV0001' and magv = 'NV2859' and
 conn SV0001/SV0001@localhost:1521/atbm_projectfinal;
 select * from ADPRO.DANGKY;
 
+conn SV0001/SV0001@localhost:1521/atbm_projectfinal;
+select * from DBA_TAB_PRIVS 
+
+SELECT table_name FROM user_tables
 select hp.MAHP from ADPRO.HOCPHAN hp, ADPRO.DONVI dv 
     where hp.madv = dv.madv and dv.trgdv = 'NV0204'
 
