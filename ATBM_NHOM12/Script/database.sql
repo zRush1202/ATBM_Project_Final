@@ -101,8 +101,8 @@ alter table ADPRO.HOCPHAN add constraint FK_HOCPHAN_DONVI foreign key (MADV) ref
 alter table ADPRO.KHMO add constraint FK_KHMO_HOCPHAN foreign key (MAHP) references ADPRO.HOCPHAN(MAHP);
 -- PHANCONG
 alter table ADPRO.PHANCONG add constraint FK_PHANCONG_NHANSU foreign key (MAGV) references ADPRO.NHANSU(MANV);
-alter table ADPRO.PHANCONG add constraint FK_PHANCONG_HOCPHAN foreign key (MAHP) references ADPRO.HOCPHAN(MAHP);
+alter table ADPRO.PHANCONG add constraint FK_PHANCONG_HOCPHAN foreign key (MAHP,HK, NAM, MACT) references ADPRO.KHMO(MAHP, HK, NAM, MACT);
+
 -- DANGKY
 alter table ADPRO.DANGKY add constraint FK_DANGKY_SINHVIEN foreign key (MASV) references ADPRO.SINHVIEN(MASV);
-alter table ADPRO.DANGKY add constraint FK_DANGKY_NHANSU foreign key (MAGV) references ADPRO.NHANSU(MANV);
-alter table ADPRO.DANGKY add constraint FK_DANGKY_HOCPHAN foreign key (MAHP) references ADPRO.HOCPHAN(MAHP);
+alter table ADPRO.DANGKY add constraint FK_DANGKY_NHANSU foreign key (MAGV,MAHP,HK, NAM, MACT) references ADPRO.PHANCONG(MAGV,MAHP,HK, NAM, MACT);
