@@ -126,13 +126,13 @@ BEGIN
     );
 END;
 /
-BEGIN
-    DBMS_RLS.DROP_POLICY(
-        object_schema => 'ADPRO', 
-        object_name => 'PHANCONG',
-        policy_name => 'GIAOVU_PHANCONG_CS3'
-    );
-END;
+--BEGIN
+--    DBMS_RLS.DROP_POLICY(
+--        object_schema => 'ADPRO', 
+--        object_name => 'PHANCONG',
+--        policy_name => 'GIAOVU_PHANCONG_CS3'
+--    );
+--END;
 /
 grant insert, delete, select on ADPRO.dangky to RL_GIAOVU;
 /
@@ -255,13 +255,13 @@ BEGIN
     );
 END;
 /
-BEGIN
-    DBMS_RLS.DROP_POLICY(
-        object_schema => 'ADPRO',
-        object_name => 'PHANCONG',
-        policy_name => 'TruongDV_Policy'
-    );
-END;
+--BEGIN
+--    DBMS_RLS.DROP_POLICY(
+--        object_schema => 'ADPRO',
+--        object_name => 'PHANCONG',
+--        policy_name => 'TruongDV_Policy'
+--    );
+--END;
 --Được xem dữ liệu phân công giảng dạy của các giảng viên thuộc các đơn vị mà mình
 --làm trưởng.
 grant select on ADPRO.NHANSU to RL_TRUONGDV;
@@ -321,13 +321,13 @@ BEGIN
     );
 END;
 /
-BEGIN
-    DBMS_RLS.DROP_POLICY(
-        object_schema => 'ADPRO',
-        object_name => 'PHANCONG',
-        policy_name => 'TruongDV_PhanCong_NhanSu'
-    );
-END;
+--BEGIN
+--    DBMS_RLS.DROP_POLICY(
+--        object_schema => 'ADPRO',
+--        object_name => 'PHANCONG',
+--        policy_name => 'TruongDV_PhanCong_NhanSu'
+--    );
+--END;
 -- CS5: Trưởng khoa
 -- view QLHS_TTCANHAN
 -- grant select on QLHS_PHANCONG_GD
@@ -446,7 +446,7 @@ END;
 -- trình Dào tạo mà sinh viên Dang theo học.
 grant select on ADPRO.HOCPHAN to RL_SINHVIEN;
 grant select on ADPRO.KHMO to RL_SINHVIEN;
-
+/
 create or replace function ADPRO.SVControl_XEM_HP (P_SCHEMA VARCHAR2, P_OBJ VARCHAR2) 
 RETURN VARCHAR2 AS
     CURSOR HP IS(select KH.MAHP from ADPRO.KHMO KH, ADPRO.SINHVIEN SV 
@@ -485,6 +485,7 @@ BEGIN
     RETURN '';
   END IF;
 END;
+/
 BEGIN
     DBMS_RLS.ADD_POLICY(
         object_schema => 'ADPRO', 
@@ -593,13 +594,13 @@ BEGIN
     );
 END;
 /
-BEGIN
-    DBMS_RLS.DROP_POLICY(
-        object_schema   => 'ADPRO',
-        object_name     => 'KHMO',
-        policy_name     => 'SINHVIEN_KHMO_CS6'
-    );
-END;
+--BEGIN
+--    DBMS_RLS.DROP_POLICY(
+--        object_schema   => 'ADPRO',
+--        object_name     => 'KHMO',
+--        policy_name     => 'SINHVIEN_KHMO_CS6'
+--    );
+--END;
 -- Thêm, Xóa các dòng dữ liệu Dăng ký học phần (DANGKY) liên quan Dến chính sinh
 --viên Dó trong học kỳ của năm học hiện tại (nếu thời Diểm hiệu chỉnh Dăng ký còn hợp
 --lệ).
@@ -660,13 +661,13 @@ BEGIN
     );
 END;
 /
-BEGIN
-    DBMS_RLS.DROP_POLICY(
-        object_schema => 'ADPRO',
-        object_name => 'DANGKY',
-        policy_name => 'SINHVIEN_DANGKY_INSERT_DELETE_CS6'
-    );
-END;
+--BEGIN
+--    DBMS_RLS.DROP_POLICY(
+--        object_schema => 'ADPRO',
+--        object_name => 'DANGKY',
+--        policy_name => 'SINHVIEN_DANGKY_INSERT_DELETE_CS6'
+--    );
+--END;
 --Sinh viên không được chỉnh sửa trên các trường liên quan đến điểm.
 create or replace function ADPRO.SVControl_UPDATE_DANGKY (P_SCHEMA VARCHAR2, P_OBJ VARCHAR2) 
 RETURN VARCHAR2 AS
@@ -687,6 +688,7 @@ BEGIN
     RETURN '1=1';
   END IF;
 END;
+/
 BEGIN
     DBMS_RLS.ADD_POLICY(
         object_schema => 'ADPRO', 
@@ -700,13 +702,13 @@ BEGIN
     );
 END;
 /
-BEGIN
-    DBMS_RLS.DROP_POLICY(
-        object_schema => 'ADPRO',
-        object_name => 'DANGKY',
-        policy_name => 'SINHVIEN_DANGKY_UPDATE_CS6'
-    );
-END;
+--BEGIN
+--    DBMS_RLS.DROP_POLICY(
+--        object_schema => 'ADPRO',
+--        object_name => 'DANGKY',
+--        policy_name => 'SINHVIEN_DANGKY_UPDATE_CS6'
+--    );
+--END;
 -- Sinh viên được Xem tất cả thông tin trên quan hệ ĐANGKY tại các dòng dữ liệu liên
 -- quan đến chính sinh viên.
 /
@@ -722,13 +724,13 @@ BEGIN
     );
 END;
 /
-BEGIN
-    DBMS_RLS.DROP_POLICY(
-        object_schema => 'ADPRO',
-        object_name => 'DANGKY',
-        policy_name => 'SVControl_SELECT_DANGKY'
-    );
-END;
-/
+--BEGIN
+--    DBMS_RLS.DROP_POLICY(
+--        object_schema => 'ADPRO',
+--        object_name => 'DANGKY',
+--        policy_name => 'SVControl_SELECT_DANGKY'
+--    );
+--END;
+--/
 
     

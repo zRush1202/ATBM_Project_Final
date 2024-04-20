@@ -28,9 +28,9 @@ insert into ADPRO.PHANCONG values('NV2859', 'HP001', 1, 2024, 'CLC');
 insert into ADPRO.PHANCONG values('NV2982', 'HP001', 1, 2024, 'CLC');
 insert into ADPRO.PHANCONG values('NV3094', 'HP002', 2, 2024, 'CLC');
 insert into ADPRO.PHANCONG values('NV3209', 'HP002', 2, 2024, 'CLC');
-insert into ADPRO.PHANCONG values('NV3321', 'HP003', 2, 2024, 'CQ');
-insert into ADPRO.PHANCONG values('NV3209', 'HP004', 3, 2024, 'CTTT');
-insert into ADPRO.PHANCONG values('NV2982', 'HP005', 3, 2024, 'VP');
+insert into ADPRO.PHANCONG values('NV3321', 'HP003', 3, 2024, 'CQ');
+insert into ADPRO.PHANCONG values('NV3209', 'HP004', 1, 2024, 'CTTT');
+insert into ADPRO.PHANCONG values('NV2982', 'HP005', 2, 2024, 'VP');
 
 update NHANSU set madv = 'HTTT' where manv = 'NV3094';
 update NHANSU set madv = 'HTTT' where manv = 'NV3209';
@@ -39,7 +39,7 @@ insert into ADPRO.DANGKY values('SV0001', 'NV2859', 'HP001', 1, 2024, 'CLC', 8.5
 insert into ADPRO.DANGKY values('SV0002', 'NV2982', 'HP001', 1, 2024, 'CLC', 9.0, 8.0, 7.5, 8.3);
 insert into ADPRO.DANGKY values('SV0003', 'NV3094', 'HP002', 2, 2024, 'CLC', 7.5, 8.0, 7.0, 7.2);
 insert into ADPRO.DANGKY values('SV0007', 'NV3094', 'HP002', 2, 2024, 'CLC', 8.0, 7.5, 8.5, 8.0);
-insert into ADPRO.DANGKY values('SV0005', 'NV3321', 'HP003', 2, 2024, 'CQ', 9.0, 9.0, 9.0, 9.0);
+insert into ADPRO.DANGKY values('SV0005', 'NV3321', 'HP003', 3, 2024, 'CQ', 9.0, 9.0, 9.0, 9.0);
 
 ALTER SESSION SET CONTAINER= atbm_projectfinal;
 ALTER PLUGGABLE DATABASE OPEN;
