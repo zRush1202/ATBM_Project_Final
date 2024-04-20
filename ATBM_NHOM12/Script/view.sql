@@ -1,13 +1,12 @@
-ALTER SESSION SET "_ORACLE_SCRIPT" = True;
 
-DROP ROLE RL_NVCOBAN;
-DROP ROLE RL_GIANGVIEN;
-DROP ROLE RL_GIAOVU;
-DROP ROLE RL_TRUONGDV;
-DROP ROLE RL_TRUONGKHOA;
-DROP ROLE RL_SINHVIEN;
 
-/
+--DROP ROLE RL_NVCOBAN;
+--DROP ROLE RL_GIANGVIEN;
+--DROP ROLE RL_GIAOVU;
+--DROP ROLE RL_TRUONGDV;
+--DROP ROLE RL_TRUONGKHOA;
+--DROP ROLE RL_SINHVIEN;
+
 create role RL_NVCOBAN;
 create role RL_GIANGVIEN;
 create role RL_GIAOVU;
@@ -133,7 +132,6 @@ END;
 --        policy_name => 'GIAOVU_PHANCONG_CS3'
 --    );
 --END;
-/
 grant insert, delete, select on ADPRO.dangky to RL_GIAOVU;
 /
 CREATE OR REPLACE TRIGGER ADPRO.CheckRegistrationDate
@@ -272,7 +270,7 @@ CREATE OR REPLACE FUNCTION ADPRO.TDVControl_PhanCong_NhanSu (
 ) 
 RETURN VARCHAR2 AS
     CURSOR GV IS(select ns.MANV from ADPRO.NHANSU ns, ADPRO.DONVI dv 
-    where ns.vaitro = 'GIANGVIEN' and ns.madv = dv.madv and dv.trgdv = SYS_CONTEXT('USERENV', 'SESSION_USER') );
+    where (ns.vaitro = 'GIANGVIEN' or ns.vaitro = 'TRUONGDV') and ns.madv = dv.madv and dv.trgdv = SYS_CONTEXT('USERENV', 'SESSION_USER') );
     USERNAME VARCHAR2(128);
     USERROLE VARCHAR2(128);
     TEMP varchar2(6);

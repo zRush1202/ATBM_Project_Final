@@ -188,7 +188,9 @@ namespace ATBM_NHOM12
 
         private void button3_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Grant_Revoke_Privilege(), sender);
+            //OpenChildForm(new Grant_Revoke_Privilege(), sender);
+            //CenterLabelInPanel(lblTitle, panelTitleBar);
+            OpenChildForm(new PHANCONG_TABLE(), sender);
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
 

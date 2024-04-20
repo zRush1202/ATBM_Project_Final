@@ -144,6 +144,12 @@
     <Compile Include="Forms\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PHANCONG_TABLE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PHANCONG_TABLE.Designer.cs">
+      <DependentUpon>PHANCONG_TABLE.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Privilege.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PHANCONG_TABLE.resx">
+      <DependentUpon>PHANCONG_TABLE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Privilege.resx">
       <DependentUpon>Privilege.cs</DependentUpon>
