@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.cb_phancong = new System.Windows.Forms.GroupBox();
+            this.btt_hpbanthan = new System.Windows.Forms.Button();
             this.btt_refreshds = new System.Windows.Forms.Button();
             this.dgv_phancong = new System.Windows.Forms.DataGridView();
             this.btt_timkiem = new System.Windows.Forms.Button();
@@ -49,7 +50,6 @@
             this.lb_hk = new System.Windows.Forms.Label();
             this.lb_magv = new System.Windows.Forms.Label();
             this.lb_mahp = new System.Windows.Forms.Label();
-            this.btt_hpbanthan = new System.Windows.Forms.Button();
             this.cb_phancong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_phancong)).BeginInit();
             this.cb_thongtin.SuspendLayout();
@@ -71,6 +71,17 @@
             this.cb_phancong.TabStop = false;
             this.cb_phancong.Text = "DANH SÁCH PHÂN CÔNG";
             // 
+            // btt_hpbanthan
+            // 
+            this.btt_hpbanthan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btt_hpbanthan.Location = new System.Drawing.Point(695, 22);
+            this.btt_hpbanthan.Name = "btt_hpbanthan";
+            this.btt_hpbanthan.Size = new System.Drawing.Size(300, 30);
+            this.btt_hpbanthan.TabIndex = 5;
+            this.btt_hpbanthan.Text = "XEM PHÂN CÔNG CỦA MÌNH";
+            this.btt_hpbanthan.UseVisualStyleBackColor = true;
+            this.btt_hpbanthan.Click += new System.EventHandler(this.btt_hpbanthan_Click);
+            // 
             // btt_refreshds
             // 
             this.btt_refreshds.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -80,6 +91,7 @@
             this.btt_refreshds.TabIndex = 4;
             this.btt_refreshds.Text = "REFRESH";
             this.btt_refreshds.UseVisualStyleBackColor = true;
+            this.btt_refreshds.Click += new System.EventHandler(this.btt_refreshds_Click);
             // 
             // dgv_phancong
             // 
@@ -163,6 +175,7 @@
             this.btt_capnhat.TabIndex = 11;
             this.btt_capnhat.Text = "CẬP NHẬT";
             this.btt_capnhat.UseVisualStyleBackColor = true;
+            this.btt_capnhat.Click += new System.EventHandler(this.btt_capnhat_Click);
             // 
             // btt_xoa
             // 
@@ -173,6 +186,7 @@
             this.btt_xoa.TabIndex = 10;
             this.btt_xoa.Text = "XÓA";
             this.btt_xoa.UseVisualStyleBackColor = true;
+            this.btt_xoa.Click += new System.EventHandler(this.btt_xoa_Click);
             // 
             // btt_them
             // 
@@ -269,17 +283,6 @@
             this.lb_mahp.Size = new System.Drawing.Size(110, 18);
             this.lb_mahp.TabIndex = 0;
             this.lb_mahp.Text = "Mã học phần ";
-            // 
-            // btt_hpbanthan
-            // 
-            this.btt_hpbanthan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_hpbanthan.Location = new System.Drawing.Point(695, 22);
-            this.btt_hpbanthan.Name = "btt_hpbanthan";
-            this.btt_hpbanthan.Size = new System.Drawing.Size(300, 30);
-            this.btt_hpbanthan.TabIndex = 5;
-            this.btt_hpbanthan.Text = "XEM PHÂN CÔNG CỦA MÌNH";
-            this.btt_hpbanthan.UseVisualStyleBackColor = true;
-            this.btt_hpbanthan.Click += new System.EventHandler(this.btt_hpbanthan_Click);
             // 
             // PHANCONG_TABLE
             // 
