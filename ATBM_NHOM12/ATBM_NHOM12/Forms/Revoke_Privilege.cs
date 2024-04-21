@@ -39,7 +39,7 @@ namespace ATBM_NHOM12.Forms
         }
         private void cb_table_Load(object sender, EventArgs e)
         {
-            using (OracleCommand cmd = new OracleCommand("SELECT table_name FROM user_tables where TABLE_NAME LIKE 'BH_%' OR TABLE_NAME LIKE 'UV_BH_%'", con))
+            using (OracleCommand cmd = new OracleCommand("SELECT table_name FROM user_tables", con))
             {
                 using (OracleDataReader reader = cmd.ExecuteReader())
                 {

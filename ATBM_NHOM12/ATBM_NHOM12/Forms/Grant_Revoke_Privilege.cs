@@ -20,8 +20,8 @@ namespace ATBM_NHOM12.Forms
         }
         private void Grant_Revoke_Privilege_Load(object sender, EventArgs e)
         {
-            string query = "select * from DBA_TAB_PRIVS where TABLE_NAME LIKE 'BH_%' OR TABLE_NAME LIKE 'UV_BH_%'";
-            string query2 = "select * from DBA_COL_PRIVS where TABLE_NAME LIKE 'BH_%' OR TABLE_NAME LIKE 'UV_BH_%' ";
+            string query = "select * from DBA_TAB_PRIVS where OWNER = 'ADPRO'";
+            string query2 = "select * from DBA_COL_PRIVS where OWNER = 'ADPRO'";
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
             OracleDataAdapter adapter2 = new OracleDataAdapter(query2, con);
             DataTable dataTable = new DataTable();

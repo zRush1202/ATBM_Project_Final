@@ -48,7 +48,7 @@ namespace ATBM_NHOM12.Forms
         {
             string userOrRoleName = txt_ur.Text; // Thay thế bằng tên người dùng hoặc vai trò bạn muốn kiểm tra
 
-            using (OracleCommand cmd = new OracleCommand("sys.check_user_or_role", con))
+            using (OracleCommand cmd = new OracleCommand("ADPRO.check_user_or_role", con))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 // Thêm tham số đầu vào
@@ -103,7 +103,7 @@ namespace ATBM_NHOM12.Forms
         }
         private void cb_table_Load(object sender, EventArgs e)
         {
-            using (OracleCommand cmd = new OracleCommand("SELECT table_name FROM user_tables where TABLE_NAME LIKE 'BH_%' OR TABLE_NAME LIKE 'UV_BH_%'", con))
+            using (OracleCommand cmd = new OracleCommand("SELECT table_name FROM user_tables", con))
             {
                 using (OracleDataReader reader = cmd.ExecuteReader())
                 {

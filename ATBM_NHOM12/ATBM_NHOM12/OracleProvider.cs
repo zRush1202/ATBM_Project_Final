@@ -12,16 +12,16 @@ namespace ATBM_NHOM12
             {
                 string connectionString = "";
                 if (role == "SYSDBA")
-                    connectionString = @"DATA SOURCE = localhost:1521/XE;DBA Privilege=SYSDBA; USER ID=" + username + ";PASSWORD=" + password;
+                    connectionString = @"DATA SOURCE = localhost:1521/ATBM_PROJECTFINAL;DBA Privilege=SYSDBA; USER ID=" + username + ";PASSWORD=" + password;
                 else
-                    connectionString = @"DATA SOURCE = localhost:1521/XE; USER ID=" + username + ";PASSWORD=" + password;
+                    connectionString = @"DATA SOURCE = localhost:1521/ATBM_PROJECTFINAL; USER ID=" + username + ";PASSWORD=" + password;
                 conn.ConnectionString = connectionString;
                 conn.Open();
                 
                 if (role == "SYSDBA" || role == "ADMIN")
                 {
-                    OracleCommand command = new OracleCommand("alter session set \"_ORACLE_SCRIPT\"=true", conn);
-                    command.ExecuteNonQuery();
+                    //OracleCommand command = new OracleCommand("alter session set \"_ORACLE_SCRIPT\"=true", conn);
+                    //command.ExecuteNonQuery();
                     Console.WriteLine("Connect với Oracle thành công");
                 }
                 return true;

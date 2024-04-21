@@ -5,6 +5,13 @@ DELETE FROM ADPRO.PHANCONG;
 --ALTER TABLE ADPRO.DANGKY DISABLE ALL TRIGGERS;
 DELETE FROM ADPRO.DANGKY ;
 --ALTER TABLE ADPRO.DANGKY ENABLE ALL TRIGGERS;
+update ADPRO.NHANSU set madv = 'VPK' where manv = 'NV0042';
+update ADPRO.NHANSU set madv = 'HTTT' where manv = 'NV0204';
+update ADPRO.NHANSU set madv = 'KHMT' where manv = 'NV0266';
+update ADPRO.NHANSU set madv = 'CNTT' where manv = 'NV0527';
+update ADPRO.NHANSU set madv = 'TGMT' where manv = 'NV0896';
+update ADPRO.NHANSU set madv = 'MMTVT' where manv = 'NV1041';
+
 insert into ADPRO.DONVI values('VPK', N'Van Phong Khoa', 'NV0042');
 insert into ADPRO.DONVI values('HTTT', N'He Thong Thong Tin', 'NV0204');
 insert into ADPRO.DONVI values('KHMT', N'Khoa Hoc May Tinh', 'NV0266');
@@ -146,7 +153,7 @@ conn NV0204/NV0204@localhost:1521/atbm_projectfinal;
 update ADPRO.QLHS_DANGKY_HPGD set DIEMTH = 7;
 -- TRUONGDV
 conn NV0204/NV0204@localhost:1521/atbm_projectfinal;
-insert into ADPRO.PHANCONG values('NV3799', 'HP003', 2, 2024, 'CT002');
+insert into ADPRO.PHANCONG values('NV3799', 'HP002', 2, 2024, 'CLC');
 
 conn NV0204/NV0204@localhost:1521/atbm_projectfinal;
 delete from ADPRO.PHANCONG where magv = 'NV3799' and mahp = 'HP002';
@@ -226,6 +233,10 @@ update ADPRO.DANGKY set diemth = 9 where masv = 'SV0001' and magv = 'NV2859' and
 conn SV0001/SV0001@localhost:1521/atbm_projectfinal;
 select * from ADPRO.DANGKY;
 
+conn SV0001/SV0001@localhost:1521/atbm_projectfinal;
+select * from DBA_TAB_PRIVS 
+
+SELECT table_name FROM user_tables
 select hp.MAHP from ADPRO.HOCPHAN hp, ADPRO.DONVI dv 
     where hp.madv = dv.madv and dv.trgdv = 'NV0204'
 
@@ -293,9 +304,7 @@ END;
 
 DBMS_OUTPUT.PUT_LINE(SYS_CONTEXT('USERENV', 'ISDBA'));
 
+select * from nhansu where manv = 'NV0204'
 
-
-select s.sid,s.serial#,s.audsid,s.username,s.osuser, s.client_identifier, s.sql_trace,s.action, p.spid, p.TRACEFILE
-from v$session s,v$process p
-where s.paddr=p.addr
-and s.username is not null;
+select ns.MANV from ADPRO.NHANSU ns, ADPRO.DONVI dv 
+    where (ns.vaitro = 'GIANGVIEN' or ns.vaitro = 'TRUONGDV') and ns.madv = dv.madv and dv.trgdv = 'NV0204';
