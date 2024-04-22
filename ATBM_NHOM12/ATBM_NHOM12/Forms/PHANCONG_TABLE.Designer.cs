@@ -208,7 +208,7 @@
             // 
             // txt_mact
             // 
-            this.txt_mact.Location = new System.Drawing.Point(521, 34);
+            this.txt_mact.Location = new System.Drawing.Point(521, 31);
             this.txt_mact.Name = "txt_mact";
             this.txt_mact.Size = new System.Drawing.Size(179, 24);
             this.txt_mact.TabIndex = 8;

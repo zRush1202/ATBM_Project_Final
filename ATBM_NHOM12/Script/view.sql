@@ -503,14 +503,12 @@ BEGIN
     );
 END;
 /
-CREATE OR REPLACE FUNCTION ADPRO.SVControl_XEM_KHMO (P_SCHEMA VARCHAR2, P_OBJ VARCHAR2) 
+create or replace function ADPRO.SVControl_XEM_KHMO (P_SCHEMA VARCHAR2, P_OBJ VARCHAR2) 
 RETURN VARCHAR2 AS
-    CURSOR HP IS (SELECT KH.MAHP FROM ADPRO.KHMO KH, ADPRO.SINHVIEN SV 
-                   WHERE KH.MACT = SV.MACT AND SV.MASV = SYS_CONTEXT('USERENV','SESSION_USER'));
     USERNAME VARCHAR2(128);
     USERROLE VARCHAR2(128);
-    TEMP VARCHAR2(6);
-    MAHP_DK VARCHAR2(2000);
+    TEMP varchar2(6);
+    MACT_SV varchar2(6);
 BEGIN
   -- Lấy username của user hiện tại
   USERNAME := SYS_CONTEXT('USERENV', 'SESSION_USER');
@@ -523,64 +521,13 @@ BEGIN
   SELECT GRANTED_ROLE INTO USERROLE
   FROM DBA_ROLE_PRIVS
   WHERE GRANTEE = USERNAME;
-  
-  IF 'RL_SINHVIEN' = USERROLE THEN 
-      OPEN HP;  
-        LOOP 
-            FETCH HP INTO TEMP; 
-            EXIT WHEN HP%NOTFOUND;
-            IF (MAHP_DK IS NOT NULL) THEN
-                MAHP_DK := MAHP_DK || ',' || '''' || TEMP || '''';
-            ELSE
-                MAHP_DK :=  '''' || TEMP || '''';
-            END IF;
-            DBMS_OUTPUT.PUT_LINE(MAHP_DK);
-        END LOOP;
-        CLOSE HP;
-        DBMS_OUTPUT.PUT_LINE(MAHP_DK);
-        RETURN 'MAHP IN ('||MAHP_DK||')';
+  IF 'RL_SINHVIEN' IN (USERROLE) THEN 
+     select MACT INTO MACT_SV from ADPRO.SINHVIEN where MASV = USERNAME;
+     RETURN ' MACT = '''|| MACT_SV || '''';
   ELSE
     RETURN '';
   END IF;
 END;
-/
---create or replace function ADPRO.SVControl_XEM_KHMO (P_SCHEMA VARCHAR2, P_OBJ VARCHAR2) 
---RETURN VARCHAR2 AS
---    CURSOR HP IS(select distinct PC.MAHP from ADPRO.PHANCONG PC, ADPRO.SINHVIEN SV 
---    where PC.MACT = SV.MACT AND SV.MASV = SYS_CONTEXT('USERENV','SESSION_USER'));
---    USERNAME VARCHAR2(128);
---    USERROLE VARCHAR2(128);
---    TEMP varchar2(6);
---    MAHP_DK varchar2(2000);
---BEGIN
---  -- Lấy username của user hiện tại
---  USERNAME := SYS_CONTEXT('USERENV', 'SESSION_USER');
---  
---  IF USERNAME = 'ADPRO' THEN
---    RETURN ''; -- Không áp dụng chính sách nếu người dùng là 'ADPRO'
---  END IF;
---  
---  -- Lấy vai trò của người dùng
---  SELECT GRANTED_ROLE INTO USERROLE
---  FROM DBA_ROLE_PRIVS
---  WHERE GRANTEE = USERNAME;
---  IF 'RL_SINHVIEN' IN (USERROLE) THEN 
---      OPEN HP;  
---        LOOP 
---            FETCH HP INTO TEMP; 
---            EXIT WHEN HP%NOTFOUND;
---            IF (MAHP_DK IS NOT NULL) THEN
---                MAHP_DK := MAHP_DK || ',' || '''' || TEMP || '''';
---            ELSE
---                MAHP_DK :=  '''' || TEMP || '''';
---            END IF;
---        END LOOP;
---        CLOSE HP;
---        RETURN 'MAHP IN ('||MAHP_DK||')';
---  ELSE
---    RETURN '';
---  END IF;
---END;
 /
 BEGIN
     DBMS_RLS.ADD_POLICY(
@@ -592,13 +539,13 @@ BEGIN
     );
 END;
 /
---BEGIN
---    DBMS_RLS.DROP_POLICY(
---        object_schema   => 'ADPRO',
---        object_name     => 'KHMO',
---        policy_name     => 'SINHVIEN_KHMO_CS6'
---    );
---END;
+BEGIN
+    DBMS_RLS.DROP_POLICY(
+        object_schema   => 'ADPRO',
+        object_name     => 'KHMO',
+        policy_name     => 'SINHVIEN_KHMO_CS6'
+);
+END;
 -- Thêm, Xóa các dòng dữ liệu Dăng ký học phần (DANGKY) liên quan Dến chính sinh
 --viên Dó trong học kỳ của năm học hiện tại (nếu thời Diểm hiệu chỉnh Dăng ký còn hợp
 --lệ).

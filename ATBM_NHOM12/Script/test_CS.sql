@@ -42,6 +42,8 @@ insert into ADPRO.PHANCONG values('NV2982', 'HP005', 2, 2024, 'VP');
 update ADPRO.NHANSU set madv = 'HTTT' where manv = 'NV3094';
 update ADPRO.NHANSU set madv = 'HTTT' where manv = 'NV3209';
 update ADPRO.NHANSU set madv = 'HTTT' where manv = 'NV3321';
+update ADPRO.NHANSU set madv = 'HTTT' where manv = 'NV3451';
+
 insert into ADPRO.DANGKY values('SV0001', 'NV2859', 'HP001', 1, 2024, 'CLC', 8.5, 7.0, 8.0, 7.5);
 insert into ADPRO.DANGKY values('SV0002', 'NV2982', 'HP001', 1, 2024, 'CLC', 9.0, 8.0, 7.5, 8.3);
 insert into ADPRO.DANGKY values('SV0003', 'NV3094', 'HP002', 2, 2024, 'CLC', 7.5, 8.0, 7.0, 7.2);
@@ -153,12 +155,14 @@ conn NV0204/NV0204@localhost:1521/atbm_projectfinal;
 update ADPRO.QLHS_DANGKY_HPGD set DIEMTH = 7;
 -- TRUONGDV
 conn NV0204/NV0204@localhost:1521/atbm_projectfinal;
+insert into ADPRO.PHANCONG values('NV3321', 'HP004', 1, 2024, 'CTTT');
 insert into ADPRO.PHANCONG values('NV3799', 'HP002', 2, 2024, 'CLC');
 
 conn NV0204/NV0204@localhost:1521/atbm_projectfinal;
+delete from ADPRO.PHANCONG where magv = 'NV3321' and mahp = 'HP002';
 delete from ADPRO.PHANCONG where magv = 'NV3799' and mahp = 'HP002';
-delete from ADPRO.PHANCONG where magv = 'NV3209' and mahp = 'HP004' and hk = 1 and nam = 2024 and mact = 'CTTT';
-select * from adpro.nhansu where vaitro = 'GIANGVIEN' and madv = 'HTTT'
+delete from ADPRO.PHANCONG where magv = 'NV3451' and mahp = 'HP002';
+select * from adpro.Phancong where vaitro = 'GIANGVIEN' and madv = 'HTTT'
 conn NV0204/NV0204@localhost:1521/atbm_projectfinal;
 select * from ADPRO.PHANCONG;
 
@@ -235,7 +239,7 @@ conn SV0001/SV0001@localhost:1521/atbm_projectfinal;
 select * from ADPRO.DANGKY;
 
 conn SV0001/SV0001@localhost:1521/atbm_projectfinal;
-select * from DBA_TAB_PRIVS 
+select * from ADPRO.PHANCONG
 
 SELECT table_name FROM user_tables
 select hp.MAHP from ADPRO.HOCPHAN hp, ADPRO.DONVI dv 

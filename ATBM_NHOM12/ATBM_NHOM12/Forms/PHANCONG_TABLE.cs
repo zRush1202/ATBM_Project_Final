@@ -71,49 +71,8 @@ namespace ATBM_NHOM12.Forms
 
         private void btt_them_Click(object sender, EventArgs e)
         {
-            try
-            {
-                // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
-                string magv = txt_magv.Text;
-                string mahp = txt_mahp.Text;
-                int hk = int.Parse(txt_hk.Text);
-                int nam = int.Parse(txt_nam.Text);
-                string mact = txt_mact.Text;
-
-                // Hiển thị giá trị của các biến trong một MessageBox
-                // MessageBox.Show($"magv: {magv}, mahp: {mahp}, hk: {hk}, nam: {nam}, mact: {mact}");
-
-                // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
-                var cmd = new OracleCommand();
-                cmd.CommandText = $"INSERT INTO ADPRO.PHANCONG VALUES('{magv}','{mahp}',{hk},{nam},'{mact}')";
-                cmd.Connection = con;
-                int rowsAffected = cmd.ExecuteNonQuery();
-                if (rowsAffected > 0)
-                {
-                    // Thông báo thành công hoặc thực hiện các hành động khác sau khi thêm thành công
-                    MessageBox.Show("Thêm dữ liệu thành công!");
-                }
-                else
-                {
-                    if (this.roleUser == "RL_TRUONGDV")
-                    {
-                        MessageBox.Show("Học phần không thuộc đơn vị mình làm trưởng!\nThêm thất bại.");
-                    }
-                    else
-                        // Thông báo khi không có dòng nào bị xóa
-                        MessageBox.Show("Không có dữ liệu nào được xóa!");
-                }
-            }
-            catch (Exception ex)
-            {
-                if (this.roleUser == "RL_TRUONGDV")
-                {
-                    MessageBox.Show("Học phần không thuộc đơn vị mình làm trưởng!");
-                }
-                else
-                    // Xử lý ngoại lệ ở đây, ví dụ: hiển thị thông báo lỗi
-                    MessageBox.Show(ex.Message);
-            }
+            THEM_PHANCONG_TABLE newForm = new THEM_PHANCONG_TABLE();
+            newForm.Show();
         }
 
         private void btt_hpbanthan_Click(object sender, EventArgs e)
