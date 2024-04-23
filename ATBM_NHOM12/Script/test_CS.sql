@@ -5,19 +5,21 @@ DELETE FROM ADPRO.PHANCONG;
 --ALTER TABLE ADPRO.DANGKY DISABLE ALL TRIGGERS;
 DELETE FROM ADPRO.DANGKY ;
 --ALTER TABLE ADPRO.DANGKY ENABLE ALL TRIGGERS;
+insert into ADPRO.DONVI values('VPK', N'Van Phong Khoa', 'NV0042');
+insert into ADPRO.DONVI values('HTTT', N'He Thong Thong Tin', 'NV0204');
+insert into ADPRO.DONVI values('KHMT', N'Khoa Hoc May Tinh', 'NV0266');
+insert into ADPRO.DONVI values('CNTT', N'Cong Nghe Thong Tin', 'NV0527');
+insert into ADPRO.DONVI values('TGMT', N'Thi Giac May Tinh', 'NV0896');
+insert into ADPRO.DONVI values('MMTVT', N'Mang May Tinh va Vien Thong', 'NV1041');
+insert into ADPRO.DONVI values('CNPM', N'Cong nghe phan mem', 'NV0069');
+
 update ADPRO.NHANSU set madv = 'VPK' where manv = 'NV0042';
 update ADPRO.NHANSU set madv = 'HTTT' where manv = 'NV0204';
 update ADPRO.NHANSU set madv = 'KHMT' where manv = 'NV0266';
 update ADPRO.NHANSU set madv = 'CNTT' where manv = 'NV0527';
 update ADPRO.NHANSU set madv = 'TGMT' where manv = 'NV0896';
 update ADPRO.NHANSU set madv = 'MMTVT' where manv = 'NV1041';
-
-insert into ADPRO.DONVI values('VPK', N'Van Phong Khoa', 'NV0042');
-insert into ADPRO.DONVI values('HTTT', N'He Thong Thong Tin', 'NV0204');
-insert into ADPRO.DONVI values('KHMT', N'Khoa Hoc May Tinh', 'NV0266');
-insert into ADPRO.DONVI values('CNTT', N'Cong Nghe Thog Tin', 'NV0527');
-insert into ADPRO.DONVI values('TGMT', N'Thi Giac May Tinh', 'NV0896');
-insert into ADPRO.DONVI values('MMTVT', N'Mang May Tinh va Vien Thong', 'NV1041');
+update ADPRO.NHANSU set madv = 'CNPM' where manv = 'NV0069';
 
 insert into ADPRO.HOCPHAN values('HP001', N'He dieu hanh', 4, 45, 30, 50, 'VPK');
 insert into ADPRO.HOCPHAN values('HP002', N'He quan tri', 4, 45, 30, 50, 'HTTT');

@@ -200,7 +200,10 @@ namespace ATBM_NHOM12
             //OpenChildForm(new TTCN_SINHVIEN(), sender);
             //CenterLabelInPanel(lblTitle, panelTitleBar);
 
-            OpenChildForm(new HOCPHAN_TABLE(), sender);
+            //OpenChildForm(new HOCPHAN_TABLE(), sender);
+            //CenterLabelInPanel(lblTitle, panelTitleBar);
+
+            OpenChildForm(new DONVI_TABLE(), sender);
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
 

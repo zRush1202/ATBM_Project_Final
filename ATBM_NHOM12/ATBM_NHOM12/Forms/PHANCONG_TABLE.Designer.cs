@@ -113,6 +113,7 @@
             this.btt_timkiem.TabIndex = 2;
             this.btt_timkiem.Text = "TÌM KIẾM";
             this.btt_timkiem.UseVisualStyleBackColor = true;
+            this.btt_timkiem.Click += new System.EventHandler(this.btt_timkiem_Click);
             // 
             // lb_tk_mhp
             // 

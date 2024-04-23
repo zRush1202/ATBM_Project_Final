@@ -183,5 +183,35 @@ namespace ATBM_NHOM12.Forms
         {
             PHANCONG_TABLE_Load(sender, e);
         }
+
+        private void btt_timkiem_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txt_tk_mhp.Text))
+            {
+                return;
+            }
+            else
+            {
+                string query = $"SELECT * FROM ADPRO.PHANCONG WHERE username LIKE '%{txt_tk_mhp.Text}%'";
+                OracleDataAdapter adapter = new OracleDataAdapter(query, con);
+                DataTable dataTable = new DataTable();
+                try
+                {
+                    adapter.Fill(dataTable);
+                    if (dataTable.Rows.Count > 0)
+                    {
+                        dgv_phancong.DataSource = dataTable;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy thông tin phân công liên quan đến học phần đó!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi tìm kiếm : " + ex.Message);
+                }
+            }
+        }
     }
 }

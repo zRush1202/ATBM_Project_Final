@@ -295,6 +295,7 @@
             this.btt_timkiem.TabIndex = 2;
             this.btt_timkiem.Text = "TÌM KIẾM";
             this.btt_timkiem.UseVisualStyleBackColor = true;
+            this.btt_timkiem.Click += new System.EventHandler(this.btt_timkiem_Click);
             // 
             // lb_tk_mhp
             // 
@@ -302,9 +303,9 @@
             this.lb_tk_mhp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_tk_mhp.Location = new System.Drawing.Point(416, 28);
             this.lb_tk_mhp.Name = "lb_tk_mhp";
-            this.lb_tk_mhp.Size = new System.Drawing.Size(115, 18);
+            this.lb_tk_mhp.Size = new System.Drawing.Size(120, 18);
             this.lb_tk_mhp.TabIndex = 1;
-            this.lb_tk_mhp.Text = "Mã học phần :";
+            this.lb_tk_mhp.Text = "Tên học phần :";
             // 
             // txt_tk_mhp
             // 

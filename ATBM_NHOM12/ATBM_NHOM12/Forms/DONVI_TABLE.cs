@@ -11,31 +11,27 @@ using System.Windows.Forms;
 
 namespace ATBM_NHOM12.Forms
 {
-    public partial class HOCPHAN_TABLE : Form
+    public partial class DONVI_TABLE : Form
     {
         private string roleUser = "RL_TRUONGDV";
-        private string mahpOld = "";
-        //private string tenhpOld = "";
-        //private string sotcOld = "";
-        //private string stltOld = "";
-        //private string stthOld = "";
-        //private string sosvtdOld = "";
-        //private string madvOld = "";
+        private string madvOld = "";
+        //private string tendvOld = "";
+        //private string trgdvOld = "";
         public static OracleConnection con = LoginProvider.conn;
-        public HOCPHAN_TABLE()
+        public DONVI_TABLE()
         {
             InitializeComponent();
         }
-        private void HOCPHAN_TABLE_Load(object sender, EventArgs e)
+        private void DONVI_TABLE_Load(object sender, EventArgs e)
         {
-            string query = "select * from ADPRO.HOCPHAN"; ;
+            string query = "select * from ADPRO.DONVI"; ;
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
             DataTable dataTable = new DataTable();
             try
             {
                 adapter.Fill(dataTable);
-                dgv_hocphan.DataSource = dataTable;
-                dgv_hocphan.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgv_donvi.DataSource = dataTable;
+                dgv_donvi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
             {
@@ -43,41 +39,30 @@ namespace ATBM_NHOM12.Forms
             }
         }
 
-        private void dgv_hocphan_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgv_donvi_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < this.dgv_hocphan.Rows.Count) // Make sure user select at least 1 row 
+            if (e.RowIndex >= 0 && e.RowIndex < this.dgv_donvi.Rows.Count) // Make sure user select at least 1 row 
             {
-                DataGridViewRow row = this.dgv_hocphan.Rows[e.RowIndex];
-                txt_mahp.Text = row.Cells["MAHP"].Value.ToString();
-                this.mahpOld = row.Cells["MAHP"].Value.ToString();
-                txt_tenhp.Text = row.Cells["TENHP"].Value.ToString();
-                //this.tenhpOld = row.Cells["TENHP"].Value.ToString();
-                txt_sotc.Text = row.Cells["SOTC"].Value.ToString();
-                //this.sotcOld = row.Cells["SOTC"].Value.ToString();
-                txt_stlt.Text = row.Cells["STLT"].Value.ToString();
-                //this.stltOld = row.Cells["STLT"].Value.ToString();
-                txt_stth.Text = row.Cells["STTH"].Value.ToString();
-                //this.stthOld = row.Cells["STTH"].Value.ToString();
-                txt_sosvtd.Text = row.Cells["SOSVTD"].Value.ToString();
-                //this.sosvtdOld = row.Cells["SOSVTD"].Value.ToString();
+                DataGridViewRow row = this.dgv_donvi.Rows[e.RowIndex];
                 txt_madv.Text = row.Cells["MADV"].Value.ToString();
-                //this.madvOld = row.Cells["MADV"].Value.ToString();
+                this.madvOld = row.Cells["MADV"].Value.ToString();
+                txt_tendv.Text = row.Cells["TENDV"].Value.ToString();
+                //this.tendvOld = row.Cells["TENDV"].Value.ToString();
+                txt_trgdv.Text = row.Cells["TRGDV"].Value.ToString();
+                //this.trgdvOld = row.Cells["TRGDV"].Value.ToString();
             }
         }
+
         private void btt_refreshtt_Click(object sender, EventArgs e)
         {
-            txt_mahp.Text = "";
-            txt_tenhp.Text = "";
-            txt_sotc.Text = "";
-            txt_stlt.Text = "";
-            txt_stth.Text = "";
-            txt_sosvtd.Text = "";
             txt_madv.Text = "";
+            txt_tendv.Text = "";
+            txt_trgdv.Text = "";
         }
 
         private void btt_refreshds_Click(object sender, EventArgs e)
         {
-            HOCPHAN_TABLE_Load(sender, e);
+            DONVI_TABLE_Load(sender, e);
         }
 
         private void btt_them_Click(object sender, EventArgs e)
@@ -85,19 +70,14 @@ namespace ATBM_NHOM12.Forms
             try
             {
                 // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
-                string mahp = txt_mahp.Text;
-                string tenhp = txt_tenhp.Text;
-                int sotc = int.Parse(txt_sotc.Text);
-                int stlt = int.Parse(txt_stlt.Text);
-                int stth = int.Parse(txt_stth.Text);
-                int sosvtd = int.Parse(txt_sosvtd.Text);
                 string madv = txt_madv.Text;
-
+                string tendv = txt_tendv.Text;
+                string trgdv = txt_trgdv.Text;
 
                 // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
                 var cmd = new OracleCommand();
-                cmd.CommandText = $"INSERT ADPRO.HOCPHAN VALUES" +
-                    $"('{mahp}','{tenhp}',{sotc} ,{stlt} ,{stth} ,{sosvtd} ,{madv})";
+                cmd.CommandText = $"INSERT ADPRO.DONVI VALUES" +
+                    $"('{madv}','{tendv}',{trgdv})";
                 cmd.Connection = con;
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if (rowsAffected > 0)
@@ -108,7 +88,7 @@ namespace ATBM_NHOM12.Forms
                 else
                 {
                     // Thông báo khi không có dòng nào bị xóa
-                   MessageBox.Show("Không có dữ liệu nào được thêm!");
+                    MessageBox.Show("Không có dữ liệu nào được thêm!");
                 }
             }
             catch (Exception ex)
@@ -123,19 +103,15 @@ namespace ATBM_NHOM12.Forms
             try
             {
                 // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
-                string mahp = txt_mahp.Text;
-                string tenhp = txt_tenhp.Text;
-                int sotc = int.Parse(txt_sotc.Text);
-                int stlt = int.Parse(txt_stlt.Text);
-                int stth = int.Parse(txt_stth.Text);
-                int sosvtd = int.Parse(txt_sosvtd.Text);
                 string madv = txt_madv.Text;
+                string tendv = txt_tendv.Text;
+                string trgdv = txt_trgdv.Text;
 
 
                 // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
                 var cmd = new OracleCommand();
-                cmd.CommandText = $"DELETE FROM ADPRO.HOCPHAN " +
-                    $"where mahp = '{mahp}' and tenhp = '{tenhp}' and sotc = {sotc} and stlt = {stlt} and stth = {stth} and sosvtd = {sosvtd} and madv = {madv}";
+                cmd.CommandText = $"DELETE FROM ADPRO.DONVI " +
+                    $"where madv = '{madv}'";
                 cmd.Connection = con;
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if (rowsAffected > 0)
@@ -145,13 +121,7 @@ namespace ATBM_NHOM12.Forms
                 }
                 else
                 {
-                    if (this.roleUser == "RL_TRUONGDV")
-                    {
-                        MessageBox.Show("Học phần không thuộc đơn vị mình làm trưởng!\nXóa thất bại.");
-                    }
-                    else
-                        // Thông báo khi không có dòng nào bị xóa
-                        MessageBox.Show("Không có dữ liệu nào được xóa!");
+                    MessageBox.Show("Không có dữ liệu nào được xóa!");
                 }
             }
             catch (Exception ex)
@@ -166,18 +136,14 @@ namespace ATBM_NHOM12.Forms
             try
             {
                 // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
-                string mahp = txt_mahp.Text;
-                string tenhp = txt_tenhp.Text;
-                int sotc = int.Parse(txt_sotc.Text);
-                int stlt = int.Parse(txt_stlt.Text);
-                int stth = int.Parse(txt_stth.Text);
-                int sosvtd = int.Parse(txt_sosvtd.Text);
                 string madv = txt_madv.Text;
+                string tendv = txt_tendv.Text;
+                string trgdv = txt_trgdv.Text;
 
                 // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
                 var cmd = new OracleCommand();
-                cmd.CommandText = $"UPDATE ADPRO.HOCPHAN set tenhp = '{tenhp}' ,sotc = {sotc} ,stlt = {stlt} ,stth = {stth} ,sosvtd = {sosvtd} ,madv = {madv} " +
-                    $"where mahp = '{this.mahpOld}'";
+                cmd.CommandText = $"UPDATE ADPRO.DONVI set tendv = '{tendv}' ,trgdv = {trgdv} " +
+                    $"where madv = '{this.madvOld}'";
                 cmd.Connection = con;
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if (rowsAffected > 0)
@@ -199,13 +165,13 @@ namespace ATBM_NHOM12.Forms
 
         private void btt_timkiem_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_tk_mhp.Text))
+            if (string.IsNullOrEmpty(txt_tk_tendv.Text))
             {
                 return;
             }
             else
             {
-                string query = $"SELECT * FROM ADPRO.HOCPHAN WHERE tenhp LIKE '%{txt_tk_mhp.Text}%'";
+                string query = $"SELECT * FROM ADPRO.DONVI WHERE tendv LIKE '%{txt_tk_tendv.Text}%'";
                 OracleDataAdapter adapter = new OracleDataAdapter(query, con);
                 DataTable dataTable = new DataTable();
                 try
@@ -213,7 +179,7 @@ namespace ATBM_NHOM12.Forms
                     adapter.Fill(dataTable);
                     if (dataTable.Rows.Count > 0)
                     {
-                        dgv_hocphan.DataSource = dataTable;
+                        dgv_donvi.DataSource = dataTable;
                     }
                     else
                     {
