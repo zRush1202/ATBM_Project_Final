@@ -263,7 +263,8 @@ END;
 --Được xem dữ liệu phân công giảng dạy của các giảng viên thuộc các đơn vị mà mình
 --làm trưởng.
 grant select on ADPRO.NHANSU to RL_TRUONGDV;
-
+--revoke select on ADPRO.NHANSU from RL_TRUONGDV;
+/
 CREATE OR REPLACE FUNCTION ADPRO.TDVControl_PhanCong_NhanSu (
   P_SCHEMA IN VARCHAR2 DEFAULT NULL,
   P_OBJECT IN VARCHAR2 DEFAULT NULL
@@ -495,13 +496,13 @@ BEGIN
     );
 END;
 /
-BEGIN
-    DBMS_RLS.DROP_POLICY(
-        object_schema   => 'ADPRO',
-        object_name     => 'HOCPHAN',
-        policy_name     => 'SINHVIEN_HOCPHAN_CS6'
-    );
-END;
+--BEGIN
+--    DBMS_RLS.DROP_POLICY(
+--        object_schema   => 'ADPRO',
+--        object_name     => 'HOCPHAN',
+--        policy_name     => 'SINHVIEN_HOCPHAN_CS6'
+--    );
+--END;
 /
 create or replace function ADPRO.SVControl_XEM_KHMO (P_SCHEMA VARCHAR2, P_OBJ VARCHAR2) 
 RETURN VARCHAR2 AS
@@ -539,13 +540,13 @@ BEGIN
     );
 END;
 /
-BEGIN
-    DBMS_RLS.DROP_POLICY(
-        object_schema   => 'ADPRO',
-        object_name     => 'KHMO',
-        policy_name     => 'SINHVIEN_KHMO_CS6'
-);
-END;
+--BEGIN
+--    DBMS_RLS.DROP_POLICY(
+--        object_schema   => 'ADPRO',
+--        object_name     => 'KHMO',
+--        policy_name     => 'SINHVIEN_KHMO_CS6'
+--);
+--END;
 -- Thêm, Xóa các dòng dữ liệu Dăng ký học phần (DANGKY) liên quan Dến chính sinh
 --viên Dó trong học kỳ của năm học hiện tại (nếu thời Diểm hiệu chỉnh Dăng ký còn hợp
 --lệ).

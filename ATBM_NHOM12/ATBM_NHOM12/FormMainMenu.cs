@@ -190,7 +190,17 @@ namespace ATBM_NHOM12
         {
             //OpenChildForm(new Grant_Revoke_Privilege(), sender);
             //CenterLabelInPanel(lblTitle, panelTitleBar);
-            OpenChildForm(new PHANCONG_TABLE(), sender);
+
+            //OpenChildForm(new PHANCONG_TABLE(), sender);
+            //CenterLabelInPanel(lblTitle, panelTitleBar);
+
+            //OpenChildForm(new TTCANHAN_NHANSU(), sender);
+            //CenterLabelInPanel(lblTitle, panelTitleBar);
+
+            //OpenChildForm(new TTCN_SINHVIEN(), sender);
+            //CenterLabelInPanel(lblTitle, panelTitleBar);
+
+            OpenChildForm(new HOCPHAN_TABLE(), sender);
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
 

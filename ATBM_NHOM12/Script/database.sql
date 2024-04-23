@@ -51,7 +51,7 @@ create table ADPRO.HOCPHAN
     SOTC int,
     STLT int,
     STTH int,
-    SOSVDT int,
+    SOSVTD int,
     MADV varchar(6),
     primary key(MAHP)
 )

@@ -134,7 +134,7 @@ conn NV0204/NV0204@localhost:1521/atbm_projectfinal;
 select * from ADPRO.QLHS_TTCANHAN;
 
 conn NV0204/NV0204@localhost:1521/atbm_projectfinal;
-update ADPRO.QLHS_TTCANHAN set DT = '0123456789';
+update ADPRO.QLHS_TTCANHAN set DT = '012345678';
 
 conn NV0204/NV0204@localhost:1521/atbm_projectfinal;
 select * from ADPRO.SINHVIEN;

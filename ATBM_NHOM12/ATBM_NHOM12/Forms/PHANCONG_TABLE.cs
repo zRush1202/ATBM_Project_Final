@@ -146,9 +146,9 @@ namespace ATBM_NHOM12.Forms
                 string mact = txt_mact.Text;
 
                 // Hiển thị giá trị của các biến trong một MessageBox
-                MessageBox.Show($"magv: {magv}, mahp: {mahp}, hk: {hk}, nam: {nam}, mact: {mact}");
+                //MessageBox.Show($"magv: {magv}, mahp: {mahp}, hk: {hk}, nam: {nam}, mact: {mact}");
 
-                MessageBox.Show($"magvold: {this.magvOld}, mahpold: {this.mahpOld}, hkold: {this.hkOld}, namOld: {this.namOld}, mactOld: {this.mactOld}");
+                //MessageBox.Show($"magvold: {this.magvOld}, mahpold: {this.mahpOld}, hkold: {this.hkOld}, namOld: {this.namOld}, mactOld: {this.mactOld}");
 
                 // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
                 var cmd = new OracleCommand();
@@ -159,7 +159,7 @@ namespace ATBM_NHOM12.Forms
                 if (rowsAffected > 0)
                 {
                     // Thông báo thành công hoặc thực hiện các hành động khác sau khi thêm thành công
-                    MessageBox.Show("Xóa dữ liệu thành công!");
+                    MessageBox.Show("Cập nhật dữ liệu thành công!");
                 }
                 else
                 {
@@ -169,7 +169,7 @@ namespace ATBM_NHOM12.Forms
                     }
                     else
                         // Thông báo khi không có dòng nào bị xóa
-                        MessageBox.Show("Không có dữ liệu nào được xóa!");
+                        MessageBox.Show("Không có dữ liệu nào được cập nhật!");
                 }
             }
             catch (Exception ex)
