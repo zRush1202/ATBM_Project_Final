@@ -262,9 +262,8 @@ END;
 --END;
 --Được xem dữ liệu phân công giảng dạy của các giảng viên thuộc các đơn vị mà mình
 --làm trưởng.
-grant select on ADPRO.NHANSU to RL_TRUONGDV;
+--grant select on ADPRO.NHANSU to RL_TRUONGDV;
 --revoke select on ADPRO.NHANSU from RL_TRUONGDV;
-/
 CREATE OR REPLACE FUNCTION ADPRO.TDVControl_PhanCong_NhanSu (
   P_SCHEMA IN VARCHAR2 DEFAULT NULL,
   P_OBJECT IN VARCHAR2 DEFAULT NULL

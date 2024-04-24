@@ -168,6 +168,10 @@ select * from adpro.Phancong where vaitro = 'GIANGVIEN' and madv = 'HTTT'
 conn NV0204/NV0204@localhost:1521/atbm_projectfinal;
 select * from ADPRO.PHANCONG;
 
+--revoke select on ADPRO.NHANSU from RL_TRUONGDV;
+conn NV0204/NV0204@localhost:1521/atbm_projectfinal;
+select * from ADPRO.NHANSU;
+
 -- CS5 : TRUONGKHOA NV0042
 conn NV0042/NV0042@localhost:1521/atbm_projectfinal;
 select * from ADPRO.QLHS_TTCANHAN;
