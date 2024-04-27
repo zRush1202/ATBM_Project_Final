@@ -260,9 +260,56 @@ END;
 --        policy_name => 'TruongDV_Policy'
 --    );
 --END;
+-- TRUONGDV xemm nhan su thuoc don vi minh lam truong
+grant select on ADPRO.NHANSU to RL_TRUONGDV;
+CREATE OR REPLACE FUNCTION ADPRO.TDVControl_NhanSu_DonVi (
+  P_SCHEMA IN VARCHAR2 DEFAULT NULL,
+  P_OBJECT IN VARCHAR2 DEFAULT NULL
+) 
+RETURN VARCHAR2 AS
+    USERNAME VARCHAR2(128);
+    USERROLE VARCHAR2(128);
+    MADV varchar2(6);
+  
+BEGIN
+  -- Lấy username của user hiện tại
+  USERNAME := SYS_CONTEXT('USERENV', 'SESSION_USER');
+  
+  IF USERNAME = 'ADPRO' THEN
+    RETURN ''; -- Không áp dụng chính sách nếu người dùng là 'ADPRO'
+  END IF;
+  
+  -- Lấy vai trò của người dùng
+  SELECT GRANTED_ROLE INTO USERROLE
+  FROM DBA_ROLE_PRIVS
+  WHERE GRANTEE = USERNAME;
+  
+   IF 'RL_TRUONGDV' IN (USERROLE) THEN 
+        SELECT MADV INTO MADV FROM ADPRO.DONVI WHERE TRGDV = USERNAME;
+        RETURN 'MADV = '''||MADV||'''';
+    ELSE
+        RETURN '';
+  END IF;
+END;
+/
+BEGIN
+    DBMS_RLS.ADD_POLICY(
+        object_schema   => 'ADPRO',
+        object_name     => 'NHANSU',
+        policy_name     => 'TruongDV_NhanSu_DonVi',
+        function_schema => 'ADPRO',
+        policy_function => 'TDVControl_NhanSu_DonVi'
+    );
+END;
+-- BEGIN
+--     DBMS_RLS.DROP_POLICY(
+--         object_schema   => 'ADPRO',
+--         object_name     => 'PHANCONG',
+--         policy_name     => 'TruongDV_NhanSu_DonVi'
+--     );
+-- END;
 --Được xem dữ liệu phân công giảng dạy của các giảng viên thuộc các đơn vị mà mình
 --làm trưởng.
-grant select on ADPRO.NHANSU to RL_TRUONGDV;
 --revoke select on ADPRO.NHANSU from RL_TRUONGDV;
 /
 CREATE OR REPLACE FUNCTION ADPRO.TDVControl_PhanCong_NhanSu (
@@ -271,7 +318,7 @@ CREATE OR REPLACE FUNCTION ADPRO.TDVControl_PhanCong_NhanSu (
 ) 
 RETURN VARCHAR2 AS
     CURSOR GV IS(select ns.MANV from ADPRO.NHANSU ns, ADPRO.DONVI dv 
-    where (ns.vaitro = 'GIANGVIEN' or ns.vaitro = 'TRUONGDV') and ns.madv = dv.madv and dv.trgdv = SYS_CONTEXT('USERENV', 'SESSION_USER') );
+    where ns.madv = dv.madv and dv.trgdv = SYS_CONTEXT('USERENV', 'SESSION_USER') );
     USERNAME VARCHAR2(128);
     USERROLE VARCHAR2(128);
     TEMP varchar2(6);
@@ -314,9 +361,7 @@ BEGIN
         object_name     => 'PHANCONG',
         policy_name     => 'TruongDV_PhanCong_NhanSu',
         function_schema => 'ADPRO',
-        policy_function => 'TDVControl_PhanCong_NhanSu',
-        statement_types => 'SELECT',
-        update_check    => TRUE
+        policy_function => 'TDVControl_PhanCong_NhanSu'
     );
 END;
 /
@@ -495,7 +540,6 @@ BEGIN
         update_check => TRUE
     );
 END;
-/
 --BEGIN
 --    DBMS_RLS.DROP_POLICY(
 --        object_schema   => 'ADPRO',
@@ -647,7 +691,6 @@ BEGIN
         update_check => TRUE
     );
 END;
-/
 --BEGIN
 --    DBMS_RLS.DROP_POLICY(
 --        object_schema => 'ADPRO',

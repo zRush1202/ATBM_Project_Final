@@ -164,9 +164,13 @@ conn NV0204/NV0204@localhost:1521/atbm_projectfinal;
 delete from ADPRO.PHANCONG where magv = 'NV3321' and mahp = 'HP002';
 delete from ADPRO.PHANCONG where magv = 'NV3799' and mahp = 'HP002';
 delete from ADPRO.PHANCONG where magv = 'NV3451' and mahp = 'HP002';
-select * from adpro.Phancong where vaitro = 'GIANGVIEN' and madv = 'HTTT'
+select * from adpro.Phancong where vaitro = 'GIANGVIEN' and madv = 'HTTT';
+
 conn NV0204/NV0204@localhost:1521/atbm_projectfinal;
 select * from ADPRO.PHANCONG;
+
+conn NV0204/NV0204@localhost:1521/atbm_projectfinal;
+select * from ADPRO.NHANSU;
 
 -- CS5 : TRUONGKHOA NV0042
 conn NV0042/NV0042@localhost:1521/atbm_projectfinal;
@@ -241,18 +245,18 @@ conn SV0001/SV0001@localhost:1521/atbm_projectfinal;
 select * from ADPRO.DANGKY;
 
 conn SV0001/SV0001@localhost:1521/atbm_projectfinal;
-select * from ADPRO.PHANCONG
+select * from ADPRO.PHANCONG;
 
-SELECT table_name FROM user_tables
+SELECT table_name FROM user_tables;
 select hp.MAHP from ADPRO.HOCPHAN hp, ADPRO.DONVI dv 
-    where hp.madv = dv.madv and dv.trgdv = 'NV0204'
+    where hp.madv = dv.madv and dv.trgdv = 'NV0204';
 
 SELECT *
 FROM DBA_POLICIES
 WHERE OBJECT_NAME = 'KHMO';
 
 
-select * from adpro.phancong
+select * from adpro.phancong;
 SELECT * FROM ALL_TRIGGERS WHERE TABLE_NAME = 'DANGKY';
 
 conn SV0001/SV0001@localhost:1521/atbm_projectfinal;
@@ -311,7 +315,7 @@ END;
 
 DBMS_OUTPUT.PUT_LINE(SYS_CONTEXT('USERENV', 'ISDBA'));
 
-select * from nhansu where manv = 'NV0204'
+select * from nhansu where manv = 'NV0204';
 
 select ns.MANV from ADPRO.NHANSU ns, ADPRO.DONVI dv 
     where (ns.vaitro = 'GIANGVIEN' or ns.vaitro = 'TRUONGDV') and ns.madv = dv.madv and dv.trgdv = 'NV0204';
