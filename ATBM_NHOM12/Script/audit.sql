@@ -28,6 +28,10 @@ begin
               || usr
               || ' BY ACCESS';
     execute immediate strsql;
+		strsql := 'AUDIT SELECT TABLE, INSERT TABLE, UPDATE TABLE, DELETE TABLE BY '
+              || usr
+              || ' BY ACCESS';
+    execute immediate strsql;
     strsql := 'AUDIT SESSION WHENEVER NOT SUCCESSFUL';
     execute immediate strsql;
   end loop;
@@ -40,10 +44,12 @@ create or replace procedure adpro.usp_audit_sinhvien
   authid current_user
 as
   cursor cur is
-  select sv.masv
-    from adpro.sinhvien sv,
-         all_users als
-   where sv.masv = als.username;
+  (
+    select sv.masv
+      from adpro.sinhvien sv,
+           all_users als
+     where sv.masv = als.username
+  );
   strsql varchar2(2000);
   usr    varchar2(6);
 begin
@@ -56,6 +62,10 @@ begin
     strsql := 'AUDIT ALL BY '
               || usr
               || ' BY ACCESS';
+		strsql := 'AUDIT SELECT TABLE, INSERT TABLE, UPDATE TABLE, DELETE TABLE BY '
+					|| usr
+					|| ' BY ACCESS';
+    execute immediate strsql;
     execute immediate strsql;
     strsql := 'AUDIT SESSION WHENEVER NOT SUCCESSFUL';
     execute immediate strsql;
@@ -67,18 +77,18 @@ end;
 -- Chạy hàm audit
 EXEC ADPRO.USP_AUDIT_NHANVIEN;
 EXEC ADPRO.USP_AUDIT_SINHVIEN;
+/
 
--- TEST
+
+-- Grant privileges and audit
+
+select * from ADPRO.NHANSU;
+
+
 select *
   from dba_audit_trail
- where username = 'NV0042'
- order by timestamp;
-
-
-select *
-  from dba_audit_trail
- where action_name = 'LOGON'
-   and returncode != 0;
+ where username = 'NV3094'
+ order by extended_timestamp desc;
 
 --Xóa dữ liệu audit
 -- BEGIN
