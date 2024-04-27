@@ -36,6 +36,7 @@
             this.lb_tk_mhp = new System.Windows.Forms.Label();
             this.txt_tk_mhp = new System.Windows.Forms.TextBox();
             this.cb_thongtin = new System.Windows.Forms.GroupBox();
+            this.txt_magv = new System.Windows.Forms.ComboBox();
             this.btt_refreshtt = new System.Windows.Forms.Button();
             this.btt_capnhat = new System.Windows.Forms.Button();
             this.btt_xoa = new System.Windows.Forms.Button();
@@ -44,7 +45,6 @@
             this.txt_mact = new System.Windows.Forms.TextBox();
             this.txt_hk = new System.Windows.Forms.TextBox();
             this.txt_mahp = new System.Windows.Forms.TextBox();
-            this.txt_magv = new System.Windows.Forms.TextBox();
             this.lb_mact = new System.Windows.Forms.Label();
             this.lb_nam = new System.Windows.Forms.Label();
             this.lb_hk = new System.Windows.Forms.Label();
@@ -85,9 +85,9 @@
             // btt_refreshds
             // 
             this.btt_refreshds.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_refreshds.Location = new System.Drawing.Point(502, 22);
+            this.btt_refreshds.Location = new System.Drawing.Point(516, 22);
             this.btt_refreshds.Name = "btt_refreshds";
-            this.btt_refreshds.Size = new System.Drawing.Size(111, 30);
+            this.btt_refreshds.Size = new System.Drawing.Size(126, 30);
             this.btt_refreshds.TabIndex = 4;
             this.btt_refreshds.Text = "REFRESH";
             this.btt_refreshds.UseVisualStyleBackColor = true;
@@ -109,7 +109,7 @@
             this.btt_timkiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btt_timkiem.Location = new System.Drawing.Point(385, 22);
             this.btt_timkiem.Name = "btt_timkiem";
-            this.btt_timkiem.Size = new System.Drawing.Size(111, 30);
+            this.btt_timkiem.Size = new System.Drawing.Size(125, 30);
             this.btt_timkiem.TabIndex = 2;
             this.btt_timkiem.Text = "TÌM KIẾM";
             this.btt_timkiem.UseVisualStyleBackColor = true;
@@ -121,9 +121,9 @@
             this.lb_tk_mhp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_tk_mhp.Location = new System.Drawing.Point(29, 28);
             this.lb_tk_mhp.Name = "lb_tk_mhp";
-            this.lb_tk_mhp.Size = new System.Drawing.Size(115, 18);
+            this.lb_tk_mhp.Size = new System.Drawing.Size(105, 18);
             this.lb_tk_mhp.TabIndex = 1;
-            this.lb_tk_mhp.Text = "Mã học phần :";
+            this.lb_tk_mhp.Text = "Mã học phần";
             // 
             // txt_tk_mhp
             // 
@@ -134,6 +134,7 @@
             // 
             // cb_thongtin
             // 
+            this.cb_thongtin.Controls.Add(this.txt_magv);
             this.cb_thongtin.Controls.Add(this.btt_refreshtt);
             this.cb_thongtin.Controls.Add(this.btt_capnhat);
             this.cb_thongtin.Controls.Add(this.btt_xoa);
@@ -142,7 +143,6 @@
             this.cb_thongtin.Controls.Add(this.txt_mact);
             this.cb_thongtin.Controls.Add(this.txt_hk);
             this.cb_thongtin.Controls.Add(this.txt_mahp);
-            this.cb_thongtin.Controls.Add(this.txt_magv);
             this.cb_thongtin.Controls.Add(this.lb_mact);
             this.cb_thongtin.Controls.Add(this.lb_nam);
             this.cb_thongtin.Controls.Add(this.lb_hk);
@@ -155,6 +155,16 @@
             this.cb_thongtin.TabIndex = 1;
             this.cb_thongtin.TabStop = false;
             this.cb_thongtin.Text = "THÔNG TIN PHÂN CÔNG";
+            // 
+            // txt_magv
+            // 
+            this.txt_magv.FormattingEnabled = true;
+            this.txt_magv.Location = new System.Drawing.Point(155, 31);
+            this.txt_magv.Name = "txt_magv";
+            this.txt_magv.Size = new System.Drawing.Size(179, 26);
+            this.txt_magv.TabIndex = 13;
+            this.Text = "Grant_Privilege";
+            this.Load += new System.EventHandler(this.txt_magv_Load);
             // 
             // btt_refreshtt
             // 
@@ -227,13 +237,6 @@
             this.txt_mahp.Name = "txt_mahp";
             this.txt_mahp.Size = new System.Drawing.Size(179, 24);
             this.txt_mahp.TabIndex = 6;
-            // 
-            // txt_magv
-            // 
-            this.txt_magv.Location = new System.Drawing.Point(155, 34);
-            this.txt_magv.Name = "txt_magv";
-            this.txt_magv.Size = new System.Drawing.Size(179, 24);
-            this.txt_magv.TabIndex = 5;
             // 
             // lb_mact
             // 
@@ -326,7 +329,7 @@
         private System.Windows.Forms.TextBox txt_mahp;
         private System.Windows.Forms.Button btt_refreshds;
         private System.Windows.Forms.Button btt_refreshtt;
-        private System.Windows.Forms.TextBox txt_magv;
         private System.Windows.Forms.Button btt_hpbanthan;
+        private System.Windows.Forms.ComboBox txt_magv;
     }
 }

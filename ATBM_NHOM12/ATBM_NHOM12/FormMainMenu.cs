@@ -191,8 +191,8 @@ namespace ATBM_NHOM12
             //OpenChildForm(new Grant_Revoke_Privilege(), sender);
             //CenterLabelInPanel(lblTitle, panelTitleBar);
 
-            //OpenChildForm(new PHANCONG_TABLE(), sender);
-            //CenterLabelInPanel(lblTitle, panelTitleBar);
+            OpenChildForm(new PHANCONG_TABLE(), sender);
+            CenterLabelInPanel(lblTitle, panelTitleBar);
 
             //OpenChildForm(new TTCANHAN_NHANSU(), sender);
             //CenterLabelInPanel(lblTitle, panelTitleBar);
@@ -203,8 +203,8 @@ namespace ATBM_NHOM12
             //OpenChildForm(new HOCPHAN_TABLE(), sender);
             //CenterLabelInPanel(lblTitle, panelTitleBar);
 
-            OpenChildForm(new DONVI_TABLE(), sender);
-            CenterLabelInPanel(lblTitle, panelTitleBar);
+            //OpenChildForm(new DONVI_TABLE(), sender);
+            //CenterLabelInPanel(lblTitle, panelTitleBar);
         }
 
         private void button5_Click(object sender, EventArgs e)

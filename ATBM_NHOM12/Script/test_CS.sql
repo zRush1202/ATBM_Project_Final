@@ -97,7 +97,7 @@ conn NV2859/NV2859@localhost:1521/atbm_projectfinal;
 update ADPRO.QLHS_DANGKY_HPGD set DIEMTH = 7;
 
 -- Test CS3 : GIAOVU
-
+select * from DBA_TAB_PRIVS where GRANTEE = 'NV0204';
 select * from DBA_TAB_PRIVS where GRANTEE = 'RL_TRUONGDV';
 select * from DBA_ROLE_PRIVS where GRANTEE = 'NV1110';
 conn NV1110/NV1110@localhost:1521/atbm_projectfinal;
@@ -155,6 +155,7 @@ select * from ADPRO.QLHS_DANGKY_HPGD;
 
 conn NV0204/NV0204@localhost:1521/atbm_projectfinal;
 update ADPRO.QLHS_DANGKY_HPGD set DIEMTH = 7;
+
 -- TRUONGDV
 conn NV0204/NV0204@localhost:1521/atbm_projectfinal;
 insert into ADPRO.PHANCONG values('NV3321', 'HP004', 1, 2024, 'CTTT');
@@ -170,6 +171,7 @@ conn NV0204/NV0204@localhost:1521/atbm_projectfinal;
 select * from ADPRO.PHANCONG;
 
 conn NV0204/NV0204@localhost:1521/atbm_projectfinal;
+SELECT MANV FROM ADPRO.NHANSU;
 select * from ADPRO.NHANSU;
 
 -- CS5 : TRUONGKHOA NV0042

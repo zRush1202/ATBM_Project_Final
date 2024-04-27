@@ -41,8 +41,8 @@
             this.lb_hk = new System.Windows.Forms.Label();
             this.txt_mahp = new System.Windows.Forms.TextBox();
             this.lb_mahp = new System.Windows.Forms.Label();
-            this.txt_magv = new System.Windows.Forms.TextBox();
             this.lb_magv = new System.Windows.Forms.Label();
+            this.txt_magv = new System.Windows.Forms.ComboBox();
             this.gb_khmo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_khmo)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -82,6 +82,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txt_magv);
             this.groupBox1.Controls.Add(this.btt_them);
             this.groupBox1.Controls.Add(this.txt_mact);
             this.groupBox1.Controls.Add(this.lb_mact);
@@ -91,7 +92,6 @@
             this.groupBox1.Controls.Add(this.lb_hk);
             this.groupBox1.Controls.Add(this.txt_mahp);
             this.groupBox1.Controls.Add(this.lb_mahp);
-            this.groupBox1.Controls.Add(this.txt_magv);
             this.groupBox1.Controls.Add(this.lb_magv);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(456, 47);
@@ -180,13 +180,6 @@
             this.lb_mahp.TabIndex = 7;
             this.lb_mahp.Text = "Mã học phần ";
             // 
-            // txt_magv
-            // 
-            this.txt_magv.Location = new System.Drawing.Point(195, 40);
-            this.txt_magv.Name = "txt_magv";
-            this.txt_magv.Size = new System.Drawing.Size(179, 24);
-            this.txt_magv.TabIndex = 6;
-            // 
             // lb_magv
             // 
             this.lb_magv.AutoSize = true;
@@ -196,6 +189,15 @@
             this.lb_magv.Size = new System.Drawing.Size(108, 18);
             this.lb_magv.TabIndex = 2;
             this.lb_magv.Text = "Mã giáo viên ";
+            // 
+            // txt_magv
+            // 
+            this.txt_magv.FormattingEnabled = true;
+            this.txt_magv.Location = new System.Drawing.Point(195, 36);
+            this.txt_magv.Name = "txt_magv";
+            this.txt_magv.Size = new System.Drawing.Size(179, 26);
+            this.txt_magv.TabIndex = 16;
+            this.Load += new System.EventHandler(this.txt_magv_Load);
             // 
             // THEM_PHANCONG_TABLE
             // 
@@ -224,7 +226,6 @@
         private System.Windows.Forms.DataGridView dgv_khmo;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lb_magv;
-        private System.Windows.Forms.TextBox txt_magv;
         private System.Windows.Forms.Label lb_mahp;
         private System.Windows.Forms.TextBox txt_mahp;
         private System.Windows.Forms.Label lb_hk;
@@ -234,5 +235,6 @@
         private System.Windows.Forms.Label lb_mact;
         private System.Windows.Forms.TextBox txt_mact;
         private System.Windows.Forms.Button btt_them;
+        private System.Windows.Forms.ComboBox txt_magv;
     }
 }

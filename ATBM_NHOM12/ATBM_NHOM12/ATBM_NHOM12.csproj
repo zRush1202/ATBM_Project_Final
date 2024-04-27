@@ -102,6 +102,12 @@
     <Compile Include="Forms\Add_User.Designer.cs">
       <DependentUpon>Add_User.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DANGKY_TABLE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DANGKY_TABLE.Designer.cs">
+      <DependentUpon>DANGKY_TABLE.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DeleteRole.cs">
       <SubType>Form</SubType>
     </Compile>
