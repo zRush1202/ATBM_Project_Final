@@ -21,10 +21,6 @@ namespace ATBM_NHOM12.Forms
         private string mactOld = "";
         private string hkOld = "";
         private string namOld = "";
-        private string dthOld = "";
-        private string dqtOld = "";
-        private string dckOld = "";
-        private string dtkOld = "";
         public static OracleConnection con = LoginProvider.conn;
         public DANGKY_TABLE(string username, string role)
         {
@@ -89,20 +85,9 @@ namespace ATBM_NHOM12.Forms
             txt_magv.Text = "";
             txt_mahp.Text = "";
             txt_hk.Text = "";
-            txt_mact.Text = ""; txt_magv.Text = "";
-            txt_mahp.Text = "";
-            txt_hk.Text = "";
-            txt_mact.Text = "";
-            txt_nam.Text = ""; txt_magv.Text = "";
-            txt_mahp.Text = "";
-            txt_hk.Text = "";
             txt_mact.Text = "";
             txt_nam.Text = "";
-            txt_nam.Text = "";
-            txt_dth.Text = "";
-            txt_dqt.Text = "";
-            txt_dck.Text = "";
-            txt_dtk.Text = "";
+
         }
         private void dgv_dangky_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -122,19 +107,107 @@ namespace ATBM_NHOM12.Forms
                 txt_nam.Text = row.Cells["NAM"].Value.ToString();
                 this.namOld = row.Cells["NAM"].Value.ToString();
                 txt_dth.Text = row.Cells["DIEMTH"].Value.ToString();
-                this.dthOld = row.Cells["DIEMTH"].Value.ToString();
                 txt_dqt.Text = row.Cells["DIEMQT"].Value.ToString();
-                this.dqtOld = row.Cells["DIEMQT"].Value.ToString();
                 txt_dck.Text = row.Cells["DIEMCK"].Value.ToString();
-                this.dckOld = row.Cells["DIEMCK"].Value.ToString();
                 txt_dtk.Text = row.Cells["DIEMTK"].Value.ToString();
-                this.dtkOld = row.Cells["DIEMTK"].Value.ToString();
             }
         }
 
         private void btt_them_Click(object sender, EventArgs e)
         {
+            THEM_DANGKY_TABLE newForm = new THEM_DANGKY_TABLE();
+            newForm.Show();
+        }
 
+        private void btt_xoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
+                string masv = txt_masv.Text;
+                string magv = txt_magv.Text;
+                string mahp = txt_mahp.Text;
+                int hk = int.Parse(txt_hk.Text);
+                int nam = int.Parse(txt_nam.Text);
+                string mact = txt_mact.Text;
+
+                // Hiển thị giá trị của các biến trong một MessageBox
+                //MessageBox.Show($"magv: {magv}, mahp: {mahp}, hk: {hk}, nam: {nam}, mact: {mact}");
+
+                // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
+                var cmd = new OracleCommand();
+                cmd.CommandText = $"DELETE FROM ADPRO.DANGKY where masv = '{masv}' and magv ='{magv}' and mahp = '{mahp}' and hk = {hk} and nam = {nam} and mact = '{mact}'";
+                cmd.Connection = con;
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    // Thông báo thành công hoặc thực hiện các hành động khác sau khi thêm thành công
+                    MessageBox.Show("Xóa dữ liệu thành công!");
+                }
+                else
+                {
+                    MessageBox.Show("Không có dữ liệu nào được xóa!");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ ở đây, ví dụ: hiển thị thông báo lỗi
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btt_capnhat_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
+                string magv = txt_magv.Text;
+                string mahp = txt_mahp.Text;
+                int hk = int.Parse(txt_hk.Text);
+                int nam = int.Parse(txt_nam.Text);
+                string mact = txt_mact.Text;
+                string dth = txt_dth.Text;
+                string dqt = txt_dqt.Text;
+                string dck = txt_dck.Text;
+                string dtk = txt_dtk.Text;
+                // Hiển thị giá trị của các biến trong một MessageBox
+                //MessageBox.Show($"magv: {magv}, mahp: {mahp}, hk: {hk}, nam: {nam}, mact: {mact}");
+
+                //MessageBox.Show($"magvold: {this.magvOld}, mahpold: {this.mahpOld}, hkold: {this.hkOld}, namOld: {this.namOld}, mactOld: {this.mactOld}");
+
+                // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
+                var cmd = new OracleCommand();
+                cmd.CommandText = $"UPDATE ADPRO.DANGKY set magv ='{magv}', mahp = '{mahp}', hk = {hk}, nam = {nam}, mact = '{mact}' where " +
+                    $"magv ='{this.magvOld}' and mahp = '{this.mahpOld}' and hk = {this.hkOld} and nam = {this.namOld} and mact = '{this.mactOld}' ";
+                cmd.Connection = con;
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    // Thông báo thành công hoặc thực hiện các hành động khác sau khi thêm thành công
+                    MessageBox.Show("Cập nhật dữ liệu thành công!");
+                }
+                else
+                {
+                    if (this.roleUser == "RL_TRUONGDV")
+                    {
+                        MessageBox.Show("Học phần không thuộc đơn vị mình làm trưởng!");
+                    }
+                    else
+                        // Thông báo khi không có dòng nào bị xóa
+                        MessageBox.Show("Không có dữ liệu nào được cập nhật!");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ ở đây, ví dụ: hiển thị thông báo lỗi
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btt_capnhatdiem_Click(object sender, EventArgs e)
+        {
+            CAPNHATDIEM_DANGKY_TABLE newForm = new CAPNHATDIEM_DANGKY_TABLE(this.masvOld,this.magvOld,this.mahpOld,this.hkOld, this.namOld, this.mactOld);
+            newForm.Show();
         }
     }
 }
