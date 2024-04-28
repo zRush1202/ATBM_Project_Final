@@ -43,13 +43,13 @@
             this.lb_mahp = new System.Windows.Forms.Label();
             this.cb_phancong = new System.Windows.Forms.GroupBox();
             this.btt_refreshds = new System.Windows.Forms.Button();
-            this.dgv_phancong = new System.Windows.Forms.DataGridView();
+            this.dgv_KHMO = new System.Windows.Forms.DataGridView();
             this.btt_timkiem = new System.Windows.Forms.Button();
             this.lb_tk_mhp = new System.Windows.Forms.Label();
             this.txt_tk_mhp = new System.Windows.Forms.TextBox();
             this.cb_thongtin.SuspendLayout();
             this.cb_phancong.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_phancong)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_KHMO)).BeginInit();
             this.SuspendLayout();
             // 
             // cb_thongtin
@@ -201,7 +201,7 @@
             // cb_phancong
             // 
             this.cb_phancong.Controls.Add(this.btt_refreshds);
-            this.cb_phancong.Controls.Add(this.dgv_phancong);
+            this.cb_phancong.Controls.Add(this.dgv_KHMO);
             this.cb_phancong.Controls.Add(this.btt_timkiem);
             this.cb_phancong.Controls.Add(this.lb_tk_mhp);
             this.cb_phancong.Controls.Add(this.txt_tk_mhp);
@@ -224,15 +224,16 @@
             this.btt_refreshds.UseVisualStyleBackColor = true;
             this.btt_refreshds.Click += new System.EventHandler(this.btt_refreshds_Click);
             // 
-            // dgv_phancong
+            // dgv_KHMO
             // 
-            this.dgv_phancong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_phancong.Location = new System.Drawing.Point(6, 66);
-            this.dgv_phancong.Name = "dgv_phancong";
-            this.dgv_phancong.RowHeadersWidth = 51;
-            this.dgv_phancong.RowTemplate.Height = 24;
-            this.dgv_phancong.Size = new System.Drawing.Size(1135, 331);
-            this.dgv_phancong.TabIndex = 3;
+            this.dgv_KHMO.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_KHMO.Location = new System.Drawing.Point(6, 66);
+            this.dgv_KHMO.Name = "dgv_KHMO";
+            this.dgv_KHMO.RowHeadersWidth = 51;
+            this.dgv_KHMO.RowTemplate.Height = 24;
+            this.dgv_KHMO.Size = new System.Drawing.Size(1135, 331);
+            this.dgv_KHMO.TabIndex = 3;
+            this.dgv_KHMO.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_KHMO_CellClick);
             // 
             // btt_timkiem
             // 
@@ -276,7 +277,7 @@
             this.cb_thongtin.PerformLayout();
             this.cb_phancong.ResumeLayout(false);
             this.cb_phancong.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_phancong)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_KHMO)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -295,7 +296,7 @@
         private System.Windows.Forms.Label lb_mahp;
         private System.Windows.Forms.GroupBox cb_phancong;
         private System.Windows.Forms.Button btt_refreshds;
-        private System.Windows.Forms.DataGridView dgv_phancong;
+        private System.Windows.Forms.DataGridView dgv_KHMO;
         private System.Windows.Forms.Button btt_timkiem;
         private System.Windows.Forms.Label lb_tk_mhp;
         private System.Windows.Forms.TextBox txt_tk_mhp;

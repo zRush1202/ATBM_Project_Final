@@ -36,20 +36,20 @@
             this.lb_tk_mhp = new System.Windows.Forms.Label();
             this.txt_tk_mhp = new System.Windows.Forms.TextBox();
             this.cb_thongtin = new System.Windows.Forms.GroupBox();
+            this.txt_mact = new System.Windows.Forms.ComboBox();
+            this.txt_hk = new System.Windows.Forms.ComboBox();
             this.txt_magv = new System.Windows.Forms.ComboBox();
             this.btt_refreshtt = new System.Windows.Forms.Button();
             this.btt_capnhat = new System.Windows.Forms.Button();
             this.btt_xoa = new System.Windows.Forms.Button();
             this.btt_them = new System.Windows.Forms.Button();
+            this.txt_nam = new System.Windows.Forms.TextBox();
             this.txt_mahp = new System.Windows.Forms.TextBox();
             this.lb_mact = new System.Windows.Forms.Label();
             this.lb_nam = new System.Windows.Forms.Label();
             this.lb_hk = new System.Windows.Forms.Label();
             this.lb_magv = new System.Windows.Forms.Label();
             this.lb_mahp = new System.Windows.Forms.Label();
-            this.txt_hk = new System.Windows.Forms.ComboBox();
-            this.txt_nam = new System.Windows.Forms.TextBox();
-            this.txt_mact = new System.Windows.Forms.ComboBox();
             this.cb_phancong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_phancong)).BeginInit();
             this.cb_thongtin.SuspendLayout();
@@ -66,7 +66,7 @@
             this.cb_phancong.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_phancong.Location = new System.Drawing.Point(12, 12);
             this.cb_phancong.Name = "cb_phancong";
-            this.cb_phancong.Size = new System.Drawing.Size(1147, 559);
+            this.cb_phancong.Size = new System.Drawing.Size(1147, 419);
             this.cb_phancong.TabIndex = 0;
             this.cb_phancong.TabStop = false;
             this.cb_phancong.Text = "DANH SÁCH PHÂN CÔNG";
@@ -100,7 +100,7 @@
             this.dgv_phancong.Name = "dgv_phancong";
             this.dgv_phancong.RowHeadersWidth = 51;
             this.dgv_phancong.RowTemplate.Height = 24;
-            this.dgv_phancong.Size = new System.Drawing.Size(1135, 487);
+            this.dgv_phancong.Size = new System.Drawing.Size(1135, 347);
             this.dgv_phancong.TabIndex = 3;
             this.dgv_phancong.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_phancong_CellClick);
             // 
@@ -149,12 +149,33 @@
             this.cb_thongtin.Controls.Add(this.lb_magv);
             this.cb_thongtin.Controls.Add(this.lb_mahp);
             this.cb_thongtin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_thongtin.Location = new System.Drawing.Point(12, 577);
+            this.cb_thongtin.Location = new System.Drawing.Point(12, 437);
             this.cb_thongtin.Name = "cb_thongtin";
-            this.cb_thongtin.Size = new System.Drawing.Size(1147, 275);
+            this.cb_thongtin.Size = new System.Drawing.Size(1147, 269);
             this.cb_thongtin.TabIndex = 1;
             this.cb_thongtin.TabStop = false;
             this.cb_thongtin.Text = "THÔNG TIN PHÂN CÔNG";
+            // 
+            // txt_mact
+            // 
+            this.txt_mact.FormattingEnabled = true;
+            this.txt_mact.Items.AddRange(new object[] {
+            "CQ",
+            "CLC",
+            "CTTT",
+            "VP"});
+            this.txt_mact.Location = new System.Drawing.Point(584, 55);
+            this.txt_mact.Name = "txt_mact";
+            this.txt_mact.Size = new System.Drawing.Size(179, 26);
+            this.txt_mact.TabIndex = 15;
+            // 
+            // txt_hk
+            // 
+            this.txt_hk.FormattingEnabled = true;
+            this.txt_hk.Location = new System.Drawing.Point(155, 200);
+            this.txt_hk.Name = "txt_hk";
+            this.txt_hk.Size = new System.Drawing.Size(179, 26);
+            this.txt_hk.TabIndex = 14;
             // 
             // txt_magv
             // 
@@ -163,7 +184,6 @@
             this.txt_magv.Name = "txt_magv";
             this.txt_magv.Size = new System.Drawing.Size(179, 26);
             this.txt_magv.TabIndex = 13;
-            this.Load += new System.EventHandler(this.txt_magv_Load);
             // 
             // btt_refreshtt
             // 
@@ -208,6 +228,13 @@
             this.btt_them.Text = "THÊM";
             this.btt_them.UseVisualStyleBackColor = true;
             this.btt_them.Click += new System.EventHandler(this.btt_them_Click);
+            // 
+            // txt_nam
+            // 
+            this.txt_nam.Location = new System.Drawing.Point(584, 120);
+            this.txt_nam.Name = "txt_nam";
+            this.txt_nam.Size = new System.Drawing.Size(179, 24);
+            this.txt_nam.TabIndex = 9;
             // 
             // txt_mahp
             // 
@@ -266,39 +293,11 @@
             this.lb_mahp.TabIndex = 0;
             this.lb_mahp.Text = "Mã học phần ";
             // 
-            // txt_hk
-            // 
-            this.txt_hk.FormattingEnabled = true;
-            this.txt_hk.Location = new System.Drawing.Point(155, 200);
-            this.txt_hk.Name = "txt_hk";
-            this.txt_hk.Size = new System.Drawing.Size(179, 26);
-            this.txt_hk.TabIndex = 14;
-            // 
-            // txt_nam
-            // 
-            this.txt_nam.Location = new System.Drawing.Point(584, 120);
-            this.txt_nam.Name = "txt_nam";
-            this.txt_nam.Size = new System.Drawing.Size(179, 24);
-            this.txt_nam.TabIndex = 9;
-            // 
-            // txt_mact
-            // 
-            this.txt_mact.FormattingEnabled = true;
-            this.txt_mact.Items.AddRange(new object[] {
-            "CQ",
-            "CLC",
-            "CTTT",
-            "VP"});
-            this.txt_mact.Location = new System.Drawing.Point(584, 55);
-            this.txt_mact.Name = "txt_mact";
-            this.txt_mact.Size = new System.Drawing.Size(179, 26);
-            this.txt_mact.TabIndex = 15;
-            // 
             // PHANCONG_TABLE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1171, 864);
+            this.ClientSize = new System.Drawing.Size(1172, 718);
             this.Controls.Add(this.cb_thongtin);
             this.Controls.Add(this.cb_phancong);
             this.Name = "PHANCONG_TABLE";

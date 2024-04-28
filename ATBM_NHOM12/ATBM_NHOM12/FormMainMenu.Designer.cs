@@ -238,6 +238,7 @@
             this.btnSinhVien.TabIndex = 13;
             this.btnSinhVien.Text = "Sinh viên";
             this.btnSinhVien.UseVisualStyleBackColor = false;
+            this.btnSinhVien.Click += new System.EventHandler(this.btnSinhVien_Click);
             // 
             // btnTTCNSV
             // 

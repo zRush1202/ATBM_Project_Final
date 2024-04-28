@@ -420,6 +420,13 @@ namespace ATBM_NHOM12
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
 
+        private void btnSinhVien_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new QL_DSSINHVIEN_TABLE(), sender);
+            lblTitle.Text = "QUẢN LÝ SINH VIÊN";
+            CenterLabelInPanel(lblTitle, panelTitleBar);
+        }
+
         private void btnKHMo_Click(object sender, EventArgs e)
         {
             OpenChildForm(new KHMO_TABLE(), sender);

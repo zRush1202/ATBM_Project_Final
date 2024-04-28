@@ -20,7 +20,7 @@ namespace ATBM_NHOM12.Forms
         }
         private void TTCN_SINHVIEN_Load(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM ADPRO.SINHVIEN"; // Thay <điều_kiện_lọc> bằng điều kiện bạn muốn lọc dữ liệu
+            string query = "SELECT * FROM ADPRO.SINHVIEN";
             OracleCommand cmd = new OracleCommand(query, con);
 
             try
