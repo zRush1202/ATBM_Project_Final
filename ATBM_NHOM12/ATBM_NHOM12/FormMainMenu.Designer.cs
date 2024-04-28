@@ -158,6 +158,7 @@
             this.btnPhanCong.TabIndex = 10;
             this.btnPhanCong.Text = "Phân công";
             this.btnPhanCong.UseVisualStyleBackColor = false;
+            this.btnPhanCong.Click += new System.EventHandler(this.btnPhanCong_Click);
             // 
             // btnHocPhan
             // 
@@ -175,6 +176,7 @@
             this.btnHocPhan.TabIndex = 9;
             this.btnHocPhan.Text = "Học Phần";
             this.btnHocPhan.UseVisualStyleBackColor = false;
+            this.btnHocPhan.Click += new System.EventHandler(this.btnHocPhan_Click);
             // 
             // btnDonVi
             // 
@@ -192,6 +194,7 @@
             this.btnDonVi.TabIndex = 8;
             this.btnDonVi.Text = "Đơn vị";
             this.btnDonVi.UseVisualStyleBackColor = false;
+            this.btnDonVi.Click += new System.EventHandler(this.btnDonVi_Click);
             // 
             // btnKHMo
             // 
@@ -261,6 +264,7 @@
             this.btnTTCNSV.TabIndex = 12;
             this.btnTTCNSV.Text = "Thông tin cá nhân";
             this.btnTTCNSV.UseVisualStyleBackColor = false;
+            this.btnTTCNSV.Click += new System.EventHandler(this.btnTTCNSV_Click);
             // 
             // btnTTCNNS
             // 
@@ -278,6 +282,7 @@
             this.btnTTCNNS.TabIndex = 11;
             this.btnTTCNNS.Text = "Thông tin cá nhân";
             this.btnTTCNNS.UseVisualStyleBackColor = false;
+            this.btnTTCNNS.Click += new System.EventHandler(this.btnTTCNNS_Click);
             // 
             // btnLogin
             // 

@@ -168,6 +168,12 @@
     <Compile Include="Forms\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\KHMO_TABLE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\KHMO_TABLE.Designer.cs">
+      <DependentUpon>KHMO_TABLE.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PHANCONG_TABLE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -274,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\KHMO_TABLE.resx">
+      <DependentUpon>KHMO_TABLE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PHANCONG_TABLE.resx">
       <DependentUpon>PHANCONG_TABLE.cs</DependentUpon>

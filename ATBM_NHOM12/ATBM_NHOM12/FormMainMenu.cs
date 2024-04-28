@@ -346,23 +346,8 @@ namespace ATBM_NHOM12
 
         private void button3_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new Grant_Revoke_Privilege(), sender);
-            //CenterLabelInPanel(lblTitle, panelTitleBar);
-
-            OpenChildForm(new PHANCONG_TABLE(), sender);
+            OpenChildForm(new Grant_Revoke_Privilege(), sender);
             CenterLabelInPanel(lblTitle, panelTitleBar);
-
-            //OpenChildForm(new TTCANHAN_NHANSU(), sender);
-            //CenterLabelInPanel(lblTitle, panelTitleBar);
-
-            //OpenChildForm(new TTCN_SINHVIEN(), sender);
-            //CenterLabelInPanel(lblTitle, panelTitleBar);
-
-            //OpenChildForm(new HOCPHAN_TABLE(), sender);
-            //CenterLabelInPanel(lblTitle, panelTitleBar);
-
-            //OpenChildForm(new DONVI_TABLE(), sender);
-            //CenterLabelInPanel(lblTitle, panelTitleBar);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -434,6 +419,36 @@ namespace ATBM_NHOM12
         private void btnKHMo_Click(object sender, EventArgs e)
         {
             OpenChildForm(new KHMO_TABLE(), sender);
+            CenterLabelInPanel(lblTitle, panelTitleBar);
+        }
+
+        private void btnTTCNNS_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new TTCANHAN_NHANSU(), sender);
+            CenterLabelInPanel(lblTitle, panelTitleBar);
+        }
+
+        private void btnTTCNSV_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new TTCN_SINHVIEN(), sender);
+            CenterLabelInPanel(lblTitle, panelTitleBar);
+        }
+
+        private void btnDonVi_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new DONVI_TABLE(), sender);
+            CenterLabelInPanel(lblTitle, panelTitleBar);
+        }
+
+        private void btnHocPhan_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new HOCPHAN_TABLE(), sender);
+            CenterLabelInPanel(lblTitle, panelTitleBar);
+        }
+
+        private void btnPhanCong_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new PHANCONG_TABLE(), sender);
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
     }
