@@ -192,7 +192,7 @@ namespace ATBM_NHOM12.Forms
             }
             else
             {
-                string query = $"SELECT * FROM ADPRO.PHANCONG WHERE username LIKE '%{txt_tk_mhp.Text}%'";
+                string query = $"SELECT * FROM ADPRO.PHANCONG WHERE mahp LIKE '%{txt_tk_mhp.Text}%'";
                 OracleDataAdapter adapter = new OracleDataAdapter(query, con);
                 DataTable dataTable = new DataTable();
                 try
