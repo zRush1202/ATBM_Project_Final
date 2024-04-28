@@ -63,6 +63,16 @@ namespace ATBM_NHOM12.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _6cfa8c8327eac1dc73ca7956fc5cf845 {
+            get {
+                object obj = ResourceManager.GetObject("6cfa8c8327eac1dc73ca7956fc5cf845", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap editButton {
             get {
                 object obj = ResourceManager.GetObject("editButton", resourceCulture);
@@ -73,9 +83,39 @@ namespace ATBM_NHOM12.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap free_notification_bell_icon_5743_thumb {
+            get {
+                object obj = ResourceManager.GetObject("free-notification-bell-icon-5743-thumb", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap info {
             get {
                 object obj = ResourceManager.GetObject("info", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap notification_bell_5743 {
+            get {
+                object obj = ResourceManager.GetObject("notification-bell-5743", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_clipart_school_district_computer_icons_education_school_angle_text {
+            get {
+                object obj = ResourceManager.GetObject("png-clipart-school-district-computer-icons-education-school-angle-text", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
