@@ -223,6 +223,7 @@
             this.btnNhanSu.TabIndex = 14;
             this.btnNhanSu.Text = "Nhân sự";
             this.btnNhanSu.UseVisualStyleBackColor = false;
+            this.btnNhanSu.Click += new System.EventHandler(this.btnNhanSu_Click);
             // 
             // btnSinhVien
             // 
