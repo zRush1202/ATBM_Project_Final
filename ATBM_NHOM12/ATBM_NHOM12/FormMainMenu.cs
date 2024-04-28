@@ -150,6 +150,7 @@ namespace ATBM_NHOM12
             btnPhanCong.Visible = false;
             btnTTCNNS.Visible = false;
             btnTTCNSV.Visible = false;
+            ptbxNotify.Image = Properties.Resources.png_clipart_school_district_computer_icons_education_school_angle_text;
             ActivateButton(btnLogin);
             lblTitle.Text = "ĐĂNG NHẬP HỆ THỐNG";
             CenterLabelInPanel(lblTitle, panelTitleBar);
@@ -164,6 +165,7 @@ namespace ATBM_NHOM12
 
         private void ChildForm_ButtonClicked(object sender, EventArgs e)
         {
+            ptbxNotify.Image = Properties.Resources.notification_bell_5743;
             if (e is RoleEventArgs roleEventArgs)
             {
                 role = roleEventArgs.Role.Trim();
@@ -180,7 +182,6 @@ namespace ATBM_NHOM12
                 btnLogout.Visible = true;
                 btnLogin.Visible = false;
                 btnGrantPriv.Visible = true;
-                label2.Enabled = true;
                 panelLogo.Enabled = true;
                 btnDangKy.Visible = false;
                 btnDonVi.Visible = false;
@@ -374,7 +375,6 @@ namespace ATBM_NHOM12
             btnLogout.Visible = false;
             btnGrantPriv.Visible = false;
             btnLogin.Visible = true;
-            label2.Enabled = false;
             panelLogo.Enabled = false;
             btnDonVi.Visible = false;
             btnHocPhan.Visible = false;
@@ -385,6 +385,7 @@ namespace ATBM_NHOM12
             btnKHMo.Visible = false;
             btnDangKy.Visible = false;
             btnPhanCong.Visible = false;
+            ptbxNotify.Image = Properties.Resources.png_clipart_school_district_computer_icons_education_school_angle_text;
             lblTitle.Text = "ĐĂNG NHẬP HỆ THỐNG";
             CenterLabelInPanel(lblTitle, panelTitleBar);
             LoginUI loginUI = new LoginUI();

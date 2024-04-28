@@ -138,6 +138,12 @@
     <Compile Include="Forms\EditUser.Designer.cs">
       <DependentUpon>EditUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormNotification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormNotification.Designer.cs">
+      <DependentUpon>FormNotification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Grant_Privilege.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -245,6 +251,9 @@
     <EmbeddedResource Include="Forms\EditUser.resx">
       <DependentUpon>EditUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormNotification.resx">
+      <DependentUpon>FormNotification.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Grant_Privilege.resx">
       <DependentUpon>Grant_Privilege.cs</DependentUpon>
     </EmbeddedResource>
@@ -319,6 +328,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-notification-bell-icon-5743-thumb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6cfa8c8327eac1dc73ca7956fc5cf845.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notification-bell-5743.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\png-clipart-school-district-computer-icons-education-school-angle-text.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets')" />

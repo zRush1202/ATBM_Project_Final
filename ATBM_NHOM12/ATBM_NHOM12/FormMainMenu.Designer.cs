@@ -36,7 +36,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelDesktopPane = new System.Windows.Forms.Panel();
@@ -49,9 +48,11 @@
             this.btnSinhVien = new System.Windows.Forms.Button();
             this.btnNhanSu = new System.Windows.Forms.Button();
             this.btnKHMo = new System.Windows.Forms.Button();
+            this.ptbxNotify = new System.Windows.Forms.PictureBox();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbxNotify)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -190,27 +191,13 @@
             // panelLogo
             // 
             this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(55)))), ((int)(((byte)(77)))));
-            this.panelLogo.Controls.Add(this.label2);
+            this.panelLogo.Controls.Add(this.ptbxNotify);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLogo.Enabled = false;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(222, 122);
             this.panelLogo.TabIndex = 0;
             this.panelLogo.Click += new System.EventHandler(this.panelLogo_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Enabled = false;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(61, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 26);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Group 12";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panelTitleBar
             // 
@@ -396,6 +383,16 @@
             this.btnKHMo.Text = "Kế hoạch mở môn";
             this.btnKHMo.UseVisualStyleBackColor = false;
             // 
+            // ptbxNotify
+            // 
+            this.ptbxNotify.Image = global::ATBM_NHOM12.Properties.Resources.notification_bell_5743;
+            this.ptbxNotify.Location = new System.Drawing.Point(61, 18);
+            this.ptbxNotify.Name = "ptbxNotify";
+            this.ptbxNotify.Size = new System.Drawing.Size(103, 86);
+            this.ptbxNotify.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbxNotify.TabIndex = 3;
+            this.ptbxNotify.TabStop = false;
+            // 
             // FormMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -412,9 +409,9 @@
             this.Load += new System.EventHandler(this.FormMainMenu_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
-            this.panelLogo.PerformLayout();
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbxNotify)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -426,7 +423,6 @@
         private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.Panel panelTitleBar;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnGrantPriv;
@@ -442,6 +438,7 @@
         private System.Windows.Forms.Button btnNhanSu;
         private System.Windows.Forms.Button btnSinhVien;
         private System.Windows.Forms.Button btnKHMo;
+        private System.Windows.Forms.PictureBox ptbxNotify;
     }
 }
 

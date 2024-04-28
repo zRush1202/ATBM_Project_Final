@@ -161,24 +161,6 @@ BEGIN
 END;
 /
 
-
--- Gán nhãn để OLS cho user test.
-GRANT CONNECT TO NV0266;
-GRANT SELECT ON ADPRO.THONGBAO TO NV0266; 
-
-BEGIN
-    SA_USER_ADMIN.SET_USER_LABELS(
-    POLICY_NAME  =>'THONGBAO_POLICY',
-    USER_NAME  => 'NV0266',
-    MAX_READ_LABEL  => 'GV:CNPM'
-);
-END;
-/
-
-SELECT * FROM ADPRO.THONGBAO;
-
-SELECT * FROM ALL_SA_LABELS;
-
 --BEGIN
 --    SA_LABEL_ADMIN.DROP_LABEL(
 --    POLICY_NAME  =>'THONGBAO_POLICY',
@@ -187,12 +169,269 @@ SELECT * FROM ALL_SA_LABELS;
 --END;
 --/
 
+--Grant quyền cho role
+GRANT SELECT ON ADPRO.THONGBAO TO RL_TRUONGDV;
+GRANT SELECT ON ADPRO.THONGBAO TO RL_GIAOVU;
+GRANT SELECT ON ADPRO.THONGBAO TO RL_SINHVIEN;
+GRANT SELECT ON ADPRO.THONGBAO TO RL_NVCOBAN;
+GRANT SELECT ON ADPRO.THONGBAO TO RL_GIANGVIEN;
+GRANT SELECT ON ADPRO.THONGBAO TO RL_TRUONGKHOA;
+--set label cho từng user trong role
+--Trưởng khoa
+DECLARE
+    v_user_name VARCHAR2(100);
+    CURSOR c_users IS
+        SELECT grantee AS user_name
+        FROM dba_role_privs
+        WHERE granted_role = 'RL_TRUONGKHOA';
+BEGIN
+    OPEN c_users;
+    LOOP
+        FETCH c_users INTO v_user_name;
+        EXIT WHEN c_users%NOTFOUND; -- Thoát khi không có người dùng nào nữa
+        SA_USER_ADMIN.SET_USER_LABELS(
+            POLICY_NAME  => 'THONGBAO_POLICY',
+            USER_NAME    => v_user_name,
+            MAX_READ_LABEL => 'TK'
+        );
+    END LOOP;
+    CLOSE c_users;
+END;
+/
+
+--Trưởng đơn vị
+DECLARE
+    v_user_name VARCHAR2(100);
+    CURSOR c_users IS
+        SELECT grantee AS user_name
+        FROM dba_role_privs
+        WHERE granted_role = 'RL_TRUONGDV';
+BEGIN
+    OPEN c_users;
+    LOOP
+        FETCH c_users INTO v_user_name;
+        EXIT WHEN c_users%NOTFOUND; -- Thoát khi không có người dùng nào nữa
+        SA_USER_ADMIN.SET_USER_LABELS(
+            POLICY_NAME  => 'THONGBAO_POLICY',
+            USER_NAME    => v_user_name,
+            MAX_READ_LABEL => 'TDV'
+        );
+    END LOOP;
+    CLOSE c_users;
+END;
+/
+
+--Giáo vụ
+DECLARE
+    v_user_name VARCHAR2(100);
+    CURSOR c_users IS
+        SELECT grantee AS user_name
+        FROM dba_role_privs
+        WHERE granted_role = 'RL_GIAOVU';
+BEGIN
+    OPEN c_users;
+    LOOP
+        FETCH c_users INTO v_user_name;
+        EXIT WHEN c_users%NOTFOUND; -- Thoát khi không có người dùng nào nữa
+        SA_USER_ADMIN.SET_USER_LABELS(
+            POLICY_NAME  => 'THONGBAO_POLICY',
+            USER_NAME    => v_user_name,
+            MAX_READ_LABEL => 'GVU'
+        );
+    END LOOP;
+    CLOSE c_users;
+END;
+/
+
+--Giảng viên
+DECLARE
+    v_user_name VARCHAR2(100);
+    CURSOR c_users IS
+        SELECT grantee AS user_name
+        FROM dba_role_privs
+        WHERE granted_role = 'RL_GIANGVIEN';
+BEGIN
+    OPEN c_users;
+    LOOP
+        FETCH c_users INTO v_user_name;
+        EXIT WHEN c_users%NOTFOUND; -- Thoát khi không có người dùng nào nữa
+        SA_USER_ADMIN.SET_USER_LABELS(
+            POLICY_NAME  => 'THONGBAO_POLICY',
+            USER_NAME    => v_user_name,
+            MAX_READ_LABEL => 'GV'
+        );
+    END LOOP;
+    CLOSE c_users;
+END;
+/
+
+--Nhân viên cơ bản
+DECLARE
+    v_user_name VARCHAR2(100);
+    CURSOR c_users IS
+        SELECT grantee AS user_name
+        FROM dba_role_privs
+        WHERE granted_role = 'RL_NVCOBAN';
+BEGIN
+    OPEN c_users;
+    LOOP
+        FETCH c_users INTO v_user_name;
+        EXIT WHEN c_users%NOTFOUND; -- Thoát khi không có người dùng nào nữa
+        SA_USER_ADMIN.SET_USER_LABELS(
+            POLICY_NAME  => 'THONGBAO_POLICY',
+            USER_NAME    => v_user_name,
+            MAX_READ_LABEL => 'NV'
+        );
+    END LOOP;
+    CLOSE c_users;
+END;
+/
+
+--Sinh viên
+DECLARE
+    v_user_name VARCHAR2(100);
+    CURSOR c_users IS
+        SELECT grantee AS user_name
+        FROM dba_role_privs
+        WHERE granted_role = 'RL_SINHVIEN';
+BEGIN
+    OPEN c_users;
+    LOOP
+        FETCH c_users INTO v_user_name;
+        EXIT WHEN c_users%NOTFOUND; -- Thoát khi không có người dùng nào nữa
+        SA_USER_ADMIN.SET_USER_LABELS(
+            POLICY_NAME  => 'THONGBAO_POLICY',
+            USER_NAME    => v_user_name,
+            MAX_READ_LABEL => 'SV'
+        );
+    END LOOP;
+    CLOSE c_users;
+END;
+/
 
 -- a)
+GRANT CONNECT TO NV0042;
+GRANT SELECT ON ADPRO.THONGBAO TO NV0042; 
+
+BEGIN
+    SA_USER_ADMIN.SET_USER_LABELS(
+    POLICY_NAME  =>'THONGBAO_POLICY',
+    USER_NAME  => 'NV0042',
+    MAX_READ_LABEL  => 'TK'
+);
+END;
+/
+
 -- b)
+SA_USER_ADMIN.SET_USER_LABELS(
+    POLICY_NAME  => 'THONGBAO_POLICY',
+    USER_NAME    => 'NV0069',
+    MAX_READ_LABEL => 'TDV::CS2'
+);
+/
+
 -- c)
+SA_USER_ADMIN.SET_USER_LABELS(
+    POLICY_NAME  => 'THONGBAO_POLICY',
+    USER_NAME    => 'NV1111',
+    MAX_READ_LABEL => 'GVU:HTTT,CNPM,KHMT,CNTT,TGMT,MMT:CS1,CS2'
+);
+
+/
 -- d)
+INSERT INTO ADPRO.THONGBAO (ID, NoiDung, THONGBAO_LABEL)
+VALUES (20, N'Thông báo t1 cho Trưởng Đơn Vị .', CHAR_TO_LABEL('THONGBAO_POLICY', 'TDV'));
+
+UPDATE ADPRO.THONGBAO
+SET NoiDung = NoiDung;
+COMMIT;
 -- e)
+INSERT INTO ADPRO.THONGBAO (ID, NoiDung, THONGBAO_LABEL)
+VALUES (21, N'Thông báo t2 cho Sinh viên HTTT học ở Cở sở 1.', CHAR_TO_LABEL('THONGBAO_POLICY', 'SV:HTTT:CS1'));
+
+UPDATE ADPRO.THONGBAO
+SET NoiDung = NoiDung;
+COMMIT;
+
+--test
+SA_USER_ADMIN.SET_USER_LABELS(
+    POLICY_NAME  => 'THONGBAO_POLICY',
+    USER_NAME    => 'SV0005',
+    MAX_READ_LABEL => 'SV:HTTT:CS1'
+);
+/
 -- f)
+INSERT INTO ADPRO.THONGBAO (ID, NoiDung, THONGBAO_LABEL)
+VALUES (22, N'Thông báo t3 cho Trưởng bộ môn KHMT ở Cơ sở 1 và Cơ sở 2.', CHAR_TO_LABEL('THONGBAO_POLICY', 'TDV:KHMT:CS1'));
+
+UPDATE ADPRO.THONGBAO
+SET NoiDung = NoiDung;
+COMMIT;
+
+--test
+SA_USER_ADMIN.SET_USER_LABELS(
+    POLICY_NAME  => 'THONGBAO_POLICY',
+    USER_NAME    => 'NV0204',
+    MAX_READ_LABEL => 'TDV:KHMT:CS1'
+);
+/
 -- g)
+INSERT INTO ADPRO.THONGBAO (ID, NoiDung, THONGBAO_LABEL)
+VALUES (23, N'Thông báo t4 cho Trưởng bộ môn KHMT ở Cơ sở 1 và Cơ sở 2.', CHAR_TO_LABEL('THONGBAO_POLICY', 'TDV:KHMT:CS1,CS2'));
+
+UPDATE ADPRO.THONGBAO
+SET NoiDung = NoiDung;
+COMMIT;
+
+--test
+SA_USER_ADMIN.SET_USER_LABELS(
+    POLICY_NAME  => 'THONGBAO_POLICY',
+    USER_NAME    => 'NV0266',
+    MAX_READ_LABEL => 'TDV:KHMT:CS1,CS2'
+);
+/
 -- h)
+INSERT INTO ADPRO.THONGBAO (ID, NoiDung, THONGBAO_LABEL)
+VALUES (24, N'Thông báo t5 cho Nhân viên ở Cơ sở 1 và Cơ sở 2.', CHAR_TO_LABEL('THONGBAO_POLICY', 'NV::CS1,CS2'));
+
+UPDATE ADPRO.THONGBAO
+SET NoiDung = NoiDung;
+COMMIT;
+
+--test
+SA_USER_ADMIN.SET_USER_LABELS(
+    POLICY_NAME  => 'THONGBAO_POLICY',
+    USER_NAME    => 'NV2181',
+    MAX_READ_LABEL => 'NV::CS1,CS2'
+);
+/
+
+INSERT INTO ADPRO.THONGBAO (ID, NoiDung, THONGBAO_LABEL)
+VALUES (25, N'Thông báo t6 cho Giảng viên KHMT, HTTT ở Cơ sở 1.', CHAR_TO_LABEL('THONGBAO_POLICY', 'GV:KHMT,HTTT:CS1'));
+
+UPDATE ADPRO.THONGBAO
+SET NoiDung = NoiDung;
+COMMIT;
+
+--test
+SA_USER_ADMIN.SET_USER_LABELS(
+    POLICY_NAME  => 'THONGBAO_POLICY',
+    USER_NAME    => 'NV3321',
+    MAX_READ_LABEL => 'GV:KHMT,HTTT:CS1'
+);
+/
+
+INSERT INTO ADPRO.THONGBAO (ID, NoiDung, THONGBAO_LABEL)
+VALUES (26, N'Thông báo t7 cho Sinh viên HTTT ở Cơ sở 1.', CHAR_TO_LABEL('THONGBAO_POLICY', 'SV:HTTT:CS1'));
+
+UPDATE ADPRO.THONGBAO
+SET NoiDung = NoiDung;
+COMMIT;
+
+--test
+SA_USER_ADMIN.SET_USER_LABELS(
+    POLICY_NAME  => 'THONGBAO_POLICY',
+    USER_NAME    => 'SV0005',
+    MAX_READ_LABEL => 'SV:HTTT:CS1'
+);
+/
