@@ -1,108 +1,142 @@
+drop table adpro.dangky cascade constraints;
+drop table adpro.phancong cascade constraints;
+drop table adpro.khmo cascade constraints;
+drop table adpro.hocphan cascade constraints;
+drop table adpro.donvi cascade constraints;
+drop table adpro.nhansu cascade constraints;
+drop table adpro.sinhvien cascade constraints;
 
-DROP TABLE ADPRO.DANGKY CASCADE CONSTRAINTS;
-DROP TABLE ADPRO.PHANCONG CASCADE CONSTRAINTS;
-DROP TABLE ADPRO.KHMO CASCADE CONSTRAINTS;
-DROP TABLE ADPRO.HOCPHAN CASCADE CONSTRAINTS;
-DROP TABLE ADPRO.DONVI CASCADE CONSTRAINTS;
-DROP TABLE ADPRO.NHANSU CASCADE CONSTRAINTS;
-DROP TABLE ADPRO.SINHVIEN CASCADE CONSTRAINTS;
 
-
-create table ADPRO.NHANSU 
-(
-    MANV varchar(6),
-    HOTEN varchar(30),
-    PHAI varchar(3),
-    NGSINH date,
-    PHUCAP float,
-    DT char(10),
-    VAITRO varchar(30),
-    MADV varchar(6),
-    primary key(MANV)
+create table adpro.nhansu (
+	manv   varchar(6),
+	hoten  varchar(30),
+	phai   varchar(3),
+	ngsinh date,
+	phucap float,
+	dt     char(10),
+	vaitro varchar(30),
+	madv   varchar(6),
+	primary key ( manv )
 )
 /
-create table ADPRO.SINHVIEN
-(
-    MASV varchar(6),
-    HOTEN varchar(30),
-    PHAI varchar(3),
-    NGSINH date,
-    DCHI varchar(50),
-    DT char(10),
-    MACT varchar(6),
-    MANGANH varchar(6),
-    SOTCTL int,
-    DTBTL float,
-    primary key(MASV)
+create table adpro.sinhvien (
+	masv    varchar(6),
+	hoten   varchar(30),
+	phai    varchar(3),
+	ngsinh  date,
+	dchi    varchar(50),
+	dt      char(10),
+	mact    varchar(6),
+	manganh varchar(6),
+	sotctl  int,
+	dtbtl   float,
+	primary key ( masv )
 )
 /
-create table ADPRO.DONVI 
-(
-    MADV varchar(6), 
-    TENDV varchar(50),
-    TRGDV varchar(6),
-    primary key(MADV) 
+create table adpro.donvi (
+	madv  varchar(6),
+	tendv varchar(50),
+	trgdv varchar(6),
+	primary key ( madv )
 )
 /
-create table ADPRO.HOCPHAN
-(
-    MAHP varchar(6),
-    TENHP varchar(50),
-    SOTC int,
-    STLT int,
-    STTH int,
-    SOSVTD int,
-    MADV varchar(6),
-    primary key(MAHP)
+create table adpro.hocphan (
+	mahp   varchar(6),
+	tenhp  varchar(50),
+	sotc   int,
+	stlt   int,
+	stth   int,
+	sosvtd int,
+	madv   varchar(6),
+	primary key ( mahp )
 )
 /
-create table ADPRO.KHMO 
-(
-    MAHP varchar(6),
-    HK int,
-    NAM int,
-    MACT varchar(6),
-    primary key(MAHP, HK, NAM, MACT)
+create table adpro.khmo (
+	mahp varchar(6),
+	hk   int,
+	nam  int,
+	mact varchar(6),
+	primary key ( mahp,
+	              hk,
+	              nam,
+	              mact )
 )
 /
-create table ADPRO.PHANCONG
-(
-    MAGV varchar(6),
-    MAHP varchar(6),
-    HK int,
-    NAM int,
-    MACT varchar(6),
-    primary key (MAGV, MAHP, HK, NAM, MACT)
+create table adpro.phancong (
+	magv varchar(6),
+	mahp varchar(6),
+	hk   int,
+	nam  int,
+	mact varchar(6),
+	primary key ( magv,
+	              mahp,
+	              hk,
+	              nam,
+	              mact )
 )
 /
-create table ADPRO.DANGKY
-(
-    MASV varchar(6),
-    MAGV varchar(6),
-    MAHP varchar(6),
-    HK int,
-    NAM int,
-    MACT varchar(6),
-    DIEMTH float,
-    DIEMQT float,
-    DIEMCK float,
-    DIEMTK float,
-    primary key(MASV, MAGV, MAHP, HK,NAM, MACT)
+create table adpro.dangky (
+	masv   varchar(6),
+	magv   varchar(6),
+	mahp   varchar(6),
+	hk     int,
+	nam    int,
+	mact   varchar(6),
+	diemth float,
+	diemqt float,
+	diemck float,
+	diemtk float,
+	primary key ( masv,
+	              magv,
+	              mahp,
+	              hk,
+	              nam,
+	              mact )
 )
 /
 -- NhanVien
-alter table ADPRO.NHANSU add constraint FK_NHANSU_DONVI foreign key (MADV) references ADPRO.DONVI(MADV);
+alter table adpro.nhansu
+	add constraint fk_nhansu_donvi foreign key ( madv )
+		references adpro.donvi ( madv );
 -- SINHVIEN
 -- ĐƠN VỊ
-alter table ADPRO.DONVI add constraint FK_DONVI_NHANSU foreign key (TRGDV) references ADPRO.NHANSU(MANV);
+alter table adpro.donvi
+	add constraint fk_donvi_nhansu foreign key ( trgdv )
+		references adpro.nhansu ( manv );
 -- HỌC PHẦN
-alter table ADPRO.HOCPHAN add constraint FK_HOCPHAN_DONVI foreign key (MADV) references ADPRO.DONVI(MADV);
+alter table adpro.hocphan
+	add constraint fk_hocphan_donvi foreign key ( madv )
+		references adpro.donvi ( madv );
 -- KHMO
-alter table ADPRO.KHMO add constraint FK_KHMO_HOCPHAN foreign key (MAHP) references ADPRO.HOCPHAN(MAHP);
+alter table adpro.khmo
+	add constraint fk_khmo_hocphan foreign key ( mahp )
+		references adpro.hocphan ( mahp );
 -- PHANCONG
-alter table ADPRO.PHANCONG add constraint FK_PHANCONG_NHANSU foreign key (MAGV) references ADPRO.NHANSU(MANV);
-alter table ADPRO.PHANCONG add constraint FK_PHANCONG_HOCPHAN foreign key (MAHP,HK, NAM, MACT) references ADPRO.KHMO(MAHP, HK, NAM, MACT);
+alter table adpro.phancong
+	add constraint fk_phancong_nhansu foreign key ( magv )
+		references adpro.nhansu ( manv );
+alter table adpro.phancong
+	add constraint fk_phancong_hocphan foreign key ( mahp,
+	                                                 hk,
+	                                                 nam,
+	                                                 mact )
+		references adpro.khmo ( mahp,
+		                        hk,
+		                        nam,
+		                        mact );
 
 -- DANGKY
-alter table ADPRO.DANGKY add constraint FK_DANGKY_SINHVIEN foreign key (MASV) references ADPRO.SINHVIEN(MASV);
-alter table ADPRO.DANGKY add constraint FK_DANGKY_NHANSU foreign key (MAGV,MAHP,HK, NAM, MACT) references ADPRO.PHANCONG(MAGV,MAHP,HK, NAM, MACT);
+alter table adpro.dangky
+	add constraint fk_dangky_sinhvien foreign key ( masv )
+		references adpro.sinhvien ( masv );
+alter table adpro.dangky
+	add constraint fk_dangky_nhansu foreign key ( magv,
+	                                              mahp,
+	                                              hk,
+	                                              nam,
+	                                              mact )
+		references adpro.phancong ( magv,
+		                            mahp,
+		                            hk,
+		                            nam,
+		                            mact );

@@ -429,5 +429,11 @@ namespace ATBM_NHOM12
             OpenChildForm(new LoginUI(), sender);
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
+
+        private void btnSinhVien_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new QL_DSSINHVIEN_TABLE(), sender);
+            CenterLabelInPanel(lblTitle, panelTitleBar);
+        }
     }
 }

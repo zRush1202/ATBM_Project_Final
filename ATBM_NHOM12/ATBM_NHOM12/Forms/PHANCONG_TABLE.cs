@@ -59,7 +59,7 @@ namespace ATBM_NHOM12.Forms
                 this.namOld = row.Cells["NAM"].Value.ToString();
             }
         }
-
+                                                             
         private void btt_refreshtt_Click(object sender, EventArgs e)
         {
             txt_magv.Text = "";
