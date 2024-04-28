@@ -141,6 +141,15 @@ namespace ATBM_NHOM12
             button2.Visible = false;
             btnLogout.Visible = false;
             btnGrantPriv.Visible = false;
+            btnDangKy.Visible = false;
+            btnDonVi.Visible = false;
+            btnHocPhan.Visible = false;
+            btnKHMo.Visible = false;
+            btnNhanSu.Visible = false;
+            btnSinhVien.Visible = false;
+            btnPhanCong.Visible = false;
+            btnTTCNNS.Visible = false;
+            btnTTCNSV.Visible = false;
             ActivateButton(btnLogin);
             lblTitle.Text = "ĐĂNG NHẬP HỆ THỐNG";
             CenterLabelInPanel(lblTitle, panelTitleBar);
@@ -173,6 +182,15 @@ namespace ATBM_NHOM12
                 btnGrantPriv.Visible = true;
                 label2.Enabled = true;
                 panelLogo.Enabled = true;
+                btnDangKy.Visible = false;
+                btnDonVi.Visible = false;
+                btnHocPhan.Visible = false;
+                btnKHMo.Visible = false;
+                btnNhanSu.Visible = false;
+                btnPhanCong.Visible = false;
+                btnSinhVien.Visible = false;
+                btnTTCNNS.Visible = false;
+                btnTTCNSV.Visible = false;
                 Home home = new Home();
                 home.TopLevel = false;
                 home.FormBorderStyle = FormBorderStyle.None;
@@ -180,10 +198,137 @@ namespace ATBM_NHOM12
                 panelDesktopPane.Controls.Add(home);
                 home.Show();
             }
-            
-
-            // Hiển thị panel
-            //panelDesktopPane.Visible = true;
+            if (role == "RL_NVCOBAN")
+            {
+                panelDesktopPane.Controls.Clear();
+                // Hiển thị lại MainForm
+                lblTitle.Text = "HOME";
+                CenterLabelInPanel(lblTitle, panelTitleBar);
+                btnLogin.Visible = false;
+                btnTTCNNS.Visible = true;
+                btnSinhVien.Visible=true;
+                btnDonVi.Visible=true;
+                btnHocPhan.Visible=true;
+                btnKHMo.Visible=true;
+                btnLogout.Visible = true;
+                Home home = new Home();
+                home.TopLevel = false;
+                home.FormBorderStyle = FormBorderStyle.None;
+                home.Dock = DockStyle.Fill;
+                panelDesktopPane.Controls.Add(home);
+                home.Show();
+            }
+            if (role == "RL_GIANGVIEN")
+            {
+                panelDesktopPane.Controls.Clear();
+                // Hiển thị lại MainForm
+                lblTitle.Text = "HOME";
+                CenterLabelInPanel(lblTitle, panelTitleBar);
+                btnLogin.Visible = false;
+                btnTTCNNS.Visible = true;
+                btnSinhVien.Visible = true;
+                btnDonVi.Visible = true;
+                btnHocPhan.Visible = true;
+                btnKHMo.Visible = true;
+                btnLogout.Visible = true;
+                btnPhanCong.Visible = true;
+                btnDangKy.Visible = true;
+                Home home = new Home();
+                home.TopLevel = false;
+                home.FormBorderStyle = FormBorderStyle.None;
+                home.Dock = DockStyle.Fill;
+                panelDesktopPane.Controls.Add(home);
+                home.Show();
+            }
+            if (role == "RL_GIAOVU")
+            {
+                panelDesktopPane.Controls.Clear();
+                // Hiển thị lại MainForm
+                lblTitle.Text = "HOME";
+                CenterLabelInPanel(lblTitle, panelTitleBar);
+                btnLogin.Visible = false;
+                btnTTCNNS.Visible = true;
+                btnSinhVien.Visible = true;
+                btnDonVi.Visible = true;
+                btnHocPhan.Visible = true;
+                btnKHMo.Visible = true;
+                btnLogout.Visible = true;
+                btnSinhVien.Visible= true;
+                btnDonVi.Visible= true;
+                btnHocPhan.Visible= true;
+                btnKHMo.Visible = true;
+                btnPhanCong.Visible= true;
+                Home home = new Home();
+                home.TopLevel = false;
+                home.FormBorderStyle = FormBorderStyle.None;
+                home.Dock = DockStyle.Fill;
+                panelDesktopPane.Controls.Add(home);
+                home.Show();
+            }
+            if (role == "RL_TRUONGDV")
+            {
+                panelDesktopPane.Controls.Clear();
+                // Hiển thị lại MainForm
+                lblTitle.Text = "HOME";
+                CenterLabelInPanel(lblTitle, panelTitleBar);
+                btnLogin.Visible = false;
+                btnTTCNNS.Visible = true;
+                btnSinhVien.Visible = true;
+                btnDonVi.Visible = true;
+                btnHocPhan.Visible = true;
+                btnKHMo.Visible = true;
+                btnLogout.Visible = true;
+                btnPhanCong.Visible = true;
+                btnDangKy.Visible = true;
+                Home home = new Home();
+                home.TopLevel = false;
+                home.FormBorderStyle = FormBorderStyle.None;
+                home.Dock = DockStyle.Fill;
+                panelDesktopPane.Controls.Add(home);
+                home.Show();
+            }
+            if (role == "RL_TRUONGKHOA")
+            {
+                panelDesktopPane.Controls.Clear();
+                // Hiển thị lại MainForm
+                lblTitle.Text = "HOME";
+                CenterLabelInPanel(lblTitle, panelTitleBar);
+                btnLogin.Visible = false;
+                btnTTCNNS.Visible = true;
+                btnSinhVien.Visible = true;
+                btnDonVi.Visible = true;
+                btnHocPhan.Visible = true;
+                btnKHMo.Visible = true;
+                btnLogout.Visible = true;
+                btnPhanCong.Visible = true;
+                btnDangKy.Visible = true;
+                btnNhanSu.Visible = true;
+                Home home = new Home();
+                home.TopLevel = false;
+                home.FormBorderStyle = FormBorderStyle.None;
+                home.Dock = DockStyle.Fill;
+                panelDesktopPane.Controls.Add(home);
+                home.Show();
+            }
+            if (role == "RL_SINHVIEN")
+            {
+                panelDesktopPane.Controls.Clear();
+                // Hiển thị lại MainForm
+                lblTitle.Text = "HOME";
+                CenterLabelInPanel(lblTitle, panelTitleBar);
+                btnLogin.Visible = false;
+                btnTTCNSV.Visible = true;
+                btnHocPhan.Visible = true;
+                btnKHMo.Visible = true;
+                btnDangKy.Visible = true;
+                btnLogout.Visible = true;
+                Home home = new Home();
+                home.TopLevel = false;
+                home.FormBorderStyle = FormBorderStyle.None;
+                home.Dock = DockStyle.Fill;
+                panelDesktopPane.Controls.Add(home);
+                home.Show();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -231,6 +376,15 @@ namespace ATBM_NHOM12
             btnLogin.Visible = true;
             label2.Enabled = false;
             panelLogo.Enabled = false;
+            btnDonVi.Visible = false;
+            btnHocPhan.Visible = false;
+            btnTTCNNS.Visible = false;
+            btnTTCNSV.Visible = false;
+            btnSinhVien.Visible = false;
+            btnNhanSu.Visible = false;
+            btnKHMo.Visible = false;
+            btnDangKy.Visible = false;
+            btnPhanCong.Visible = false;
             lblTitle.Text = "ĐĂNG NHẬP HỆ THỐNG";
             CenterLabelInPanel(lblTitle, panelTitleBar);
             LoginUI loginUI = new LoginUI();

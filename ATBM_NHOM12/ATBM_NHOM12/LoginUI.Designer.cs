@@ -44,7 +44,7 @@ namespace ATBM_NHOM12
             this.title.AutoSize = true;
             this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.title.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.title.Location = new System.Drawing.Point(271, 107);
+            this.title.Location = new System.Drawing.Point(342, 164);
             this.title.Name = "title";
             this.title.Size = new System.Drawing.Size(504, 54);
             this.title.TabIndex = 0;
@@ -55,7 +55,7 @@ namespace ATBM_NHOM12
             // 
             this.label_user.AutoSize = true;
             this.label_user.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_user.Location = new System.Drawing.Point(275, 245);
+            this.label_user.Location = new System.Drawing.Point(341, 302);
             this.label_user.Name = "label_user";
             this.label_user.Size = new System.Drawing.Size(187, 25);
             this.label_user.TabIndex = 1;
@@ -65,7 +65,7 @@ namespace ATBM_NHOM12
             // 
             this.label_password.AutoSize = true;
             this.label_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_password.Location = new System.Drawing.Point(275, 297);
+            this.label_password.Location = new System.Drawing.Point(342, 354);
             this.label_password.Name = "label_password";
             this.label_password.Size = new System.Drawing.Size(125, 25);
             this.label_password.TabIndex = 2;
@@ -74,7 +74,7 @@ namespace ATBM_NHOM12
             // username
             // 
             this.username.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.username.Location = new System.Drawing.Point(493, 245);
+            this.username.Location = new System.Drawing.Point(560, 302);
             this.username.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(308, 27);
@@ -83,7 +83,7 @@ namespace ATBM_NHOM12
             // password
             // 
             this.password.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.password.Location = new System.Drawing.Point(493, 297);
+            this.password.Location = new System.Drawing.Point(560, 354);
             this.password.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(308, 27);
@@ -95,7 +95,7 @@ namespace ATBM_NHOM12
             this.login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.login.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.login.ForeColor = System.Drawing.Color.White;
-            this.login.Location = new System.Drawing.Point(449, 414);
+            this.login.Location = new System.Drawing.Point(516, 471);
             this.login.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.login.Name = "login";
             this.login.Size = new System.Drawing.Size(205, 54);
@@ -113,7 +113,7 @@ namespace ATBM_NHOM12
             "SYSDBA",
             "ADMIN",
             "DEFAULT"});
-            this.role.Location = new System.Drawing.Point(493, 350);
+            this.role.Location = new System.Drawing.Point(560, 407);
             this.role.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.role.Name = "role";
             this.role.Size = new System.Drawing.Size(308, 28);
@@ -123,7 +123,7 @@ namespace ATBM_NHOM12
             // 
             this.label_role.AutoSize = true;
             this.label_role.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_role.Location = new System.Drawing.Point(275, 352);
+            this.label_role.Location = new System.Drawing.Point(342, 409);
             this.label_role.Name = "label_role";
             this.label_role.Size = new System.Drawing.Size(99, 25);
             this.label_role.TabIndex = 5;
@@ -134,7 +134,7 @@ namespace ATBM_NHOM12
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ClientSize = new System.Drawing.Size(1096, 622);
+            this.ClientSize = new System.Drawing.Size(1171, 864);
             this.Controls.Add(this.role);
             this.Controls.Add(this.login);
             this.Controls.Add(this.label_role);
