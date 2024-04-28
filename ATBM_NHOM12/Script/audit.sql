@@ -89,10 +89,10 @@ SELECT VALUE
 FROM V$PARAMETER
 WHERE NAME = 'audit_trail';
 
-select *
-  from dba_audit_trail
- where username = 'NV0204' 
- order by extended_timestamp desc;
+select username, obj_name, action_name, TO_CHAR(extended_timestamp, 'DD/MM/YYYY HH24:MI:SS') as Time, sql_text
+from dba_audit_trail
+where owner = 'ADPRO' 
+order by extended_timestamp desc;
 
 --Xóa dữ liệu audit
 -- BEGIN
@@ -168,9 +168,12 @@ select *
   from adpro.dangky;
 
 update adpro.dangky
-   set
-  diemth = 9.0
- where masv = 'SV0001';
+set diemth = 9.0
+where masv = 'SV0001';
+
+select db_user, object_name, statement_type, sql_text, TO_CHAR(extended_timestamp, 'DD/MM/YYYY HH24:MI:SS') as Time
+from dba_fga_audit_trail
+where policy_name = 'FGA_POLICY_DIEM';
 
 -- grant select,update on dangky to rl_giangvien;
 -- revoke select,update on dangky from rl_giangvien;
@@ -201,8 +204,9 @@ end;
 --revoke select on NHANSU from RL_TRUONGDV;
 
 -- TEST
-select *
-  from dba_fga_audit_trail;
+select db_user, object_name, statement_type, sql_text, TO_CHAR(extended_timestamp, 'DD/MM/YYYY HH24:MI:SS') as Time
+from dba_fga_audit_trail
+where policy_name = 'FGA_POLICY_PHUCAP';
 
 alter session set "_ORACLE_SCRIPT" = false;
 

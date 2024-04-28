@@ -63,6 +63,16 @@ namespace ATBM_NHOM12.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _3588513 {
+            get {
+                object obj = ResourceManager.GetObject("3588513", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _6cfa8c8327eac1dc73ca7956fc5cf845 {
             get {
                 object obj = ResourceManager.GetObject("6cfa8c8327eac1dc73ca7956fc5cf845", resourceCulture);
