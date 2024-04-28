@@ -112,13 +112,7 @@ namespace ATBM_NHOM12
             this.role.Items.AddRange(new object[] {
             "SYSDBA",
             "ADMIN",
-            "Nhân viên",
-            "Quản lý",
-            "Trưởng phòng",
-            "Tài chính",
-            "Nhân sự",
-            "Trưởng dự án",
-            "Giám đốc"});
+            "DEFAULT"});
             this.role.Location = new System.Drawing.Point(493, 350);
             this.role.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.role.Name = "role";

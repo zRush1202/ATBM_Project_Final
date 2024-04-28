@@ -145,7 +145,7 @@ end;
 begin
   dbms_fga.enable_policy(
                         object_schema => 'ADPRO',
-                        object_name   => 'NHANSU',
+                        object_name   => 'DANGKY',
                         policy_name   => 'fga_policy_diem',
                         enable        => true
   );

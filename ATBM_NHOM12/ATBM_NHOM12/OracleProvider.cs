@@ -1,37 +1,79 @@
 ﻿using System;
+using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
 
 namespace ATBM_NHOM12
 {
     public class LoginProvider
     {
+        public string userRole = "";
+        public string username = "";
         public static OracleConnection conn = new OracleConnection();
-        public bool CheckLogin(string username, string password, string role)
+
+        public bool CheckLogin(string inputUsername, string inputPassword, string inputRole)
         {
             try
             {
-                string connectionString = "";
-                if (role == "SYSDBA")
-                    connectionString = @"DATA SOURCE = localhost:1521/ATBM_PROJECTFINAL;DBA Privilege=SYSDBA; USER ID=" + username + ";PASSWORD=" + password;
-                else
-                    connectionString = @"DATA SOURCE = localhost:1521/ATBM_PROJECTFINAL; USER ID=" + username + ";PASSWORD=" + password;
-                conn.ConnectionString = connectionString;
-                conn.Open();
-                
-                if (role == "SYSDBA" || role == "ADMIN")
+                string connectionString;
+                if (inputRole == "SYSDBA")
                 {
-                    //OracleCommand command = new OracleCommand("alter session set \"_ORACLE_SCRIPT\"=true", conn);
-                    //command.ExecuteNonQuery();
-                    Console.WriteLine("Connect với Oracle thành công");
+                    connectionString = $"DATA SOURCE = localhost:1521/ATBM_PROJECTFINAL; DBA Privilege=SYSDBA; USER ID={inputUsername}; PASSWORD={inputPassword}";
+                    conn.ConnectionString = connectionString;
+                    conn.Open();
+                    this.userRole = inputRole;
+                    this.username = inputUsername;
+                    return true;
                 }
-                return true;
+                else if (inputRole == "ADMIN")
+                {
+                    if (inputUsername != "ADPRO") return false;
+                    connectionString = $"DATA SOURCE = localhost:1521/ATBM_PROJECTFINAL; USER ID={inputUsername}; PASSWORD={inputPassword}";
+                    conn.ConnectionString = connectionString;
+                    conn.Open();
+                    this.userRole = inputRole;
+                    this.username = inputUsername;
+                    return true;
+                }
+                else 
+                {
+                    if (inputRole == "ADMIN" || inputUsername == "ADPRO")
+                    {
+                        return false;
+                    }
+
+                    connectionString = $"DATA SOURCE = localhost:1521/ATBM_PROJECTFINAL; USER ID={inputUsername}; PASSWORD={inputPassword}";
+                    conn.ConnectionString = connectionString;
+                    conn.Open();
+                    try
+                    {
+                        string query = "SELECT granted_role FROM user_role_privs WHERE username = USER";
+                        OracleCommand cmd = new OracleCommand(query, conn);
+                        var result = cmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            userRole = result.ToString();
+                            this.username = inputUsername;
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    catch (OracleException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        conn.Close();
+                        return false;
+                    }
+                }
             }
             catch (OracleException ex)
             {
                 Console.WriteLine(ex.Message);
+                conn.Close();
                 return false;
             }
         }
     }
-
 }

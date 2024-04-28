@@ -214,6 +214,7 @@
     <Compile Include="Forms\User_and_Role.Designer.cs">
       <DependentUpon>User_and_Role.cs</DependentUpon>
     </Compile>
+    <Compile Include="userInfo.cs" />
     <EmbeddedResource Include="FormMainMenu.resx">
       <DependentUpon>FormMainMenu.cs</DependentUpon>
     </EmbeddedResource>

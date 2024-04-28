@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ATBM_NHOM12
 {
@@ -21,6 +22,8 @@ namespace ATBM_NHOM12
         private Random random;
         private int tempIndex;
         private Form activeForm;
+        public string username = "";
+        public string role = "";
         //Constructor
         public FormMainMenu()
         {
@@ -152,23 +155,32 @@ namespace ATBM_NHOM12
 
         private void ChildForm_ButtonClicked(object sender, EventArgs e)
         {
-            panelDesktopPane.Controls.Clear();
-            // Hiển thị lại MainForm
-            lblTitle.Text = "HOME";
-            CenterLabelInPanel(lblTitle, panelTitleBar);
-            button1.Visible = true;
-            button2.Visible = true;
-            btnLogout.Visible = true;
-            btnLogin.Visible = false;
-            btnGrantPriv.Visible = true;
-            label2.Enabled = true;
-            panelLogo.Enabled = true;
-            Home home = new Home();
-            home.TopLevel = false;
-            home.FormBorderStyle = FormBorderStyle.None;
-            home.Dock = DockStyle.Fill;
-            panelDesktopPane.Controls.Add(home);
-            home.Show();
+            if (e is RoleEventArgs roleEventArgs)
+            {
+                role = roleEventArgs.Role.Trim();
+                username = roleEventArgs.username.Trim();
+            }
+            if (role == "SYSDBA" || role == "ADMIN")
+            {
+                panelDesktopPane.Controls.Clear();
+                // Hiển thị lại MainForm
+                lblTitle.Text = "HOME";
+                CenterLabelInPanel(lblTitle, panelTitleBar);
+                button1.Visible = true;
+                button2.Visible = true;
+                btnLogout.Visible = true;
+                btnLogin.Visible = false;
+                btnGrantPriv.Visible = true;
+                label2.Enabled = true;
+                panelLogo.Enabled = true;
+                Home home = new Home();
+                home.TopLevel = false;
+                home.FormBorderStyle = FormBorderStyle.None;
+                home.Dock = DockStyle.Fill;
+                panelDesktopPane.Controls.Add(home);
+                home.Show();
+            }
+            
 
             // Hiển thị panel
             //panelDesktopPane.Visible = true;
