@@ -40,7 +40,7 @@ namespace ATBM_NHOM12.Forms
                     adapter.Fill(dataTable);
                     if (dataTable.Rows.Count > 0)
                     {
-                        dgv_phancong.DataSource = dataTable;
+                        dgv_KHMO.DataSource = dataTable;
                     }
                     else
                     {
@@ -61,8 +61,8 @@ namespace ATBM_NHOM12.Forms
             try
             {
                 adapter.Fill(dataTable);
-                dgv_phancong.DataSource = dataTable;
-                dgv_phancong.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgv_KHMO.DataSource = dataTable;
+                dgv_KHMO.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
             {
@@ -203,6 +203,21 @@ namespace ATBM_NHOM12.Forms
             txt_hk.Text = "";
             txt_mact.Text = "";
             txt_nam.Text = "";
+        }
+        private void dgv_KHMO_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < this.dgv_KHMO.Rows.Count) // Make sure user select at least 1 row 
+            {
+                DataGridViewRow row = this.dgv_KHMO.Rows[e.RowIndex];
+                txt_mahp.Text = row.Cells["MAHP"].Value.ToString();
+                this.mahpOld = row.Cells["MAHP"].Value.ToString();
+                txt_hk.Text = row.Cells["HK"].Value.ToString();
+                this.hkOld = row.Cells["HK"].Value.ToString();
+                txt_mact.Text = row.Cells["MACT"].Value.ToString();
+                this.mactOld = row.Cells["MACT"].Value.ToString();
+                txt_nam.Text = row.Cells["NAM"].Value.ToString();
+                this.namOld = row.Cells["NAM"].Value.ToString();
+            }
         }
     }
 }

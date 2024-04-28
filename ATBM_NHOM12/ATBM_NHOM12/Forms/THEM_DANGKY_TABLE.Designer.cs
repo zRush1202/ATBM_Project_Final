@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txt_masv = new System.Windows.Forms.TextBox();
+            this.lb_masv = new System.Windows.Forms.Label();
+            this.txt_magv = new System.Windows.Forms.TextBox();
             this.btt_them = new System.Windows.Forms.Button();
             this.txt_mact = new System.Windows.Forms.TextBox();
             this.lb_mact = new System.Windows.Forms.Label();
@@ -42,9 +45,6 @@
             this.gb_khmo = new System.Windows.Forms.GroupBox();
             this.dgv_khmo = new System.Windows.Forms.DataGridView();
             this.lb_title = new System.Windows.Forms.Label();
-            this.txt_magv = new System.Windows.Forms.TextBox();
-            this.lb_masv = new System.Windows.Forms.Label();
-            this.txt_masv = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.gb_khmo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_khmo)).BeginInit();
@@ -73,6 +73,29 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "THÔNG TIN ĐĂNG KÝ";
             // 
+            // txt_masv
+            // 
+            this.txt_masv.Location = new System.Drawing.Point(195, 38);
+            this.txt_masv.Name = "txt_masv";
+            this.txt_masv.Size = new System.Drawing.Size(179, 24);
+            this.txt_masv.TabIndex = 18;
+            // 
+            // lb_masv
+            // 
+            this.lb_masv.AutoSize = true;
+            this.lb_masv.Location = new System.Drawing.Point(31, 44);
+            this.lb_masv.Name = "lb_masv";
+            this.lb_masv.Size = new System.Drawing.Size(102, 18);
+            this.lb_masv.TabIndex = 17;
+            this.lb_masv.Text = "Mã sinh viên";
+            // 
+            // txt_magv
+            // 
+            this.txt_magv.Location = new System.Drawing.Point(195, 94);
+            this.txt_magv.Name = "txt_magv";
+            this.txt_magv.Size = new System.Drawing.Size(179, 24);
+            this.txt_magv.TabIndex = 16;
+            // 
             // btt_them
             // 
             this.btt_them.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -82,6 +105,7 @@
             this.btt_them.TabIndex = 15;
             this.btt_them.Text = "THÊM";
             this.btt_them.UseVisualStyleBackColor = true;
+            this.btt_them.Click += new System.EventHandler(this.btt_them_Click);
             // 
             // txt_mact
             // 
@@ -191,29 +215,6 @@
             this.lb_title.Size = new System.Drawing.Size(175, 25);
             this.lb_title.TabIndex = 3;
             this.lb_title.Text = "THÊM ĐĂNG KÝ";
-            // 
-            // txt_magv
-            // 
-            this.txt_magv.Location = new System.Drawing.Point(195, 94);
-            this.txt_magv.Name = "txt_magv";
-            this.txt_magv.Size = new System.Drawing.Size(179, 24);
-            this.txt_magv.TabIndex = 16;
-            // 
-            // lb_masv
-            // 
-            this.lb_masv.AutoSize = true;
-            this.lb_masv.Location = new System.Drawing.Point(31, 44);
-            this.lb_masv.Name = "lb_masv";
-            this.lb_masv.Size = new System.Drawing.Size(102, 18);
-            this.lb_masv.TabIndex = 17;
-            this.lb_masv.Text = "Mã sinh viên";
-            // 
-            // txt_masv
-            // 
-            this.txt_masv.Location = new System.Drawing.Point(195, 38);
-            this.txt_masv.Name = "txt_masv";
-            this.txt_masv.Size = new System.Drawing.Size(179, 24);
-            this.txt_masv.TabIndex = 18;
             // 
             // THEM_DANGKY_TABLE
             // 

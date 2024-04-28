@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.cb_thongtin = new System.Windows.Forms.GroupBox();
+            this.btt_capnhatdiem = new System.Windows.Forms.Button();
             this.txt_dtk = new System.Windows.Forms.TextBox();
             this.txt_dck = new System.Windows.Forms.TextBox();
             this.txt_dqt = new System.Windows.Forms.TextBox();
@@ -66,6 +67,7 @@
             // 
             // cb_thongtin
             // 
+            this.cb_thongtin.Controls.Add(this.btt_capnhatdiem);
             this.cb_thongtin.Controls.Add(this.txt_dtk);
             this.cb_thongtin.Controls.Add(this.txt_dck);
             this.cb_thongtin.Controls.Add(this.txt_dqt);
@@ -91,37 +93,48 @@
             this.cb_thongtin.Controls.Add(this.txt_magv);
             this.cb_thongtin.Controls.Add(this.lb_mahp);
             this.cb_thongtin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_thongtin.Location = new System.Drawing.Point(12, 299);
+            this.cb_thongtin.Location = new System.Drawing.Point(12, 332);
             this.cb_thongtin.Name = "cb_thongtin";
-            this.cb_thongtin.Size = new System.Drawing.Size(1001, 274);
+            this.cb_thongtin.Size = new System.Drawing.Size(1148, 374);
             this.cb_thongtin.TabIndex = 3;
             this.cb_thongtin.TabStop = false;
             this.cb_thongtin.Text = "THÔNG TIN ĐĂNG KÝ";
             // 
+            // btt_capnhatdiem
+            // 
+            this.btt_capnhatdiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btt_capnhatdiem.Location = new System.Drawing.Point(738, 303);
+            this.btt_capnhatdiem.Name = "btt_capnhatdiem";
+            this.btt_capnhatdiem.Size = new System.Drawing.Size(179, 38);
+            this.btt_capnhatdiem.TabIndex = 24;
+            this.btt_capnhatdiem.Text = " CẬP NHẬT ĐIỂM";
+            this.btt_capnhatdiem.UseVisualStyleBackColor = true;
+            this.btt_capnhatdiem.Click += new System.EventHandler(this.btt_capnhatdiem_Click);
+            // 
             // txt_dtk
             // 
-            this.txt_dtk.Location = new System.Drawing.Point(827, 159);
+            this.txt_dtk.Location = new System.Drawing.Point(923, 220);
             this.txt_dtk.Name = "txt_dtk";
             this.txt_dtk.Size = new System.Drawing.Size(100, 24);
             this.txt_dtk.TabIndex = 23;
             // 
             // txt_dck
             // 
-            this.txt_dck.Location = new System.Drawing.Point(599, 159);
+            this.txt_dck.Location = new System.Drawing.Point(695, 220);
             this.txt_dck.Name = "txt_dck";
             this.txt_dck.Size = new System.Drawing.Size(100, 24);
             this.txt_dck.TabIndex = 22;
             // 
             // txt_dqt
             // 
-            this.txt_dqt.Location = new System.Drawing.Point(357, 159);
+            this.txt_dqt.Location = new System.Drawing.Point(453, 220);
             this.txt_dqt.Name = "txt_dqt";
             this.txt_dqt.Size = new System.Drawing.Size(100, 24);
             this.txt_dqt.TabIndex = 21;
             // 
             // txt_dth
             // 
-            this.txt_dth.Location = new System.Drawing.Point(127, 159);
+            this.txt_dth.Location = new System.Drawing.Point(223, 220);
             this.txt_dth.Name = "txt_dth";
             this.txt_dth.Size = new System.Drawing.Size(100, 24);
             this.txt_dth.TabIndex = 20;
@@ -129,7 +142,7 @@
             // lb_dtk
             // 
             this.lb_dtk.AutoSize = true;
-            this.lb_dtk.Location = new System.Drawing.Point(748, 162);
+            this.lb_dtk.Location = new System.Drawing.Point(844, 223);
             this.lb_dtk.Name = "lb_dtk";
             this.lb_dtk.Size = new System.Drawing.Size(73, 18);
             this.lb_dtk.TabIndex = 19;
@@ -138,7 +151,7 @@
             // lb_dck
             // 
             this.lb_dck.AutoSize = true;
-            this.lb_dck.Location = new System.Drawing.Point(518, 162);
+            this.lb_dck.Location = new System.Drawing.Point(614, 223);
             this.lb_dck.Name = "lb_dck";
             this.lb_dck.Size = new System.Drawing.Size(75, 18);
             this.lb_dck.TabIndex = 18;
@@ -147,7 +160,7 @@
             // lb_dqt
             // 
             this.lb_dqt.AutoSize = true;
-            this.lb_dqt.Location = new System.Drawing.Point(276, 162);
+            this.lb_dqt.Location = new System.Drawing.Point(372, 223);
             this.lb_dqt.Name = "lb_dqt";
             this.lb_dqt.Size = new System.Drawing.Size(75, 18);
             this.lb_dqt.TabIndex = 17;
@@ -156,7 +169,7 @@
             // lb_dth
             // 
             this.lb_dth.AutoSize = true;
-            this.lb_dth.Location = new System.Drawing.Point(47, 162);
+            this.lb_dth.Location = new System.Drawing.Point(143, 223);
             this.lb_dth.Name = "lb_dth";
             this.lb_dth.Size = new System.Drawing.Size(74, 18);
             this.lb_dth.TabIndex = 16;
@@ -164,7 +177,7 @@
             // 
             // txt_masv
             // 
-            this.txt_masv.Location = new System.Drawing.Point(139, 34);
+            this.txt_masv.Location = new System.Drawing.Point(212, 51);
             this.txt_masv.Name = "txt_masv";
             this.txt_masv.Size = new System.Drawing.Size(160, 24);
             this.txt_masv.TabIndex = 15;
@@ -172,7 +185,7 @@
             // lb_masv
             // 
             this.lb_masv.AutoSize = true;
-            this.lb_masv.Location = new System.Drawing.Point(29, 37);
+            this.lb_masv.Location = new System.Drawing.Point(63, 54);
             this.lb_masv.Name = "lb_masv";
             this.lb_masv.Size = new System.Drawing.Size(102, 18);
             this.lb_masv.TabIndex = 14;
@@ -180,7 +193,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(447, 34);
+            this.textBox1.Location = new System.Drawing.Point(543, 54);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(160, 24);
             this.textBox1.TabIndex = 13;
@@ -188,7 +201,7 @@
             // btt_refreshtt
             // 
             this.btt_refreshtt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_refreshtt.Location = new System.Drawing.Point(751, 227);
+            this.btt_refreshtt.Location = new System.Drawing.Point(965, 303);
             this.btt_refreshtt.Name = "btt_refreshtt";
             this.btt_refreshtt.Size = new System.Drawing.Size(144, 38);
             this.btt_refreshtt.TabIndex = 12;
@@ -199,27 +212,29 @@
             // btt_capnhat
             // 
             this.btt_capnhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_capnhat.Location = new System.Drawing.Point(532, 225);
+            this.btt_capnhat.Location = new System.Drawing.Point(520, 302);
             this.btt_capnhat.Name = "btt_capnhat";
             this.btt_capnhat.Size = new System.Drawing.Size(144, 38);
             this.btt_capnhat.TabIndex = 11;
             this.btt_capnhat.Text = "CẬP NHẬT";
             this.btt_capnhat.UseVisualStyleBackColor = true;
+            this.btt_capnhat.Click += new System.EventHandler(this.btt_capnhat_Click);
             // 
             // btt_xoa
             // 
             this.btt_xoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_xoa.Location = new System.Drawing.Point(297, 225);
+            this.btt_xoa.Location = new System.Drawing.Point(280, 301);
             this.btt_xoa.Name = "btt_xoa";
             this.btt_xoa.Size = new System.Drawing.Size(144, 40);
             this.btt_xoa.TabIndex = 10;
             this.btt_xoa.Text = "XÓA";
             this.btt_xoa.UseVisualStyleBackColor = true;
+            this.btt_xoa.Click += new System.EventHandler(this.btt_xoa_Click);
             // 
             // btt_them
             // 
             this.btt_them.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_them.Location = new System.Drawing.Point(83, 225);
+            this.btt_them.Location = new System.Drawing.Point(40, 303);
             this.btt_them.Name = "btt_them";
             this.btt_them.Size = new System.Drawing.Size(144, 38);
             this.btt_them.TabIndex = 4;
@@ -229,28 +244,28 @@
             // 
             // txt_nam
             // 
-            this.txt_nam.Location = new System.Drawing.Point(801, 94);
+            this.txt_nam.Location = new System.Drawing.Point(910, 133);
             this.txt_nam.Name = "txt_nam";
             this.txt_nam.Size = new System.Drawing.Size(160, 24);
             this.txt_nam.TabIndex = 9;
             // 
             // txt_mact
             // 
-            this.txt_mact.Location = new System.Drawing.Point(801, 34);
+            this.txt_mact.Location = new System.Drawing.Point(910, 51);
             this.txt_mact.Name = "txt_mact";
             this.txt_mact.Size = new System.Drawing.Size(160, 24);
             this.txt_mact.TabIndex = 8;
             // 
             // txt_hk
             // 
-            this.txt_hk.Location = new System.Drawing.Point(447, 94);
+            this.txt_hk.Location = new System.Drawing.Point(543, 133);
             this.txt_hk.Name = "txt_hk";
             this.txt_hk.Size = new System.Drawing.Size(160, 24);
             this.txt_hk.TabIndex = 7;
             // 
             // txt_mahp
             // 
-            this.txt_mahp.Location = new System.Drawing.Point(138, 94);
+            this.txt_mahp.Location = new System.Drawing.Point(211, 133);
             this.txt_mahp.Name = "txt_mahp";
             this.txt_mahp.Size = new System.Drawing.Size(161, 24);
             this.txt_mahp.TabIndex = 6;
@@ -259,7 +274,7 @@
             // 
             this.lb_mact.AutoSize = true;
             this.lb_mact.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_mact.Location = new System.Drawing.Point(656, 37);
+            this.lb_mact.Location = new System.Drawing.Point(765, 54);
             this.lb_mact.Name = "lb_mact";
             this.lb_mact.Size = new System.Drawing.Size(139, 18);
             this.lb_mact.TabIndex = 4;
@@ -269,7 +284,7 @@
             // 
             this.lb_nam.AutoSize = true;
             this.lb_nam.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_nam.Location = new System.Drawing.Point(737, 97);
+            this.lb_nam.Location = new System.Drawing.Point(846, 136);
             this.lb_nam.Name = "lb_nam";
             this.lb_nam.Size = new System.Drawing.Size(48, 18);
             this.lb_nam.TabIndex = 3;
@@ -279,7 +294,7 @@
             // 
             this.lb_hk.AutoSize = true;
             this.lb_hk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_hk.Location = new System.Drawing.Point(371, 97);
+            this.lb_hk.Location = new System.Drawing.Point(459, 136);
             this.lb_hk.Name = "lb_hk";
             this.lb_hk.Size = new System.Drawing.Size(62, 18);
             this.lb_hk.TabIndex = 2;
@@ -289,7 +304,7 @@
             // 
             this.txt_magv.AutoSize = true;
             this.txt_magv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_magv.Location = new System.Drawing.Point(333, 37);
+            this.txt_magv.Location = new System.Drawing.Point(429, 57);
             this.txt_magv.Name = "txt_magv";
             this.txt_magv.Size = new System.Drawing.Size(108, 18);
             this.txt_magv.TabIndex = 1;
@@ -299,7 +314,7 @@
             // 
             this.lb_mahp.AutoSize = true;
             this.lb_mahp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_mahp.Location = new System.Drawing.Point(29, 97);
+            this.lb_mahp.Location = new System.Drawing.Point(63, 136);
             this.lb_mahp.Name = "lb_mahp";
             this.lb_mahp.Size = new System.Drawing.Size(105, 18);
             this.lb_mahp.TabIndex = 0;
@@ -315,7 +330,7 @@
             this.cb_phancong.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_phancong.Location = new System.Drawing.Point(12, 12);
             this.cb_phancong.Name = "cb_phancong";
-            this.cb_phancong.Size = new System.Drawing.Size(1001, 281);
+            this.cb_phancong.Size = new System.Drawing.Size(1148, 314);
             this.cb_phancong.TabIndex = 2;
             this.cb_phancong.TabStop = false;
             this.cb_phancong.Text = "DANH SÁCH ĐĂNG KÝ";
@@ -323,7 +338,7 @@
             // btt_refreshds
             // 
             this.btt_refreshds.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_refreshds.Location = new System.Drawing.Point(869, 23);
+            this.btt_refreshds.Location = new System.Drawing.Point(1016, 23);
             this.btt_refreshds.Name = "btt_refreshds";
             this.btt_refreshds.Size = new System.Drawing.Size(126, 30);
             this.btt_refreshds.TabIndex = 4;
@@ -338,14 +353,14 @@
             this.dgv_dangky.Name = "dgv_dangky";
             this.dgv_dangky.RowHeadersWidth = 51;
             this.dgv_dangky.RowTemplate.Height = 24;
-            this.dgv_dangky.Size = new System.Drawing.Size(989, 202);
+            this.dgv_dangky.Size = new System.Drawing.Size(1136, 242);
             this.dgv_dangky.TabIndex = 3;
             this.dgv_dangky.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_dangky_CellClick);
             // 
             // btt_timkiem
             // 
             this.btt_timkiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_timkiem.Location = new System.Drawing.Point(728, 23);
+            this.btt_timkiem.Location = new System.Drawing.Point(876, 23);
             this.btt_timkiem.Name = "btt_timkiem";
             this.btt_timkiem.Size = new System.Drawing.Size(125, 30);
             this.btt_timkiem.TabIndex = 2;
@@ -357,7 +372,7 @@
             // 
             this.lb_tk_mhp.AutoSize = true;
             this.lb_tk_mhp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_tk_mhp.Location = new System.Drawing.Point(371, 35);
+            this.lb_tk_mhp.Location = new System.Drawing.Point(488, 29);
             this.lb_tk_mhp.Name = "lb_tk_mhp";
             this.lb_tk_mhp.Size = new System.Drawing.Size(105, 18);
             this.lb_tk_mhp.TabIndex = 1;
@@ -365,7 +380,7 @@
             // 
             // txt_tk_mhp
             // 
-            this.txt_tk_mhp.Location = new System.Drawing.Point(487, 29);
+            this.txt_tk_mhp.Location = new System.Drawing.Point(626, 26);
             this.txt_tk_mhp.Name = "txt_tk_mhp";
             this.txt_tk_mhp.Size = new System.Drawing.Size(224, 24);
             this.txt_tk_mhp.TabIndex = 0;
@@ -374,7 +389,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1025, 585);
+            this.ClientSize = new System.Drawing.Size(1172, 718);
             this.Controls.Add(this.cb_thongtin);
             this.Controls.Add(this.cb_phancong);
             this.Name = "DANGKY_TABLE";
@@ -422,5 +437,6 @@
         private System.Windows.Forms.Label lb_dck;
         private System.Windows.Forms.Label lb_dqt;
         private System.Windows.Forms.Label lb_dth;
+        private System.Windows.Forms.Button btt_capnhatdiem;
     }
 }
