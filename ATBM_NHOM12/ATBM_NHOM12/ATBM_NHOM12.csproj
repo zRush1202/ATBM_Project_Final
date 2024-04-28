@@ -174,12 +174,6 @@
     <Compile Include="Forms\Privilege.Designer.cs">
       <DependentUpon>Privilege.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\QL_DSSINHVIEN_TABLE.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\QL_DSSINHVIEN_TABLE.Designer.cs">
-      <DependentUpon>QL_DSSINHVIEN_TABLE.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Revoke_Privilege.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +185,12 @@
     </Compile>
     <Compile Include="Forms\RoleDetail.Designer.cs">
       <DependentUpon>RoleDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\THEM_DANGKY_TABLE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\THEM_DANGKY_TABLE.Designer.cs">
+      <DependentUpon>THEM_DANGKY_TABLE.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\THEM_PHANCONG_TABLE.cs">
       <SubType>Form</SubType>
@@ -226,7 +226,6 @@
     <Compile Include="Forms\User_and_Role.Designer.cs">
       <DependentUpon>User_and_Role.cs</DependentUpon>
     </Compile>
-    <Compile Include="userInfo.cs" />
     <EmbeddedResource Include="FormMainMenu.resx">
       <DependentUpon>FormMainMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -235,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Add_User.resx">
       <DependentUpon>Add_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DANGKY_TABLE.resx">
+      <DependentUpon>DANGKY_TABLE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DeleteRole.resx">
       <DependentUpon>DeleteRole.cs</DependentUpon>
@@ -269,14 +271,14 @@
     <EmbeddedResource Include="Forms\Privilege.resx">
       <DependentUpon>Privilege.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\QL_DSSINHVIEN_TABLE.resx">
-      <DependentUpon>QL_DSSINHVIEN_TABLE.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Revoke_Privilege.resx">
       <DependentUpon>Revoke_Privilege.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RoleDetail.resx">
       <DependentUpon>RoleDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\THEM_DANGKY_TABLE.resx">
+      <DependentUpon>THEM_DANGKY_TABLE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\THEM_PHANCONG_TABLE.resx">
       <DependentUpon>THEM_PHANCONG_TABLE.cs</DependentUpon>

@@ -13,7 +13,8 @@ namespace ATBM_NHOM12.Forms
 {
     public partial class DANGKY_TABLE : Form
     {
-        private string roleUser = "RL_TRUONGDV";
+        private string roleUser = "";
+        private string username = "";
         private string masvOld = "";
         private string magvOld = "";
         private string mahpOld = "";
@@ -25,9 +26,11 @@ namespace ATBM_NHOM12.Forms
         private string dckOld = "";
         private string dtkOld = "";
         public static OracleConnection con = LoginProvider.conn;
-        public DANGKY_TABLE()
+        public DANGKY_TABLE(string username, string role)
         {
             InitializeComponent();
+            this.username = username;
+            this.roleUser = role;
         }
         private void DANGKY_TABLE_Load(object sender, EventArgs e)
         {
