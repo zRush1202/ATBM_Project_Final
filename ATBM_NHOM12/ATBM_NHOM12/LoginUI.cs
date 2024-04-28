@@ -43,7 +43,7 @@ namespace ATBM_NHOM12
                 //this.Hide();
                 //fmm.ShowDialog();
                 //this.Close();
-                ButtonClicked?.Invoke(this, EventArgs.Empty);
+                ButtonClicked?.Invoke(this, new RoleEventArgs(loginProvider.userRole, loginProvider.username));
             }
             else
             {
