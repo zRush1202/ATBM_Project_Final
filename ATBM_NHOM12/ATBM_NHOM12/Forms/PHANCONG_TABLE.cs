@@ -213,5 +213,19 @@ namespace ATBM_NHOM12.Forms
                 }
             }
         }
+        private void txt_magv_Load(object sender, EventArgs e)
+        {
+            using (OracleCommand cmd = new OracleCommand("SELECT MANV FROM ADPRO.NHANSU", con))
+            {
+                using (OracleDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        txt_magv.Items.Add(reader.GetString(0));
+                    }
+                }
+            }
+        }
+
     }
 }

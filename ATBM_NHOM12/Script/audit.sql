@@ -28,7 +28,7 @@ begin
               || usr
               || ' BY ACCESS';
     execute immediate strsql;
-		strsql := 'AUDIT SELECT TABLE, INSERT TABLE, UPDATE TABLE, DELETE TABLE BY '
+    strsql := 'AUDIT SELECT TABLE, INSERT TABLE, UPDATE TABLE, DELETE TABLE BY '
               || usr
               || ' BY ACCESS';
     execute immediate strsql;
@@ -62,10 +62,10 @@ begin
     strsql := 'AUDIT ALL BY '
               || usr
               || ' BY ACCESS';
-		strsql := 'AUDIT SELECT TABLE, INSERT TABLE, UPDATE TABLE, DELETE TABLE BY '
+    execute immediate strsql;
+    strsql := 'AUDIT SELECT TABLE, INSERT TABLE, UPDATE TABLE, DELETE TABLE BY '
 					|| usr
 					|| ' BY ACCESS';
-    execute immediate strsql;
     execute immediate strsql;
     strsql := 'AUDIT SESSION WHENEVER NOT SUCCESSFUL';
     execute immediate strsql;
@@ -84,10 +84,14 @@ EXEC ADPRO.USP_AUDIT_SINHVIEN;
 
 select * from ADPRO.NHANSU;
 
+-- kiem tra co phai dùng standard ko : DB,extend
+SELECT VALUE
+FROM V$PARAMETER
+WHERE NAME = 'audit_trail';
 
 select *
   from dba_audit_trail
- where username = 'NV3094'
+ where username = 'NV0204' 
  order by extended_timestamp desc;
 
 --Xóa dữ liệu audit
@@ -201,3 +205,5 @@ select *
   from dba_fga_audit_trail;
 
 alter session set "_ORACLE_SCRIPT" = false;
+
+select value from V$OPTION where parameter = 'Unified Auditing';
