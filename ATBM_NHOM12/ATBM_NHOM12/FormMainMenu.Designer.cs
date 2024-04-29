@@ -45,14 +45,15 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.ptbxNotify = new System.Windows.Forms.PictureBox();
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelDesktopPane = new System.Windows.Forms.Panel();
+            this.btnNhatKy = new System.Windows.Forms.Button();
+            this.ptbxNotify = new System.Windows.Forms.PictureBox();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbxNotify)).BeginInit();
             this.panelTitleBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbxNotify)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -60,6 +61,7 @@
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.panelMenu.Controls.Add(this.btnClose);
             this.panelMenu.Controls.Add(this.btnLogout);
+            this.panelMenu.Controls.Add(this.btnNhatKy);
             this.panelMenu.Controls.Add(this.btnDangKy);
             this.panelMenu.Controls.Add(this.btnPhanCong);
             this.panelMenu.Controls.Add(this.btnHocPhan);
@@ -88,7 +90,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(0, 1214);
+            this.btnClose.Location = new System.Drawing.Point(0, 1292);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
@@ -106,7 +108,7 @@
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(0, 1136);
+            this.btnLogout.Location = new System.Drawing.Point(0, 1214);
             this.btnLogout.Margin = new System.Windows.Forms.Padding(0);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
@@ -221,6 +223,7 @@
             this.btnNhanSu.TabIndex = 14;
             this.btnNhanSu.Text = "Nhân sự";
             this.btnNhanSu.UseVisualStyleBackColor = false;
+            this.btnNhanSu.Click += new System.EventHandler(this.btnNhanSu_Click);
             // 
             // btnSinhVien
             // 
@@ -359,17 +362,6 @@
             this.panelLogo.TabIndex = 0;
             this.panelLogo.Click += new System.EventHandler(this.panelLogo_Click);
             // 
-            // ptbxNotify
-            // 
-            this.ptbxNotify.Image = global::ATBM_NHOM12.Properties.Resources.notification_bell_5743;
-            this.ptbxNotify.Location = new System.Drawing.Point(61, 18);
-            this.ptbxNotify.Name = "ptbxNotify";
-            this.ptbxNotify.Size = new System.Drawing.Size(103, 86);
-            this.ptbxNotify.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptbxNotify.TabIndex = 3;
-            this.ptbxNotify.TabStop = false;
-            this.ptbxNotify.Click += new System.EventHandler(this.ptbxNotify_Click);
-            // 
             // panelTitleBar
             // 
             this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
@@ -401,6 +393,35 @@
             this.panelDesktopPane.Size = new System.Drawing.Size(1189, 911);
             this.panelDesktopPane.TabIndex = 2;
             // 
+            // btnNhatKy
+            // 
+            this.btnNhatKy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.btnNhatKy.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnNhatKy.FlatAppearance.BorderSize = 0;
+            this.btnNhatKy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNhatKy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNhatKy.ForeColor = System.Drawing.Color.White;
+            this.btnNhatKy.Location = new System.Drawing.Point(0, 1136);
+            this.btnNhatKy.Margin = new System.Windows.Forms.Padding(0);
+            this.btnNhatKy.Name = "btnNhatKy";
+            this.btnNhatKy.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnNhatKy.Size = new System.Drawing.Size(222, 78);
+            this.btnNhatKy.TabIndex = 16;
+            this.btnNhatKy.Text = "Nhật ký hệ thống";
+            this.btnNhatKy.UseVisualStyleBackColor = false;
+            this.btnNhatKy.Click += new System.EventHandler(this.btnNhatKy_Click);
+            // 
+            // ptbxNotify
+            // 
+            this.ptbxNotify.Image = global::ATBM_NHOM12.Properties.Resources.notification_bell_5743;
+            this.ptbxNotify.Location = new System.Drawing.Point(61, 18);
+            this.ptbxNotify.Name = "ptbxNotify";
+            this.ptbxNotify.Size = new System.Drawing.Size(103, 86);
+            this.ptbxNotify.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbxNotify.TabIndex = 3;
+            this.ptbxNotify.TabStop = false;
+            this.ptbxNotify.Click += new System.EventHandler(this.ptbxNotify_Click);
+            // 
             // FormMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -417,9 +438,9 @@
             this.Load += new System.EventHandler(this.FormMainMenu_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ptbxNotify)).EndInit();
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbxNotify)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -447,6 +468,7 @@
         private System.Windows.Forms.Button btnSinhVien;
         private System.Windows.Forms.Button btnKHMo;
         private System.Windows.Forms.PictureBox ptbxNotify;
+        private System.Windows.Forms.Button btnNhatKy;
     }
 }
 

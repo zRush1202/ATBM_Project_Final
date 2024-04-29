@@ -150,6 +150,7 @@ namespace ATBM_NHOM12
             btnPhanCong.Visible = false;
             btnTTCNNS.Visible = false;
             btnTTCNSV.Visible = false;
+            btnNhatKy.Visible = false;
             ptbxNotify.Image = Properties.Resources.png_clipart_school_district_computer_icons_education_school_angle_text;
             ptbxNotify.Enabled = false;
             panelLogo.Enabled = false;
@@ -195,6 +196,7 @@ namespace ATBM_NHOM12
                 btnSinhVien.Visible = false;
                 btnTTCNNS.Visible = false;
                 btnTTCNSV.Visible = false;
+                btnNhatKy.Visible = true;
                 Home home = new Home();
                 home.TopLevel = false;
                 home.FormBorderStyle = FormBorderStyle.None;
@@ -372,6 +374,7 @@ namespace ATBM_NHOM12
             btnKHMo.Visible = false;
             btnDangKy.Visible = false;
             btnPhanCong.Visible = false;
+            btnNhatKy.Visible = false;
             ptbxNotify.Image = Properties.Resources.png_clipart_school_district_computer_icons_education_school_angle_text;
             ptbxNotify.Enabled = false;
             panelLogo.Enabled = false;
@@ -427,6 +430,13 @@ namespace ATBM_NHOM12
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
 
+        private void btnNhanSu_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new QL_NHANSU_TABLE(), sender); ;
+            lblTitle.Text = "QUẢN LÝ NHÂN SỰ";
+            CenterLabelInPanel(lblTitle, panelTitleBar);
+        }
+
         private void btnKHMo_Click(object sender, EventArgs e)
         {
             OpenChildForm(new KHMO_TABLE(), sender);
@@ -479,6 +489,13 @@ namespace ATBM_NHOM12
         {
             OpenNotification(new FormNotification(this.username), sender);
             lblTitle.Text = "THÔNG BÁO";
+            CenterLabelInPanel(lblTitle, panelTitleBar);
+        }
+
+        private void btnNhatKy_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormAudit(), sender);
+            lblTitle.Text = "NHẬT KÝ";
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
     }

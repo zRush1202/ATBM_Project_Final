@@ -144,6 +144,12 @@
     <Compile Include="Forms\EditUser.Designer.cs">
       <DependentUpon>EditUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormAudit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAudit.Designer.cs">
+      <DependentUpon>FormAudit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormNotification.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +197,12 @@
     </Compile>
     <Compile Include="Forms\Privilege.Designer.cs">
       <DependentUpon>Privilege.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\QL_NHANSU_TABLE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QL_NHANSU_TABLE.Designer.cs">
+      <DependentUpon>QL_NHANSU_TABLE.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\QL_DSSINHVIEN_TABLE.cs">
       <SubType>Form</SubType>
@@ -281,6 +293,9 @@
     <EmbeddedResource Include="Forms\EditUser.resx">
       <DependentUpon>EditUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAudit.resx">
+      <DependentUpon>FormAudit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormNotification.resx">
       <DependentUpon>FormNotification.cs</DependentUpon>
     </EmbeddedResource>
@@ -304,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Privilege.resx">
       <DependentUpon>Privilege.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QL_NHANSU_TABLE.resx">
+      <DependentUpon>QL_NHANSU_TABLE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\QL_DSSINHVIEN_TABLE.resx">
       <DependentUpon>QL_DSSINHVIEN_TABLE.cs</DependentUpon>
@@ -379,6 +397,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\png-clipart-school-district-computer-icons-education-school-angle-text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3588513.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets')" />
