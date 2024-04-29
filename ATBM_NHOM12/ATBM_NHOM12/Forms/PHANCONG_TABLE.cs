@@ -14,15 +14,18 @@ namespace ATBM_NHOM12.Forms
 {
     public partial class PHANCONG_TABLE : Form
     {
-        private string roleUser = "RL_TRUONGDV";
+        private string roleUser = "";
+        private string username = "";
         private string magvOld = "";
         private string mahpOld = "";
         private string mactOld = "";
         private string hkOld = "";
         private string namOld = "";
         public static OracleConnection con = LoginProvider.conn;
-        public PHANCONG_TABLE()
+        public PHANCONG_TABLE(string role, string username)
         {
+            this.roleUser = role;
+            this.username = username;
             InitializeComponent();
         }
         private void PHANCONG_TABLE_Load(object sender, EventArgs e)

@@ -13,13 +13,16 @@ namespace ATBM_NHOM12.Forms
 {
     public partial class DONVI_TABLE : Form
     {
-        private string roleUser = "RL_TRUONGDV";
+        private string roleUser = "";
+        private string username = "";
         private string madvOld = "";
         //private string tendvOld = "";
         //private string trgdvOld = "";
         public static OracleConnection con = LoginProvider.conn;
-        public DONVI_TABLE()
+        public DONVI_TABLE(string roleUser, string username )
         {
+            this.roleUser = roleUser;
+            this.username = username;
             InitializeComponent();
         }
         private void DONVI_TABLE_Load(object sender, EventArgs e)
@@ -171,7 +174,7 @@ namespace ATBM_NHOM12.Forms
             }
             else
             {
-                string query = $"SELECT * FROM ADPRO.DONVI WHERE tendv LIKE '%{txt_tk_tendv.Text}%'";
+                string query = $"SELECT * FROM ADPRO.DONVI WHERE madv LIKE '%{txt_tk_tendv.Text}%'";
                 OracleDataAdapter adapter = new OracleDataAdapter(query, con);
                 DataTable dataTable = new DataTable();
                 try
@@ -183,7 +186,7 @@ namespace ATBM_NHOM12.Forms
                     }
                     else
                     {
-                        MessageBox.Show("Không tìm thấy thông tin học phần đó!");
+                        MessageBox.Show("Không tìm thấy thông tin đơn vị đó!");
                     }
                 }
                 catch (Exception ex)

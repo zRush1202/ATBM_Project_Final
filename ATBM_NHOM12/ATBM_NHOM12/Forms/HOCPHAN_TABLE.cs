@@ -13,7 +13,8 @@ namespace ATBM_NHOM12.Forms
 {
     public partial class HOCPHAN_TABLE : Form
     {
-        private string roleUser = "RL_TRUONGDV";
+        private string roleUser = "";
+        private string username = "";
         private string mahpOld = "";
         //private string tenhpOld = "";
         //private string sotcOld = "";
@@ -22,8 +23,10 @@ namespace ATBM_NHOM12.Forms
         //private string sosvtdOld = "";
         //private string madvOld = "";
         public static OracleConnection con = LoginProvider.conn;
-        public HOCPHAN_TABLE()
+        public HOCPHAN_TABLE(string role, string username)
         {
+            this.roleUser = role;
+            this.username = username;
             InitializeComponent();
         }
         private void HOCPHAN_TABLE_Load(object sender, EventArgs e)

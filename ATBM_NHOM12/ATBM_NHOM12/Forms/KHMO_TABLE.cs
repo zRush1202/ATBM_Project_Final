@@ -13,14 +13,17 @@ namespace ATBM_NHOM12.Forms
 {
     public partial class KHMO_TABLE : Form
     {
-        private string roleUser = "RL_TRUONGDV";
+        private string roleUser = "";
+        private string username = "";
         private string mahpOld = "";
         private string mactOld = "";
         private string hkOld = "";
         private string namOld = "";
         public static OracleConnection con = LoginProvider.conn;
-        public KHMO_TABLE()
+        public KHMO_TABLE(string role, string username)
         {
+            this.roleUser = role;
+            this.username = username;
             InitializeComponent();
         }
 
