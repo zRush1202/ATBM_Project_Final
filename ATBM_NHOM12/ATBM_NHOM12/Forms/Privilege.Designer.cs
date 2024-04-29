@@ -42,9 +42,9 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.dgvPriv);
-            this.panel1.Location = new System.Drawing.Point(3, 53);
+            this.panel1.Location = new System.Drawing.Point(12, 53);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1021, 531);
+            this.panel1.Size = new System.Drawing.Size(1147, 648);
             this.panel1.TabIndex = 1;
             // 
             // dgvPriv
@@ -55,7 +55,7 @@
             this.dgvPriv.Name = "dgvPriv";
             this.dgvPriv.RowHeadersWidth = 51;
             this.dgvPriv.RowTemplate.Height = 24;
-            this.dgvPriv.Size = new System.Drawing.Size(1021, 531);
+            this.dgvPriv.Size = new System.Drawing.Size(1147, 648);
             this.dgvPriv.TabIndex = 0;
             this.dgvPriv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPriv_CellClick);
             // 
@@ -64,7 +64,7 @@
             this.btnSearchUser.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearchUser.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnSearchUser.ErrorImage")));
             this.btnSearchUser.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchUser.Image")));
-            this.btnSearchUser.Location = new System.Drawing.Point(996, 20);
+            this.btnSearchUser.Location = new System.Drawing.Point(1131, 20);
             this.btnSearchUser.Name = "btnSearchUser";
             this.btnSearchUser.Size = new System.Drawing.Size(27, 27);
             this.btnSearchUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -75,7 +75,7 @@
             // tbxSearchUser
             // 
             this.tbxSearchUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxSearchUser.Location = new System.Drawing.Point(733, 19);
+            this.tbxSearchUser.Location = new System.Drawing.Point(868, 19);
             this.tbxSearchUser.Name = "tbxSearchUser";
             this.tbxSearchUser.Size = new System.Drawing.Size(257, 28);
             this.tbxSearchUser.TabIndex = 16;
@@ -86,7 +86,7 @@
             this.btnRefreshUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefreshUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefreshUser.ForeColor = System.Drawing.Color.White;
-            this.btnRefreshUser.Location = new System.Drawing.Point(3, 15);
+            this.btnRefreshUser.Location = new System.Drawing.Point(11, 15);
             this.btnRefreshUser.Name = "btnRefreshUser";
             this.btnRefreshUser.Size = new System.Drawing.Size(99, 32);
             this.btnRefreshUser.TabIndex = 21;
@@ -99,7 +99,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ClientSize = new System.Drawing.Size(1025, 585);
+            this.ClientSize = new System.Drawing.Size(1171, 864);
             this.Controls.Add(this.btnRefreshUser);
             this.Controls.Add(this.btnSearchUser);
             this.Controls.Add(this.tbxSearchUser);
