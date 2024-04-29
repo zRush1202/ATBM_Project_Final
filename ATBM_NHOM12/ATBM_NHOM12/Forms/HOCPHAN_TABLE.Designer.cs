@@ -267,7 +267,7 @@
             // btt_refreshds
             // 
             this.btt_refreshds.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_refreshds.Location = new System.Drawing.Point(1031, 22);
+            this.btt_refreshds.Location = new System.Drawing.Point(1016, 22);
             this.btt_refreshds.Name = "btt_refreshds";
             this.btt_refreshds.Size = new System.Drawing.Size(111, 30);
             this.btt_refreshds.TabIndex = 4;
@@ -289,7 +289,7 @@
             // btt_timkiem
             // 
             this.btt_timkiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_timkiem.Location = new System.Drawing.Point(900, 22);
+            this.btt_timkiem.Location = new System.Drawing.Point(888, 22);
             this.btt_timkiem.Name = "btt_timkiem";
             this.btt_timkiem.Size = new System.Drawing.Size(111, 30);
             this.btt_timkiem.TabIndex = 2;
@@ -301,7 +301,7 @@
             // 
             this.lb_tk_mhp.AutoSize = true;
             this.lb_tk_mhp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_tk_mhp.Location = new System.Drawing.Point(515, 28);
+            this.lb_tk_mhp.Location = new System.Drawing.Point(466, 28);
             this.lb_tk_mhp.Name = "lb_tk_mhp";
             this.lb_tk_mhp.Size = new System.Drawing.Size(120, 18);
             this.lb_tk_mhp.TabIndex = 1;
@@ -309,7 +309,7 @@
             // 
             // txt_tk_mhp
             // 
-            this.txt_tk_mhp.Location = new System.Drawing.Point(652, 25);
+            this.txt_tk_mhp.Location = new System.Drawing.Point(608, 25);
             this.txt_tk_mhp.Name = "txt_tk_mhp";
             this.txt_tk_mhp.Size = new System.Drawing.Size(224, 24);
             this.txt_tk_mhp.TabIndex = 0;
