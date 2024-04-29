@@ -91,7 +91,7 @@ namespace ATBM_NHOM12.Forms
         private void btt_refreshtt_Click(object sender, EventArgs e)
         {
             txt_masv.Text = "";
-            lb_magv.Text = "";
+            txt_magv.Text = "";
             txt_mahp.Text = "";
             txt_hk.Text = "";
             txt_mact.Text = "";
@@ -134,7 +134,7 @@ namespace ATBM_NHOM12.Forms
             {
                 // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
                 string masv = txt_masv.Text;
-                string magv = lb_magv.Text;
+                string magv = txt_magv.Text;
                 string mahp = txt_mahp.Text;
                 int hk = int.Parse(txt_hk.Text);
                 int nam = int.Parse(txt_nam.Text);
@@ -170,7 +170,7 @@ namespace ATBM_NHOM12.Forms
             try
             {
                 // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
-                string magv = lb_magv.Text;
+                string magv = txt_magv.Text;
                 string mahp = txt_mahp.Text;
                 int hk = int.Parse(txt_hk.Text);
                 int nam = int.Parse(txt_nam.Text);
