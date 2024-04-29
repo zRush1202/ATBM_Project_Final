@@ -279,6 +279,7 @@
             this.cb_phancong.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_KHMO)).EndInit();
             this.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.txt_mahp_Load);
 
         }
 

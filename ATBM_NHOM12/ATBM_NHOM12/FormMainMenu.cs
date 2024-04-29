@@ -451,37 +451,43 @@ namespace ATBM_NHOM12
 
         private void btnKHMo_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new KHMO_TABLE(), sender);
+            OpenChildForm(new KHMO_TABLE(role, username), sender);
+            lblTitle.Text = "KẾ HOẠCH MỞ MÔN";
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
 
         private void btnTTCNNS_Click(object sender, EventArgs e)
         {
             OpenChildForm(new TTCANHAN_NHANSU(), sender);
+            lblTitle.Text = "THÔNG TIN CÁ NHÂN";
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
 
         private void btnTTCNSV_Click(object sender, EventArgs e)
         {
             OpenChildForm(new TTCN_SINHVIEN(), sender);
+            lblTitle.Text = "THÔNG TIN CÁ NHÂN";
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
 
         private void btnDonVi_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new DONVI_TABLE(), sender);
+            OpenChildForm(new DONVI_TABLE(role,username), sender);
+            lblTitle.Text = "QUẢN LÝ ĐƠN VỊ";
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
 
         private void btnHocPhan_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new HOCPHAN_TABLE(), sender);
+            OpenChildForm(new HOCPHAN_TABLE(role, username), sender);
+            lblTitle.Text = "QUẢN LÝ HỌC PHẦN";
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
 
         private void btnPhanCong_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new PHANCONG_TABLE(), sender);
+            OpenChildForm(new PHANCONG_TABLE(role, username), sender);
+            lblTitle.Text = "QUẢN LÝ PHÂN CÔNG";
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
 
@@ -508,6 +514,13 @@ namespace ATBM_NHOM12
         {
             OpenChildForm(new FormAudit(), sender);
             lblTitle.Text = "NHẬT KÝ";
+            CenterLabelInPanel(lblTitle, panelTitleBar);
+        }
+
+        private void btnDangKy_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new DANGKY_TABLE(role,username), sender);
+            lblTitle.Text = "QUẢN LÝ ĐĂNG KÝ";
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
     }

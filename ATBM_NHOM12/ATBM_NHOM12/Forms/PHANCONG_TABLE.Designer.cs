@@ -309,6 +309,7 @@
             this.cb_thongtin.ResumeLayout(false);
             this.cb_thongtin.PerformLayout();
             this.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.txt_magv_Load);
 
         }
 
