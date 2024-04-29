@@ -31,6 +31,7 @@
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnNhatKy = new System.Windows.Forms.Button();
             this.btnDangKy = new System.Windows.Forms.Button();
             this.btnPhanCong = new System.Windows.Forms.Button();
             this.btnHocPhan = new System.Windows.Forms.Button();
@@ -45,15 +46,14 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
+            this.ptbxNotify = new System.Windows.Forms.PictureBox();
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelDesktopPane = new System.Windows.Forms.Panel();
-            this.btnNhatKy = new System.Windows.Forms.Button();
-            this.ptbxNotify = new System.Windows.Forms.PictureBox();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
-            this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbxNotify)).BeginInit();
+            this.panelTitleBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -96,7 +96,7 @@
             this.btnClose.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnClose.Size = new System.Drawing.Size(222, 78);
             this.btnClose.TabIndex = 6;
-            this.btnClose.Text = "Close";
+            this.btnClose.Text = "Thoát";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click_1);
             // 
@@ -114,9 +114,27 @@
             this.btnLogout.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnLogout.Size = new System.Drawing.Size(222, 78);
             this.btnLogout.TabIndex = 5;
-            this.btnLogout.Text = "Log out";
+            this.btnLogout.Text = "Đăng xuất";
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // btnNhatKy
+            // 
+            this.btnNhatKy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.btnNhatKy.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnNhatKy.FlatAppearance.BorderSize = 0;
+            this.btnNhatKy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNhatKy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNhatKy.ForeColor = System.Drawing.Color.White;
+            this.btnNhatKy.Location = new System.Drawing.Point(0, 1136);
+            this.btnNhatKy.Margin = new System.Windows.Forms.Padding(0);
+            this.btnNhatKy.Name = "btnNhatKy";
+            this.btnNhatKy.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnNhatKy.Size = new System.Drawing.Size(222, 78);
+            this.btnNhatKy.TabIndex = 16;
+            this.btnNhatKy.Text = "Nhật ký hệ thống";
+            this.btnNhatKy.UseVisualStyleBackColor = false;
+            this.btnNhatKy.Click += new System.EventHandler(this.btnNhatKy_Click);
             // 
             // btnDangKy
             // 
@@ -293,7 +311,7 @@
             this.btnLogin.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnLogin.Size = new System.Drawing.Size(222, 78);
             this.btnLogin.TabIndex = 4;
-            this.btnLogin.Text = "Log in";
+            this.btnLogin.Text = "Đăng nhập";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
@@ -311,7 +329,7 @@
             this.btnGrantPriv.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnGrantPriv.Size = new System.Drawing.Size(222, 78);
             this.btnGrantPriv.TabIndex = 3;
-            this.btnGrantPriv.Text = "Grant/Revoke Privilege";
+            this.btnGrantPriv.Text = "Cấp/gỡ quyền";
             this.btnGrantPriv.UseVisualStyleBackColor = false;
             this.btnGrantPriv.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -329,7 +347,7 @@
             this.button2.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.button2.Size = new System.Drawing.Size(222, 78);
             this.button2.TabIndex = 2;
-            this.button2.Text = "Privilege";
+            this.button2.Text = "Quyền";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -347,7 +365,7 @@
             this.button1.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.button1.Size = new System.Drawing.Size(222, 78);
             this.button1.TabIndex = 1;
-            this.button1.Text = "User and Role";
+            this.button1.Text = "Người dùng và vai trò";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -361,6 +379,17 @@
             this.panelLogo.Size = new System.Drawing.Size(222, 122);
             this.panelLogo.TabIndex = 0;
             this.panelLogo.Click += new System.EventHandler(this.panelLogo_Click);
+            // 
+            // ptbxNotify
+            // 
+            this.ptbxNotify.Image = global::ATBM_NHOM12.Properties.Resources.notification_bell_5743;
+            this.ptbxNotify.Location = new System.Drawing.Point(61, 18);
+            this.ptbxNotify.Name = "ptbxNotify";
+            this.ptbxNotify.Size = new System.Drawing.Size(103, 86);
+            this.ptbxNotify.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbxNotify.TabIndex = 3;
+            this.ptbxNotify.TabStop = false;
+            this.ptbxNotify.Click += new System.EventHandler(this.ptbxNotify_Click);
             // 
             // panelTitleBar
             // 
@@ -380,9 +409,9 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(555, 44);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(95, 31);
+            this.lblTitle.Size = new System.Drawing.Size(177, 31);
             this.lblTitle.TabIndex = 2;
-            this.lblTitle.Text = "HOME";
+            this.lblTitle.Text = "TRANG CHỦ";
             // 
             // panelDesktopPane
             // 
@@ -392,35 +421,6 @@
             this.panelDesktopPane.Name = "panelDesktopPane";
             this.panelDesktopPane.Size = new System.Drawing.Size(1189, 911);
             this.panelDesktopPane.TabIndex = 2;
-            // 
-            // btnNhatKy
-            // 
-            this.btnNhatKy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
-            this.btnNhatKy.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnNhatKy.FlatAppearance.BorderSize = 0;
-            this.btnNhatKy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNhatKy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhatKy.ForeColor = System.Drawing.Color.White;
-            this.btnNhatKy.Location = new System.Drawing.Point(0, 1136);
-            this.btnNhatKy.Margin = new System.Windows.Forms.Padding(0);
-            this.btnNhatKy.Name = "btnNhatKy";
-            this.btnNhatKy.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnNhatKy.Size = new System.Drawing.Size(222, 78);
-            this.btnNhatKy.TabIndex = 16;
-            this.btnNhatKy.Text = "Nhật ký hệ thống";
-            this.btnNhatKy.UseVisualStyleBackColor = false;
-            this.btnNhatKy.Click += new System.EventHandler(this.btnNhatKy_Click);
-            // 
-            // ptbxNotify
-            // 
-            this.ptbxNotify.Image = global::ATBM_NHOM12.Properties.Resources.notification_bell_5743;
-            this.ptbxNotify.Location = new System.Drawing.Point(61, 18);
-            this.ptbxNotify.Name = "ptbxNotify";
-            this.ptbxNotify.Size = new System.Drawing.Size(103, 86);
-            this.ptbxNotify.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptbxNotify.TabIndex = 3;
-            this.ptbxNotify.TabStop = false;
-            this.ptbxNotify.Click += new System.EventHandler(this.ptbxNotify_Click);
             // 
             // FormMainMenu
             // 
@@ -438,9 +438,9 @@
             this.Load += new System.EventHandler(this.FormMainMenu_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptbxNotify)).EndInit();
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbxNotify)).EndInit();
             this.ResumeLayout(false);
 
         }
