@@ -40,9 +40,8 @@
             this.lb_dth = new System.Windows.Forms.Label();
             this.txt_masv = new System.Windows.Forms.TextBox();
             this.lb_masv = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_magv = new System.Windows.Forms.TextBox();
             this.btt_refreshtt = new System.Windows.Forms.Button();
-            this.btt_capnhat = new System.Windows.Forms.Button();
             this.btt_xoa = new System.Windows.Forms.Button();
             this.btt_them = new System.Windows.Forms.Button();
             this.txt_nam = new System.Windows.Forms.TextBox();
@@ -52,7 +51,7 @@
             this.lb_mact = new System.Windows.Forms.Label();
             this.lb_nam = new System.Windows.Forms.Label();
             this.lb_hk = new System.Windows.Forms.Label();
-            this.txt_magv = new System.Windows.Forms.Label();
+            this.lb_magv = new System.Windows.Forms.Label();
             this.lb_mahp = new System.Windows.Forms.Label();
             this.cb_phancong = new System.Windows.Forms.GroupBox();
             this.btt_refreshds = new System.Windows.Forms.Button();
@@ -78,9 +77,8 @@
             this.cb_thongtin.Controls.Add(this.lb_dth);
             this.cb_thongtin.Controls.Add(this.txt_masv);
             this.cb_thongtin.Controls.Add(this.lb_masv);
-            this.cb_thongtin.Controls.Add(this.textBox1);
+            this.cb_thongtin.Controls.Add(this.txt_magv);
             this.cb_thongtin.Controls.Add(this.btt_refreshtt);
-            this.cb_thongtin.Controls.Add(this.btt_capnhat);
             this.cb_thongtin.Controls.Add(this.btt_xoa);
             this.cb_thongtin.Controls.Add(this.btt_them);
             this.cb_thongtin.Controls.Add(this.txt_nam);
@@ -90,7 +88,7 @@
             this.cb_thongtin.Controls.Add(this.lb_mact);
             this.cb_thongtin.Controls.Add(this.lb_nam);
             this.cb_thongtin.Controls.Add(this.lb_hk);
-            this.cb_thongtin.Controls.Add(this.txt_magv);
+            this.cb_thongtin.Controls.Add(this.lb_magv);
             this.cb_thongtin.Controls.Add(this.lb_mahp);
             this.cb_thongtin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_thongtin.Location = new System.Drawing.Point(12, 332);
@@ -103,9 +101,9 @@
             // btt_capnhatdiem
             // 
             this.btt_capnhatdiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_capnhatdiem.Location = new System.Drawing.Point(738, 303);
+            this.btt_capnhatdiem.Location = new System.Drawing.Point(889, 303);
             this.btt_capnhatdiem.Name = "btt_capnhatdiem";
-            this.btt_capnhatdiem.Size = new System.Drawing.Size(179, 38);
+            this.btt_capnhatdiem.Size = new System.Drawing.Size(215, 38);
             this.btt_capnhatdiem.TabIndex = 24;
             this.btt_capnhatdiem.Text = " CẬP NHẬT ĐIỂM";
             this.btt_capnhatdiem.UseVisualStyleBackColor = true;
@@ -113,28 +111,28 @@
             // 
             // txt_dtk
             // 
-            this.txt_dtk.Location = new System.Drawing.Point(923, 220);
+            this.txt_dtk.Location = new System.Drawing.Point(997, 220);
             this.txt_dtk.Name = "txt_dtk";
             this.txt_dtk.Size = new System.Drawing.Size(100, 24);
             this.txt_dtk.TabIndex = 23;
             // 
             // txt_dck
             // 
-            this.txt_dck.Location = new System.Drawing.Point(695, 220);
+            this.txt_dck.Location = new System.Drawing.Point(724, 220);
             this.txt_dck.Name = "txt_dck";
             this.txt_dck.Size = new System.Drawing.Size(100, 24);
             this.txt_dck.TabIndex = 22;
             // 
             // txt_dqt
             // 
-            this.txt_dqt.Location = new System.Drawing.Point(453, 220);
+            this.txt_dqt.Location = new System.Drawing.Point(465, 220);
             this.txt_dqt.Name = "txt_dqt";
             this.txt_dqt.Size = new System.Drawing.Size(100, 24);
             this.txt_dqt.TabIndex = 21;
             // 
             // txt_dth
             // 
-            this.txt_dth.Location = new System.Drawing.Point(223, 220);
+            this.txt_dth.Location = new System.Drawing.Point(212, 220);
             this.txt_dth.Name = "txt_dth";
             this.txt_dth.Size = new System.Drawing.Size(100, 24);
             this.txt_dth.TabIndex = 20;
@@ -142,7 +140,7 @@
             // lb_dtk
             // 
             this.lb_dtk.AutoSize = true;
-            this.lb_dtk.Location = new System.Drawing.Point(844, 223);
+            this.lb_dtk.Location = new System.Drawing.Point(906, 223);
             this.lb_dtk.Name = "lb_dtk";
             this.lb_dtk.Size = new System.Drawing.Size(73, 18);
             this.lb_dtk.TabIndex = 19;
@@ -151,7 +149,7 @@
             // lb_dck
             // 
             this.lb_dck.AutoSize = true;
-            this.lb_dck.Location = new System.Drawing.Point(614, 223);
+            this.lb_dck.Location = new System.Drawing.Point(628, 223);
             this.lb_dck.Name = "lb_dck";
             this.lb_dck.Size = new System.Drawing.Size(75, 18);
             this.lb_dck.TabIndex = 18;
@@ -160,7 +158,7 @@
             // lb_dqt
             // 
             this.lb_dqt.AutoSize = true;
-            this.lb_dqt.Location = new System.Drawing.Point(372, 223);
+            this.lb_dqt.Location = new System.Drawing.Point(362, 223);
             this.lb_dqt.Name = "lb_dqt";
             this.lb_dqt.Size = new System.Drawing.Size(75, 18);
             this.lb_dqt.TabIndex = 17;
@@ -169,7 +167,7 @@
             // lb_dth
             // 
             this.lb_dth.AutoSize = true;
-            this.lb_dth.Location = new System.Drawing.Point(143, 223);
+            this.lb_dth.Location = new System.Drawing.Point(63, 223);
             this.lb_dth.Name = "lb_dth";
             this.lb_dth.Size = new System.Drawing.Size(74, 18);
             this.lb_dth.TabIndex = 16;
@@ -191,17 +189,17 @@
             this.lb_masv.TabIndex = 14;
             this.lb_masv.Text = "Mã sinh viên";
             // 
-            // textBox1
+            // txt_magv
             // 
-            this.textBox1.Location = new System.Drawing.Point(543, 54);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(160, 24);
-            this.textBox1.TabIndex = 13;
+            this.txt_magv.Location = new System.Drawing.Point(543, 54);
+            this.txt_magv.Name = "txt_magv";
+            this.txt_magv.Size = new System.Drawing.Size(160, 24);
+            this.txt_magv.TabIndex = 13;
             // 
             // btt_refreshtt
             // 
             this.btt_refreshtt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_refreshtt.Location = new System.Drawing.Point(965, 303);
+            this.btt_refreshtt.Location = new System.Drawing.Point(680, 303);
             this.btt_refreshtt.Name = "btt_refreshtt";
             this.btt_refreshtt.Size = new System.Drawing.Size(144, 38);
             this.btt_refreshtt.TabIndex = 12;
@@ -209,21 +207,10 @@
             this.btt_refreshtt.UseVisualStyleBackColor = true;
             this.btt_refreshtt.Click += new System.EventHandler(this.btt_refreshtt_Click);
             // 
-            // btt_capnhat
-            // 
-            this.btt_capnhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_capnhat.Location = new System.Drawing.Point(520, 302);
-            this.btt_capnhat.Name = "btt_capnhat";
-            this.btt_capnhat.Size = new System.Drawing.Size(144, 38);
-            this.btt_capnhat.TabIndex = 11;
-            this.btt_capnhat.Text = "CẬP NHẬT";
-            this.btt_capnhat.UseVisualStyleBackColor = true;
-            this.btt_capnhat.Click += new System.EventHandler(this.btt_capnhat_Click);
-            // 
             // btt_xoa
             // 
             this.btt_xoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_xoa.Location = new System.Drawing.Point(280, 301);
+            this.btt_xoa.Location = new System.Drawing.Point(375, 301);
             this.btt_xoa.Name = "btt_xoa";
             this.btt_xoa.Size = new System.Drawing.Size(144, 40);
             this.btt_xoa.TabIndex = 10;
@@ -234,7 +221,7 @@
             // btt_them
             // 
             this.btt_them.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_them.Location = new System.Drawing.Point(40, 303);
+            this.btt_them.Location = new System.Drawing.Point(66, 303);
             this.btt_them.Name = "btt_them";
             this.btt_them.Size = new System.Drawing.Size(144, 38);
             this.btt_them.TabIndex = 4;
@@ -244,14 +231,14 @@
             // 
             // txt_nam
             // 
-            this.txt_nam.Location = new System.Drawing.Point(910, 133);
+            this.txt_nam.Location = new System.Drawing.Point(937, 133);
             this.txt_nam.Name = "txt_nam";
             this.txt_nam.Size = new System.Drawing.Size(160, 24);
             this.txt_nam.TabIndex = 9;
             // 
             // txt_mact
             // 
-            this.txt_mact.Location = new System.Drawing.Point(910, 51);
+            this.txt_mact.Location = new System.Drawing.Point(937, 54);
             this.txt_mact.Name = "txt_mact";
             this.txt_mact.Size = new System.Drawing.Size(160, 24);
             this.txt_mact.TabIndex = 8;
@@ -284,7 +271,7 @@
             // 
             this.lb_nam.AutoSize = true;
             this.lb_nam.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_nam.Location = new System.Drawing.Point(846, 136);
+            this.lb_nam.Location = new System.Drawing.Point(765, 136);
             this.lb_nam.Name = "lb_nam";
             this.lb_nam.Size = new System.Drawing.Size(48, 18);
             this.lb_nam.TabIndex = 3;
@@ -294,21 +281,21 @@
             // 
             this.lb_hk.AutoSize = true;
             this.lb_hk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_hk.Location = new System.Drawing.Point(459, 136);
+            this.lb_hk.Location = new System.Drawing.Point(429, 136);
             this.lb_hk.Name = "lb_hk";
             this.lb_hk.Size = new System.Drawing.Size(62, 18);
             this.lb_hk.TabIndex = 2;
             this.lb_hk.Text = "Học kì ";
             // 
-            // txt_magv
+            // lb_magv
             // 
-            this.txt_magv.AutoSize = true;
-            this.txt_magv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_magv.Location = new System.Drawing.Point(429, 57);
-            this.txt_magv.Name = "txt_magv";
-            this.txt_magv.Size = new System.Drawing.Size(108, 18);
-            this.txt_magv.TabIndex = 1;
-            this.txt_magv.Text = "Mã giáo viên ";
+            this.lb_magv.AutoSize = true;
+            this.lb_magv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_magv.Location = new System.Drawing.Point(429, 57);
+            this.lb_magv.Name = "lb_magv";
+            this.lb_magv.Size = new System.Drawing.Size(108, 18);
+            this.lb_magv.TabIndex = 1;
+            this.lb_magv.Text = "Mã giáo viên ";
             // 
             // lb_mahp
             // 
@@ -408,7 +395,6 @@
 
         private System.Windows.Forms.GroupBox cb_thongtin;
         private System.Windows.Forms.Button btt_refreshtt;
-        private System.Windows.Forms.Button btt_capnhat;
         private System.Windows.Forms.Button btt_xoa;
         private System.Windows.Forms.Button btt_them;
         private System.Windows.Forms.TextBox txt_nam;
@@ -418,7 +404,7 @@
         private System.Windows.Forms.Label lb_mact;
         private System.Windows.Forms.Label lb_nam;
         private System.Windows.Forms.Label lb_hk;
-        private System.Windows.Forms.Label txt_magv;
+        private System.Windows.Forms.Label lb_magv;
         private System.Windows.Forms.Label lb_mahp;
         private System.Windows.Forms.GroupBox cb_phancong;
         private System.Windows.Forms.Button btt_refreshds;
@@ -426,7 +412,7 @@
         private System.Windows.Forms.Button btt_timkiem;
         private System.Windows.Forms.Label lb_tk_mhp;
         private System.Windows.Forms.TextBox txt_tk_mhp;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_magv;
         private System.Windows.Forms.TextBox txt_masv;
         private System.Windows.Forms.Label lb_masv;
         private System.Windows.Forms.TextBox txt_dtk;

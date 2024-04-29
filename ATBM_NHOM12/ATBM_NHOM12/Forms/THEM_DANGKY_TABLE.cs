@@ -20,7 +20,7 @@ namespace ATBM_NHOM12.Forms
             InitializeComponent();
         }
 
-        private void THEM_PHANCONG_TABLE_Load(object sender, EventArgs e)
+        private void THEM_DANGKY_TABLE_Load(object sender, EventArgs e)
         {
             string query = "select * from ADPRO.KHMO"; ;
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
@@ -36,6 +36,7 @@ namespace ATBM_NHOM12.Forms
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
         private void dgv_khmo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.RowIndex < this.dgv_khmo.Rows.Count) // Make sure user select at least 1 row 
@@ -78,11 +79,23 @@ namespace ATBM_NHOM12.Forms
                     MessageBox.Show("Không có dữ liệu nào được xóa!");
                 }
             }
+            catch (OracleException ex)
+            {
+                if (ex.Number == 28115)
+                {
+                    MessageBox.Show("Quá thời hạn đăng ký học phần!");
+                }
+                else
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
             catch (Exception ex)
             {
-                    // Xử lý ngoại lệ ở đây, ví dụ: hiển thị thông báo lỗi
-                    MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
+
+
     }
 }

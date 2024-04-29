@@ -22,7 +22,7 @@ namespace ATBM_NHOM12.Forms
         private string hkOld = "";
         private string namOld = "";
         public static OracleConnection con = LoginProvider.conn;
-        public DANGKY_TABLE(string username, string role)
+        public DANGKY_TABLE(string role, string username)
         {
             InitializeComponent();
             this.username = username;
@@ -30,6 +30,15 @@ namespace ATBM_NHOM12.Forms
         }
         private void DANGKY_TABLE_Load(object sender, EventArgs e)
         {
+            if (roleUser == "RL_SINHVIEN")
+            {
+                btt_capnhatdiem.Visible = false;
+                txt_dth.ReadOnly = false;
+                txt_dqt.ReadOnly = false;
+                txt_dck.ReadOnly = false;
+                txt_dtk.ReadOnly = false;
+            }
+
             string query = "select * from ADPRO.DANGKY"; ;
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
             DataTable dataTable = new DataTable();
@@ -82,7 +91,7 @@ namespace ATBM_NHOM12.Forms
         private void btt_refreshtt_Click(object sender, EventArgs e)
         {
             txt_masv.Text = "";
-            txt_magv.Text = "";
+            lb_magv.Text = "";
             txt_mahp.Text = "";
             txt_hk.Text = "";
             txt_mact.Text = "";
@@ -125,7 +134,7 @@ namespace ATBM_NHOM12.Forms
             {
                 // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
                 string masv = txt_masv.Text;
-                string magv = txt_magv.Text;
+                string magv = lb_magv.Text;
                 string mahp = txt_mahp.Text;
                 int hk = int.Parse(txt_hk.Text);
                 int nam = int.Parse(txt_nam.Text);
@@ -161,7 +170,7 @@ namespace ATBM_NHOM12.Forms
             try
             {
                 // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
-                string magv = txt_magv.Text;
+                string magv = lb_magv.Text;
                 string mahp = txt_mahp.Text;
                 int hk = int.Parse(txt_hk.Text);
                 int nam = int.Parse(txt_nam.Text);
