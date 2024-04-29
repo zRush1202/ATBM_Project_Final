@@ -43,6 +43,11 @@ namespace ATBM_NHOM12.Forms
                 txt_masv.Text = username;
                 query = "select * from ADPRO.DANGKY";
             }
+            else if (roleUser == "RL_GIAOVU")
+            {
+                query = "select * from ADPRO.DANGKY";
+                btt_capnhatdiem.Visible=false;
+            }
             else
                 query = "select * from ADPRO.QLHS_DANGKY_HPGD";
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
@@ -105,7 +110,12 @@ namespace ATBM_NHOM12.Forms
             txt_hk.Text = "";
             txt_mact.Text = "";
             txt_nam.Text = "";
-
+            this.magvOld = "";
+            this.masvOld = "";
+            this.mahpOld = "";
+            this.hkOld = "";
+            this.mactOld = "";
+            this.namOld = "";
         }
         private void dgv_dangky_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -154,7 +164,7 @@ namespace ATBM_NHOM12.Forms
 
                 // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
                 var cmd = new OracleCommand();
-                if (this.roleUser == "RL_SINHVIEN")
+                if (this.roleUser == "RL_SINHVIEN" || this.roleUser == "RL_GIAOVU")
                     cmd.CommandText = $"DELETE FROM ADPRO.DANGKY where masv = '{masv}' and magv ='{magv}' and mahp = '{mahp}' and hk = {hk} and nam = {nam} and mact = '{mact}'";
                 else
                     cmd.CommandText = $"DELETE FROM ADPRO.QLHS_DANGKY_HPGD where masv = '{masv}' and magv ='{magv}' and mahp = '{mahp}' and hk = {hk} and nam = {nam} and mact = '{mact}'";
@@ -208,15 +218,7 @@ namespace ATBM_NHOM12.Forms
                     MessageBox.Show("Cập nhật dữ liệu thành công!");
                 }
                 else
-                {
-                    if (this.roleUser == "RL_TRUONGDV")
-                    {
-                        MessageBox.Show("Học phần không thuộc đơn vị mình làm trưởng!");
-                    }
-                    else
-                        // Thông báo khi không có dòng nào bị xóa
-                        MessageBox.Show("Không có dữ liệu nào được cập nhật!");
-                }
+                   MessageBox.Show("Không có dữ liệu nào được cập nhật!");
             }
             catch (Exception ex)
             {

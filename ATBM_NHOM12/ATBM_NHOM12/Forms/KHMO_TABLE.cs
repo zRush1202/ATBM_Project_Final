@@ -97,8 +97,12 @@ namespace ATBM_NHOM12.Forms
             {
                 // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
                 string mahp = txt_mahp.Text;
-                int hk = int.Parse(txt_hk.Text);
-                int nam = int.Parse(txt_nam.Text);
+                int hk = 0;
+                if (txt_hk.Text != "")
+                    hk = int.Parse(txt_hk.Text);
+                int nam = 0;
+                if (txt_nam.Text != "")
+                    nam = int.Parse(txt_nam.Text);
                 string mact = txt_mact.Text;
 
                 // Hiển thị giá trị của các biến trong một MessageBox
@@ -119,63 +123,36 @@ namespace ATBM_NHOM12.Forms
                     MessageBox.Show("Không có dữ liệu nào được xóa!");
                 }
             }
+            catch (OracleException ex)
+            {
+                if (ex.Number == 00001)
+                {
+                    MessageBox.Show("Đã tồn tại kế hoạch mở học phần này!");
+                }
+                else
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
             catch (Exception ex)
             {
                     // Xử lý ngoại lệ ở đây, ví dụ: hiển thị thông báo lỗi
                     MessageBox.Show(ex.Message);
             }
         }
-
-        private void btt_xoa_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
-                string mahp = txt_mahp.Text;
-                int hk = int.Parse(txt_hk.Text);
-                int nam = int.Parse(txt_nam.Text);
-                string mact = txt_mact.Text;
-
-                // Hiển thị giá trị của các biến trong một MessageBox
-                //MessageBox.Show($"magv: {magv}, mahp: {mahp}, hk: {hk}, nam: {nam}, mact: {mact}");
-
-                // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
-                var cmd = new OracleCommand();
-                cmd.CommandText = $"DELETE FROM ADPRO.KHMO where mahp = '{mahp}' and hk = {hk} and nam = {nam} and mact = '{mact}'";
-                cmd.Connection = con;
-                int rowsAffected = cmd.ExecuteNonQuery();
-                if (rowsAffected > 0)
-                {
-                    // Thông báo thành công hoặc thực hiện các hành động khác sau khi thêm thành công
-                    MessageBox.Show("Xóa dữ liệu thành công!");
-                }
-                else
-                {
-
-                    MessageBox.Show("Không có dữ liệu nào được xóa!");
-                }
-            }
-            catch (Exception ex)
-            {
-                // Xử lý ngoại lệ ở đây, ví dụ: hiển thị thông báo lỗi
-                MessageBox.Show(ex.Message);
-            }
-        }
-
         private void btt_capnhat_Click(object sender, EventArgs e)
         {
             try
             {
                 // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
                 string mahp = txt_mahp.Text;
-                int hk = int.Parse(txt_hk.Text);
-                int nam = int.Parse(txt_nam.Text);
+                int hk = 1;
+                if (txt_hk.Text != "")
+                    hk = int.Parse(txt_hk.Text);
+                int nam = 0;
+                if (txt_nam.Text != "")
+                    nam = int.Parse(txt_nam.Text);
                 string mact = txt_mact.Text;
-
-                // Hiển thị giá trị của các biến trong một MessageBox
-                //MessageBox.Show($"magv: {magv}, mahp: {mahp}, hk: {hk}, nam: {nam}, mact: {mact}");
-
-                //MessageBox.Show($"magvold: {this.magvOld}, mahpold: {this.mahpOld}, hkold: {this.hkOld}, namOld: {this.namOld}, mactOld: {this.mactOld}");
 
                 // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
                 var cmd = new OracleCommand();
@@ -206,6 +183,10 @@ namespace ATBM_NHOM12.Forms
             txt_hk.Text = "";
             txt_mact.Text = "";
             txt_nam.Text = "";
+            this.mactOld = "";
+            this.mahpOld = "";
+            this.hkOld = "";
+            this.namOld = "";
         }
         private void dgv_KHMO_CellClick(object sender, DataGridViewCellEventArgs e)
         {

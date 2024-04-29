@@ -84,13 +84,24 @@ namespace ATBM_NHOM12.Forms
                     MessageBox.Show("Không có dữ liệu nào được thêm!");
                 }
             }
+            catch (OracleException ex)
+            {
+                if (ex.Number == 00001)
+                {
+                    MessageBox.Show("Đã tồn tại mã nhân sự này!");
+                }
+                else
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
 
-            private void btt_timkiem_Click(object sender, EventArgs e)
+        private void btt_timkiem_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txt_mans_search.Text))
             {
@@ -139,6 +150,7 @@ namespace ATBM_NHOM12.Forms
                 txt_phucap.Text = row.Cells["PHUCAP"].Value.ToString();
                 txt_madv.Text = row.Cells["MADV"].Value.ToString();
                 txt_vaitro.Text = row.Cells["VAITRO"].Value.ToString();
+                txt_ns.ReadOnly = true;
             }
 
         }
@@ -197,6 +209,7 @@ namespace ATBM_NHOM12.Forms
             txt_phucap.Text = "";
             txt_madv.Text = "";
             txt_vaitro.Text = "";
+            txt_ns.ReadOnly = false;
         }
 
         private void txt_mans_search_KeyUp(object sender, KeyEventArgs e)

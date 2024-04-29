@@ -14,25 +14,47 @@ namespace ATBM_NHOM12.Forms
     public partial class THEM_PHANCONG_TABLE : Form
     {
         public static OracleConnection con = LoginProvider.conn;
-        private string roleUser = "RL_TRUONGDV";
-        public THEM_PHANCONG_TABLE()
+        private string roleUser = "";
+        private string username = "";
+        public THEM_PHANCONG_TABLE(string role,string username)
         {
+            this.roleUser = role;
+            this.username = username;
             InitializeComponent();
         }
         private void THEM_PHANCONG_TABLE_Load(object sender, EventArgs e)
         {
-            string query = "select * from ADPRO.KHMO"; ;
-            OracleDataAdapter adapter = new OracleDataAdapter(query, con);
-            DataTable dataTable = new DataTable();
-            try
+            if (this.roleUser == "RL_TRUONGDV")
             {
-                adapter.Fill(dataTable);
-                dgv_khmo.DataSource = dataTable;
-                dgv_khmo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            }
-            catch (Exception ex)
+                string query = $"select kh.* from ADPRO.KHMO kh,ADPRO.HOCPHAN hp, ADPRO.DONVI dv where kh.mahp = hp.mahp and hp.madv = dv.madv and dv.trgdv = '{this.username}'"; ;
+                OracleDataAdapter adapter = new OracleDataAdapter(query, con);
+                DataTable dataTable = new DataTable();
+                try
+                {
+                    adapter.Fill(dataTable);
+                    dgv_khmo.DataSource = dataTable;
+                    dgv_khmo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            } 
+            else if (this.roleUser == "RL_TRUONGKHOA")
             {
-                MessageBox.Show("Error: " + ex.Message);
+                string query = $"select kh.* from ADPRO.KHMO kh,ADPRO.HOCPHAN hp where kh.mahp = hp.mahp and hp.madv = 'VPK'"; ;
+                OracleDataAdapter adapter = new OracleDataAdapter(query, con);
+                DataTable dataTable = new DataTable();
+                try
+                {
+                    adapter.Fill(dataTable);
+                    dgv_khmo.DataSource = dataTable;
+                    dgv_khmo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
             }
         }
         private void dgv_khmo_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -95,15 +117,19 @@ namespace ATBM_NHOM12.Forms
         }
         private void txt_magv_Load(object sender, EventArgs e)
         {
-            using (OracleCommand cmd = new OracleCommand("SELECT MANV FROM ADPRO.NHANSU", con))
+            if (roleUser == "RL_TRUONGDV" || roleUser == "RL_TRUONGKHOA")
             {
-                using (OracleDataReader reader = cmd.ExecuteReader())
+                using (OracleCommand cmd = new OracleCommand("SELECT MANV FROM ADPRO.NHANSU", con))
                 {
-                    while (reader.Read())
+                    using (OracleDataReader reader = cmd.ExecuteReader())
                     {
-                        txt_magv.Items.Add(reader.GetString(0));
+                        while (reader.Read())
+                        {
+                            txt_magv.Items.Add(reader.GetString(0));
+                        }
                     }
                 }
+
             }
         }
     }

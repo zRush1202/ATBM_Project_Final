@@ -16,11 +16,6 @@ namespace ATBM_NHOM12.Forms
     {
         private string roleUser = "";
         private string username = "";
-        private string magvOld = "";
-        private string mahpOld = "";
-        private string mactOld = "";
-        private string hkOld = "";
-        private string namOld = "";
         public static OracleConnection con = LoginProvider.conn;
         public PHANCONG_TABLE(string role, string username)
         {
@@ -30,6 +25,10 @@ namespace ATBM_NHOM12.Forms
         }
         private void PHANCONG_TABLE_Load(object sender, EventArgs e)
         {
+            if (roleUser == "RL_GIAOVU")
+            {
+                btt_them.Visible = false;
+            }    
             string query = "select * from ADPRO.PHANCONG";;
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
             DataTable dataTable = new DataTable();
@@ -51,15 +50,10 @@ namespace ATBM_NHOM12.Forms
             {
                 DataGridViewRow row = this.dgv_phancong.Rows[e.RowIndex];
                 txt_magv.Text = row.Cells["MAGV"].Value.ToString();
-                this.magvOld = row.Cells["MAGV"].Value.ToString();
                 txt_mahp.Text = row.Cells["MAHP"].Value.ToString();
-                this.mahpOld = row.Cells["MAHP"].Value.ToString();
                 txt_hk.Text = row.Cells["HK"].Value.ToString();
-                this.hkOld = row.Cells["HK"].Value.ToString();
                 txt_mact.Text = row.Cells["MACT"].Value.ToString();
-                this.mactOld = row.Cells["MACT"].Value.ToString();
                 txt_nam.Text = row.Cells["NAM"].Value.ToString();
-                this.namOld = row.Cells["NAM"].Value.ToString();
             }
         }
                                                              
@@ -74,7 +68,7 @@ namespace ATBM_NHOM12.Forms
 
         private void btt_them_Click(object sender, EventArgs e)
         {
-            THEM_PHANCONG_TABLE newForm = new THEM_PHANCONG_TABLE();
+            THEM_PHANCONG_TABLE newForm = new THEM_PHANCONG_TABLE(this.roleUser,this.username);
             newForm.Show();
         }
 
@@ -139,47 +133,8 @@ namespace ATBM_NHOM12.Forms
 
         private void btt_capnhat_Click(object sender, EventArgs e)
         {
-            try
-            {
-                // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
-                string magv = txt_magv.Text;
-                string mahp = txt_mahp.Text;
-                int hk = int.Parse(txt_hk.Text);
-                int nam = int.Parse(txt_nam.Text);
-                string mact = txt_mact.Text;
-
-                // Hiển thị giá trị của các biến trong một MessageBox
-                //MessageBox.Show($"magv: {magv}, mahp: {mahp}, hk: {hk}, nam: {nam}, mact: {mact}");
-
-                //MessageBox.Show($"magvold: {this.magvOld}, mahpold: {this.mahpOld}, hkold: {this.hkOld}, namOld: {this.namOld}, mactOld: {this.mactOld}");
-
-                // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
-                var cmd = new OracleCommand();
-                cmd.CommandText = $"UPDATE ADPRO.PHANCONG set magv ='{magv}', mahp = '{mahp}', hk = {hk}, nam = {nam}, mact = '{mact}' where " +
-                    $"magv ='{this.magvOld}' and mahp = '{this.mahpOld}' and hk = {this.hkOld} and nam = {this.namOld} and mact = '{this.mactOld}' ";
-                cmd.Connection = con;
-                int rowsAffected = cmd.ExecuteNonQuery();
-                if (rowsAffected > 0)
-                {
-                    // Thông báo thành công hoặc thực hiện các hành động khác sau khi thêm thành công
-                    MessageBox.Show("Cập nhật dữ liệu thành công!");
-                }
-                else
-                {
-                    if (this.roleUser == "RL_TRUONGDV")
-                    {
-                        MessageBox.Show("Học phần không thuộc đơn vị mình làm trưởng!");
-                    }
-                    else
-                        // Thông báo khi không có dòng nào bị xóa
-                        MessageBox.Show("Không có dữ liệu nào được cập nhật!");
-                }
-            }
-            catch (Exception ex)
-            {
-                // Xử lý ngoại lệ ở đây, ví dụ: hiển thị thông báo lỗi
-                MessageBox.Show(ex.Message);
-            }
+            CAPNHAT_PHANCONG newForm = new CAPNHAT_PHANCONG(this.roleUser,this.username);
+            newForm.Show();
         }
 
         private void btt_refreshds_Click(object sender, EventArgs e)

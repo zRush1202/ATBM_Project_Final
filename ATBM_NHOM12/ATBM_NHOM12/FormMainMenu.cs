@@ -264,6 +264,7 @@ namespace ATBM_NHOM12
                 btnHocPhan.Visible= true;
                 btnKHMo.Visible = true;
                 btnPhanCong.Visible= true;
+                btnDangKy.Visible = true;
                 Home home = new Home();
                 home.TopLevel = false;
                 home.FormBorderStyle = FormBorderStyle.None;

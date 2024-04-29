@@ -471,8 +471,10 @@ begin
     WHERE GRANTEE = USERNAME;
     IF 'RL_SINHVIEN' IN (USERROLE) THEN 
         strsql:= 'MASV = SYS_CONTEXT(''USERENV'',''SESSION_USER'')';
+        return strsql;
+    ELSE 
+        RETURN '';
     END IF;
-    return strsql;
 end;
 /
 BEGIN
@@ -623,7 +625,7 @@ BEGIN
         -- Xác định ngày bắt đầu học kỳ dựa trên tháng hiện tại
         IF v_Semester <= 4 THEN
             v_Semester := 1;
-            v_SemesterStartDate := TO_DATE(TO_CHAR(SYSDATE, 'YYYY') || '/04/20', 'YYYY/MM/DD');
+            v_SemesterStartDate := TO_DATE(TO_CHAR(SYSDATE, 'YYYY') || '/01/01', 'YYYY/MM/DD');
         ELSIF v_Semester <= 8 THEN
             v_Semester := 2;
             v_SemesterStartDate := TO_DATE(TO_CHAR(SYSDATE, 'YYYY') || '/05/01', 'YYYY/MM/DD');
@@ -638,6 +640,8 @@ BEGIN
         ELSE 
               RETURN '1=0';
         END IF;
+    ELSE
+        RETURN '';
     END IF;
 END;
 /

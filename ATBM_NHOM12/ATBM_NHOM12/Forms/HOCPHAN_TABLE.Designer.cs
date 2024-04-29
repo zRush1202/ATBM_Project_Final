@@ -35,7 +35,6 @@
             this.lb_sosvtd = new System.Windows.Forms.Label();
             this.btt_refreshtt = new System.Windows.Forms.Button();
             this.btt_capnhat = new System.Windows.Forms.Button();
-            this.btt_xoa = new System.Windows.Forms.Button();
             this.btt_them = new System.Windows.Forms.Button();
             this.txt_stth = new System.Windows.Forms.TextBox();
             this.txt_stlt = new System.Windows.Forms.TextBox();
@@ -66,7 +65,6 @@
             this.cb_thongtin.Controls.Add(this.lb_sosvtd);
             this.cb_thongtin.Controls.Add(this.btt_refreshtt);
             this.cb_thongtin.Controls.Add(this.btt_capnhat);
-            this.cb_thongtin.Controls.Add(this.btt_xoa);
             this.cb_thongtin.Controls.Add(this.btt_them);
             this.cb_thongtin.Controls.Add(this.txt_stth);
             this.cb_thongtin.Controls.Add(this.txt_stlt);
@@ -134,24 +132,13 @@
             // btt_capnhat
             // 
             this.btt_capnhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_capnhat.Location = new System.Drawing.Point(958, 168);
+            this.btt_capnhat.Location = new System.Drawing.Point(958, 147);
             this.btt_capnhat.Name = "btt_capnhat";
             this.btt_capnhat.Size = new System.Drawing.Size(144, 40);
             this.btt_capnhat.TabIndex = 11;
             this.btt_capnhat.Text = "CẬP NHẬT";
             this.btt_capnhat.UseVisualStyleBackColor = true;
             this.btt_capnhat.Click += new System.EventHandler(this.btt_capnhat_Click);
-            // 
-            // btt_xoa
-            // 
-            this.btt_xoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_xoa.Location = new System.Drawing.Point(958, 120);
-            this.btt_xoa.Name = "btt_xoa";
-            this.btt_xoa.Size = new System.Drawing.Size(144, 42);
-            this.btt_xoa.TabIndex = 10;
-            this.btt_xoa.Text = "XÓA";
-            this.btt_xoa.UseVisualStyleBackColor = true;
-            this.btt_xoa.Click += new System.EventHandler(this.btt_xoa_Click);
             // 
             // btt_them
             // 
@@ -267,9 +254,9 @@
             // btt_refreshds
             // 
             this.btt_refreshds.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_refreshds.Location = new System.Drawing.Point(1031, 22);
+            this.btt_refreshds.Location = new System.Drawing.Point(1015, 22);
             this.btt_refreshds.Name = "btt_refreshds";
-            this.btt_refreshds.Size = new System.Drawing.Size(111, 30);
+            this.btt_refreshds.Size = new System.Drawing.Size(127, 30);
             this.btt_refreshds.TabIndex = 4;
             this.btt_refreshds.Text = "REFRESH";
             this.btt_refreshds.UseVisualStyleBackColor = true;
@@ -278,18 +265,18 @@
             // dgv_hocphan
             // 
             this.dgv_hocphan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_hocphan.Location = new System.Drawing.Point(-9, 69);
+            this.dgv_hocphan.Location = new System.Drawing.Point(6, 69);
             this.dgv_hocphan.Name = "dgv_hocphan";
             this.dgv_hocphan.RowHeadersWidth = 51;
             this.dgv_hocphan.RowTemplate.Height = 24;
-            this.dgv_hocphan.Size = new System.Drawing.Size(1136, 316);
+            this.dgv_hocphan.Size = new System.Drawing.Size(1121, 316);
             this.dgv_hocphan.TabIndex = 3;
             this.dgv_hocphan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_hocphan_CellClick);
             // 
             // btt_timkiem
             // 
             this.btt_timkiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_timkiem.Location = new System.Drawing.Point(900, 22);
+            this.btt_timkiem.Location = new System.Drawing.Point(882, 22);
             this.btt_timkiem.Name = "btt_timkiem";
             this.btt_timkiem.Size = new System.Drawing.Size(111, 30);
             this.btt_timkiem.TabIndex = 2;
@@ -338,7 +325,6 @@
         private System.Windows.Forms.GroupBox cb_thongtin;
         private System.Windows.Forms.Button btt_refreshtt;
         private System.Windows.Forms.Button btt_capnhat;
-        private System.Windows.Forms.Button btt_xoa;
         private System.Windows.Forms.Button btt_them;
         private System.Windows.Forms.TextBox txt_stth;
         private System.Windows.Forms.TextBox txt_stlt;

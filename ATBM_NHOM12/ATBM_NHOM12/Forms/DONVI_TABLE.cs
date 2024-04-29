@@ -16,8 +16,6 @@ namespace ATBM_NHOM12.Forms
         private string roleUser = "";
         private string username = "";
         private string madvOld = "";
-        //private string tendvOld = "";
-        //private string trgdvOld = "";
         public static OracleConnection con = LoginProvider.conn;
         public DONVI_TABLE(string roleUser, string username )
         {
@@ -50,9 +48,8 @@ namespace ATBM_NHOM12.Forms
                 txt_madv.Text = row.Cells["MADV"].Value.ToString();
                 this.madvOld = row.Cells["MADV"].Value.ToString();
                 txt_tendv.Text = row.Cells["TENDV"].Value.ToString();
-                //this.tendvOld = row.Cells["TENDV"].Value.ToString();
                 txt_trgdv.Text = row.Cells["TRGDV"].Value.ToString();
-                //this.trgdvOld = row.Cells["TRGDV"].Value.ToString();
+                txt_madv.ReadOnly = true;
             }
         }
 
@@ -61,6 +58,8 @@ namespace ATBM_NHOM12.Forms
             txt_madv.Text = "";
             txt_tendv.Text = "";
             txt_trgdv.Text = "";
+            this.madvOld = "";
+            txt_madv.ReadOnly = false;
         }
 
         private void btt_refreshds_Click(object sender, EventArgs e)
@@ -79,8 +78,8 @@ namespace ATBM_NHOM12.Forms
 
                 // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
                 var cmd = new OracleCommand();
-                cmd.CommandText = $"INSERT ADPRO.DONVI VALUES" +
-                    $"('{madv}','{tendv}',{trgdv})";
+                cmd.CommandText = $"INSERT INTO ADPRO.DONVI VALUES" +
+                    $"('{madv}','{tendv}','{trgdv}')";
                 cmd.Connection = con;
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if (rowsAffected > 0)
@@ -94,37 +93,15 @@ namespace ATBM_NHOM12.Forms
                     MessageBox.Show("Không có dữ liệu nào được thêm!");
                 }
             }
-            catch (Exception ex)
+            catch (OracleException ex)
             {
-                // Xử lý ngoại lệ ở đây, ví dụ: hiển thị thông báo lỗi
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btt_xoa_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
-                string madv = txt_madv.Text;
-                string tendv = txt_tendv.Text;
-                string trgdv = txt_trgdv.Text;
-
-
-                // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
-                var cmd = new OracleCommand();
-                cmd.CommandText = $"DELETE FROM ADPRO.DONVI " +
-                    $"where madv = '{madv}'";
-                cmd.Connection = con;
-                int rowsAffected = cmd.ExecuteNonQuery();
-                if (rowsAffected > 0)
+                if (ex.Number == 00001)
                 {
-                    // Thông báo thành công hoặc thực hiện các hành động khác sau khi thêm thành công
-                    MessageBox.Show("Xóa dữ liệu thành công!");
+                    MessageBox.Show("Đã tồn tại mã đơn vị này!");
                 }
                 else
                 {
-                    MessageBox.Show("Không có dữ liệu nào được xóa!");
+                    MessageBox.Show(ex.Message);
                 }
             }
             catch (Exception ex)
@@ -145,8 +122,8 @@ namespace ATBM_NHOM12.Forms
 
                 // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
                 var cmd = new OracleCommand();
-                cmd.CommandText = $"UPDATE ADPRO.DONVI set tendv = '{tendv}' ,trgdv = {trgdv} " +
-                    $"where madv = '{this.madvOld}'";
+                cmd.CommandText = $"UPDATE ADPRO.DONVI set tendv = '{tendv}' ,trgdv = '{trgdv}' " +
+                    $"where madv = '{madv}'";
                 cmd.Connection = con;
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if (rowsAffected > 0)

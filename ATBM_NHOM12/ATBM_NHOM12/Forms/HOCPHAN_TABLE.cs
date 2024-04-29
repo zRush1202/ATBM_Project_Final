@@ -61,10 +61,11 @@ namespace ATBM_NHOM12.Forms
                 //this.stltOld = row.Cells["STLT"].Value.ToString();
                 txt_stth.Text = row.Cells["STTH"].Value.ToString();
                 //this.stthOld = row.Cells["STTH"].Value.ToString();
-                txt_sosvtd.Text = row.Cells["SOSVDT"].Value.ToString();
+                txt_sosvtd.Text = row.Cells["SOSVTD"].Value.ToString();
                 //this.sosvtdOld = row.Cells["SOSVTD"].Value.ToString();
                 txt_madv.Text = row.Cells["MADV"].Value.ToString();
                 //this.madvOld = row.Cells["MADV"].Value.ToString();
+                txt_mahp.ReadOnly = true;
             }
         }
         private void btt_refreshtt_Click(object sender, EventArgs e)
@@ -76,6 +77,7 @@ namespace ATBM_NHOM12.Forms
             txt_stth.Text = "";
             txt_sosvtd.Text = "";
             txt_madv.Text = "";
+            txt_mahp.ReadOnly = false;
         }
 
         private void btt_refreshds_Click(object sender, EventArgs e)
@@ -90,17 +92,25 @@ namespace ATBM_NHOM12.Forms
                 // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
                 string mahp = txt_mahp.Text;
                 string tenhp = txt_tenhp.Text;
-                int sotc = int.Parse(txt_sotc.Text);
-                int stlt = int.Parse(txt_stlt.Text);
-                int stth = int.Parse(txt_stth.Text);
-                int sosvtd = int.Parse(txt_sosvtd.Text);
+                int sotc = 0;
+                if (txt_sotc.Text != "")
+                    sotc = int.Parse(txt_sotc.Text);
+                int stlt = 0;
+                if (txt_stlt.Text != "")
+                    stlt = int.Parse(txt_stlt.Text);
+                int stth = 0;
+                if (txt_stth.Text != "")
+                    stth = int.Parse(txt_stth.Text);
+                int sosvtd = 0;
+                if (txt_sosvtd.Text != "")
+                    sosvtd = int.Parse(txt_sosvtd.Text);
                 string madv = txt_madv.Text;
 
 
                 // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
                 var cmd = new OracleCommand();
-                cmd.CommandText = $"INSERT ADPRO.HOCPHAN VALUES" +
-                    $"('{mahp}','{tenhp}',{sotc} ,{stlt} ,{stth} ,{sosvtd} ,{madv})";
+                cmd.CommandText = $"INSERT INTO ADPRO.HOCPHAN(MAHP, TENHP, SOTC, STLT, STTH, SOSVTĐ, MADV) VALUES" +
+                    $"('{mahp}','{tenhp}',{sotc} ,{stlt} ,{stth} ,{sosvtd} ,'{madv}')";
                 cmd.Connection = con;
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if (rowsAffected > 0)
@@ -114,47 +124,15 @@ namespace ATBM_NHOM12.Forms
                    MessageBox.Show("Không có dữ liệu nào được thêm!");
                 }
             }
-            catch (Exception ex)
+            catch (OracleException ex)
             {
-                // Xử lý ngoại lệ ở đây, ví dụ: hiển thị thông báo lỗi
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btt_xoa_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
-                string mahp = txt_mahp.Text;
-                string tenhp = txt_tenhp.Text;
-                int sotc = int.Parse(txt_sotc.Text);
-                int stlt = int.Parse(txt_stlt.Text);
-                int stth = int.Parse(txt_stth.Text);
-                int sosvtd = int.Parse(txt_sosvtd.Text);
-                string madv = txt_madv.Text;
-
-
-                // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
-                var cmd = new OracleCommand();
-                cmd.CommandText = $"DELETE FROM ADPRO.HOCPHAN " +
-                    $"where mahp = '{mahp}' and tenhp = '{tenhp}' and sotc = {sotc} and stlt = {stlt} and stth = {stth} and sosvtd = {sosvtd} and madv = {madv}";
-                cmd.Connection = con;
-                int rowsAffected = cmd.ExecuteNonQuery();
-                if (rowsAffected > 0)
+                if (ex.Number == 00001)
                 {
-                    // Thông báo thành công hoặc thực hiện các hành động khác sau khi thêm thành công
-                    MessageBox.Show("Xóa dữ liệu thành công!");
+                    MessageBox.Show("Đã tồn tại mã học phần này!");
                 }
                 else
                 {
-                    if (this.roleUser == "RL_TRUONGDV")
-                    {
-                        MessageBox.Show("Học phần không thuộc đơn vị mình làm trưởng!\nXóa thất bại.");
-                    }
-                    else
-                        // Thông báo khi không có dòng nào bị xóa
-                        MessageBox.Show("Không có dữ liệu nào được xóa!");
+                    MessageBox.Show(ex.Message);
                 }
             }
             catch (Exception ex)
@@ -171,16 +149,24 @@ namespace ATBM_NHOM12.Forms
                 // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
                 string mahp = txt_mahp.Text;
                 string tenhp = txt_tenhp.Text;
-                int sotc = int.Parse(txt_sotc.Text);
-                int stlt = int.Parse(txt_stlt.Text);
-                int stth = int.Parse(txt_stth.Text);
-                int sosvtd = int.Parse(txt_sosvtd.Text);
+                int sotc = 0;
+                if (txt_sotc.Text != "")
+                    sotc = int.Parse(txt_sotc.Text);
+                int stlt = 0;
+                if (txt_stlt.Text != "")
+                    stlt = int.Parse(txt_stlt.Text);
+                int stth = 0;
+                if (txt_stth.Text != "")
+                    stth = int.Parse(txt_stth.Text);
+                int sosvtd = 0;
+                if (txt_sosvtd.Text != "")
+                    sosvtd = int.Parse(txt_sosvtd.Text);
                 string madv = txt_madv.Text;
 
                 // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
                 var cmd = new OracleCommand();
-                cmd.CommandText = $"UPDATE ADPRO.HOCPHAN set tenhp = '{tenhp}' ,sotc = {sotc} ,stlt = {stlt} ,stth = {stth} ,sosvtd = {sosvtd} ,madv = {madv} " +
-                    $"where mahp = '{this.mahpOld}'";
+                cmd.CommandText = $"UPDATE ADPRO.HOCPHAN set tenhp = '{tenhp}' ,sotc = {sotc} ,stlt = {stlt} ,stth = {stth} ,sosvtd = {sosvtd} ,madv = '{madv}' " +
+                    $"where mahp = '{mahp}'";
                 cmd.Connection = con;
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if (rowsAffected > 0)

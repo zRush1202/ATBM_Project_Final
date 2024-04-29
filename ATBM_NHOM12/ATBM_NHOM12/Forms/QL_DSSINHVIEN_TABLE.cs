@@ -94,6 +94,17 @@ namespace ATBM_NHOM12.Forms
                     MessageBox.Show("Không có dữ liệu nào được thêm!");
                 }
             }
+            catch (OracleException ex)
+            {
+                if (ex.Number == 00001)
+                {
+                    MessageBox.Show("Đã tồn tại mã sinh viên này!");
+                }
+                else
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -151,6 +162,7 @@ namespace ATBM_NHOM12.Forms
                 txt_manganh.Text = row.Cells["MANGANH"].Value   .ToString();
                 txt_sotctl.Text = row.Cells["SOTCTL"].Value.ToString();
                 txt_dtbtl.Text = row.Cells["DTBTL"].Value.ToString();
+                txt_sv.ReadOnly = true;
             }
 
         }
@@ -217,7 +229,7 @@ namespace ATBM_NHOM12.Forms
             txt_manganh.Text = "";
             txt_sotctl.Text = "";
             txt_dtbtl.Text = "";
-
+            txt_sv.ReadOnly = false;
         }
 
         private void txt_masv_search_KeyUp(object sender, KeyEventArgs e)

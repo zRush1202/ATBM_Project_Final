@@ -34,7 +34,6 @@
             this.txt_mact = new System.Windows.Forms.ComboBox();
             this.btt_refreshtt = new System.Windows.Forms.Button();
             this.btt_capnhat = new System.Windows.Forms.Button();
-            this.btt_xoa = new System.Windows.Forms.Button();
             this.btt_them = new System.Windows.Forms.Button();
             this.txt_nam = new System.Windows.Forms.TextBox();
             this.lb_mact = new System.Windows.Forms.Label();
@@ -59,7 +58,6 @@
             this.cb_thongtin.Controls.Add(this.txt_mact);
             this.cb_thongtin.Controls.Add(this.btt_refreshtt);
             this.cb_thongtin.Controls.Add(this.btt_capnhat);
-            this.cb_thongtin.Controls.Add(this.btt_xoa);
             this.cb_thongtin.Controls.Add(this.btt_them);
             this.cb_thongtin.Controls.Add(this.txt_nam);
             this.cb_thongtin.Controls.Add(this.lb_mact);
@@ -121,24 +119,13 @@
             // btt_capnhat
             // 
             this.btt_capnhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_capnhat.Location = new System.Drawing.Point(931, 143);
+            this.btt_capnhat.Location = new System.Drawing.Point(931, 118);
             this.btt_capnhat.Name = "btt_capnhat";
             this.btt_capnhat.Size = new System.Drawing.Size(144, 40);
             this.btt_capnhat.TabIndex = 11;
             this.btt_capnhat.Text = "CẬP NHẬT";
             this.btt_capnhat.UseVisualStyleBackColor = true;
             this.btt_capnhat.Click += new System.EventHandler(this.btt_capnhat_Click);
-            // 
-            // btt_xoa
-            // 
-            this.btt_xoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_xoa.Location = new System.Drawing.Point(931, 85);
-            this.btt_xoa.Name = "btt_xoa";
-            this.btt_xoa.Size = new System.Drawing.Size(144, 42);
-            this.btt_xoa.TabIndex = 10;
-            this.btt_xoa.Text = "XÓA";
-            this.btt_xoa.UseVisualStyleBackColor = true;
-            this.btt_xoa.Click += new System.EventHandler(this.btt_xoa_Click);
             // 
             // btt_them
             // 
@@ -273,13 +260,13 @@
             this.Name = "KHMO_TABLE";
             this.Text = "KHMO_TABLE";
             this.Load += new System.EventHandler(this.KHMO_TABLE_Load);
+            this.Load += new System.EventHandler(this.txt_mahp_Load);
             this.cb_thongtin.ResumeLayout(false);
             this.cb_thongtin.PerformLayout();
             this.cb_phancong.ResumeLayout(false);
             this.cb_phancong.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_KHMO)).EndInit();
             this.ResumeLayout(false);
-            this.Load += new System.EventHandler(this.txt_mahp_Load);
 
         }
 
@@ -288,7 +275,6 @@
         private System.Windows.Forms.GroupBox cb_thongtin;
         private System.Windows.Forms.Button btt_refreshtt;
         private System.Windows.Forms.Button btt_capnhat;
-        private System.Windows.Forms.Button btt_xoa;
         private System.Windows.Forms.Button btt_them;
         private System.Windows.Forms.TextBox txt_nam;
         private System.Windows.Forms.Label lb_mact;

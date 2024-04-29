@@ -108,6 +108,12 @@
     <Compile Include="Forms\CAPNHATDIEM_DANGKY_TABLE.Designer.cs">
       <DependentUpon>CAPNHATDIEM_DANGKY_TABLE.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CAPNHAT_PHANCONG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CAPNHAT_PHANCONG.Designer.cs">
+      <DependentUpon>CAPNHAT_PHANCONG.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DANGKY_TABLE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -274,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CAPNHATDIEM_DANGKY_TABLE.resx">
       <DependentUpon>CAPNHATDIEM_DANGKY_TABLE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CAPNHAT_PHANCONG.resx">
+      <DependentUpon>CAPNHAT_PHANCONG.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DANGKY_TABLE.resx">
       <DependentUpon>DANGKY_TABLE.cs</DependentUpon>

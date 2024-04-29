@@ -109,7 +109,10 @@ update ADPRO.QLHS_TTCANHAN set DT = '0123456789';
 conn NV1110/NV1110@localhost:1521/atbm_projectfinal;
 select * from ADPRO.SINHVIEN;
 conn NV1110/NV1110@localhost:1521/atbm_projectfinal;
+select * from ADPRO.DONVI;
+conn NV1110/NV1110@localhost:1521/atbm_projectfinal;
 insert into ADPRO.DONVI values('KTPM', 'Ky Thuat Phan Mem','NV0266');
+delete from ADPRO.DONVI where madv = 'KTPM'
 conn NV1110/NV1110@localhost:1521/atbm_projectfinal;
 update ADPRO.HOCPHAN set SOTC = 5 where mahp = 'HP001';
 conn NV1110/NV1110@localhost:1521/atbm_projectfinal;
@@ -128,7 +131,7 @@ conn NV1110/NV1110@localhost:1521/atbm_projectfinal;
 delete from ADPRO.DANGKY where masv ='SV0001' and mahp = 'HP002' and hk = 2 and nam = 2024;
 
 conn NV1110/NV1110@localhost:1521/atbm_projectfinal;
-select * from DANGKY;
+select * from ADPRO.DANGKY;
 
 -- CS4 : TRUONGDV NV0204
 -- GIANGVIEN
@@ -255,9 +258,9 @@ select hp.MAHP from ADPRO.HOCPHAN hp, ADPRO.DONVI dv
 
 SELECT *
 FROM DBA_POLICIES
-WHERE OBJECT_NAME = 'KHMO';
+WHERE OBJECT_NAME = 'DANGKY';
 
-
+select hp.MAHP from ADPRO.KHMO kh,ADPRO.HOCPHAN hp, ADPRO.DONVI dv where kh.mahp = hp.mahp and hp.madv = dv.madv and dv.trgdv = 'NV0204'
 select * from adpro.phancong;
 SELECT * FROM ALL_TRIGGERS WHERE TABLE_NAME = 'DANGKY';
 
@@ -315,6 +318,8 @@ BEGIN
     END IF;
 END;
 
+
+insert into DONVI(madv,tendv,trgdv) from
 DBMS_OUTPUT.PUT_LINE(SYS_CONTEXT('USERENV', 'ISDBA'));
 
 select * from nhansu where manv = 'NV0204';

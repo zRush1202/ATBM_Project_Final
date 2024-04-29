@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ATBM_NHOM12.Forms
 {
@@ -54,6 +55,31 @@ namespace ATBM_NHOM12.Forms
                 txt_hk.Text = row.Cells["HK"].Value.ToString();
                 txt_mact.Text = row.Cells["MACT"].Value.ToString();
                 txt_nam.Text = row.Cells["NAM"].Value.ToString();
+                if (roleUser == "RL_GIAOVU")
+                {
+                    txt_magv.Items.Clear();
+                    string query = $"SELECT distinct MAGV FROM ADPRO.PHANCONG WHERE MAHP = :mahp AND HK = :hk AND NAM = :nam AND MACT = :mact";
+
+                    // Tạo một đối tượng OracleCommand
+                    using (OracleCommand cmd = new OracleCommand(query, con))
+                    {
+                        // Thêm tham số vào câu lệnh
+                        cmd.Parameters.Add("mahp", OracleDbType.Varchar2).Value = txt_mahp.Text;
+                        cmd.Parameters.Add("hk", OracleDbType.Int32).Value = int.Parse(txt_hk.Text);
+                        cmd.Parameters.Add("nam", OracleDbType.Int32).Value = int.Parse(txt_nam.Text);
+                        cmd.Parameters.Add("mact", OracleDbType.Varchar2).Value = txt_mact.Text;
+
+                        // Thực hiện truy vấn và xử lý kết quả
+                        using (OracleDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                // Lấy dữ liệu từ cột MAGV và thêm vào ComboBox
+                                txt_magv.Items.Add(reader.GetString(0));
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -74,9 +100,9 @@ namespace ATBM_NHOM12.Forms
 
                 // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
                 var cmd = new OracleCommand();
-                if (this.roleUser == "RL_SINHVIEN")
+                if (this.roleUser == "RL_SINHVIEN" || this.roleUser == "RL_GIAOVU")
                     cmd.CommandText = $"INSERT INTO ADPRO.DANGKY(MASV, MAGV, MAHP, HK, NAM, MACT) VALUES('{masv}','{magv}','{mahp}',{hk},{nam},'{mact}')";
-                else
+                else 
                     cmd.CommandText = $"INSERT INTO ADPRO.QLHS_DANGKY_HPGD(MASV, MAGV, MAHP, HK, NAM, MACT) VALUES('{masv}','{magv}','{mahp}',{hk},{nam},'{mact}')";
                 cmd.Connection = con;
                 int rowsAffected = cmd.ExecuteNonQuery();
@@ -96,6 +122,10 @@ namespace ATBM_NHOM12.Forms
                 {
                     MessageBox.Show("Quá thời hạn đăng ký học phần!");
                 }
+                else if (ex.Number == 28115)
+                {
+                    MessageBox.Show("Quá thời hạn đăng ký học phần!");
+                }
                 else
                 {
                     MessageBox.Show(ex.Message);
@@ -106,7 +136,34 @@ namespace ATBM_NHOM12.Forms
                 MessageBox.Show(ex.Message);
             }
         }
+        private void txt_magv_Load(object sender, EventArgs e)
+        {
+            //if (roleUser == "RL_GIAOVU")
+            //{
+            //    string query = $"SELECT MAGV FROM PHANCONG WHERE MHP = :mahp AND HK = :hk AND NAM = :nam AND MACT = :mact";
 
+            //    // Tạo một đối tượng OracleCommand
+            //    using (OracleCommand cmd = new OracleCommand(query, con))
+            //    {
+            //        // Thêm tham số vào câu lệnh
+            //        cmd.Parameters.Add("mahp", OracleDbType.Varchar2).Value = txt_mahp.Text;
+            //        cmd.Parameters.Add("hk", OracleDbType.Int32).Value = int.Parse(txt_hk.Text);
+            //        cmd.Parameters.Add("nam", OracleDbType.Int32).Value = int.Parse(txt_nam.Text);
+            //        cmd.Parameters.Add("mact", OracleDbType.Varchar2).Value = txt_mact.Text;
+
+            //        // Thực hiện truy vấn và xử lý kết quả
+            //        using (OracleDataReader reader = cmd.ExecuteReader())
+            //        {
+            //            while (reader.Read())
+            //            {
+            //                // Lấy dữ liệu từ cột MAGV và thêm vào ComboBox
+            //                txt_magv.Items.Add(reader.GetString(0));
+            //            }
+            //        }
+            //    }
+
+            //}
+        }
 
     }
 }
