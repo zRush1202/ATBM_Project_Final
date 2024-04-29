@@ -523,5 +523,10 @@ namespace ATBM_NHOM12
             lblTitle.Text = "QUẢN LÝ ĐĂNG KÝ";
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
+
+        private void FormMainMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            con.Close();
+        }
     }
 }
