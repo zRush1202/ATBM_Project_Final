@@ -56,6 +56,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btt_cleartt = new System.Windows.Forms.Button();
             this.btt_capnhat = new System.Windows.Forms.Button();
+            this.btt_Xoa = new System.Windows.Forms.Button();
             this.cb_phancong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSNhanSu)).BeginInit();
             this.panel2.SuspendLayout();
@@ -132,7 +133,7 @@
             // btt_them
             // 
             this.btt_them.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_them.Location = new System.Drawing.Point(243, 23);
+            this.btt_them.Location = new System.Drawing.Point(111, 23);
             this.btt_them.Name = "btt_them";
             this.btt_them.Size = new System.Drawing.Size(126, 30);
             this.btt_them.TabIndex = 13;
@@ -313,6 +314,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.Controls.Add(this.btt_Xoa);
             this.groupBox1.Controls.Add(this.btt_them);
             this.groupBox1.Controls.Add(this.btt_cleartt);
             this.groupBox1.Controls.Add(this.btt_capnhat);
@@ -328,10 +330,10 @@
             // 
             // btt_cleartt
             // 
-            this.btt_cleartt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btt_cleartt.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btt_cleartt.Location = new System.Drawing.Point(0, 26);
             this.btt_cleartt.Name = "btt_cleartt";
-            this.btt_cleartt.Size = new System.Drawing.Size(125, 30);
+            this.btt_cleartt.Size = new System.Drawing.Size(80, 30);
             this.btt_cleartt.TabIndex = 15;
             this.btt_cleartt.Text = "CLEAR";
             this.btt_cleartt.UseVisualStyleBackColor = true;
@@ -347,6 +349,17 @@
             this.btt_capnhat.Text = "CẬP NHẬT";
             this.btt_capnhat.UseVisualStyleBackColor = true;
             this.btt_capnhat.Click += new System.EventHandler(this.btt_capnhat_Click);
+            // 
+            // btt_Xoa
+            // 
+            this.btt_Xoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btt_Xoa.Location = new System.Drawing.Point(243, 23);
+            this.btt_Xoa.Name = "btt_Xoa";
+            this.btt_Xoa.Size = new System.Drawing.Size(126, 30);
+            this.btt_Xoa.TabIndex = 16;
+            this.btt_Xoa.Text = "XOÁ";
+            this.btt_Xoa.UseVisualStyleBackColor = true;
+            this.btt_Xoa.Click += new System.EventHandler(this.btt_Xoa_Click);
             // 
             // QL_NHANSU_TABLE
             // 
@@ -399,5 +412,6 @@
         private System.Windows.Forms.Button btt_cleartt;
         private System.Windows.Forms.Button btt_capnhat;
         private System.Windows.Forms.Button btt_them;
+        private System.Windows.Forms.Button btt_Xoa;
     }
 }
