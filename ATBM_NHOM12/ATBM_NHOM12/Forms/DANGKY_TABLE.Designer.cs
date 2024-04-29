@@ -191,7 +191,7 @@
             // 
             // txt_magv
             // 
-            this.txt_magv.Location = new System.Drawing.Point(543, 54);
+            this.txt_magv.Location = new System.Drawing.Point(558, 51);
             this.txt_magv.Name = "txt_magv";
             this.txt_magv.Size = new System.Drawing.Size(160, 24);
             this.txt_magv.TabIndex = 13;
@@ -245,7 +245,7 @@
             // 
             // txt_hk
             // 
-            this.txt_hk.Location = new System.Drawing.Point(543, 133);
+            this.txt_hk.Location = new System.Drawing.Point(558, 133);
             this.txt_hk.Name = "txt_hk";
             this.txt_hk.Size = new System.Drawing.Size(160, 24);
             this.txt_hk.TabIndex = 7;

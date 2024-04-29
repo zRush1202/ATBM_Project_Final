@@ -25,7 +25,11 @@ namespace ATBM_NHOM12.Forms
 
         private void THEM_DANGKY_TABLE_Load(object sender, EventArgs e)
         {
-            
+            if (this.roleUser == "RL_SINHVIEN")
+            {
+                txt_masv.Text = username;
+                txt_masv.ReadOnly = true;
+            }
             string query = "select * from ADPRO.KHMO"; 
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
             DataTable dataTable = new DataTable();
