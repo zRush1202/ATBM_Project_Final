@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace ATBM_NHOM12.Forms
         private string hkOld = "";
         private string namOld = "";
         public static OracleConnection con = LoginProvider.conn;
-        public DANGKY_TABLE(string username, string role)
+        public DANGKY_TABLE(string role, string username)
         {
             InitializeComponent();
             this.username = username;
@@ -30,7 +31,24 @@ namespace ATBM_NHOM12.Forms
         }
         private void DANGKY_TABLE_Load(object sender, EventArgs e)
         {
-            string query = "select * from ADPRO.DANGKY"; ;
+            string query = "select * from ADPRO.QLHS_DANGKY_HPGD";
+            if (roleUser == "RL_SINHVIEN")
+            {
+                btt_capnhatdiem.Visible = false;
+                txt_dth.ReadOnly = true;
+                txt_dqt.ReadOnly = true;
+                txt_dck.ReadOnly = true;
+                txt_dtk.ReadOnly = true;
+                txt_masv.ReadOnly = true;
+                txt_masv.Text = username;
+                query = "select * from ADPRO.DANGKY";
+            }
+            else
+            if (roleUser == "RL_GIANGVIEN")
+            {
+                btt_them.Visible = false;
+                btt_xoa.Visible = false;
+            }
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
             DataTable dataTable = new DataTable();
             try
@@ -57,7 +75,11 @@ namespace ATBM_NHOM12.Forms
             }
             else
             {
-                string query = $"SELECT * FROM ADPRO.DANGKY WHERE mahp LIKE '%{txt_tk_mhp.Text}%'";
+                string query = "";
+                if (this.roleUser == "RL_SINHVIEN")
+                    query = $"SELECT * FROM ADPRO.DANGKY WHERE mahp LIKE '%{txt_tk_mhp.Text}%'";
+                else
+                    query = $"SELECT * FROM ADPRO.QLHS_DANGKY_HPGD WHERE mahp LIKE '%{txt_tk_mhp.Text}%'";
                 OracleDataAdapter adapter = new OracleDataAdapter(query, con);
                 DataTable dataTable = new DataTable();
                 try
@@ -115,7 +137,7 @@ namespace ATBM_NHOM12.Forms
 
         private void btt_them_Click(object sender, EventArgs e)
         {
-            THEM_DANGKY_TABLE newForm = new THEM_DANGKY_TABLE();
+            THEM_DANGKY_TABLE newForm = new THEM_DANGKY_TABLE(roleUser,username);
             newForm.Show();
         }
 
@@ -136,7 +158,10 @@ namespace ATBM_NHOM12.Forms
 
                 // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
                 var cmd = new OracleCommand();
-                cmd.CommandText = $"DELETE FROM ADPRO.DANGKY where masv = '{masv}' and magv ='{magv}' and mahp = '{mahp}' and hk = {hk} and nam = {nam} and mact = '{mact}'";
+                if (this.roleUser == "RL_SINHVIEN")
+                    cmd.CommandText = $"DELETE FROM ADPRO.DANGKY where masv = '{masv}' and magv ='{magv}' and mahp = '{mahp}' and hk = {hk} and nam = {nam} and mact = '{mact}'";
+                else
+                    cmd.CommandText = $"DELETE FROM ADPRO.QLHS_DANGKY_HPGD where masv = '{masv}' and magv ='{magv}' and mahp = '{mahp}' and hk = {hk} and nam = {nam} and mact = '{mact}'";
                 cmd.Connection = con;
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if (rowsAffected > 0)
@@ -161,7 +186,7 @@ namespace ATBM_NHOM12.Forms
             try
             {
                 // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
-                string magv = txt_magv.Text;
+                string magv = txt_magv.Text; 
                 string mahp = txt_mahp.Text;
                 int hk = int.Parse(txt_hk.Text);
                 int nam = int.Parse(txt_nam.Text);
@@ -206,8 +231,15 @@ namespace ATBM_NHOM12.Forms
 
         private void btt_capnhatdiem_Click(object sender, EventArgs e)
         {
-            CAPNHATDIEM_DANGKY_TABLE newForm = new CAPNHATDIEM_DANGKY_TABLE(this.masvOld,this.magvOld,this.mahpOld,this.hkOld, this.namOld, this.mactOld);
-            newForm.Show();
+            if (!string.IsNullOrEmpty(this.masvOld))
+            {
+                CAPNHATDIEM_DANGKY_TABLE newForm = new CAPNHATDIEM_DANGKY_TABLE(this.masvOld, this.magvOld, this.mahpOld, this.hkOld, this.namOld, this.mactOld);
+                newForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn Đăng ký cần cập nhật điểm!");
+            }
         }
     }
 }

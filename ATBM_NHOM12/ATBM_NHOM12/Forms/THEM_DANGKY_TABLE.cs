@@ -14,15 +14,23 @@ namespace ATBM_NHOM12.Forms
     public partial class THEM_DANGKY_TABLE : Form
     {
         public static OracleConnection con = LoginProvider.conn;
-        private string roleUser = "RL_TRUONGDV";
-        public THEM_DANGKY_TABLE()
+        private string roleUser = "";
+        private string username = "";
+        public THEM_DANGKY_TABLE(string role, string username)
         {
             InitializeComponent();
+            this.roleUser = role;
+            this.username = username;
         }
 
-        private void THEM_PHANCONG_TABLE_Load(object sender, EventArgs e)
+        private void THEM_DANGKY_TABLE_Load(object sender, EventArgs e)
         {
-            string query = "select * from ADPRO.KHMO"; ;
+            if (this.roleUser == "RL_SINHVIEN")
+            {
+                txt_masv.Text = username;
+                txt_masv.ReadOnly = true;
+            }
+            string query = "select * from ADPRO.KHMO"; 
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
             DataTable dataTable = new DataTable();
             try
@@ -36,6 +44,7 @@ namespace ATBM_NHOM12.Forms
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
         private void dgv_khmo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.RowIndex < this.dgv_khmo.Rows.Count) // Make sure user select at least 1 row 
@@ -65,7 +74,10 @@ namespace ATBM_NHOM12.Forms
 
                 // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
                 var cmd = new OracleCommand();
-                cmd.CommandText = $"INSERT INTO ADPRO.DANGKY(MASV, MAGV, MAHP, HK, NAM, MACT) VALUES('{masv}','{magv}','{mahp}',{hk},{nam},'{mact}')";
+                if (this.roleUser == "RL_SINHVIEN")
+                    cmd.CommandText = $"INSERT INTO ADPRO.DANGKY(MASV, MAGV, MAHP, HK, NAM, MACT) VALUES('{masv}','{magv}','{mahp}',{hk},{nam},'{mact}')";
+                else
+                    cmd.CommandText = $"INSERT INTO ADPRO.QLHS_DANGKY_HPGD(MASV, MAGV, MAHP, HK, NAM, MACT) VALUES('{masv}','{magv}','{mahp}',{hk},{nam},'{mact}')";
                 cmd.Connection = con;
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if (rowsAffected > 0)
@@ -78,11 +90,23 @@ namespace ATBM_NHOM12.Forms
                     MessageBox.Show("Không có dữ liệu nào được xóa!");
                 }
             }
+            catch (OracleException ex)
+            {
+                if (ex.Number == 28115)
+                {
+                    MessageBox.Show("Quá thời hạn đăng ký học phần!");
+                }
+                else
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
             catch (Exception ex)
             {
-                    // Xử lý ngoại lệ ở đây, ví dụ: hiển thị thông báo lỗi
-                    MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
+
+
     }
 }

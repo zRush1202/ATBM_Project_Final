@@ -31,6 +31,12 @@ namespace ATBM_NHOM12.Forms
         }
         private void HOCPHAN_TABLE_Load(object sender, EventArgs e)
         {
+            if (roleUser == "RL_NVCOBAN" || roleUser == "RL_GIANGVIEN")
+            {
+                btt_them.Visible = false;
+                btt_capnhat.Visible = false;
+                btt_xoa.Visible = false;
+            }
             string query = "select * from ADPRO.HOCPHAN"; ;
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
             DataTable dataTable = new DataTable();
@@ -61,7 +67,7 @@ namespace ATBM_NHOM12.Forms
                 //this.stltOld = row.Cells["STLT"].Value.ToString();
                 txt_stth.Text = row.Cells["STTH"].Value.ToString();
                 //this.stthOld = row.Cells["STTH"].Value.ToString();
-                txt_sosvtd.Text = row.Cells["SOSVTD"].Value.ToString();
+                txt_sosvtd.Text = row.Cells["SOSVDT"].Value.ToString();
                 //this.sosvtdOld = row.Cells["SOSVTD"].Value.ToString();
                 txt_madv.Text = row.Cells["MADV"].Value.ToString();
                 //this.madvOld = row.Cells["MADV"].Value.ToString();
