@@ -226,6 +226,7 @@
             this.Controls.Add(this.gb_khmo);
             this.Controls.Add(this.lb_title);
             this.Name = "THEM_DANGKY_TABLE";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "THEM_DANGKY_TABLE";
             this.Load += new System.EventHandler(this.THEM_DANGKY_TABLE_Load);
             this.groupBox1.ResumeLayout(false);

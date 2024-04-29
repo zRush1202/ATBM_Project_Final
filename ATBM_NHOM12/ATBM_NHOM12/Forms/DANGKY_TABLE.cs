@@ -32,20 +32,19 @@ namespace ATBM_NHOM12.Forms
         private void DANGKY_TABLE_Load(object sender, EventArgs e)
         {
             string query = "";
-            if (this.roleUser == "RL_SINHVIEN")
-                query = "select * from ADPRO.DANGKY"; 
-            else
-                query = "select * from ADPRO.QLHS_DANGKY_HPGD";
             if (roleUser == "RL_SINHVIEN")
             {
                 btt_capnhatdiem.Visible = false;
-                txt_dth.ReadOnly = false;
-                txt_dqt.ReadOnly = false;
-                txt_dck.ReadOnly = false;
-                txt_dtk.ReadOnly = false;
+                txt_dth.ReadOnly = true;
+                txt_dqt.ReadOnly = true;
+                txt_dck.ReadOnly = true;
+                txt_dtk.ReadOnly = true;
+                txt_masv.ReadOnly = true;
+                txt_masv.Text = username;
+                query = "select * from ADPRO.DANGKY";
             }
-
-            string query = "select * from ADPRO.DANGKY"; ;
+            else
+                query = "select * from ADPRO.QLHS_DANGKY_HPGD";
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
             DataTable dataTable = new DataTable();
             try
@@ -115,7 +114,7 @@ namespace ATBM_NHOM12.Forms
                 DataGridViewRow row = this.dgv_dangky.Rows[e.RowIndex];
                 txt_masv.Text = row.Cells["MASV"].Value.ToString();
                 this.masvOld = row.Cells["MASV"].Value.ToString();
-                lb_magv.Text = row.Cells["MAGV"].Value.ToString();
+                txt_magv.Text = row.Cells["MAGV"].Value.ToString();
                 this.magvOld = row.Cells["MAGV"].Value.ToString();
                 txt_mahp.Text = row.Cells["MAHP"].Value.ToString();
                 this.mahpOld = row.Cells["MAHP"].Value.ToString();
