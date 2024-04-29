@@ -36,6 +36,16 @@ namespace ATBM_NHOM12.Forms
                 query = "select * from ADPRO.DANGKY"; 
             else
                 query = "select * from ADPRO.QLHS_DANGKY_HPGD";
+            if (roleUser == "RL_SINHVIEN")
+            {
+                btt_capnhatdiem.Visible = false;
+                txt_dth.ReadOnly = false;
+                txt_dqt.ReadOnly = false;
+                txt_dck.ReadOnly = false;
+                txt_dtk.ReadOnly = false;
+            }
+
+            string query = "select * from ADPRO.DANGKY"; ;
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
             DataTable dataTable = new DataTable();
             try

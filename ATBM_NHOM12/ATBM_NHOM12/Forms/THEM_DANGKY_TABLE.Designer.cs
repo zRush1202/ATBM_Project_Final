@@ -205,6 +205,7 @@
             this.dgv_khmo.RowTemplate.Height = 24;
             this.dgv_khmo.Size = new System.Drawing.Size(426, 415);
             this.dgv_khmo.TabIndex = 0;
+            this.dgv_khmo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_khmo_CellClick);
             // 
             // lb_title
             // 
@@ -226,6 +227,7 @@
             this.Controls.Add(this.lb_title);
             this.Name = "THEM_DANGKY_TABLE";
             this.Text = "THEM_DANGKY_TABLE";
+            this.Load += new System.EventHandler(this.THEM_DANGKY_TABLE_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.gb_khmo.ResumeLayout(false);
