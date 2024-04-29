@@ -425,7 +425,7 @@ namespace ATBM_NHOM12
 
         private void btnSinhVien_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new QL_DSSINHVIEN_TABLE(), sender);
+            OpenChildForm(new QL_DSSINHVIEN_TABLE(role, username), sender);
             lblTitle.Text = "QUẢN LÝ SINH VIÊN";
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }

@@ -72,7 +72,7 @@
             this.panel2.Controls.Add(this.lb_manganh);
             this.panel2.Controls.Add(this.lb_mact);
             this.panel2.Controls.Add(this.lb_masv);
-            this.panel2.Location = new System.Drawing.Point(117, 256);
+            this.panel2.Location = new System.Drawing.Point(189, 316);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(786, 317);
             this.panel2.TabIndex = 5;
@@ -187,7 +187,7 @@
             this.panel1.Controls.Add(this.lb_hoten);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.lb_dt);
-            this.panel1.Location = new System.Drawing.Point(117, 25);
+            this.panel1.Location = new System.Drawing.Point(189, 85);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(786, 233);
             this.panel1.TabIndex = 4;
@@ -291,7 +291,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1025, 585);
+            this.ClientSize = new System.Drawing.Size(1172, 718);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "TTCN_SINHVIEN";

@@ -13,11 +13,14 @@ namespace ATBM_NHOM12.Forms
 {
     public partial class QL_DSSINHVIEN_TABLE : Form
     {
-        private string roleUser = "RL_GIAOVU";
+        private string roleUser = "";
+        private string username = "";
         public static OracleConnection con = LoginProvider.conn;
-        public QL_DSSINHVIEN_TABLE()
+        public QL_DSSINHVIEN_TABLE(string role, string username)
         {
             InitializeComponent();
+            this.username = username;
+            this.roleUser = role;   
         }
 
         private void QL_DSSINHVIEN_TABLE_Load(object sender, EventArgs e)

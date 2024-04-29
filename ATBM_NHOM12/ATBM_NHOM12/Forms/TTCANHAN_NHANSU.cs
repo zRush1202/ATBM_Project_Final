@@ -33,7 +33,8 @@ namespace ATBM_NHOM12.Forms
                     // Gán giá trị từ cột tương ứng vào các textbox
                     txt_hoten.Text = reader["HOTEN"].ToString();
                     txt_phai.Text = reader["PHAI"].ToString();
-                    txt_ngaysinh.Text = reader["NGSINH"].ToString();
+                    DateTime ngsinh = Convert.ToDateTime(reader["NGSINH"].ToString());
+                    txt_ngaysinh.Text = ngsinh.ToString("dd-MM-yyyy");
                     txt_manv.Text = reader["MANV"].ToString();
                     txt_phucap.Text = reader["PHUCAP"].ToString();
                     txt_dt.Text = reader["DT"].ToString();

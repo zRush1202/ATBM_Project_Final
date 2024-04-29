@@ -66,7 +66,7 @@
             this.panel2.Controls.Add(this.lb_vaitro);
             this.panel2.Controls.Add(this.lb_phucap);
             this.panel2.Controls.Add(this.lb_manv);
-            this.panel2.Location = new System.Drawing.Point(123, 247);
+            this.panel2.Location = new System.Drawing.Point(200, 312);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(786, 299);
             this.panel2.TabIndex = 3;
@@ -179,7 +179,7 @@
             this.panel1.Controls.Add(this.lb_hoten);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.lb_dt);
-            this.panel1.Location = new System.Drawing.Point(123, 43);
+            this.panel1.Location = new System.Drawing.Point(200, 108);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(786, 214);
             this.panel1.TabIndex = 2;
@@ -249,7 +249,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1025, 585);
+            this.ClientSize = new System.Drawing.Size(1172, 718);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "TTCANHAN_NHANSU";
