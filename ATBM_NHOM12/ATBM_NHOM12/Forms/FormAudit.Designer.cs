@@ -42,6 +42,7 @@
             // 
             // dgvStandardAudit
             // 
+            this.dgvStandardAudit.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvStandardAudit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStandardAudit.Location = new System.Drawing.Point(19, 48);
             this.dgvStandardAudit.Name = "dgvStandardAudit";
@@ -52,6 +53,7 @@
             // 
             // dgvFGADangKy
             // 
+            this.dgvFGADangKy.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvFGADangKy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFGADangKy.Location = new System.Drawing.Point(19, 319);
             this.dgvFGADangKy.Name = "dgvFGADangKy";
@@ -62,6 +64,7 @@
             // 
             // dgvFGAPhuCap
             // 
+            this.dgvFGAPhuCap.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvFGAPhuCap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFGAPhuCap.Location = new System.Drawing.Point(19, 529);
             this.dgvFGAPhuCap.Name = "dgvFGAPhuCap";

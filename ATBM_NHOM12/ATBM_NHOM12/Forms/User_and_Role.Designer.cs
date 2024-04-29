@@ -77,20 +77,21 @@
             // 
             this.panel1.Controls.Add(this.dgvUser);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(2, 51);
+            this.panel1.Location = new System.Drawing.Point(12, 66);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(500, 450);
+            this.panel1.Size = new System.Drawing.Size(560, 550);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // dgvUser
             // 
             this.dgvUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUser.Location = new System.Drawing.Point(0, 0);
             this.dgvUser.Name = "dgvUser";
             this.dgvUser.RowHeadersWidth = 51;
             this.dgvUser.RowTemplate.Height = 24;
-            this.dgvUser.Size = new System.Drawing.Size(500, 450);
+            this.dgvUser.Size = new System.Drawing.Size(560, 550);
             this.dgvUser.TabIndex = 1;
             this.dgvUser.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUser_CellClick);
             // 
@@ -98,19 +99,20 @@
             // 
             this.panel5.Controls.Add(this.dgvRole);
             this.panel5.Controls.Add(this.label4);
-            this.panel5.Location = new System.Drawing.Point(523, 51);
+            this.panel5.Location = new System.Drawing.Point(589, 66);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(500, 450);
+            this.panel5.Size = new System.Drawing.Size(560, 550);
             this.panel5.TabIndex = 4;
             // 
             // dgvRole
             // 
             this.dgvRole.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRole.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRole.Location = new System.Drawing.Point(0, 0);
             this.dgvRole.Name = "dgvRole";
             this.dgvRole.RowHeadersWidth = 51;
             this.dgvRole.RowTemplate.Height = 24;
-            this.dgvRole.Size = new System.Drawing.Size(500, 450);
+            this.dgvRole.Size = new System.Drawing.Size(560, 550);
             this.dgvRole.TabIndex = 1;
             this.dgvRole.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRole_CellClick);
             // 
@@ -126,7 +128,7 @@
             // 
             this.lblUser.AutoSize = true;
             this.lblUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUser.Location = new System.Drawing.Point(227, 18);
+            this.lblUser.Location = new System.Drawing.Point(267, 37);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(65, 24);
             this.lblUser.TabIndex = 5;
@@ -136,7 +138,7 @@
             // 
             this.lblRole.AutoSize = true;
             this.lblRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRole.Location = new System.Drawing.Point(740, 18);
+            this.lblRole.Location = new System.Drawing.Point(842, 38);
             this.lblRole.Name = "lblRole";
             this.lblRole.Size = new System.Drawing.Size(65, 24);
             this.lblRole.TabIndex = 6;
@@ -149,7 +151,7 @@
             this.btnAddUser.FlatAppearance.BorderSize = 0;
             this.btnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnAddUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddUser.Location = new System.Drawing.Point(393, 13);
+            this.btnAddUser.Location = new System.Drawing.Point(471, 33);
             this.btnAddUser.Name = "btnAddUser";
             this.btnAddUser.Size = new System.Drawing.Size(30, 30);
             this.btnAddUser.TabIndex = 7;
@@ -165,7 +167,7 @@
             this.btnAddRole.FlatAppearance.BorderSize = 0;
             this.btnAddRole.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnAddRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddRole.Location = new System.Drawing.Point(914, 13);
+            this.btnAddRole.Location = new System.Drawing.Point(1049, 31);
             this.btnAddRole.Name = "btnAddRole";
             this.btnAddRole.Size = new System.Drawing.Size(30, 30);
             this.btnAddRole.TabIndex = 8;
@@ -177,7 +179,7 @@
             // tbxSearchUser
             // 
             this.tbxSearchUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxSearchUser.Location = new System.Drawing.Point(2, 507);
+            this.tbxSearchUser.Location = new System.Drawing.Point(12, 623);
             this.tbxSearchUser.Name = "tbxSearchUser";
             this.tbxSearchUser.Size = new System.Drawing.Size(257, 28);
             this.tbxSearchUser.TabIndex = 9;
@@ -185,7 +187,7 @@
             // tbxSearchRole
             // 
             this.tbxSearchRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxSearchRole.Location = new System.Drawing.Point(523, 508);
+            this.tbxSearchRole.Location = new System.Drawing.Point(589, 623);
             this.tbxSearchRole.Name = "tbxSearchRole";
             this.tbxSearchRole.Size = new System.Drawing.Size(257, 28);
             this.tbxSearchRole.TabIndex = 17;
@@ -196,7 +198,7 @@
             this.btnRefreshUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefreshUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefreshUser.ForeColor = System.Drawing.Color.White;
-            this.btnRefreshUser.Location = new System.Drawing.Point(403, 508);
+            this.btnRefreshUser.Location = new System.Drawing.Point(474, 622);
             this.btnRefreshUser.Name = "btnRefreshUser";
             this.btnRefreshUser.Size = new System.Drawing.Size(99, 32);
             this.btnRefreshUser.TabIndex = 20;
@@ -210,7 +212,7 @@
             this.btnRefreshRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefreshRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefreshRole.ForeColor = System.Drawing.Color.White;
-            this.btnRefreshRole.Location = new System.Drawing.Point(924, 509);
+            this.btnRefreshRole.Location = new System.Drawing.Point(1051, 622);
             this.btnRefreshRole.Name = "btnRefreshRole";
             this.btnRefreshRole.Size = new System.Drawing.Size(99, 32);
             this.btnRefreshRole.TabIndex = 21;
@@ -223,7 +225,7 @@
             this.btnRoleDetail.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRoleDetail.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnRoleDetail.ErrorImage")));
             this.btnRoleDetail.Image = global::ATBM_NHOM12.Properties.Resources.info;
-            this.btnRoleDetail.Location = new System.Drawing.Point(873, 13);
+            this.btnRoleDetail.Location = new System.Drawing.Point(1008, 30);
             this.btnRoleDetail.Name = "btnRoleDetail";
             this.btnRoleDetail.Size = new System.Drawing.Size(35, 33);
             this.btnRoleDetail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -237,7 +239,7 @@
             this.btnSearchRole.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearchRole.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnSearchRole.ErrorImage")));
             this.btnSearchRole.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchRole.Image")));
-            this.btnSearchRole.Location = new System.Drawing.Point(786, 509);
+            this.btnSearchRole.Location = new System.Drawing.Point(852, 624);
             this.btnSearchRole.Name = "btnSearchRole";
             this.btnSearchRole.Size = new System.Drawing.Size(27, 27);
             this.btnSearchRole.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -251,7 +253,7 @@
             this.btnSearchUser.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearchUser.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnSearchUser.ErrorImage")));
             this.btnSearchUser.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchUser.Image")));
-            this.btnSearchUser.Location = new System.Drawing.Point(265, 508);
+            this.btnSearchUser.Location = new System.Drawing.Point(275, 624);
             this.btnSearchUser.Name = "btnSearchUser";
             this.btnSearchUser.Size = new System.Drawing.Size(27, 27);
             this.btnSearchUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -264,7 +266,7 @@
             // 
             this.btnDeleteRole.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDeleteRole.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteRole.Image")));
-            this.btnDeleteRole.Location = new System.Drawing.Point(983, 13);
+            this.btnDeleteRole.Location = new System.Drawing.Point(1118, 31);
             this.btnDeleteRole.Name = "btnDeleteRole";
             this.btnDeleteRole.Size = new System.Drawing.Size(30, 30);
             this.btnDeleteRole.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -279,7 +281,7 @@
             this.btnEditRole.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditRole.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnEditRole.ErrorImage")));
             this.btnEditRole.Image = global::ATBM_NHOM12.Properties.Resources.editButton;
-            this.btnEditRole.Location = new System.Drawing.Point(950, 15);
+            this.btnEditRole.Location = new System.Drawing.Point(1085, 33);
             this.btnEditRole.Name = "btnEditRole";
             this.btnEditRole.Size = new System.Drawing.Size(27, 27);
             this.btnEditRole.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -292,7 +294,7 @@
             // 
             this.btnDeleteUser.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDeleteUser.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteUser.Image")));
-            this.btnDeleteUser.Location = new System.Drawing.Point(462, 13);
+            this.btnDeleteUser.Location = new System.Drawing.Point(540, 33);
             this.btnDeleteUser.Name = "btnDeleteUser";
             this.btnDeleteUser.Size = new System.Drawing.Size(30, 30);
             this.btnDeleteUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -306,7 +308,7 @@
             this.btnEditUser.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditUser.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnEditUser.ErrorImage")));
             this.btnEditUser.Image = global::ATBM_NHOM12.Properties.Resources.editButton;
-            this.btnEditUser.Location = new System.Drawing.Point(429, 15);
+            this.btnEditUser.Location = new System.Drawing.Point(507, 35);
             this.btnEditUser.Name = "btnEditUser";
             this.btnEditUser.Size = new System.Drawing.Size(27, 27);
             this.btnEditUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -320,7 +322,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ClientSize = new System.Drawing.Size(1025, 585);
+            this.ClientSize = new System.Drawing.Size(1171, 864);
             this.Controls.Add(this.btnRoleDetail);
             this.Controls.Add(this.btnRefreshRole);
             this.Controls.Add(this.btnRefreshUser);

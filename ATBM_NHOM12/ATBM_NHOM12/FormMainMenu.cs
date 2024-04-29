@@ -107,7 +107,7 @@ namespace ATBM_NHOM12
         private void Reset()
         {
             DisableButton();
-            lblTitle.Text = "HOME";
+            lblTitle.Text = "TRANG CHỦ";
             panelTitleBar.BackColor = Color.FromArgb(82, 109, 130);
             panelLogo.BackColor = Color.FromArgb(39, 55, 77);
             currentButton = null;
@@ -180,7 +180,7 @@ namespace ATBM_NHOM12
             {
                 panelDesktopPane.Controls.Clear();
                 // Hiển thị lại MainForm
-                lblTitle.Text = "HOME";
+                lblTitle.Text = "TRANG CHỦ";
                 CenterLabelInPanel(lblTitle, panelTitleBar);
                 button1.Visible = true;
                 button2.Visible = true;
@@ -208,7 +208,7 @@ namespace ATBM_NHOM12
             {
                 panelDesktopPane.Controls.Clear();
                 // Hiển thị lại MainForm
-                lblTitle.Text = "HOME";
+                lblTitle.Text = "TRANG CHỦ";
                 CenterLabelInPanel(lblTitle, panelTitleBar);
                 btnLogin.Visible = false;
                 btnTTCNNS.Visible = true;
@@ -228,7 +228,7 @@ namespace ATBM_NHOM12
             {
                 panelDesktopPane.Controls.Clear();
                 // Hiển thị lại MainForm
-                lblTitle.Text = "HOME";
+                lblTitle.Text = "TRANG CHỦ";
                 CenterLabelInPanel(lblTitle, panelTitleBar);
                 btnLogin.Visible = false;
                 btnTTCNNS.Visible = true;
@@ -250,7 +250,7 @@ namespace ATBM_NHOM12
             {
                 panelDesktopPane.Controls.Clear();
                 // Hiển thị lại MainForm
-                lblTitle.Text = "HOME";
+                lblTitle.Text = "TRANG CHỦ";
                 CenterLabelInPanel(lblTitle, panelTitleBar);
                 btnLogin.Visible = false;
                 btnTTCNNS.Visible = true;
@@ -275,7 +275,7 @@ namespace ATBM_NHOM12
             {
                 panelDesktopPane.Controls.Clear();
                 // Hiển thị lại MainForm
-                lblTitle.Text = "HOME";
+                lblTitle.Text = "TRANG CHỦ";
                 CenterLabelInPanel(lblTitle, panelTitleBar);
                 btnLogin.Visible = false;
                 btnTTCNNS.Visible = true;
@@ -297,7 +297,7 @@ namespace ATBM_NHOM12
             {
                 panelDesktopPane.Controls.Clear();
                 // Hiển thị lại MainForm
-                lblTitle.Text = "HOME";
+                lblTitle.Text = "TRANG CHỦ";
                 CenterLabelInPanel(lblTitle, panelTitleBar);
                 btnLogin.Visible = false;
                 btnTTCNNS.Visible = true;
@@ -320,7 +320,7 @@ namespace ATBM_NHOM12
             {
                 panelDesktopPane.Controls.Clear();
                 // Hiển thị lại MainForm
-                lblTitle.Text = "HOME";
+                lblTitle.Text = "TRANG CHỦ";
                 CenterLabelInPanel(lblTitle, panelTitleBar);
                 btnLogin.Visible = false;
                 btnTTCNSV.Visible = true;
@@ -340,18 +340,21 @@ namespace ATBM_NHOM12
         private void button1_Click(object sender, EventArgs e)
         {
             OpenChildForm(new User_and_Role(), sender);
+            lblTitle.Text = "NGƯỜI DÙNG VÀ VAI TRÒ";
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Privilege(), sender);
+            lblTitle.Text = "QUYỀN";
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Grant_Revoke_Privilege(), sender);
+            lblTitle.Text = "QUẢN LÝ QUYỀN";
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
 
@@ -395,6 +398,15 @@ namespace ATBM_NHOM12
             if (activeForm != null)
                 activeForm.Close();
             Reset();
+            Home childForm = new Home();
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.panelDesktopPane.Controls.Add(childForm);
+            this.panelDesktopPane.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
         }
 
         private void label2_Click(object sender, EventArgs e)

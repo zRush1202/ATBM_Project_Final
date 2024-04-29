@@ -47,7 +47,7 @@
             this.gb_table.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gb_table.Location = new System.Drawing.Point(12, 93);
             this.gb_table.Name = "gb_table";
-            this.gb_table.Size = new System.Drawing.Size(496, 489);
+            this.gb_table.Size = new System.Drawing.Size(568, 578);
             this.gb_table.TabIndex = 0;
             this.gb_table.TabStop = false;
             this.gb_table.Text = "Table";
@@ -59,16 +59,16 @@
             this.dgv_table.Name = "dgv_table";
             this.dgv_table.RowHeadersWidth = 51;
             this.dgv_table.RowTemplate.Height = 24;
-            this.dgv_table.Size = new System.Drawing.Size(476, 457);
+            this.dgv_table.Size = new System.Drawing.Size(556, 549);
             this.dgv_table.TabIndex = 0;
             // 
             // gb_col
             // 
             this.gb_col.Controls.Add(this.dgv_col);
             this.gb_col.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gb_col.Location = new System.Drawing.Point(514, 93);
+            this.gb_col.Location = new System.Drawing.Point(586, 93);
             this.gb_col.Name = "gb_col";
-            this.gb_col.Size = new System.Drawing.Size(510, 489);
+            this.gb_col.Size = new System.Drawing.Size(573, 578);
             this.gb_col.TabIndex = 1;
             this.gb_col.TabStop = false;
             this.gb_col.Text = "Column";
@@ -80,7 +80,7 @@
             this.dgv_col.Name = "dgv_col";
             this.dgv_col.RowHeadersWidth = 51;
             this.dgv_col.RowTemplate.Height = 24;
-            this.dgv_col.Size = new System.Drawing.Size(490, 457);
+            this.dgv_col.Size = new System.Drawing.Size(553, 549);
             this.dgv_col.TabIndex = 1;
             // 
             // btt_grant
@@ -114,9 +114,9 @@
             this.btt_Refresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.btt_Refresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btt_Refresh.ForeColor = System.Drawing.Color.White;
-            this.btt_Refresh.Location = new System.Drawing.Point(908, 38);
+            this.btt_Refresh.Location = new System.Drawing.Point(1036, 38);
             this.btt_Refresh.Name = "btt_Refresh";
-            this.btt_Refresh.Size = new System.Drawing.Size(110, 34);
+            this.btt_Refresh.Size = new System.Drawing.Size(118, 35);
             this.btt_Refresh.TabIndex = 4;
             this.btt_Refresh.Text = "Refresh";
             this.btt_Refresh.UseVisualStyleBackColor = false;
@@ -127,7 +127,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ClientSize = new System.Drawing.Size(1025, 585);
+            this.ClientSize = new System.Drawing.Size(1171, 864);
             this.Controls.Add(this.btt_Refresh);
             this.Controls.Add(this.btt_revoke);
             this.Controls.Add(this.btt_grant);
