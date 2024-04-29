@@ -31,7 +31,7 @@ namespace ATBM_NHOM12.Forms
         }
         private void DANGKY_TABLE_Load(object sender, EventArgs e)
         {
-            string query = "";
+            string query = "select * from ADPRO.QLHS_DANGKY_HPGD";
             if (roleUser == "RL_SINHVIEN")
             {
                 btt_capnhatdiem.Visible = false;
@@ -49,7 +49,11 @@ namespace ATBM_NHOM12.Forms
                 btt_capnhatdiem.Visible=false;
             }
             else
-                query = "select * from ADPRO.QLHS_DANGKY_HPGD";
+            if (roleUser == "RL_GIANGVIEN")
+            {
+                btt_them.Visible = false;
+                btt_xoa.Visible = false;
+            }
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
             DataTable dataTable = new DataTable();
             try
@@ -192,7 +196,7 @@ namespace ATBM_NHOM12.Forms
             try
             {
                 // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
-                string magv = lb_magv.Text;
+                string magv = txt_magv.Text; 
                 string mahp = txt_mahp.Text;
                 int hk = int.Parse(txt_hk.Text);
                 int nam = int.Parse(txt_nam.Text);
@@ -229,8 +233,15 @@ namespace ATBM_NHOM12.Forms
 
         private void btt_capnhatdiem_Click(object sender, EventArgs e)
         {
-            CAPNHATDIEM_DANGKY_TABLE newForm = new CAPNHATDIEM_DANGKY_TABLE(this.masvOld,this.magvOld,this.mahpOld,this.hkOld, this.namOld, this.mactOld);
-            newForm.Show();
+            if (!string.IsNullOrEmpty(this.masvOld))
+            {
+                CAPNHATDIEM_DANGKY_TABLE newForm = new CAPNHATDIEM_DANGKY_TABLE(this.masvOld, this.magvOld, this.mahpOld, this.hkOld, this.namOld, this.mactOld);
+                newForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn Đăng ký cần cập nhật điểm!");
+            }
         }
     }
 }

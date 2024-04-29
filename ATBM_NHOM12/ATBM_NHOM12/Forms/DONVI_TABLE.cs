@@ -25,6 +25,12 @@ namespace ATBM_NHOM12.Forms
         }
         private void DONVI_TABLE_Load(object sender, EventArgs e)
         {
+            if (roleUser == "RL_NVCOBAN" || roleUser == "RL_GIANGVIEN")
+            {
+                btt_them.Visible = false;
+                btt_capnhat.Visible = false;
+                btt_xoa.Visible = false;
+            }
             string query = "select * from ADPRO.DONVI"; ;
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
             DataTable dataTable = new DataTable();
