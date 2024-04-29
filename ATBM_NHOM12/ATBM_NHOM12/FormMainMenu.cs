@@ -444,7 +444,7 @@ namespace ATBM_NHOM12
 
         private void btnNhanSu_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new QL_NHANSU_TABLE(), sender); ;
+            OpenChildForm(new QL_NHANSU_TABLE(role, username), sender); ;
             lblTitle.Text = "QUẢN LÝ NHÂN SỰ";
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
