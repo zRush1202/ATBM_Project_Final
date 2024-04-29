@@ -79,6 +79,7 @@
             // 
             // txt_dtbtl
             // 
+            this.txt_dtbtl.Enabled = false;
             this.txt_dtbtl.Location = new System.Drawing.Point(241, 222);
             this.txt_dtbtl.Name = "txt_dtbtl";
             this.txt_dtbtl.Size = new System.Drawing.Size(438, 22);
@@ -107,6 +108,7 @@
             // 
             // txt_sotctl
             // 
+            this.txt_sotctl.Enabled = false;
             this.txt_sotctl.Location = new System.Drawing.Point(241, 175);
             this.txt_sotctl.Name = "txt_sotctl";
             this.txt_sotctl.Size = new System.Drawing.Size(438, 22);
@@ -114,6 +116,7 @@
             // 
             // txt_manganh
             // 
+            this.txt_manganh.Enabled = false;
             this.txt_manganh.Location = new System.Drawing.Point(241, 123);
             this.txt_manganh.Name = "txt_manganh";
             this.txt_manganh.Size = new System.Drawing.Size(438, 22);
@@ -121,6 +124,7 @@
             // 
             // txt_mact
             // 
+            this.txt_mact.Enabled = false;
             this.txt_mact.Location = new System.Drawing.Point(241, 74);
             this.txt_mact.Name = "txt_mact";
             this.txt_mact.Size = new System.Drawing.Size(438, 22);
@@ -128,6 +132,7 @@
             // 
             // txt_sv
             // 
+            this.txt_sv.Enabled = false;
             this.txt_sv.Location = new System.Drawing.Point(241, 26);
             this.txt_sv.Name = "txt_sv";
             this.txt_sv.Size = new System.Drawing.Size(438, 22);
@@ -211,6 +216,7 @@
             // 
             // txt_ngaysinh
             // 
+            this.txt_ngaysinh.Enabled = false;
             this.txt_ngaysinh.Location = new System.Drawing.Point(356, 112);
             this.txt_ngaysinh.Name = "txt_ngaysinh";
             this.txt_ngaysinh.Size = new System.Drawing.Size(323, 22);
@@ -218,6 +224,7 @@
             // 
             // txt_phai
             // 
+            this.txt_phai.Enabled = false;
             this.txt_phai.Location = new System.Drawing.Point(356, 69);
             this.txt_phai.Name = "txt_phai";
             this.txt_phai.Size = new System.Drawing.Size(323, 22);
@@ -252,6 +259,7 @@
             // 
             // txt_hoten
             // 
+            this.txt_hoten.Enabled = false;
             this.txt_hoten.Location = new System.Drawing.Point(356, 23);
             this.txt_hoten.Name = "txt_hoten";
             this.txt_hoten.Size = new System.Drawing.Size(323, 22);
