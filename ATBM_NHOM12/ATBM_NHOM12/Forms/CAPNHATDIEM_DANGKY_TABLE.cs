@@ -52,7 +52,7 @@ namespace ATBM_NHOM12.Forms
 
                 // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
                 var cmd = new OracleCommand();
-                cmd.CommandText = $"UPDATE ADPRO.DANGKY set diemth ='{dth}', diemqt = '{dqt}', diemck = {dck}, diemtk = {dtk} where " +
+                cmd.CommandText = $"UPDATE ADPRO.QLHS_DANGKY_HPGD set diemth ='{dth}', diemqt = '{dqt}', diemck = {dck}, diemtk = {dtk} where " +
                     $"masv = {masv} and magv ='{magv}' and mahp = '{mahp}' and hk = {hk} and nam = {nam} and mact = '{mact}' ";
                 cmd.Connection = con;
                 int rowsAffected = cmd.ExecuteNonQuery();

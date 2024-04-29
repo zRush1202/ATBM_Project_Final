@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace ATBM_NHOM12.Forms
         private string hkOld = "";
         private string namOld = "";
         public static OracleConnection con = LoginProvider.conn;
-        public DANGKY_TABLE(string username, string role)
+        public DANGKY_TABLE(string role, string username)
         {
             InitializeComponent();
             this.username = username;
@@ -30,7 +31,11 @@ namespace ATBM_NHOM12.Forms
         }
         private void DANGKY_TABLE_Load(object sender, EventArgs e)
         {
-            string query = "select * from ADPRO.DANGKY"; ;
+            string query = "";
+            if (this.roleUser == "RL_SINHVIEN")
+                query = "select * from ADPRO.DANGKY"; 
+            else
+                query = "select * from ADPRO.QLHS_DANGKY_HPGD";
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
             DataTable dataTable = new DataTable();
             try
@@ -57,7 +62,11 @@ namespace ATBM_NHOM12.Forms
             }
             else
             {
-                string query = $"SELECT * FROM ADPRO.DANGKY WHERE mahp LIKE '%{txt_tk_mhp.Text}%'";
+                string query = "";
+                if (this.roleUser == "RL_SINHVIEN")
+                    query = $"SELECT * FROM ADPRO.DANGKY WHERE mahp LIKE '%{txt_tk_mhp.Text}%'";
+                else
+                    query = $"SELECT * FROM ADPRO.QLHS_DANGKY_HPGD WHERE mahp LIKE '%{txt_tk_mhp.Text}%'";
                 OracleDataAdapter adapter = new OracleDataAdapter(query, con);
                 DataTable dataTable = new DataTable();
                 try
@@ -82,7 +91,7 @@ namespace ATBM_NHOM12.Forms
         private void btt_refreshtt_Click(object sender, EventArgs e)
         {
             txt_masv.Text = "";
-            txt_magv.Text = "";
+            lb_magv.Text = "";
             txt_mahp.Text = "";
             txt_hk.Text = "";
             txt_mact.Text = "";
@@ -96,7 +105,7 @@ namespace ATBM_NHOM12.Forms
                 DataGridViewRow row = this.dgv_dangky.Rows[e.RowIndex];
                 txt_masv.Text = row.Cells["MASV"].Value.ToString();
                 this.masvOld = row.Cells["MASV"].Value.ToString();
-                txt_magv.Text = row.Cells["MAGV"].Value.ToString();
+                lb_magv.Text = row.Cells["MAGV"].Value.ToString();
                 this.magvOld = row.Cells["MAGV"].Value.ToString();
                 txt_mahp.Text = row.Cells["MAHP"].Value.ToString();
                 this.mahpOld = row.Cells["MAHP"].Value.ToString();
@@ -115,7 +124,7 @@ namespace ATBM_NHOM12.Forms
 
         private void btt_them_Click(object sender, EventArgs e)
         {
-            THEM_DANGKY_TABLE newForm = new THEM_DANGKY_TABLE();
+            THEM_DANGKY_TABLE newForm = new THEM_DANGKY_TABLE(roleUser,username);
             newForm.Show();
         }
 
@@ -125,7 +134,7 @@ namespace ATBM_NHOM12.Forms
             {
                 // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
                 string masv = txt_masv.Text;
-                string magv = txt_magv.Text;
+                string magv = lb_magv.Text;
                 string mahp = txt_mahp.Text;
                 int hk = int.Parse(txt_hk.Text);
                 int nam = int.Parse(txt_nam.Text);
@@ -136,7 +145,10 @@ namespace ATBM_NHOM12.Forms
 
                 // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
                 var cmd = new OracleCommand();
-                cmd.CommandText = $"DELETE FROM ADPRO.DANGKY where masv = '{masv}' and magv ='{magv}' and mahp = '{mahp}' and hk = {hk} and nam = {nam} and mact = '{mact}'";
+                if (this.roleUser == "RL_SINHVIEN")
+                    cmd.CommandText = $"DELETE FROM ADPRO.DANGKY where masv = '{masv}' and magv ='{magv}' and mahp = '{mahp}' and hk = {hk} and nam = {nam} and mact = '{mact}'";
+                else
+                    cmd.CommandText = $"DELETE FROM ADPRO.QLHS_DANGKY_HPGD where masv = '{masv}' and magv ='{magv}' and mahp = '{mahp}' and hk = {hk} and nam = {nam} and mact = '{mact}'";
                 cmd.Connection = con;
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if (rowsAffected > 0)
@@ -161,7 +173,7 @@ namespace ATBM_NHOM12.Forms
             try
             {
                 // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
-                string magv = txt_magv.Text;
+                string magv = lb_magv.Text;
                 string mahp = txt_mahp.Text;
                 int hk = int.Parse(txt_hk.Text);
                 int nam = int.Parse(txt_nam.Text);

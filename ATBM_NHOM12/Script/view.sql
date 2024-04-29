@@ -176,6 +176,8 @@ BEGIN
         ELSE
             RETURN;
         END IF;
+    ELSE 
+        RETURN;
     END IF;
 END;
 
@@ -446,7 +448,7 @@ END;
 --grant insert, update, delete on nhansu 
 grant select, insert, delete, update on ADPRO.NHANSU to RL_TRUONGKHOA; 
 -- Được quyền Xem (không giới hạn) dữ liệu trên toàn bộ lược đồ CSDL.
-grant select any table to RL_TRUONGKHOA;
+--grant select any table to RL_TRUONGKHOA;
 
 -- CS6: sinh viên
 -- sv select chinh mình , update trên cột DCHI, DT

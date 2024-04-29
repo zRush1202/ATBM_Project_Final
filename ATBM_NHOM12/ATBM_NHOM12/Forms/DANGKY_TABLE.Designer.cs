@@ -40,7 +40,7 @@
             this.lb_dth = new System.Windows.Forms.Label();
             this.txt_masv = new System.Windows.Forms.TextBox();
             this.lb_masv = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_magv = new System.Windows.Forms.TextBox();
             this.btt_refreshtt = new System.Windows.Forms.Button();
             this.btt_capnhat = new System.Windows.Forms.Button();
             this.btt_xoa = new System.Windows.Forms.Button();
@@ -52,7 +52,7 @@
             this.lb_mact = new System.Windows.Forms.Label();
             this.lb_nam = new System.Windows.Forms.Label();
             this.lb_hk = new System.Windows.Forms.Label();
-            this.txt_magv = new System.Windows.Forms.Label();
+            this.lb_magv = new System.Windows.Forms.Label();
             this.lb_mahp = new System.Windows.Forms.Label();
             this.cb_phancong = new System.Windows.Forms.GroupBox();
             this.btt_refreshds = new System.Windows.Forms.Button();
@@ -78,7 +78,7 @@
             this.cb_thongtin.Controls.Add(this.lb_dth);
             this.cb_thongtin.Controls.Add(this.txt_masv);
             this.cb_thongtin.Controls.Add(this.lb_masv);
-            this.cb_thongtin.Controls.Add(this.textBox1);
+            this.cb_thongtin.Controls.Add(this.txt_magv);
             this.cb_thongtin.Controls.Add(this.btt_refreshtt);
             this.cb_thongtin.Controls.Add(this.btt_capnhat);
             this.cb_thongtin.Controls.Add(this.btt_xoa);
@@ -90,7 +90,7 @@
             this.cb_thongtin.Controls.Add(this.lb_mact);
             this.cb_thongtin.Controls.Add(this.lb_nam);
             this.cb_thongtin.Controls.Add(this.lb_hk);
-            this.cb_thongtin.Controls.Add(this.txt_magv);
+            this.cb_thongtin.Controls.Add(this.lb_magv);
             this.cb_thongtin.Controls.Add(this.lb_mahp);
             this.cb_thongtin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_thongtin.Location = new System.Drawing.Point(12, 332);
@@ -191,12 +191,12 @@
             this.lb_masv.TabIndex = 14;
             this.lb_masv.Text = "Mã sinh viên";
             // 
-            // textBox1
+            // txt_magv
             // 
-            this.textBox1.Location = new System.Drawing.Point(543, 54);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(160, 24);
-            this.textBox1.TabIndex = 13;
+            this.txt_magv.Location = new System.Drawing.Point(543, 54);
+            this.txt_magv.Name = "txt_magv";
+            this.txt_magv.Size = new System.Drawing.Size(160, 24);
+            this.txt_magv.TabIndex = 13;
             // 
             // btt_refreshtt
             // 
@@ -300,15 +300,15 @@
             this.lb_hk.TabIndex = 2;
             this.lb_hk.Text = "Học kì ";
             // 
-            // txt_magv
+            // lb_magv
             // 
-            this.txt_magv.AutoSize = true;
-            this.txt_magv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_magv.Location = new System.Drawing.Point(429, 57);
-            this.txt_magv.Name = "txt_magv";
-            this.txt_magv.Size = new System.Drawing.Size(108, 18);
-            this.txt_magv.TabIndex = 1;
-            this.txt_magv.Text = "Mã giáo viên ";
+            this.lb_magv.AutoSize = true;
+            this.lb_magv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_magv.Location = new System.Drawing.Point(429, 57);
+            this.lb_magv.Name = "lb_magv";
+            this.lb_magv.Size = new System.Drawing.Size(108, 18);
+            this.lb_magv.TabIndex = 1;
+            this.lb_magv.Text = "Mã giáo viên ";
             // 
             // lb_mahp
             // 
@@ -418,7 +418,7 @@
         private System.Windows.Forms.Label lb_mact;
         private System.Windows.Forms.Label lb_nam;
         private System.Windows.Forms.Label lb_hk;
-        private System.Windows.Forms.Label txt_magv;
+        private System.Windows.Forms.Label lb_magv;
         private System.Windows.Forms.Label lb_mahp;
         private System.Windows.Forms.GroupBox cb_phancong;
         private System.Windows.Forms.Button btt_refreshds;
@@ -426,7 +426,7 @@
         private System.Windows.Forms.Button btt_timkiem;
         private System.Windows.Forms.Label lb_tk_mhp;
         private System.Windows.Forms.TextBox txt_tk_mhp;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_magv;
         private System.Windows.Forms.TextBox txt_masv;
         private System.Windows.Forms.Label lb_masv;
         private System.Windows.Forms.TextBox txt_dtk;
