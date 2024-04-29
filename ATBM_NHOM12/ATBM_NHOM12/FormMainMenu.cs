@@ -504,5 +504,12 @@ namespace ATBM_NHOM12
             lblTitle.Text = "NHẬT KÝ";
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
+
+        private void btnDangKy_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new DANGKY_TABLE(role,username), sender);
+            lblTitle.Text = "QUẢN LÝ ĐĂNG KÝ";
+            CenterLabelInPanel(lblTitle, panelTitleBar);
+        }
     }
 }
