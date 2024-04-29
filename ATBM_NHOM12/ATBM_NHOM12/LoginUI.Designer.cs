@@ -117,7 +117,7 @@ namespace ATBM_NHOM12
             this.role.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.role.Name = "role";
             this.role.Size = new System.Drawing.Size(308, 28);
-            this.role.TabIndex = 9;
+            this.role.TabIndex = 5;
             // 
             // label_role
             // 
