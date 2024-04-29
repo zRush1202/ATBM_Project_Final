@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -25,40 +26,54 @@ namespace ATBM_NHOM12.Forms
             this.masv = masv;
             this.magv = magv;
             this.mahp = mahp;
+            this.hk = hk;
             this.nam = nam;
             this.mact = mact;
             InitializeComponent();
+            string commandString = $"SELECT * FROM adpro.dangky WHERE masv = '{masv}' AND magv = '{magv}' AND mahp = '{mahp}' AND hk = '{hk}' AND nam = '{nam}' AND mact = '{mact}'";
+            using (OracleCommand command = new OracleCommand(commandString, con))
+            {
+                if (con.State != ConnectionState.Open)
+                {
+                    con.Open();
+                }
+                OracleDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        txt_dth.Text = reader["diemth"].ToString();
+                        txt_dqt.Text = reader["diemqt"].ToString();
+                        txt_dck.Text = reader["diemck"].ToString();
+                        txt_dtk.Text = reader["diemtk"].ToString();
+                    }
+                }
+                reader.Close();
+            }
         }
 
         private void btt_capnhat_Click(object sender, EventArgs e)
         {
             try
             {
-                // Lấy giá trị từ các trường nhập liệu và gán vào các biến cụ thể
                 string masv = this.masv;
                 string magv = this.magv;
                 string mahp = this.mahp;
                 int hk = int.Parse(this.hk);
                 int nam = int.Parse(this.nam);
                 string mact = this.mact;
-                string dth = txt_dth.Text;
-                string dqt = txt_dqt.Text;
-                string dck = txt_dck.Text;
-                string dtk = txt_dtk.Text;
-                // Hiển thị giá trị của các biến trong một MessageBox
-                //MessageBox.Show($"magv: {magv}, mahp: {mahp}, hk: {hk}, nam: {nam}, mact: {mact}");
+                float dth = float.Parse(txt_dth.Text);
+                float dqt = float.Parse(txt_dqt.Text);
+                float dck = float.Parse(txt_dck.Text);
+                float dtk = float.Parse(txt_dtk.Text);
 
-                //MessageBox.Show($"magvold: {this.magvOld}, mahpold: {this.mahpOld}, hkold: {this.hkOld}, namOld: {this.namOld}, mactOld: {this.mactOld}");
-
-                // Tiếp tục thêm dữ liệu vào cơ sở dữ liệu
                 var cmd = new OracleCommand();
-                cmd.CommandText = $"UPDATE ADPRO.QLHS_DANGKY_HPGD set diemth ='{dth}', diemqt = '{dqt}', diemck = {dck}, diemtk = {dtk} where " +
-                    $"masv = {masv} and magv ='{magv}' and mahp = '{mahp}' and hk = {hk} and nam = {nam} and mact = '{mact}' ";
+                cmd.CommandText = $"UPDATE ADPRO.QLHS_DANGKY_HPGD SET diemth ='{dth}', diemqt = '{dqt}', diemck = {dck}, diemtk = {dtk} WHERE " +
+                    $"masv = '{masv}' AND magv ='{magv}' AND mahp = '{mahp}' AND hk = {hk} AND nam = {nam} AND mact = '{mact}' ";
                 cmd.Connection = con;
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if (rowsAffected > 0)
                 {
-                    // Thông báo thành công hoặc thực hiện các hành động khác sau khi thêm thành công
                     MessageBox.Show("Cập nhật dữ liệu thành công!");
                 }
                 else
@@ -68,7 +83,6 @@ namespace ATBM_NHOM12.Forms
             }
             catch (Exception ex)
             {
-                // Xử lý ngoại lệ ở đây, ví dụ: hiển thị thông báo lỗi
                 MessageBox.Show(ex.Message);
             }
         }

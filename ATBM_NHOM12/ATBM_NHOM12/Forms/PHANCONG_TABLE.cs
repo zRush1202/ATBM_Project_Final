@@ -30,7 +30,14 @@ namespace ATBM_NHOM12.Forms
         }
         private void PHANCONG_TABLE_Load(object sender, EventArgs e)
         {
-            string query = "select * from ADPRO.PHANCONG";;
+            string query = "select * from ADPRO.PHANCONG";
+            if (roleUser == "RL_GIANGVIEN")
+            {
+                btt_them.Visible = false;
+                btt_xoa.Visible = false;
+                btt_capnhat.Visible = false;
+                query = "select * from ADPRO.QLHS_PHANCONG_GD";
+            }
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
             DataTable dataTable = new DataTable();
             try
@@ -42,6 +49,21 @@ namespace ATBM_NHOM12.Forms
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+            }
+
+
+            if (roleUser == "RL_TRUONGDV" || roleUser == "RL_TRUONGKHOA")
+            {
+                using (OracleCommand cmd = new OracleCommand("SELECT MANV FROM ADPRO.NHANSU", con))
+                {
+                    using (OracleDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            txt_magv.Items.Add(reader.GetString(0));
+                        }
+                    }
+                }
             }
         }
 
@@ -80,7 +102,7 @@ namespace ATBM_NHOM12.Forms
 
         private void btt_hpbanthan_Click(object sender, EventArgs e)
         {
-            string query = "select * from ADPRO.QLHS_PHANCONG_GD"; ;
+            string query = "select * from ADPRO.QLHS_PHANCONG_GD";
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
             DataTable dataTable = new DataTable();
             try
@@ -213,22 +235,6 @@ namespace ATBM_NHOM12.Forms
                 catch (Exception ex)
                 {
                     MessageBox.Show("Lỗi tìm kiếm : " + ex.Message);
-                }
-            }
-        }
-        private void txt_magv_Load(object sender, EventArgs e)
-        {
-            if (roleUser == "RL_TRUONGDV" || roleUser == "RL_TRUONGKHOA")
-            {
-                using (OracleCommand cmd = new OracleCommand("SELECT MANV FROM ADPRO.NHANSU", con))
-                {
-                    using (OracleDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            txt_magv.Items.Add(reader.GetString(0));
-                        }
-                    }
                 }
             }
         }

@@ -133,6 +133,7 @@
             this.Controls.Add(this.lb_dqt);
             this.Controls.Add(this.lb_dth);
             this.Name = "CAPNHATDIEM_DANGKY_TABLE";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CAPNHATDIEM_DANGKY_TABLE";
             this.ResumeLayout(false);
             this.PerformLayout();
