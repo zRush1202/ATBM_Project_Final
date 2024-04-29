@@ -63,16 +63,16 @@
             this.cb_thongtin.Controls.Add(this.lb_trdv);
             this.cb_thongtin.Controls.Add(this.lb_tendv);
             this.cb_thongtin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_thongtin.Location = new System.Drawing.Point(12, 333);
+            this.cb_thongtin.Location = new System.Drawing.Point(12, 417);
             this.cb_thongtin.Name = "cb_thongtin";
-            this.cb_thongtin.Size = new System.Drawing.Size(1001, 252);
+            this.cb_thongtin.Size = new System.Drawing.Size(1148, 289);
             this.cb_thongtin.TabIndex = 5;
             this.cb_thongtin.TabStop = false;
             this.cb_thongtin.Text = "THÔNG TIN HỌC PHẦN";
             // 
             // txt_madv
             // 
-            this.txt_madv.Location = new System.Drawing.Point(120, 66);
+            this.txt_madv.Location = new System.Drawing.Point(203, 84);
             this.txt_madv.Name = "txt_madv";
             this.txt_madv.Size = new System.Drawing.Size(113, 24);
             this.txt_madv.TabIndex = 16;
@@ -81,7 +81,7 @@
             // 
             this.lb_madv.AutoSize = true;
             this.lb_madv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_madv.Location = new System.Drawing.Point(6, 69);
+            this.lb_madv.Location = new System.Drawing.Point(89, 87);
             this.lb_madv.Name = "lb_madv";
             this.lb_madv.Size = new System.Drawing.Size(81, 18);
             this.lb_madv.TabIndex = 15;
@@ -90,7 +90,7 @@
             // btt_refreshtt
             // 
             this.btt_refreshtt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_refreshtt.Location = new System.Drawing.Point(803, 153);
+            this.btt_refreshtt.Location = new System.Drawing.Point(886, 171);
             this.btt_refreshtt.Name = "btt_refreshtt";
             this.btt_refreshtt.Size = new System.Drawing.Size(144, 40);
             this.btt_refreshtt.TabIndex = 12;
@@ -101,7 +101,7 @@
             // btt_capnhat
             // 
             this.btt_capnhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_capnhat.Location = new System.Drawing.Point(566, 153);
+            this.btt_capnhat.Location = new System.Drawing.Point(649, 171);
             this.btt_capnhat.Name = "btt_capnhat";
             this.btt_capnhat.Size = new System.Drawing.Size(144, 40);
             this.btt_capnhat.TabIndex = 11;
@@ -112,7 +112,7 @@
             // btt_xoa
             // 
             this.btt_xoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_xoa.Location = new System.Drawing.Point(306, 153);
+            this.btt_xoa.Location = new System.Drawing.Point(389, 171);
             this.btt_xoa.Name = "btt_xoa";
             this.btt_xoa.Size = new System.Drawing.Size(144, 40);
             this.btt_xoa.TabIndex = 10;
@@ -123,7 +123,7 @@
             // btt_them
             // 
             this.btt_them.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_them.Location = new System.Drawing.Point(72, 153);
+            this.btt_them.Location = new System.Drawing.Point(155, 171);
             this.btt_them.Name = "btt_them";
             this.btt_them.Size = new System.Drawing.Size(144, 40);
             this.btt_them.TabIndex = 4;
@@ -133,14 +133,14 @@
             // 
             // txt_trgdv
             // 
-            this.txt_trgdv.Location = new System.Drawing.Point(830, 66);
+            this.txt_trgdv.Location = new System.Drawing.Point(913, 84);
             this.txt_trgdv.Name = "txt_trgdv";
             this.txt_trgdv.Size = new System.Drawing.Size(143, 24);
             this.txt_trgdv.TabIndex = 9;
             // 
             // txt_tendv
             // 
-            this.txt_tendv.Location = new System.Drawing.Point(394, 66);
+            this.txt_tendv.Location = new System.Drawing.Point(477, 84);
             this.txt_tendv.Name = "txt_tendv";
             this.txt_tendv.Size = new System.Drawing.Size(227, 24);
             this.txt_tendv.TabIndex = 6;
@@ -149,7 +149,7 @@
             // 
             this.lb_trdv.AutoSize = true;
             this.lb_trdv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_trdv.Location = new System.Drawing.Point(650, 69);
+            this.lb_trdv.Location = new System.Drawing.Point(733, 87);
             this.lb_trdv.Name = "lb_trdv";
             this.lb_trdv.Size = new System.Drawing.Size(134, 18);
             this.lb_trdv.TabIndex = 3;
@@ -159,7 +159,7 @@
             // 
             this.lb_tendv.AutoSize = true;
             this.lb_tendv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_tendv.Location = new System.Drawing.Point(279, 69);
+            this.lb_tendv.Location = new System.Drawing.Point(362, 87);
             this.lb_tendv.Name = "lb_tendv";
             this.lb_tendv.Size = new System.Drawing.Size(86, 18);
             this.lb_tendv.TabIndex = 0;
@@ -175,7 +175,7 @@
             this.cb_donvi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_donvi.Location = new System.Drawing.Point(12, 12);
             this.cb_donvi.Name = "cb_donvi";
-            this.cb_donvi.Size = new System.Drawing.Size(1001, 315);
+            this.cb_donvi.Size = new System.Drawing.Size(1148, 399);
             this.cb_donvi.TabIndex = 4;
             this.cb_donvi.TabStop = false;
             this.cb_donvi.Text = "DANH SÁCH ĐƠN VỊ";
@@ -183,7 +183,7 @@
             // btt_refreshds
             // 
             this.btt_refreshds.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_refreshds.Location = new System.Drawing.Point(884, 19);
+            this.btt_refreshds.Location = new System.Drawing.Point(1030, 23);
             this.btt_refreshds.Name = "btt_refreshds";
             this.btt_refreshds.Size = new System.Drawing.Size(111, 30);
             this.btt_refreshds.TabIndex = 4;
@@ -198,14 +198,14 @@
             this.dgv_donvi.Name = "dgv_donvi";
             this.dgv_donvi.RowHeadersWidth = 51;
             this.dgv_donvi.RowTemplate.Height = 24;
-            this.dgv_donvi.Size = new System.Drawing.Size(989, 238);
+            this.dgv_donvi.Size = new System.Drawing.Size(1136, 327);
             this.dgv_donvi.TabIndex = 3;
             this.dgv_donvi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_donvi_CellClick);
             // 
             // btt_timkiem
             // 
             this.btt_timkiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_timkiem.Location = new System.Drawing.Point(767, 19);
+            this.btt_timkiem.Location = new System.Drawing.Point(913, 23);
             this.btt_timkiem.Name = "btt_timkiem";
             this.btt_timkiem.Size = new System.Drawing.Size(111, 30);
             this.btt_timkiem.TabIndex = 2;
@@ -217,7 +217,7 @@
             // 
             this.lb_tk_tendv.AutoSize = true;
             this.lb_tk_tendv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_tk_tendv.Location = new System.Drawing.Point(416, 28);
+            this.lb_tk_tendv.Location = new System.Drawing.Point(562, 32);
             this.lb_tk_tendv.Name = "lb_tk_tendv";
             this.lb_tk_tendv.Size = new System.Drawing.Size(96, 18);
             this.lb_tk_tendv.TabIndex = 1;
@@ -225,7 +225,7 @@
             // 
             // txt_tk_tendv
             // 
-            this.txt_tk_tendv.Location = new System.Drawing.Point(537, 25);
+            this.txt_tk_tendv.Location = new System.Drawing.Point(683, 29);
             this.txt_tk_tendv.Name = "txt_tk_tendv";
             this.txt_tk_tendv.Size = new System.Drawing.Size(224, 24);
             this.txt_tk_tendv.TabIndex = 0;
@@ -234,7 +234,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1025, 585);
+            this.ClientSize = new System.Drawing.Size(1172, 718);
             this.Controls.Add(this.cb_thongtin);
             this.Controls.Add(this.cb_donvi);
             this.Name = "DONVI_TABLE";
