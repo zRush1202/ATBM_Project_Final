@@ -203,5 +203,48 @@ namespace ATBM_NHOM12.Forms
                 btt_timkiem.PerformClick();
             }
         }
+
+        private void btt_Xoa_Click(object sender, EventArgs e)
+        {
+            string manv = txt_ns.Text;
+
+            if (string.IsNullOrWhiteSpace(manv))
+            {
+                MessageBox.Show("Vui lòng nhập chọn nhân viên cần xoá!");
+                return;
+            }
+
+            try
+            {
+                var cmd = new OracleCommand();
+                cmd.CommandText = $"DELETE FROM ADPRO.NHANSU WHERE MANV = '{manv}'";
+                cmd.Connection = con;
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Xóa dữ liệu thành công!");
+                    QL_NHANSU_TABLE_Load(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Không có dữ liệu nào được xóa!");
+                }
+            }
+            catch (OracleException ex)
+            {
+                if (ex.Number == 2292) // ORA-02292: integrity constraint violated - child record found
+                {
+                    MessageBox.Show("Nhân viên đã được phân công hoặc thuộc đơn vị, không thể xóa!");
+                }
+                else
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

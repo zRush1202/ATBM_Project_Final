@@ -22,7 +22,7 @@ namespace ATBM_NHOM12.Forms
 
         private void QL_DSSINHVIEN_TABLE_Load(object sender, EventArgs e)
         {
-            string query = "select * from ADPRO.SINHVIEN"; ;
+            string query = "select* from ADPRO.SINHVIEN where rownum <= 200";
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
             DataTable dataTable = new DataTable();
             try
