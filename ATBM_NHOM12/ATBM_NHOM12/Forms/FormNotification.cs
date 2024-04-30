@@ -43,5 +43,16 @@ namespace ATBM_NHOM12.Forms
             // Thiết lập DataSource của DataGridView thành DataTable
             dgvNotifi.DataSource = dataTable;
         }
+
+        private void btnAddNotify_Click(object sender, EventArgs e)
+        {
+            FormAddNoti addNoti = new FormAddNoti();
+            addNoti.ShowDialog();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            FormNotification_Load(sender, e);
+        }
     }
 }

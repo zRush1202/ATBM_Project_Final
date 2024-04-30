@@ -236,8 +236,8 @@ select *
 
 update adpro.dangky
    set
-	diemth = 9.0
- where masv = 'SV0001';
+	diemth = 8.0
+ where masv = 'SV0001' and MAGV = 'NV3321';
 
 select db_user,
        object_name,
