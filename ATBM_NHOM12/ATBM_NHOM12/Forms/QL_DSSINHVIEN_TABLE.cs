@@ -25,7 +25,7 @@ namespace ATBM_NHOM12.Forms
 
         private void QL_DSSINHVIEN_TABLE_Load(object sender, EventArgs e)
         {
-            if (roleUser == "RL_NVCOBAN" || roleUser == "RL_GIANGVIEN")
+            if (roleUser == "RL_NVCOBAN" || roleUser == "RL_GIANGVIEN" || roleUser == "RL_TRUONGDV" || roleUser == "RL_TRUONGKHOA")
             {
                 btt_them.Visible = false;
                 btt_capnhat.Visible = false;

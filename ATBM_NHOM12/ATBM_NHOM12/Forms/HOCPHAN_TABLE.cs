@@ -31,10 +31,11 @@ namespace ATBM_NHOM12.Forms
         }
         private void HOCPHAN_TABLE_Load(object sender, EventArgs e)
         {
-            if (roleUser == "RL_NVCOBAN" || roleUser == "RL_GIANGVIEN")
+            if (roleUser == "RL_NVCOBAN" || roleUser == "RL_GIANGVIEN" || roleUser == "RL_TRUONGKHOA" || roleUser == "RL_SINHVIEN")
             {
                 btt_them.Visible = false;
                 btt_capnhat.Visible = false;
+                btt_refreshtt.Location = new Point(700, 100);
             }
             string query = "select * from ADPRO.HOCPHAN"; ;
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);

@@ -35,6 +35,9 @@ namespace ATBM_NHOM12.Forms
             if (roleUser == "RL_SINHVIEN")
             {
                 btt_capnhatdiem.Visible = false;
+                btt_them.Location = new Point(200, 245);
+                btt_xoa.Location = new Point(400, 245);
+                btt_refreshtt.Location = new Point(600, 245);
                 txt_dth.ReadOnly = true;
                 txt_dqt.ReadOnly = true;
                 txt_dck.ReadOnly = true;
@@ -49,10 +52,12 @@ namespace ATBM_NHOM12.Forms
                 btt_capnhatdiem.Visible=false;
             }
             else
-            if (roleUser == "RL_GIANGVIEN")
+            if (roleUser == "RL_GIANGVIEN" || roleUser == "RL_TRUONGKHOA")
             {
                 btt_them.Visible = false;
                 btt_xoa.Visible = false;
+                btt_refreshtt.Location = new Point(270,250);
+                btt_capnhatdiem.Location = new Point(450, 250);
             }
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
             DataTable dataTable = new DataTable();
