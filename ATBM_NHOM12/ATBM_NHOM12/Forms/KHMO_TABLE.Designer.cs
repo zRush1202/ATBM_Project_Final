@@ -70,7 +70,7 @@
             this.cb_thongtin.Size = new System.Drawing.Size(1147, 278);
             this.cb_thongtin.TabIndex = 3;
             this.cb_thongtin.TabStop = false;
-            this.cb_thongtin.Text = "THÔNG TIN PHÂN CÔNG";
+            this.cb_thongtin.Text = "THÔNG TIN KHMO";
             // 
             // txt_mahp
             // 
@@ -259,7 +259,6 @@
             this.Controls.Add(this.cb_phancong);
             this.Name = "KHMO_TABLE";
             this.Text = "KHMO_TABLE";
-            this.Load += new System.EventHandler(this.KHMO_TABLE_Load);
             this.Load += new System.EventHandler(this.txt_mahp_Load);
             this.cb_thongtin.ResumeLayout(false);
             this.cb_thongtin.PerformLayout();
