@@ -132,6 +132,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ClientSize = new System.Drawing.Size(547, 282);
             this.Controls.Add(this.checkwgo);
             this.Controls.Add(this.btt_huy);
@@ -143,6 +144,7 @@
             this.Controls.Add(this.cb_thaotac);
             this.Controls.Add(this.lb_thaotac);
             this.Name = "THEM_SYSPRIV";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "THEM_SYSPRIV";
             this.Load += new System.EventHandler(this.THEM_SYSPRIV_Load);
             this.ResumeLayout(false);
