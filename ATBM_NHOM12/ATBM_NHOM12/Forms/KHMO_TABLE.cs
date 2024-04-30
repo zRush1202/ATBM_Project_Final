@@ -62,7 +62,6 @@ namespace ATBM_NHOM12.Forms
             {
                 btt_them.Visible = false;
                 btt_capnhat.Visible = false;
-                //btt_xoa.Visible = false;
             }
             string query = "select * from ADPRO.KHMO"; ;
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
