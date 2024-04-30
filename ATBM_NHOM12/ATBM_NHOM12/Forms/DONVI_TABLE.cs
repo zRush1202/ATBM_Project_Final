@@ -25,7 +25,7 @@ namespace ATBM_NHOM12.Forms
         }
         private void DONVI_TABLE_Load(object sender, EventArgs e)
         {
-            if (roleUser == "RL_NVCOBAN" || roleUser == "RL_GIANGVIEN" || roleUser == "RL_TRUONGKHOA")
+            if (roleUser == "RL_NVCOBAN" || roleUser == "RL_GIANGVIEN" || roleUser == "RL_TRUONGDV" || roleUser == "RL_TRUONGKHOA" || roleUser == "RL_SINHVIEN")
             {
                 btt_them.Visible = false;
                 btt_capnhat.Visible = false;

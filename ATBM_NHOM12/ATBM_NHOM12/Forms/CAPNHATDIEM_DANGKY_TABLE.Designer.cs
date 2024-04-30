@@ -73,7 +73,7 @@
             // 
             this.lb_dtk.AutoSize = true;
             this.lb_dtk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_dtk.Location = new System.Drawing.Point(309, 126);
+            this.lb_dtk.Location = new System.Drawing.Point(309, 123);
             this.lb_dtk.Name = "lb_dtk";
             this.lb_dtk.Size = new System.Drawing.Size(73, 18);
             this.lb_dtk.TabIndex = 28;
@@ -88,7 +88,7 @@
             // 
             // txt_dqt
             // 
-            this.txt_dqt.Location = new System.Drawing.Point(386, 56);
+            this.txt_dqt.Location = new System.Drawing.Point(399, 58);
             this.txt_dqt.Name = "txt_dqt";
             this.txt_dqt.Size = new System.Drawing.Size(100, 22);
             this.txt_dqt.TabIndex = 30;
@@ -102,7 +102,7 @@
             // 
             // txt_dtk
             // 
-            this.txt_dtk.Location = new System.Drawing.Point(386, 120);
+            this.txt_dtk.Location = new System.Drawing.Point(399, 120);
             this.txt_dtk.Name = "txt_dtk";
             this.txt_dtk.Size = new System.Drawing.Size(100, 22);
             this.txt_dtk.TabIndex = 32;
@@ -110,7 +110,7 @@
             // btt_capnhat
             // 
             this.btt_capnhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_capnhat.Location = new System.Drawing.Point(183, 193);
+            this.btt_capnhat.Location = new System.Drawing.Point(174, 189);
             this.btt_capnhat.Name = "btt_capnhat";
             this.btt_capnhat.Size = new System.Drawing.Size(199, 38);
             this.btt_capnhat.TabIndex = 33;

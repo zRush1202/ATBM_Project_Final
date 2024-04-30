@@ -40,6 +40,7 @@ insert into ADPRO.PHANCONG values('NV3209', 'HP002', 2, 2024, 'CLC');
 insert into ADPRO.PHANCONG values('NV3321', 'HP003', 3, 2024, 'CQ');
 insert into ADPRO.PHANCONG values('NV3209', 'HP004', 1, 2024, 'CTTT');
 insert into ADPRO.PHANCONG values('NV2982', 'HP005', 2, 2024, 'VP');
+insert into ADPRO.PHANCONG values('NV0204', 'HP001', 1, 2024, 'CLC');
 
 update ADPRO.NHANSU set madv = 'HTTT' where manv = 'NV3094';
 update ADPRO.NHANSU set madv = 'HTTT' where manv = 'NV3209';
@@ -47,6 +48,7 @@ update ADPRO.NHANSU set madv = 'HTTT' where manv = 'NV3321';
 update ADPRO.NHANSU set madv = 'HTTT' where manv = 'NV3451';
 
 insert into ADPRO.DANGKY values('SV0001', 'NV2859', 'HP001', 1, 2024, 'CLC', 8.5, 7.0, 8.0, 7.5);
+insert into ADPRO.DANGKY values('SV0001', 'NV0204', 'HP001', 1, 2024, 'CLC', 0, 0, 0, 0);
 insert into ADPRO.DANGKY values('SV0002', 'NV2982', 'HP001', 1, 2024, 'CLC', 9.0, 8.0, 7.5, 8.3);
 insert into ADPRO.DANGKY values('SV0003', 'NV3094', 'HP002', 2, 2024, 'CLC', 7.5, 8.0, 7.0, 7.2);
 insert into ADPRO.DANGKY values('SV0007', 'NV3094', 'HP002', 2, 2024, 'CLC', 8.0, 7.5, 8.5, 8.0);
@@ -258,7 +260,7 @@ select hp.MAHP from ADPRO.HOCPHAN hp, ADPRO.DONVI dv
 
 SELECT *
 FROM DBA_POLICIES
-WHERE OBJECT_NAME = 'DANGKY';
+WHERE OBJECT_NAME = 'HOCPHAN';
 
 select hp.MAHP from ADPRO.KHMO kh,ADPRO.HOCPHAN hp, ADPRO.DONVI dv where kh.mahp = hp.mahp and hp.madv = dv.madv and dv.trgdv = 'NV0204'
 select * from adpro.phancong;
@@ -267,7 +269,7 @@ SELECT * FROM ALL_TRIGGERS WHERE TABLE_NAME = 'DANGKY';
 conn SV0001/SV0001@localhost:1521/atbm_projectfinal;
 SELECT GRANTED_ROLE 
     FROM DBA_ROLE_PRIVS
-    WHERE GRANTEE = SYS_CONTEXT('USERENV', 'SESSION_USER');
+    WHERE GRANTEE = 'NV0042';
     
 select KH.MAHP from ADPRO.KHMO KH, ADPRO.SINHVIEN SV 
     where KH.MACT = SV.MACT AND SV.MASV = 'SV0001';

@@ -95,24 +95,21 @@ namespace ATBM_NHOM12.Forms
                 }
                 else
                 {
-                    if (this.roleUser == "RL_TRUONGDV")
-                    {
-                        MessageBox.Show("Học phần không thuộc đơn vị mình làm trưởng!\nThêm thất bại.");
-                    }
-                    else
-                        // Thông báo khi không có dòng nào bị xóa
-                        MessageBox.Show("Không có dữ liệu nào được xóa!");
+                    MessageBox.Show("Không có dữ liệu nào được xóa!");
                 }
+            }
+            catch(OracleException ex)
+            {
+                if (ex.Number == 0001)
+                {
+                    MessageBox.Show("Đã tồn tại phân công này!");
+                } 
+                    
             }
             catch (Exception ex)
             {
-                if (this.roleUser == "RL_TRUONGDV")
-                {
-                    MessageBox.Show("Học phần không thuộc đơn vị mình làm trưởng!");
-                }
-                else
-                    // Xử lý ngoại lệ ở đây, ví dụ: hiển thị thông báo lỗi
-                    MessageBox.Show(ex.Message);
+
+                   MessageBox.Show(ex.Message);
             }
         }
         private void txt_magv_Load(object sender, EventArgs e)

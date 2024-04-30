@@ -70,7 +70,7 @@
             this.cb_thongtin.Size = new System.Drawing.Size(1147, 278);
             this.cb_thongtin.TabIndex = 3;
             this.cb_thongtin.TabStop = false;
-            this.cb_thongtin.Text = "THÔNG TIN PHÂN CÔNG";
+            this.cb_thongtin.Text = "THÔNG TIN KHMO";
             // 
             // txt_mahp
             // 

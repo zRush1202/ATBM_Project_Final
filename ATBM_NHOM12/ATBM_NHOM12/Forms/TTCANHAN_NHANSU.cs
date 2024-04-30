@@ -57,7 +57,6 @@ namespace ATBM_NHOM12.Forms
         {
             try
             {
-                MessageBox.Show(txt_dt.Text);
                 var cmd = new OracleCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = $"UPDATE ADPRO.QLHS_TTCANHAN SET DT = '{txt_dt.Text}'";

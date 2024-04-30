@@ -30,7 +30,7 @@ namespace ATBM_NHOM12.Forms
             this.nam = nam;
             this.mact = mact;
             InitializeComponent();
-            string commandString = $"SELECT * FROM adpro.dangky WHERE masv = '{masv}' AND magv = '{magv}' AND mahp = '{mahp}' AND hk = '{hk}' AND nam = '{nam}' AND mact = '{mact}'";
+            string commandString = $"SELECT * FROM adpro.QLHS_DANGKY_HPGD WHERE masv = '{masv}' AND magv = '{magv}' AND mahp = '{mahp}' AND hk = '{hk}' AND nam = '{nam}' AND mact = '{mact}'";
             using (OracleCommand command = new OracleCommand(commandString, con))
             {
                 if (con.State != ConnectionState.Open)

@@ -52,6 +52,7 @@ namespace ATBM_NHOM12.Forms
                 btt_capnhatdiem.Visible=false;
             }
             else
+                query = "select * from ADPRO.QLHS_DANGKY_HPGD";
             if (roleUser == "RL_GIANGVIEN" || roleUser == "RL_TRUONGKHOA")
             {
                 btt_them.Visible = false;

@@ -32,6 +32,7 @@
             this.gb_khmo = new System.Windows.Forms.GroupBox();
             this.dgv_khmo = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txt_magv = new System.Windows.Forms.ComboBox();
             this.btt_them = new System.Windows.Forms.Button();
             this.txt_mact = new System.Windows.Forms.TextBox();
             this.lb_mact = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.txt_mahp = new System.Windows.Forms.TextBox();
             this.lb_mahp = new System.Windows.Forms.Label();
             this.lb_magv = new System.Windows.Forms.Label();
-            this.txt_magv = new System.Windows.Forms.ComboBox();
             this.gb_khmo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_khmo)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -100,6 +100,15 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "THÔNG TIN PHÂN CÔNG";
+            // 
+            // txt_magv
+            // 
+            this.txt_magv.FormattingEnabled = true;
+            this.txt_magv.Location = new System.Drawing.Point(195, 36);
+            this.txt_magv.Name = "txt_magv";
+            this.txt_magv.Size = new System.Drawing.Size(179, 26);
+            this.txt_magv.TabIndex = 16;
+            this.Load += new System.EventHandler(this.txt_magv_Load);
             // 
             // btt_them
             // 
@@ -190,15 +199,6 @@
             this.lb_magv.TabIndex = 2;
             this.lb_magv.Text = "Mã giáo viên ";
             // 
-            // txt_magv
-            // 
-            this.txt_magv.FormattingEnabled = true;
-            this.txt_magv.Location = new System.Drawing.Point(195, 36);
-            this.txt_magv.Name = "txt_magv";
-            this.txt_magv.Size = new System.Drawing.Size(179, 26);
-            this.txt_magv.TabIndex = 16;
-            this.Load += new System.EventHandler(this.txt_magv_Load);
-            // 
             // THEM_PHANCONG_TABLE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -208,6 +208,7 @@
             this.Controls.Add(this.gb_khmo);
             this.Controls.Add(this.lb_title);
             this.Name = "THEM_PHANCONG_TABLE";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "THEM_PHANCONG_TABLE";
             this.Load += new System.EventHandler(this.THEM_PHANCONG_TABLE_Load);
             this.gb_khmo.ResumeLayout(false);
