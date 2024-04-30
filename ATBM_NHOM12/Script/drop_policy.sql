@@ -1,10 +1,9 @@
-drop role rl_nvcoban;
-drop role rl_giangvien;
-drop role rl_giaovu;
-drop role rl_truongdv;
-drop role rl_truongkhoa;
-drop role rl_sinhvien;
-/
+--drop role rl_nvcoban;
+--drop role rl_giangvien;
+--drop role rl_giaovu;
+--drop role rl_truongdv;
+--drop role rl_truongkhoa;
+--drop role rl_sinhvien;
 begin
 	dbms_rls.drop_policy(
 	                    object_schema => 'ADPRO',

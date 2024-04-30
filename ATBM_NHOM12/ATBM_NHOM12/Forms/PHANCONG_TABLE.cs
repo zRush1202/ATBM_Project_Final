@@ -28,6 +28,7 @@ namespace ATBM_NHOM12.Forms
             if (roleUser == "RL_GIAOVU")
             {
                 btt_them.Visible = false;
+                btt_xoa.Visible = false;
             }    
             string query = "select * from ADPRO.PHANCONG";
             if (roleUser == "RL_GIANGVIEN")
@@ -35,6 +36,7 @@ namespace ATBM_NHOM12.Forms
                 btt_them.Visible = false;
                 btt_xoa.Visible = false;
                 btt_capnhat.Visible = false;
+                btt_refreshtt.Location = new Point(700, 40);
                 query = "select * from ADPRO.QLHS_PHANCONG_GD";
             }
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
@@ -53,10 +55,6 @@ namespace ATBM_NHOM12.Forms
 
             if (roleUser == "RL_TRUONGDV" || roleUser == "RL_TRUONGKHOA")
             {
-                btt_them.Visible = false;
-                btt_xoa.Visible = false;
-                btt_capnhat.Visible = false;
-                btt_refreshtt.Location = new Point(700, 40);
                 using (OracleCommand cmd = new OracleCommand("SELECT MANV FROM ADPRO.NHANSU", con))
                 {
                     using (OracleDataReader reader = cmd.ExecuteReader())
