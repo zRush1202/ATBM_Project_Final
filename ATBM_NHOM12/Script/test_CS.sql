@@ -318,11 +318,17 @@ BEGIN
     END IF;
 END;
 
+create role RL_TEST
 
+drop role RL_TEST
+show con_name
 insert into DONVI(madv,tendv,trgdv) from
 DBMS_OUTPUT.PUT_LINE(SYS_CONTEXT('USERENV', 'ISDBA'));
 
 select * from nhansu where manv = 'NV0204';
-
+SELECT view_name AS object_name FROM all_views WHERE owner = 'ADPRO'
+UNION ALL
+SELECT table_name AS object_name FROM all_tables WHERE owner = 'ADPRO';
+SELECT * FROM all_views av, all_tables at WHERE owner = 'ADPRO';
 select ns.MANV from ADPRO.NHANSU ns, ADPRO.DONVI dv 
     where (ns.vaitro = 'GIANGVIEN' or ns.vaitro = 'TRUONGDV') and ns.madv = dv.madv and dv.trgdv = 'NV0204';
