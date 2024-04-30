@@ -41,9 +41,12 @@ namespace ATBM_NHOM12.Forms
             }
             else
             {
+                string query2 = "alter session set \"_ORACLE_SCRIPT\" = true";
                 string query = $"drop role {rolename}";
                 try
                 {
+                    OracleCommand command2 = new OracleCommand(query2, con);
+                    command2.ExecuteNonQuery();
                     OracleCommand command = new OracleCommand(query, con);
                     command.ExecuteNonQuery();
                     MessageBox.Show($"Vai trò '{rolename}' đã được xóa thành công!");
