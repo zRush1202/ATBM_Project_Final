@@ -95,11 +95,11 @@ namespace ATBM_NHOM12.Forms
                     MessageBox.Show(ex.Message);
                 }
             }
-            catch (Exception ex)
+            catch (Exception ex) 
             {
-                MessageBox.Show(ex.Message);
-            }
-        }
+                MessageBox.Show(ex.Message); 
+            } 
+        } 
 
         private void btt_timkiem_Click(object sender, EventArgs e)
         {
@@ -107,15 +107,15 @@ namespace ATBM_NHOM12.Forms
             {
                 return;
             }
-            else
+            else 
             {
-                string query = $"SELECT * FROM ADPRO.NHANSU WHERE MASV LIKE '%{txt_mans_search.Text}%'";
+                string query = $"SELECT * FROM ADPRO.NHANSU WHERE MANV LIKE '%{txt_mans_search.Text}%'";
                 OracleDataAdapter adapter = new OracleDataAdapter(query, con);
                 DataTable dataTable = new DataTable();
                 try
                 {
                     adapter.Fill(dataTable);
-                    if (dataTable.Rows.Count > 0)
+                    if (dataTable.Rows.Count > 0) 
                     {
                         dgv_DSNhanSu.DataSource = dataTable;
                     }
