@@ -451,7 +451,13 @@ END;
 --grant insert, update, delete on nhansu 
 grant select, insert, delete, update on ADPRO.NHANSU to RL_TRUONGKHOA; 
 -- Được quyền Xem (không giới hạn) dữ liệu trên toàn bộ lược đồ CSDL.
---grant select any table to RL_TRUONGKHOA;
+grant select on ADPRO.NHANSU TO RL_TRUONGKHOA;
+grant select on ADPRO.SINHVIEN TO RL_TRUONGKHOA;
+grant select on ADPRO.DONVI TO RL_TRUONGKHOA;
+grant select on ADPRO.HOCPHAN TO RL_TRUONGKHOA;
+grant select on ADPRO.KHMO TO RL_TRUONGKHOA;
+grant select on ADPRO.PHANCONG TO RL_TRUONGKHOA;
+grant select on ADPRO.DANGKY TO RL_TRUONGKHOA;
 
 -- CS6: sinh viên
 -- sv select chinh mình , update trên cột DCHI, DT
