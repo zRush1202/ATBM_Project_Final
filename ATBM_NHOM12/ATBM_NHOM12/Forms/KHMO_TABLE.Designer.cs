@@ -259,6 +259,7 @@
             this.Controls.Add(this.cb_phancong);
             this.Name = "KHMO_TABLE";
             this.Text = "KHMO_TABLE";
+            this.Load += new System.EventHandler(this.KHMO_TABLE_Load);
             this.Load += new System.EventHandler(this.txt_mahp_Load);
             this.cb_thongtin.ResumeLayout(false);
             this.cb_thongtin.PerformLayout();
