@@ -14,7 +14,7 @@ namespace ATBM_NHOM12
 
         private void LoginUI_Load(object sender, EventArgs e)
         {
-
+            role.SelectedIndex = 2;
         }
 
         private void login_Click(object sender, EventArgs e)

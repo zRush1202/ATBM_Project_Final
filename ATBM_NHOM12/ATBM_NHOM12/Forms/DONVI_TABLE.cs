@@ -25,10 +25,11 @@ namespace ATBM_NHOM12.Forms
         }
         private void DONVI_TABLE_Load(object sender, EventArgs e)
         {
-            if (roleUser == "RL_NVCOBAN" || roleUser == "RL_GIANGVIEN")
+            if (roleUser == "RL_NVCOBAN" || roleUser == "RL_GIANGVIEN" || roleUser == "RL_TRUONGKHOA")
             {
                 btt_them.Visible = false;
                 btt_capnhat.Visible = false;
+                btt_refreshtt.Location = new Point(390, 130);
             }
             string query = "select * from ADPRO.DONVI"; ;
             OracleDataAdapter adapter = new OracleDataAdapter(query, con);
