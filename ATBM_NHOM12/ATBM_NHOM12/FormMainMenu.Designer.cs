@@ -50,6 +50,7 @@
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelDesktopPane = new System.Windows.Forms.Panel();
+            this.btnQuyenHT = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbxNotify)).BeginInit();
@@ -61,6 +62,7 @@
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
             this.panelMenu.Controls.Add(this.btnClose);
             this.panelMenu.Controls.Add(this.btnLogout);
+            this.panelMenu.Controls.Add(this.btnQuyenHT);
             this.panelMenu.Controls.Add(this.btnNhatKy);
             this.panelMenu.Controls.Add(this.btnDangKy);
             this.panelMenu.Controls.Add(this.btnPhanCong);
@@ -90,7 +92,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(0, 1292);
+            this.btnClose.Location = new System.Drawing.Point(0, 1370);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
@@ -108,7 +110,7 @@
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(0, 1214);
+            this.btnLogout.Location = new System.Drawing.Point(0, 1292);
             this.btnLogout.Margin = new System.Windows.Forms.Padding(0);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
@@ -423,6 +425,24 @@
             this.panelDesktopPane.Size = new System.Drawing.Size(1189, 911);
             this.panelDesktopPane.TabIndex = 2;
             // 
+            // btnQuyenHT
+            // 
+            this.btnQuyenHT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(109)))), ((int)(((byte)(130)))));
+            this.btnQuyenHT.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnQuyenHT.FlatAppearance.BorderSize = 0;
+            this.btnQuyenHT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuyenHT.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuyenHT.ForeColor = System.Drawing.Color.White;
+            this.btnQuyenHT.Location = new System.Drawing.Point(0, 1214);
+            this.btnQuyenHT.Margin = new System.Windows.Forms.Padding(0);
+            this.btnQuyenHT.Name = "btnQuyenHT";
+            this.btnQuyenHT.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnQuyenHT.Size = new System.Drawing.Size(222, 78);
+            this.btnQuyenHT.TabIndex = 17;
+            this.btnQuyenHT.Text = "Quyền hệ thống";
+            this.btnQuyenHT.UseVisualStyleBackColor = false;
+            this.btnQuyenHT.Click += new System.EventHandler(this.btnQuyenHT_Click);
+            // 
             // FormMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -471,6 +491,7 @@
         private System.Windows.Forms.Button btnKHMo;
         private System.Windows.Forms.PictureBox ptbxNotify;
         private System.Windows.Forms.Button btnNhatKy;
+        private System.Windows.Forms.Button btnQuyenHT;
     }
 }
 

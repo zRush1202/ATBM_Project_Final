@@ -78,11 +78,11 @@
             // 
             this.lb_priv.AutoSize = true;
             this.lb_priv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_priv.Location = new System.Drawing.Point(59, 180);
+            this.lb_priv.Location = new System.Drawing.Point(59, 175);
             this.lb_priv.Name = "lb_priv";
-            this.lb_priv.Size = new System.Drawing.Size(56, 18);
+            this.lb_priv.Size = new System.Drawing.Size(66, 18);
             this.lb_priv.TabIndex = 4;
-            this.lb_priv.Text = "Quyền";
+            this.lb_priv.Text = "QUYỀN";
             // 
             // cb_priv
             // 
