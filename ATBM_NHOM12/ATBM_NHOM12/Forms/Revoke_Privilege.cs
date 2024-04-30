@@ -39,7 +39,7 @@ namespace ATBM_NHOM12.Forms
         }
         private void cb_table_Load(object sender, EventArgs e)
         {
-            using (OracleCommand cmd = new OracleCommand("SELECT table_name FROM user_tables", con))
+            using (OracleCommand cmd = new OracleCommand("SELECT view_name AS object_name FROM all_views WHERE owner = 'ADPRO' UNION ALL SELECT table_name AS object_name FROM all_tables WHERE owner = 'ADPRO'", con))
             {
                 using (OracleDataReader reader = cmd.ExecuteReader())
                 {

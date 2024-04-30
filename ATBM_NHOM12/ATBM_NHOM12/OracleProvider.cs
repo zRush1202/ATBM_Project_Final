@@ -14,7 +14,7 @@ namespace ATBM_NHOM12
         public bool CheckLogin(string inputUsername, string inputPassword, string inputRole)
         {
             bool checkCharUsername = Regex.IsMatch(inputUsername, @"^[a-zA-z0-9]+$");
-            bool checkCharPassword = Regex.IsMatch(inputPassword, @"^[a-zA-z0-9]+$");
+            bool checkCharPassword = Regex.IsMatch(inputPassword, @"^[a-zA-Z0-9!@#]+$");
             if (!checkCharUsername || !checkCharPassword)
             {
                 return false;

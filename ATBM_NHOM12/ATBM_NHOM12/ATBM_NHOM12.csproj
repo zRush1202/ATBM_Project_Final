@@ -228,6 +228,12 @@
     <Compile Include="Forms\RoleDetail.Designer.cs">
       <DependentUpon>RoleDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SYSTEM_PRIVS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SYSTEM_PRIVS.Designer.cs">
+      <DependentUpon>SYSTEM_PRIVS.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\THEM_DANGKY_TABLE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +245,12 @@
     </Compile>
     <Compile Include="Forms\THEM_PHANCONG_TABLE.Designer.cs">
       <DependentUpon>THEM_PHANCONG_TABLE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\THEM_SYSPRIV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\THEM_SYSPRIV.Designer.cs">
+      <DependentUpon>THEM_SYSPRIV.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TTCANHAN_NHANSU.cs">
       <SubType>Form</SubType>
@@ -341,11 +353,17 @@
     <EmbeddedResource Include="Forms\RoleDetail.resx">
       <DependentUpon>RoleDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SYSTEM_PRIVS.resx">
+      <DependentUpon>SYSTEM_PRIVS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\THEM_DANGKY_TABLE.resx">
       <DependentUpon>THEM_DANGKY_TABLE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\THEM_PHANCONG_TABLE.resx">
       <DependentUpon>THEM_PHANCONG_TABLE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\THEM_SYSPRIV.resx">
+      <DependentUpon>THEM_SYSPRIV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TTCANHAN_NHANSU.resx">
       <DependentUpon>TTCANHAN_NHANSU.cs</DependentUpon>

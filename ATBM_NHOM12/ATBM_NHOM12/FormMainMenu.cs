@@ -154,6 +154,7 @@ namespace ATBM_NHOM12
             ptbxNotify.Image = Properties.Resources.png_clipart_school_district_computer_icons_education_school_angle_text;
             ptbxNotify.Enabled = false;
             panelLogo.Enabled = false;
+            btnQuyenHT.Visible = false;
             ActivateButton(btnLogin);
             lblTitle.Text = "ĐĂNG NHẬP HỆ THỐNG";
             CenterLabelInPanel(lblTitle, panelTitleBar);
@@ -197,6 +198,7 @@ namespace ATBM_NHOM12
                 btnTTCNNS.Visible = false;
                 btnTTCNSV.Visible = false;
                 btnNhatKy.Visible = true;
+                btnQuyenHT.Visible = true;
                 Home home = new Home();
                 home.TopLevel = false;
                 home.FormBorderStyle = FormBorderStyle.None;
@@ -382,6 +384,7 @@ namespace ATBM_NHOM12
             ptbxNotify.Image = Properties.Resources.png_clipart_school_district_computer_icons_education_school_angle_text;
             ptbxNotify.Enabled = false;
             panelLogo.Enabled = false;
+            btnQuyenHT.Visible = false;
             lblTitle.Text = "ĐĂNG NHẬP HỆ THỐNG";
             CenterLabelInPanel(lblTitle, panelTitleBar);
             LoginUI loginUI = new LoginUI();
@@ -528,6 +531,13 @@ namespace ATBM_NHOM12
         private void FormMainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
             con.Close();
+        }
+
+        private void btnQuyenHT_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new SYSTEM_PRIVS(), sender);
+            lblTitle.Text = "QUẢN LÝ QUYỀN HỆ THỐNG";
+            CenterLabelInPanel(lblTitle, panelTitleBar);
         }
     }
 }
