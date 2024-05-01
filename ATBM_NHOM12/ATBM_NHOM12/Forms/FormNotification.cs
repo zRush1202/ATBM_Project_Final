@@ -14,34 +14,43 @@ namespace ATBM_NHOM12.Forms
     public partial class FormNotification : Form
     {
         private string username;
+        private string userRole;
         public static OracleConnection con = LoginProvider.conn;
         public FormNotification()
         {
             InitializeComponent();
         }
-        public FormNotification(string username)
+        public FormNotification(string username, string userRole)
         {
             InitializeComponent();
             this.username = username;
+            this.userRole = userRole;
         }
 
         private void FormNotification_Load(object sender, EventArgs e)
         {
+            if (this.userRole != "ADMIN" && this.userRole != "SYSDBA")
+            {
+                btnAddNotify.Visible = false;
+            }
             string query = "select* from ADPRO.THONGBAO";
-
-            // Tạo OracleCommand
             OracleCommand command = new OracleCommand(query, con);
-
-            // Tạo OracleDataAdapter để điền dữ liệu vào DataTable
             OracleDataAdapter dataAdapter = new OracleDataAdapter(command);
             DataTable dataTable = new DataTable();
             dgvNotifi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            // Điền dữ liệu vào DataTable
             dataAdapter.Fill(dataTable);
-
-            // Thiết lập DataSource của DataGridView thành DataTable
             dgvNotifi.DataSource = dataTable;
+        }
+
+        private void btnAddNotify_Click(object sender, EventArgs e)
+        {
+            FormAddNoti addNoti = new FormAddNoti();
+            addNoti.ShowDialog();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            FormNotification_Load(sender, e);
         }
     }
 }

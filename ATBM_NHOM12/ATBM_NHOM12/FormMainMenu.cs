@@ -509,7 +509,7 @@ namespace ATBM_NHOM12
 
         private void ptbxNotify_Click(object sender, EventArgs e)
         {
-            OpenNotification(new FormNotification(this.username), sender);
+            OpenNotification(new FormNotification(this.username, this.role), sender);
             lblTitle.Text = "THÔNG BÁO";
             CenterLabelInPanel(lblTitle, panelTitleBar);
         }
