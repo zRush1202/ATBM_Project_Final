@@ -28,19 +28,11 @@ namespace ATBM_NHOM12.Forms
         private void FormNotification_Load(object sender, EventArgs e)
         {
             string query = "select* from ADPRO.THONGBAO";
-
-            // Tạo OracleCommand
             OracleCommand command = new OracleCommand(query, con);
-
-            // Tạo OracleDataAdapter để điền dữ liệu vào DataTable
             OracleDataAdapter dataAdapter = new OracleDataAdapter(command);
             DataTable dataTable = new DataTable();
             dgvNotifi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            // Điền dữ liệu vào DataTable
             dataAdapter.Fill(dataTable);
-
-            // Thiết lập DataSource của DataGridView thành DataTable
             dgvNotifi.DataSource = dataTable;
         }
 
