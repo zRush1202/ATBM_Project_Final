@@ -103,7 +103,7 @@ namespace ATBM_NHOM12.Forms
         }
         private void cb_table_Load(object sender, EventArgs e)
         {
-            using (OracleCommand cmd = new OracleCommand("SELECT table_name FROM all_tables where owner = 'ADPRO'", con))
+            using (OracleCommand cmd = new OracleCommand("SELECT view_name AS object_name FROM all_views WHERE owner = 'ADPRO' UNION ALL SELECT table_name AS object_name FROM all_tables WHERE owner = 'ADPRO'", con))
             {
                 using (OracleDataReader reader = cmd.ExecuteReader())
                 {
@@ -169,7 +169,7 @@ namespace ATBM_NHOM12.Forms
 
 
                 OracleCommand schema_n = con.CreateCommand();
-                schema_n.CommandText = "select owner from dba_tables where table_name = \'" + cb_table.Text.ToString() + '\'';
+                schema_n.CommandText = "SELECT OWNER FROM ALL_OBJECTS WHERE OBJECT_TYPE IN ('TABLE', 'VIEW') and object_name = \'" + cb_table.Text.ToString() + '\'';
                 OracleDataReader reader = schema_n.ExecuteReader();
                 reader.Read();
                 string schema_name = reader.GetString(0);
@@ -245,8 +245,8 @@ namespace ATBM_NHOM12.Forms
                         }
                     }
 
-                }
 
+                }
                 //    using (OracleCommand cmd = new OracleCommand())
                 //    {
                 //        cmd.Connection = con;

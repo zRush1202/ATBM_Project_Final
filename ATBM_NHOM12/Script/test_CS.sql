@@ -226,7 +226,7 @@ update ADPRO.NHANSU set phai = 'Nam' where manv = 'NV';
 conn NV0042/NV0042@localhost:1521/atbm_projectfinal;
 delete from ADPRO.NHANSU where manv = 'NV';
 
--- CS6 :SINHVIEN SV0001
+-- CS6 :SINHVIEN 
 conn SV0001/SV0001@localhost:1521/atbm_projectfinal;
 select * from ADPRO.SINHVIEN;
 
@@ -255,6 +255,8 @@ select * from ADPRO.DANGKY;
 conn SV0001/SV0001@localhost:1521/atbm_projectfinal;
 select * from ADPRO.PHANCONG;
 
+
+grant select on ADPRO.QLHS_TTCANHAN to SV9996
 SELECT table_name FROM user_tables;
 select hp.MAHP from ADPRO.HOCPHAN hp, ADPRO.DONVI dv 
     where hp.madv = dv.madv and dv.trgdv = 'NV0204';
@@ -279,7 +281,16 @@ select distinct PC.MAHP from ADPRO.PHANCONG PC, ADPRO.SINHVIEN SV
 SELECT GRANTED_ROLE 
     FROM DBA_ROLE_PRIVS
     WHERE GRANTEE = SYS_CONTEXT('USERENV', 'SESSION_USER');
-    
+select owner from dba_viewas where table_name = 'QLHS_TTCANHAN'
+SELECT OWNER
+FROM ALL_OBJECTS
+WHERE OWNER = 'ADPRO'
+AND OBJECT_TYPE IN ('TABLE', 'VIEW');
+
+  SELECT GRANTED_ROLE 
+  FROM DBA_ROLE_PRIVS
+  WHERE GRANTEE = 'SV9989';
+  SELECT COLUMN_NAME FROM dba_tab_columns WHERE table_name = 'QLHS_TTCANHAN'
 DECLARE
      v_Semester NUMBER;
     v_Year NUMBER;
@@ -321,10 +332,7 @@ BEGIN
     END IF;
 END;
 
-create role RL_TEST
 
-drop role RL_TEST
-show con_name
 insert into DONVI(madv,tendv,trgdv) from
 DBMS_OUTPUT.PUT_LINE(SYS_CONTEXT('USERENV', 'ISDBA'));
 

@@ -54,7 +54,7 @@ namespace ATBM_NHOM12.Forms
         private void btt_rev_Click(object sender, EventArgs e)
         {
             OracleCommand schema_n = con.CreateCommand();
-            schema_n.CommandText = "select owner from dba_tables where table_name = \'" + cb_table.Text.ToString() + '\'';
+            schema_n.CommandText = "SELECT OWNER FROM ALL_OBJECTS WHERE OBJECT_TYPE IN ('TABLE', 'VIEW') and object_name = \'" + cb_table.Text.ToString() + '\'';
             OracleDataReader reader = schema_n.ExecuteReader();
             reader.Read();
             string schema_name = reader.GetString(0);

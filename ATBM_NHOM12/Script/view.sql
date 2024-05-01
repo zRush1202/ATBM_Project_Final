@@ -460,7 +460,6 @@ grant select on ADPRO.DANGKY TO RL_TRUONGKHOA;
 
 -- CS6: sinh viên
 -- sv select chinh mình , update trên cột DCHI, DT
--- grant update(DCHI,DT) on sinhvien
 grant select, update(DCHI,DT) on ADPRO.sinhvien to RL_SINHVIEN; 
 /
 create or replace function ADPRO.SVControl_XEMTTCN (P_SCHEMA VARCHAR2, P_OBJ VARCHAR2) 
@@ -554,8 +553,7 @@ BEGIN
         object_name => 'HOCPHAN',
         policy_name => 'SINHVIEN_HOCPHAN_CS6',
         function_schema => 'ADPRO', 
-        policy_function => 'SVControl_XEM_HP',
-        update_check => TRUE
+        policy_function => 'SVControl_XEM_HP'
     );
 END;
 /
@@ -650,7 +648,7 @@ BEGIN
         END IF;
 
         -- Kiểm tra nếu ngày hiện tại cách ngày bắt đầu học kỳ 14 ngày trở lên
-        IF (v_CurrentDate - v_SemesterStartDate) < 14 then
+        IF (v_CurrentDate - v_SemesterStartDate) <= 14 then
             RETURN 'MASV = ''' || USERNAME || ''' AND HK = '||v_Semester||' AND NAM = ' ||v_Year;
         ELSE 
               RETURN '1=0';
@@ -728,9 +726,7 @@ BEGIN
         object_name => 'DANGKY',
         policy_name => 'SVControl_SELECT_DANGKY',
         function_schema => 'ADPRO', 
-        policy_function => 'SVControl_XEMTTCN',
-        statement_types => 'SELECT',
-        update_check => TRUE
+        policy_function => 'SVControl_XEMTTCN'
     );
 END;
 /
