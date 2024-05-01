@@ -14,19 +14,25 @@ namespace ATBM_NHOM12.Forms
     public partial class FormNotification : Form
     {
         private string username;
+        private string userRole;
         public static OracleConnection con = LoginProvider.conn;
         public FormNotification()
         {
             InitializeComponent();
         }
-        public FormNotification(string username)
+        public FormNotification(string username, string userRole)
         {
             InitializeComponent();
             this.username = username;
+            this.userRole = userRole;
         }
 
         private void FormNotification_Load(object sender, EventArgs e)
         {
+            if (this.userRole != "ADMIN" && this.userRole != "SYSDBA")
+            {
+                btnAddNotify.Visible = false;
+            }
             string query = "select* from ADPRO.THONGBAO";
             OracleCommand command = new OracleCommand(query, con);
             OracleDataAdapter dataAdapter = new OracleDataAdapter(command);

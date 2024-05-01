@@ -48,7 +48,7 @@
             // btnAddNotify
             // 
             this.btnAddNotify.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNotify.Location = new System.Drawing.Point(1009, 12);
+            this.btnAddNotify.Location = new System.Drawing.Point(845, 12);
             this.btnAddNotify.Name = "btnAddNotify";
             this.btnAddNotify.Size = new System.Drawing.Size(149, 33);
             this.btnAddNotify.TabIndex = 1;
@@ -59,7 +59,7 @@
             // btnRefresh
             // 
             this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.Location = new System.Drawing.Point(843, 12);
+            this.btnRefresh.Location = new System.Drawing.Point(1010, 12);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(149, 33);
             this.btnRefresh.TabIndex = 2;
