@@ -181,14 +181,14 @@ namespace ATBM_NHOM12.Forms
                 if (privilege == "INSERT")
                 {
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = $"GRANT INSERT ON {tableName} TO {userOrRoleName} {option}";
+                    cmd.CommandText = $"GRANT INSERT ON {schema_name}.{tableName} TO {userOrRoleName} {option}";
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Cấp quyền thành công!");
                 }
                 else if (privilege == "DELETE")
                 {
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = $"GRANT DELETE ON {tableName} TO {userOrRoleName} {option}";
+                    cmd.CommandText = $"GRANT DELETE ON {schema_name}.{tableName} TO {userOrRoleName} {option}";
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Cấp quyền thành công!");
                 }
@@ -197,14 +197,14 @@ namespace ATBM_NHOM12.Forms
                     if (col_list == "")
                     {
                         cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = $"GRANT UPDATE ON {tableName} TO {userOrRoleName} {option}";
+                        cmd.CommandText = $"GRANT UPDATE ON {schema_name}.{tableName} TO {userOrRoleName} {option}";
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Cấp quyền thành công!");
                     }
                     else
                     {
                         cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = $"GRANT UPDATE({col_list}) ON {tableName} TO {userOrRoleName} {option}";
+                        cmd.CommandText = $"GRANT UPDATE({col_list}) ON {schema_name}.{tableName} TO {userOrRoleName} {option}";
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Cấp quyền thành công!");
                     }
