@@ -332,7 +332,7 @@ BEGIN
     END IF;
 END;
 
-
+select * from ADPRO.SINHVIEN where dt is null
 insert into DONVI(madv,tendv,trgdv) from
 DBMS_OUTPUT.PUT_LINE(SYS_CONTEXT('USERENV', 'ISDBA'));
 
