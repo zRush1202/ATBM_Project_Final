@@ -60,7 +60,6 @@ namespace ATBM_NHOM12.Forms
                 if (cb_thaotac.Text == "GRANT")
                 {
                     sql = $"GRANT {cb_quyen.Text} TO {txt_doituong.Text} {checkwgo.Text}";
-                    MessageBox.Show(sql);
                 }
                 if (cb_thaotac.Text == "REVOKE")
                 {
